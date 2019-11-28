@@ -85,36 +85,42 @@
       <t>
         Describe Use Cases.
       </t>
-      <section anchor="section_use_cases_ddos_mitigation_bandwidth" title="Efficient DDoS Mitigation based on attack traffic bandwidth">
+      <section anchor="section_use_cases_ddos_mitigation_bandwidth" title="Efficient DDoS Mitigation Based on Attack Traffic Bandwidth">
         <t>
           Describe Use Cases based on attack traffic bandwidth.
         </t>
-        <section anchor="section_use_cases_ddos_mitigation_bandwidth_top-talker" title="Mitigating Top-talker Flow Preferentially">
-        <!-- NTT Use case https://datatracker.ietf.org/meeting/106/materials/slides-106-dots-dots-telemetry-usecase-00.pdf -->
+        <section anchor="section_use_cases_ddos_mitigation_bandwidth_top-talker" title="Mitigating Attack Flow of Top-talker Preferentially">
           <t>
+            NTT Use case https://datatracker.ietf.org/meeting/106/materials/slides-106-dots-dots-telemetry-usecase-00.pdf
             Describe Motivation, what componets are deployed in the network, how they collaborate, and what information are exchanged to perform the use case
           </t>
         </section>
         <section anchor="section_use_cases_ddos_mitigation_bandwidth_DMSpathselection" title="Selecting Available DMS and Path">
-          <!-- China Mobile Use Case https://datatracker.ietf.org/meeting/104/materials/slides-104-dots-attack-bandwidth-and-attack-type-expansion-01.pdf p.4-->
           <t>
+            China Mobile Use Case https://datatracker.ietf.org/meeting/104/materials/slides-104-dots-attack-bandwidth-and-attack-type-expansion-01.pdf p.4
+            Describe Motivation, what componets are deployed in the network, how they collaborate, and what information are exchanged to perform the use case
+          </t>
+        </section>
+        <section anchor="section_use_cases_ddos_mitigation_bandwidth_offloadingvolumetricattackflow" title="Offloading Extream Volumetric Attack Flow">
+          <t>
+            China Mobile Use Case https://datatracker.ietf.org/meeting/104/materials/slides-104-dots-attack-bandwidth-and-attack-type-expansion-01.pdf p.4
             Describe Motivation, what componets are deployed in the network, how they collaborate, and what information are exchanged to perform the use case
           </t>
         </section>
       </section>
-      <section anchor="section_use_cases_ddos_mitigation_attack_type" title="Efficient DDoS Mitigation based on attack type">
+      <section anchor="section_use_cases_ddos_mitigation_attack_type" title="Efficient DDoS Mitigation Based on Attack Type">
         <t>
           Describe Use Cases based on attack type.
         </t>
         <section anchor="section_use_cases_ddos_mitigation_attack_type_techniqueselection" title="Selecting Optimal Mitigation Technique">
-        <!-- NTT Use Case -->
           <t>
+            Describe NTT Use Case
             Describe Motivation, what componets are deployed in the network, how they collaborate, and what information are exchanged to perform the use case
           </t>
         </section>
         <section anchor="section_use_cases_ddos_mitigation_attack_type_DMSselection" title="Selecting Available DMS">
-        <!-- China Mobile Use Case https://datatracker.ietf.org/meeting/104/materials/slides-104-dots-attack-bandwidth-and-attack-type-expansion-01.pdf p.6 -->
           <t>
+            China Mobile Use Case https://datatracker.ietf.org/meeting/104/materials/slides-104-dots-attack-bandwidth-and-attack-type-expansion-01.pdf p.6
             Describe Motivation, what componets are deployed in the network, how they collaborate, and what information are exchanged to perform the use case
           </t>
         </section>

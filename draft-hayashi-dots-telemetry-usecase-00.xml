@@ -85,7 +85,7 @@
       <t>
         Describe Use Cases.
       </t>
-      <section anchor="section_use_cases_ddos_mitigation_bandwidth" title="Efficient DDoS Mitigation Based on Attack Traffic Bandwidth">
+      <section anchor="section_use_cases_ddos_mitigation_bandwidth" title="DDoS Mitigation Based on Attack Traffic Bandwidth">
         <t>
           Describe Use Cases based on attack traffic bandwidth.
         </t>
@@ -108,13 +108,13 @@
           </t>
         </section>
       </section>
-      <section anchor="section_use_cases_ddos_mitigation_attack_type" title="Efficient DDoS Mitigation Based on Attack Type">
+      <section anchor="section_use_cases_ddos_mitigation_attack_type" title="DDoS Mitigation Based on Attack Type">
         <t>
           Describe Use Cases based on attack type.
         </t>
-        <section anchor="section_use_cases_ddos_mitigation_attack_type_techniqueselection" title="Selecting Optimal Mitigation Technique">
+        <section anchor="section_use_cases_ddos_mitigation_attack_type_techniqueselection" title="Selecting Mitigation Technique">
           <t>
-            Describe NTT Use Case
+            Describe NTT Use Case.
             Describe Motivation, what componets are deployed in the network, how they collaborate, and what information are exchanged to perform the use case
           </t>
         </section>

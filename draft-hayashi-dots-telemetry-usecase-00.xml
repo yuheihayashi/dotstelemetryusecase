@@ -47,7 +47,9 @@
   <front>
     <title abbrev="DOTS Telemetry Use Cases">Use Cases for DDoS Open Threat Signaling (DOTS) Telemetry</title>
     <author fullname="Yuhei Hayashi" initials="Y." surname="Hayashi">
-      <organization abbrev="NTT">NTT</organization>
+      <organization abbrev="NTT">
+        NTT
+      </organization>
       <address>
         <postal>
           <street>3-9-11, Midori-cho</street>
@@ -73,62 +75,52 @@
   <middle>
     <section anchor="section_introduction" title="Introduction">
       <t>
-        Describe Introduction.
+        NOTES: Introduction will be described by Yuhei Hayashi.
       </t>
     </section>
     <section anchor="section_terms" title="Terminology">
       <t>
-        Describe Terminology.
+        NOTES: Terminology will be described by Yuhei Hayashi.
       </t>
     </section>
     <section anchor="section_use_cases" title="Use Cases">
-      <t>
-        Describe Use Cases.
-      </t>
       <section anchor="section_use_cases_ddos_mitigation_bandwidth" title="DDoS Mitigation Based on Attack Traffic Bandwidth">
-        <t>
-          Describe Use Cases based on attack traffic bandwidth.
-        </t>
         <section anchor="section_use_cases_ddos_mitigation_bandwidth_top-talker" title="Mitigating Attack Flow of Top-talker Preferentially">
           <t>
-            NTT Use case https://datatracker.ietf.org/meeting/106/materials/slides-106-dots-dots-telemetry-usecase-00.pdf
-            Describe Motivation, what componets are deployed in the network, how they collaborate, and what information are exchanged to perform the use case
+            NOTES: NTT Use case will be described by Yuhei Hayashi. (Motivation, what componets are deployed in the network, how they collaborate, and what information are exchanged to perform the use case)
+            https://datatracker.ietf.org/meeting/106/materials/slides-106-dots-dots-telemetry-usecase-00.pdf
           </t>
         </section>
         <section anchor="section_use_cases_ddos_mitigation_bandwidth_DMSpathselection" title="Selecting Available DMS and Path">
           <t>
-            China Mobile Use Case https://datatracker.ietf.org/meeting/104/materials/slides-104-dots-attack-bandwidth-and-attack-type-expansion-01.pdf p.4
-            Describe Motivation, what componets are deployed in the network, how they collaborate, and what information are exchanged to perform the use case
+            NOTES: China Mobile Use Case will be described by Meiling? (Describe Motivation, what componets are deployed in the network, how they collaborate, and what information are exchanged to perform the use case)
+            https://datatracker.ietf.org/meeting/104/materials/slides-104-dots-attack-bandwidth-and-attack-type-expansion-01.pdf p.4
           </t>
         </section>
         <section anchor="section_use_cases_ddos_mitigation_bandwidth_offloadingvolumetricattackflow" title="Offloading Extream Volumetric Attack Flow">
           <t>
-            China Mobile Use Case https://datatracker.ietf.org/meeting/104/materials/slides-104-dots-attack-bandwidth-and-attack-type-expansion-01.pdf p.4
-            Describe Motivation, what componets are deployed in the network, how they collaborate, and what information are exchanged to perform the use case
+            NOTES: China Mobile Use Case will be described by Meiling? (Describe Motivation, what componets are deployed in the network, how they collaborate, and what information are exchanged to perform the use case)
+            https://datatracker.ietf.org/meeting/104/materials/slides-104-dots-attack-bandwidth-and-attack-type-expansion-01.pdf p.4
           </t>
         </section>
       </section>
       <section anchor="section_use_cases_ddos_mitigation_attack_type" title="DDoS Mitigation Based on Attack Type">
-        <t>
-          Describe Use Cases based on attack type.
-        </t>
         <section anchor="section_use_cases_ddos_mitigation_attack_type_techniqueselection" title="Selecting Mitigation Technique">
           <t>
-            Describe NTT Use Case.
-            Describe Motivation, what componets are deployed in the network, how they collaborate, and what information are exchanged to perform the use case
+            NOTES: NTT Use case will be described by Yuhei Hayashi. (Motivation, what componets are deployed in the network, how they collaborate, and what information are exchanged to perform the use case)
           </t>
         </section>
         <section anchor="section_use_cases_ddos_mitigation_attack_type_DMSselection" title="Selecting Available DMS">
           <t>
-            China Mobile Use Case https://datatracker.ietf.org/meeting/104/materials/slides-104-dots-attack-bandwidth-and-attack-type-expansion-01.pdf p.6
-            Describe Motivation, what componets are deployed in the network, how they collaborate, and what information are exchanged to perform the use case
+            NOTES: China Mobile Use Case will be described by Meiling? (Describe Motivation, what componets are deployed in the network, how they collaborate, and what information are exchanged to perform the use case)
+            https://datatracker.ietf.org/meeting/104/materials/slides-104-dots-attack-bandwidth-and-attack-type-expansion-01.pdf p.6
           </t>
         </section>
       </section>
     </section>
     <section title="Security Considerations">
       <t>
-        Describe Security Considerations.
+        Security Considerations will be described by Yuhei Hayashi.
       </t>
     </section>
     <section title="IANA Considerations">
@@ -138,7 +130,7 @@
     </section>
     <section title="Acknowledgement">
       <t>
-        Describe Security Acknowledgement.
+        Security Acknowledgement will be described by Yuhei Hayashi.
       </t>
     </section>
   </middle>

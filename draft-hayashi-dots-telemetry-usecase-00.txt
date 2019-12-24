@@ -1,0 +1,616 @@
+
+
+
+
+DOTS                                                          Y. Hayashi
+Internet-Draft                                                       NTT
+Intended status: Informational                                   M. Chen
+Expires: June 4, 2020                                               CMCC
+                                                        December 2, 2019
+
+
+       Use Cases for DDoS Open Threat Signaling (DOTS) Telemetry
+               draft-hayashi-dots-telemetry-use-cases-00
+
+Abstract
+
+   DOTS Telemetry enriches base DOTS protocol to assist the mitigator to
+   perform efficient DDoS attack mitigation techniques in the network.
+   This document presents sample use cases for DOTS telemetry: what
+   components are deployed in the network, how they collaborate, and
+   what information is exchanged to perform the techniques.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on June 4, 2020.
+
+Copyright Notice
+
+   Copyright (c) 2019 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (https://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+
+
+
+
+Hayashi & Chen            Expires June 4, 2020                  [Page 1]
+
+Internet-Draft          DOTS Telemetry Use Cases           December 2019
+
+
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   3
+   3.  Use Cases . . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     3.1.  DDoS Mitigation Based on Attack Traffic Bandwidth . . . .   3
+       3.1.1.  Mitigating Attack Flow of Top-talker Preferentially .   3
+       3.1.2.  Selecting Available DMS . . . . . . . . . . . . . . .   5
+       3.1.3.  Selecting Best Path for Redirection . . . . . . . . .   5
+       3.1.4.  Offloading Extream Volumetric Attack Flow . . . . . .   6
+     3.2.  DDoS Mitigation Based on Attack Type  . . . . . . . . . .   6
+       3.2.1.  Selecting Mitigation Technique  . . . . . . . . . . .   6
+       3.2.2.  Selecting Available DMS . . . . . . . . . . . . . . .   8
+     3.3.  DDoS Detection Support Using Machine Learning . . . . . .   8
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .  10
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  10
+   6.  Acknowledgement . . . . . . . . . . . . . . . . . . . . . . .  10
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .  10
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
+
+1.  Introduction
+
+   Denial-of-Service (DDoS) attacks such as volumetric attacks or
+   resource consumption attacks are critical threats to be handled by
+   service providers.  When such DDoS attacks occur, service providers
+   have to mitigate them immediately to protect or recover their
+   services.
+
+   Therefore, for the service providers to immediately protect their
+   network services from DDoS attacks, DDoS mitigation needs to be
+   automated.  To automate DDoS attack mitigation, it is desirable that
+   multi-vendor elements involved in DDoS attack detection and
+   mitigation collaborate and support standard interfaces to
+   communicate.
+
+   DDoS Open Threat Signaling (DOTS) is a set of protocols for real-time
+   signaling, threat-handling requests, and data filtering between the
+   multi-vendor elements.  Furthermore, DOTS Telemetry enriches the DOTS
+   protocol with various telemetry attributes allowing optimal DDoS
+   attack mitigation.  This document presents sample use cases for DOTS
+   telemetry: what components are deployed in the network, how they
+   collaborate, and what information is exchanged to perform the attack
+   mitigation techniques.
+
+
+
+Hayashi & Chen            Expires June 4, 2020                  [Page 2]
+
+Internet-Draft          DOTS Telemetry Use Cases           December 2019
+
+
+2.  Terminology
+
+   The readers should be familiar with the terms defined in brabra
+
+   In addition, this document makes use of the following terms:
+
+   brabra:  brabra
+
+3.  Use Cases
+
+   This section describes DOTS Telemetry use cases use attributes
+   included in DOTS telemetry spec.
+
+3.1.  DDoS Mitigation Based on Attack Traffic Bandwidth
+
+3.1.1.  Mitigating Attack Flow of Top-talker Preferentially
+
+   Large-scale DDoS attack such as amplification attack often occurs in
+   the world these days.  On the other hand, many transit providers have
+   to mitigate the large-scale DDoS attack using DMS with limited
+   resources, which is already deployed in their network.
+
+   The aim of this use case is to enable the transit providers to use
+   their DMS efficiently under volume-based DDoS attacks whose bandwidth
+   is more than the available capacity of the DMS.  To perform it,
+   attack traffics of top talkers are redirected to their DMS
+   preferentially by collaborating forwarding nodes, flow collectors and
+   orchestrators.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hayashi & Chen            Expires June 4, 2020                  [Page 3]
+
+Internet-Draft          DOTS Telemetry Use Cases           December 2019
+
+
+          +-----------------------------------------------+
+          | Internet Transit Provider                     |
+          |                                               |
+          |      +-----------+      +--------------+      |
+          |     +-----------+| DOTS |              |      |
+          |     | Flow      ||<---->| Orchestrator |---+  |
+          |  +->| collector ||TC  TS|              |-+ |  |
+          |  |  +-----------++      +--------------+ | |  |
+          |  |                                       | |  |
+          |  |  e.g.     +------------+ e.g.         | |  |
+          |  |  NetFlow +------------+| BGP Flowspec | |  |
+          |  +----------| Forwarding ||<-------------+ |  |
+          |             |    nodes   ||                |  | DDoS Attack
+[Target]<===============|============||================|========
+          |             |    ++======||================|====[top talker]
+          |             |    || ++===|+================|====[top talker]
+          |             +----|| ||---+                 |  |
+          |                  || ||                     |  |
+          |                  |/ |/                     |  |
+          |             +------------+  e.g.           |  |
+          |             | DDoS       |  SNMP           |  |
+          |             | mitigation |<----------------+  |
+          |             | systems    |                    |
+          |             +------------+                    |
+          +-----------------------------------------------+
+
+          * TC is for DOTS Telemetry client functionality
+          * TS is for DOTS Telemetry server functionality
+
+Figure 1: Mitigating DDoS Attack Flow of Top-talker Preferentially
+
+
+   Figure 1 shows the abstract of the use case.  In the use case, the
+   forwarding nodes send statistics of traffic flow to the flow
+   collectors by using monitoring functions such as NetFlow.  When DDoS
+   attacks occur, the flow collectors detect attack traffic and send
+   (src_ip, dst_ip, bandwidth)-tuple information of the top talker to
+   the orchestrator.  Then, the orchestrator checks the available
+   capacity of DMS.  After that, the orchestrator orders forwarding
+   nodes to redirect the top taker's traffic to the DMS as much as
+   possible by dissemination of flow specification rules protocols such
+   as BGP Flowspec.
+
+   In this case, the flow collector implements a DOTS telemetry client
+   while the orchestrator implements a DOTS server.
+
+
+
+
+
+
+Hayashi & Chen            Expires June 4, 2020                  [Page 4]
+
+Internet-Draft          DOTS Telemetry Use Cases           December 2019
+
+
+3.1.2.  Selecting Available DMS
+
+   Usually, DDoS attack mitigation providers have a number of ddos clean
+   devices which up to the capability of service, ddos clean device can
+   exists in both individual and clustered forms that based on the
+   network requirements, we can all identify it as a DMS, each DMS has
+   three attributes: total capacity, surplus capacity, the last hop
+   bandwidth.  When ddos attack occurs, DOTS telemetry carries the value
+   of total attack traffic, orchestrator based on the total attack
+   traffic, and each DMS's triad parameters to select the optimal DMS
+   for mitigation.  How to make the decision of DMS will be based on the
+   first principle that operate fast and efficiently, and the detail
+   algorithm is out of scope, this scenario is suitable for scenarios
+   that are sensitive to the processing capabilities of the DMS.
+
+
+                 +------------+ (total attack traffic,dst) +-----------+
+                 |orchestrator|----------------------------|dots server|
+                 +------------+                            +-----------+
+                   |
+                +--------+
+                | router |
+                +--------+
+                     |
+            +------------+-------------+
+            |            |             |(last hop bandwidth)
+            |            |             |
+          +--------+   +--------+     +--------+
+          |device 1|   |device 2|     |device 3|(total capacity,surplus capacity)
+          +--------+   +--------+     +--------+
+
+
+3.1.3.  Selecting Best Path for Redirection
+
+   Choosing the appropriate path for traffic redirection can also based
+   on the total attack traffic and total pipe capability, but only
+   internet service providers have the ability to know the overall load
+   capacity of each physical paths and load limitation.  ISP has many
+   DMS and they are deployed according to the administrative division.
+   After the ddos attack traffic are redirected to the DMS, DMS can
+   perform cleaning operation and inject the normal service flow back.
+   From the perspective of network load management, how to select the
+   bast way to redirect requires the calculation on total attack
+   traffic(TAT),total traffic(TT) and total pipe capability(TPC).
+
+
+
+
+
+
+
+Hayashi & Chen            Expires June 4, 2020                  [Page 5]
+
+Internet-Draft          DOTS Telemetry Use Cases           December 2019
+
+
+                   +--------+       +------------+
+                   | router |-------|orchestrator|
+                   +--------+       +------------+
+                        |           (TAT, TT, TPC)
+                        |(TT,TPC)
+             **************************************
+             (     [router]---------[router]      )
+             (         |   (TT,TPC)   |           )
+             (         \              /           )
+             (  (TT,TPC)\            /(TT,TPC)    )
+             (                     \ [router] /             )
+             **************************************
+                      |
+                      |
+                          +-------+
+                          |  DMS  |
+                          +-------+
+   Figure 2:
+
+3.1.4.  Offloading Extream Volumetric Attack Flow
+
+   NOTES: China Mobile Use Case will be described by Meiling?  (Describe
+   Motivation, what componets are deployed in the network, how they
+   collaborate, and what information are exchanged to perform the use
+   case) https://datatracker.ietf.org/meeting/104/materials/slides-104-
+   dots-attack-bandwidth-and-attack-type-expansion-01.pdf p.4
+
+3.2.  DDoS Mitigation Based on Attack Type
+
+3.2.1.  Selecting Mitigation Technique
+
+   Some volumetric attacks such as amplification attack can be detected
+   with high accuracy by checking layer 3 or layer 4 information of
+   attack packets.  These attacks can be detected and mitigated by
+   collaborating forwarding nodes and flow collectors using NetFlow.  On
+   the other hand, it is necessary to inspect layer 7 information of
+   attack packets to detect some attacks such as DNS Water Torture
+   Attack.  These attacks traffic should be detected and mitigated at
+   DMS.
+
+   Aim of this use case is to enable the transit providers to select
+   mitigation technique based on the type of attack traffic:
+   amplification attack or not.  To perform it, attack traffic is
+   blocked at forwarding nodes or redirected to DMS base on attack type
+   by collaborating forwarding nodes, flow collectors and an
+   orchestrator.
+
+
+
+
+
+Hayashi & Chen            Expires June 4, 2020                  [Page 6]
+
+Internet-Draft          DOTS Telemetry Use Cases           December 2019
+
+
+          +-----------------------------------------------+
+          | Internet Transit Provider                     |
+          |                                               |
+          |      +-----------+      +--------------+      |
+          |     +-----------+| DOTS |              |      |
+          |     | Flow      ||<---->| Orchestrator |      |
+          |  +->| collector ||TC  TS|              |---+  |
+          |  |  +-----------++      +--------------+   |  |
+          |  |                           e.g.          |  |
+          |  |  e.g.     +------------+  BGP,          |  |
+          |  |  NetFlow +------------+|  BGP Flowspec  |  |
+          |  +----------| Forwarding ||<---------------+  |
+          |             |    nodes   ||                   | DDoS Attack
+          |             |     ++=====||========================
+          |             |     ||     ||X<==================[e.g.DNS Amp]
+          |             |     ||     |+X<==================[e.g.NTP Amp]
+          |             +-----||-----+                    |
+          |                   ||                          |
+          |                   |/                          |
+          |             +-----X------+                    |
+          |             | DDoS       |                    |
+          |             | mitigation |                    |
+          |             | systems    |                    |
+          |             +------------+                    |
+          +-----------------------------------------------+
+
+          * TC is for DOTS Telemetry client functionality
+          * TS is for DOTS Telemetry server functionality
+
+Figure 3: DDoS Mitigation Based on Attack Type
+
+
+   Figure 3 shows the abstract of the use case.  In the use case, the
+   forwarding nodes send statistics of traffic flow to the flow
+   collectors by using monitoring function such as NetFlow.  When DDoS
+   attacks occur, the flow collectors detect attack traffic and send
+   (dst_ip, src_port, attack_type)-tuple information to the
+   orchestrator.  Then, the orchestrator orders forwarding nodes to
+   block (dst_ip, src_port)-tuple flow of amp attack traffic by
+   dissemination of flow specification rules protocols such as BGP
+   Flowspec.  On the other hand, the orchestrator orders forwarding
+   nodes to redirect other than the amp attack traffic by routing
+   protocol such as BGP.
+
+   In this case, the flow collector implements a DOTS telemetry client
+   while the orchestrator implements a DOTS server.
+
+
+
+
+
+Hayashi & Chen            Expires June 4, 2020                  [Page 7]
+
+Internet-Draft          DOTS Telemetry Use Cases           December 2019
+
+
+3.2.2.  Selecting Available DMS
+
+   NOTES: China Mobile Use Case will be described by Meiling?  (Describe
+   Motivation, what componets are deployed in the network, how they
+   collaborate, and what information are exchanged to perform the use
+   case) https://datatracker.ietf.org/meeting/104/materials/slides-104-
+   dots-attack-bandwidth-and-attack-type-expansion-01.pdf p.6
+
+3.3.  DDoS Detection Support Using Machine Learning
+
+   DDoS detection based on flow monitoring such as NetFlow is a lighter
+   weight way to detect DDoS attacks than DMS in the internet transit
+   provider network.  On the other hand, DDoS detection based on DMS is
+   a more accurate way to detect DDoS attacks than flow monitoring.
+
+   Aim of this use case is that the flow collector raises their
+   detection accuracy performance carrying out supervised machine
+   learning techniques based on the detection result of DMS.  To perform
+   it, forwarding nodes, flow collector and a DMS collaborate.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hayashi & Chen            Expires June 4, 2020                  [Page 8]
+
+Internet-Draft          DOTS Telemetry Use Cases           December 2019
+
+
+              +----------------------------------------------+
+              | Internet Transit Provider                    |
+              |                                              |
+              |      TS+------------+                        |
+              |  +---->|    Flow    |                        |
+              |  |  +->| collector  |                        |
+              |  |  |  +------------+                        |
+              |  |  |                                        |
+              |  |  | e.g.      +------------+               |
+              |  |  | NetFlow  +------------+|               |
+              |  |  +----------| Forwarding ||               |
+              |  |             |    nodes   ||               |  DDoS Attack
+ [ Target ]   |  |             |   ++=======||=====================
+              |  |             |   || ++====||=====================
+              |  |             |   || || ++=|+=====================
+              |  |             +---||-|| ||-+                |
+              |  |                 || || ||                  |
+              |  |                 |/ |/ |/                  |
+              |  |    DOTS     +---X--X--X--+                |
+              |  +------------>| DDoS       |                |
+              |              TC| mitigation |                |
+              |                | systems    |                |
+              |                +------------+                |
+              +----------------------------------------------+
+
+        * C is for DOTS Telemetry client functionality
+        * S is for DOTS Telemetry server functionality
+
+Figure 5: DDoS Detection Support Using Machine Learning
+
+   Figure 5 shows the abstract of the use case.  In the use case, the
+   forwarding nodes send statistics of traffic flow to the flow
+   collectors by using monitoring functions such as NetFlow.  When DDoS
+   attacks occur, DDoS orchestration use case is carried out and
+   mitigate attack traffic at the DMS.  Then, DDoS Mitigation system
+   reports (src_ip, dst_ip, src_port, dst_port, attack_type)-tuple
+   information of detected attack traffic to flow collector.  Finally,
+   the flow collector attaches teacher label to the NetFlow using the
+   reports, and carry out supervised machine learning and raise their
+   detection accuracy.
+
+   In this case, the DMS implements a DOTS telemetry client while the
+   flow collector implements a DOTS server.
+
+
+
+
+
+
+
+
+Hayashi & Chen            Expires June 4, 2020                  [Page 9]
+
+Internet-Draft          DOTS Telemetry Use Cases           December 2019
+
+
+4.  Security Considerations
+
+   The document does not describe any protocol.
+
+5.  IANA Considerations
+
+   This document does not require any action from IANA.
+
+6.  Acknowledgement
+
+   The authors would like to thank among others brabra...
+
+7.  References
+
+7.1.  Normative References
+
+   [I-D.ietf-dots-data-channel]
+              Boucadair, M. and T. Reddy.K, "Distributed Denial-of-
+              Service Open Threat Signaling (DOTS) Data Channel
+              Specification", draft-ietf-dots-data-channel-31 (work in
+              progress), July 2019.
+
+   [I-D.ietf-dots-signal-channel]
+              Reddy.K, T., Boucadair, M., Patil, P., Mortensen, A., and
+              N. Teague, "Distributed Denial-of-Service Open Threat
+              Signaling (DOTS) Signal Channel Specification", draft-
+              ietf-dots-signal-channel-40 (work in progress), December
+              2019.
+
+7.2.  Informative References
+
+   [I-D.ietf-dots-use-cases]
+              Dobbins, R., Migault, D., Moskowitz, R., Teague, N., Xia,
+              L., and K. Nishizuka, "Use cases for DDoS Open Threat
+              Signaling", draft-ietf-dots-use-cases-20 (work in
+              progress), September 2019.
+
+Authors' Addresses
+
+   Yuhei Hayashi
+   NTT
+   3-9-11, Midori-cho
+   Musashino-shi, Tokyo  180-8585
+   Japan
+
+   Email: yuuhei.hayashi@gmail.com
+
+
+
+
+
+Hayashi & Chen            Expires June 4, 2020                 [Page 10]
+
+Internet-Draft          DOTS Telemetry Use Cases           December 2019
+
+
+   Meiling Chen
+   CMCC
+   32, Xuanwumen West
+   BeiJing, BeiJing  100053
+   China
+
+   Email: chenmeiling@chinamobile.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hayashi & Chen            Expires June 4, 2020                 [Page 11]

@@ -71,17 +71,16 @@ Table of Contents
        3.1.2.  Selecting Available DMS . . . . . . . . . . . . . . .   5
        3.1.3.  Selecting Best Path for Redirection . . . . . . . . .   5
        3.1.4.  Offloading Extream Volumetric Attack Flow . . . . . .   6
-     3.2.  DDoS Mitigation Based on Attack Type  . . . . . . . . . .   6
-       3.2.1.  Selecting Mitigation Technique  . . . . . . . . . . .   6
-       3.2.2.  Selecting Available DMS . . . . . . . . . . . . . . .   8
-     3.3.  DDoS Detection Support Using Machine Learning . . . . . .   8
+     3.2.  DDoS Mitigation Based on Attack Type  . . . . . . . . . .   7
+       3.2.1.  Selecting Mitigation Technique  . . . . . . . . . . .   7
+     3.3.  DDoS Detection Support Using Machine Learning . . . . . .   9
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .  10
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  10
    6.  Acknowledgement . . . . . . . . . . . . . . . . . . . . . . .  10
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
      7.2.  Informative References  . . . . . . . . . . . . . . . . .  10
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  11
 
 1.  Introduction
 
@@ -106,6 +105,7 @@ Table of Contents
    telemetry: what components are deployed in the network, how they
    collaborate, and what information is exchanged to perform the attack
    mitigation techniques.
+
 
 
 
@@ -233,11 +233,12 @@ Internet-Draft          DOTS Telemetry Use Cases           December 2019
    exists in both individual and clustered forms that based on the
    network requirements, we can all identify it as a DMS, each DMS has
    three attributes: total capacity, surplus capacity, the last hop
-   bandwidth.  When ddos attack occurs, DOTS telemetry carries the value
-   of total attack traffic, orchestrator based on the total attack
-   traffic, and each DMS's triad parameters to select the optimal DMS
-   for mitigation.  How to make the decision of DMS will be based on the
-   first principle that operate fast and efficiently, and the detail
+   bandwidth(how to get the bandwidth of last hop can refer to segment
+   routing technology).  When ddos attack occurs, DOTS telemetry carries
+   the value of total attack traffic, orchestrator based on the total
+   attack traffic, and each DMS's triad parameters to select the optimal
+   DMS for mitigation.  How to make the decision of DMS will be based on
+   the first principle that operate fast and efficiently, and the detail
    algorithm is out of scope, this scenario is suitable for scenarios
    that are sensitive to the processing capabilities of the DMS.
 
@@ -257,6 +258,9 @@ Internet-Draft          DOTS Telemetry Use Cases           December 2019
           |device 1|   |device 2|     |device 3|(total capacity,surplus capacity)
           +--------+   +--------+     +--------+
 
+          * dst ip can be ipv4 and ipv6
+Figure 2: Optimal DMS selection for mitigation
+
 
 3.1.3.  Selecting Best Path for Redirection
 
@@ -270,10 +274,6 @@ Internet-Draft          DOTS Telemetry Use Cases           December 2019
    From the perspective of network load management, how to select the
    bast way to redirect requires the calculation on total attack
    traffic(TAT),total traffic(TT) and total pipe capability(TPC).
-
-
-
-
 
 
 
@@ -292,22 +292,63 @@ Internet-Draft          DOTS Telemetry Use Cases           December 2019
              (         |   (TT,TPC)   |           )
              (         \              /           )
              (  (TT,TPC)\            /(TT,TPC)    )
-             (                     \ [router] /             )
+             (                       \ [router] /             )
              **************************************
-                      |
-                      |
+                              |
+                              |
                           +-------+
                           |  DMS  |
                           +-------+
-   Figure 2:
+
+            * TAT is for total attack traffic
+            * TT is for total traffic
+            * TPC is for total pipe capability
+
+   Figure 3: Optimal redirection path for mitigation
+
 
 3.1.4.  Offloading Extream Volumetric Attack Flow
 
-   NOTES: China Mobile Use Case will be described by Meiling?  (Describe
-   Motivation, what componets are deployed in the network, how they
-   collaborate, and what information are exchanged to perform the use
-   case) https://datatracker.ietf.org/meeting/104/materials/slides-104-
-   dots-attack-bandwidth-and-attack-type-expansion-01.pdf p.4
+   Typically, the bandwidth between the attack target and the previous
+   hop route is fixed because the bandwidth is charged based on the size
+   of the bandwidth.  If there is a large amount of attack traffic, the
+   whole link is already full, and the attack traffic cannot be
+   mitigated through redirection and cleaning operation.  In this case,
+   direct discarding is usually adopted to ensure part of the normal
+   service flow, and the patency of pipeline is given priority.  How to
+   identify a super large traffic attack, for example, the attack
+   traffic is not only larger than the bandwidth of last hop, but also
+   larger than the higher path hop, that means the excess traffic of
+   bandwidth A will be discarded, and in this case no need to
+   distinguish between attack traffic and normal traffic.
+
+
+
+
+
+
+
+
+
+
+
+
+Hayashi & Chen            Expires June 4, 2020                  [Page 6]
+
+Internet-Draft          DOTS Telemetry Use Cases           December 2019
+
+
+                                        +-------------+             +-----------+
+                                        |attack target|----client-->|dots server|
+                                        +-------------+             +-----------+
+                                               |                         |
+                                               |(bandwidth A)            |
+                                           +--------+               +--------+
+                                           | router |---------------| router |
+                                           +--------+ (bandwidth B) +--------+
+
+                Figure 4: Offloading Extream Volumetric Attack Flow
+
 
 3.2.  DDoS Mitigation Based on Attack Type
 
@@ -333,7 +374,22 @@ Internet-Draft          DOTS Telemetry Use Cases           December 2019
 
 
 
-Hayashi & Chen            Expires June 4, 2020                  [Page 6]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hayashi & Chen            Expires June 4, 2020                  [Page 7]
 
 Internet-Draft          DOTS Telemetry Use Cases           December 2019
 
@@ -389,18 +445,10 @@ Figure 3: DDoS Mitigation Based on Attack Type
 
 
 
-Hayashi & Chen            Expires June 4, 2020                  [Page 7]
+Hayashi & Chen            Expires June 4, 2020                  [Page 8]
 
 Internet-Draft          DOTS Telemetry Use Cases           December 2019
 
-
-3.2.2.  Selecting Available DMS
-
-   NOTES: China Mobile Use Case will be described by Meiling?  (Describe
-   Motivation, what componets are deployed in the network, how they
-   collaborate, and what information are exchanged to perform the use
-   case) https://datatracker.ietf.org/meeting/104/materials/slides-104-
-   dots-attack-bandwidth-and-attack-type-expansion-01.pdf p.6
 
 3.3.  DDoS Detection Support Using Machine Learning
 
@@ -413,42 +461,6 @@ Internet-Draft          DOTS Telemetry Use Cases           December 2019
    detection accuracy performance carrying out supervised machine
    learning techniques based on the detection result of DMS.  To perform
    it, forwarding nodes, flow collector and a DMS collaborate.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Hayashi & Chen            Expires June 4, 2020                  [Page 8]
-
-Internet-Draft          DOTS Telemetry Use Cases           December 2019
-
 
               +----------------------------------------------+
               | Internet Transit Provider                    |
@@ -486,18 +498,6 @@ Figure 5: DDoS Detection Support Using Machine Learning
    attacks occur, DDoS orchestration use case is carried out and
    mitigate attack traffic at the DMS.  Then, DDoS Mitigation system
    reports (src_ip, dst_ip, src_port, dst_port, attack_type)-tuple
-   information of detected attack traffic to flow collector.  Finally,
-   the flow collector attaches teacher label to the NetFlow using the
-   reports, and carry out supervised machine learning and raise their
-   detection accuracy.
-
-   In this case, the DMS implements a DOTS telemetry client while the
-   flow collector implements a DOTS server.
-
-
-
-
-
 
 
 
@@ -505,6 +505,14 @@ Hayashi & Chen            Expires June 4, 2020                  [Page 9]
 
 Internet-Draft          DOTS Telemetry Use Cases           December 2019
 
+
+   information of detected attack traffic to flow collector.  Finally,
+   the flow collector attaches teacher label to the NetFlow using the
+   reports, and carry out supervised machine learning and raise their
+   detection accuracy.
+
+   In this case, the DMS implements a DOTS telemetry client while the
+   flow collector implements a DOTS server.
 
 4.  Security Considerations
 
@@ -532,8 +540,8 @@ Internet-Draft          DOTS Telemetry Use Cases           December 2019
               Reddy.K, T., Boucadair, M., Patil, P., Mortensen, A., and
               N. Teague, "Distributed Denial-of-Service Open Threat
               Signaling (DOTS) Signal Channel Specification", draft-
-              ietf-dots-signal-channel-40 (work in progress), December
-              2019.
+              ietf-dots-signal-channel-41 (work in progress), January
+              2020.
 
 7.2.  Informative References
 
@@ -542,6 +550,17 @@ Internet-Draft          DOTS Telemetry Use Cases           December 2019
               L., and K. Nishizuka, "Use cases for DDoS Open Threat
               Signaling", draft-ietf-dots-use-cases-20 (work in
               progress), September 2019.
+
+
+
+
+
+
+
+Hayashi & Chen            Expires June 4, 2020                 [Page 10]
+
+Internet-Draft          DOTS Telemetry Use Cases           December 2019
+
 
 Authors' Addresses
 
@@ -554,14 +573,6 @@ Authors' Addresses
    Email: yuuhei.hayashi@gmail.com
 
 
-
-
-
-Hayashi & Chen            Expires June 4, 2020                 [Page 10]
-
-Internet-Draft          DOTS Telemetry Use Cases           December 2019
-
-
    Meiling Chen
    CMCC
    32, Xuanwumen West
@@ -569,17 +580,6 @@ Internet-Draft          DOTS Telemetry Use Cases           December 2019
    China
 
    Email: chenmeiling@chinamobile.com
-
-
-
-
-
-
-
-
-
-
-
 
 
 

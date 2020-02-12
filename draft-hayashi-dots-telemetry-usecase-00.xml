@@ -184,7 +184,7 @@ Figure 1: Mitigating DDoS Attack Flow of Top-talker Preferentially
         </section>
         <section anchor="dms_selection" title="Selecting Available DMS">
           <t>
-            Usually, DDoS attack mitigation providers have a number of ddos clean devices which up to the capability of service, ddos clean device can exists in both individual and clustered forms that based on the network requirements, we can all identify it as a DMS, each DMS has three attributes: total capacity, surplus capacity, the last hop bandwidth. When ddos attack occurs, DOTS telemetry carries the value of total attack traffic, orchestrator based on the total attack traffic, and each DMS's triad parameters to select the optimal DMS for mitigation. How to make the decision of DMS will be based on the first principle that operate fast and efficiently, and the detail algorithm is out of scope, this scenario is suitable for scenarios that are sensitive to the processing capabilities of the DMS.
+            Usually, DDoS attack mitigation providers have a number of ddos clean devices which up to the capability of service, ddos clean device can exists in both individual and clustered forms that based on the network requirements, we can all identify it as a DMS, each DMS has three attributes: total capacity, surplus capacity, the last hop bandwidth(how to get the bandwidth of last hop can refer to segment routing technology). When ddos attack occurs, DOTS telemetry carries the value of total attack traffic, orchestrator based on the total attack traffic, and each DMS's triad parameters to select the optimal DMS for mitigation. How to make the decision of DMS will be based on the first principle that operate fast and efficiently, and the detail algorithm is out of scope, this scenario is suitable for scenarios that are sensitive to the processing capabilities of the DMS.
           </t>
           <t>
             <figure align="center">
@@ -204,6 +204,9 @@ Figure 1: Mitigating DDoS Attack Flow of Top-talker Preferentially
           +--------+   +--------+     +--------+
           |device 1|   |device 2|     |device 3|(total capacity,surplus capacity)
           +--------+   +--------+     +--------+
+
+          * dst ip can be ipv4 and ipv6
+Figure 2: Optimal DMS selection for mitigation
 
               ]]></artwork>
             </figure>
@@ -226,22 +229,45 @@ Figure 1: Mitigating DDoS Attack Flow of Top-talker Preferentially
           (         |   (TT,TPC)   |           )
           (         \              /           )
           (  (TT,TPC)\            /(TT,TPC)    )
-          (			\ [router] /             )
+          (			  \ [router] /             )
           **************************************
-                   |
-                   |
+                           |
+                           |
                        +-------+
                        |  DMS  |
                        +-------+
-Figure 2:
+
+         * TAT is for total attack traffic
+         * TT is for total traffic
+         * TPC is for total pipe capability
+
+Figure 3: Optimal redirection path for mitigation
+
               ]]></artwork>
             </figure>
           </t>
         </section>
         <section anchor="section_use_cases_ddos_mitigation_bandwidth_offloadingvolumetricattackflow" title="Offloading Extream Volumetric Attack Flow">
+           <t>
+           	Typically, the bandwidth between the attack target and the previous hop route is fixed because the bandwidth is charged based on the size of the bandwidth. If there is a large amount of attack traffic, the whole link is already full, and the attack traffic cannot be mitigated through redirection and cleaning operation. In this case, direct discarding is usually adopted to ensure part of the normal service flow, and the patency of pipeline is given priority. How to identify a super large traffic attack, for example, the attack traffic is not only larger than the bandwidth of last hop, but also larger than the higher path hop, that means the excess traffic of bandwidth A will be discarded, and in this case no need to distinguish between attack traffic and normal traffic.
+          </t>
           <t>
-            NOTES: China Mobile Use Case will be described by Meiling? (Describe Motivation, what componets are deployed in the network, how they collaborate, and what information are exchanged to perform the use case)
-            https://datatracker.ietf.org/meeting/104/materials/slides-104-dots-attack-bandwidth-and-attack-type-expansion-01.pdf p.4
+          	<figure align="center">
+          			<artwork><![CDATA[
+          				+-------------+             +-----------+
+          				|attack target|----client-->|dots server|
+          				+-------------+             +-----------+
+          				       |                         |
+          				       |(bandwidth A)            |
+          				   +--------+               +--------+
+          				   | router |---------------| router |
+          				   +--------+ (bandwidth B) +--------+
+
+          	Figure 4: Offloading Extream Volumetric Attack Flow
+
+          			]]></artwork>
+          		</figure>
+
           </t>
         </section>
       </section>
@@ -305,12 +331,7 @@ Figure 3: DDoS Mitigation Based on Attack Type
             In this case, the flow collector implements a DOTS telemetry client while the orchestrator implements a DOTS server.
           </t>
         </section>
-        <section anchor="section_use_cases_ddos_mitigation_attack_type_DMSselection" title="Selecting Available DMS">
-          <t>
-            NOTES: China Mobile Use Case will be described by Meiling? (Describe Motivation, what componets are deployed in the network, how they collaborate, and what information are exchanged to perform the use case)
-            https://datatracker.ietf.org/meeting/104/materials/slides-104-dots-attack-bandwidth-and-attack-type-expansion-01.pdf p.6
-          </t>
-        </section>
+
       </section>
       <section anchor="section_use_cases_ddos_detection_support" title="DDoS Detection Support Using Machine Learning">
         <t>

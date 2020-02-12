@@ -73,13 +73,13 @@ Table of Contents
        3.1.4.  Offloading Extream Volumetric Attack Flow . . . . . .   6
      3.2.  DDoS Mitigation Based on Attack Type  . . . . . . . . . .   7
        3.2.1.  Selecting Mitigation Technique  . . . . . . . . . . .   7
-     3.3.  DDoS Detection Support Using Machine Learning . . . . . .   9
+     3.3.  Training Flow Collector Using Supervised Machine Learning   9
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .  10
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  10
    6.  Acknowledgement . . . . . . . . . . . . . . . . . . . . . . .  10
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  10
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .  11
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  11
 
 1.  Introduction
@@ -99,12 +99,12 @@ Table of Contents
 
    DDoS Open Threat Signaling (DOTS) is a set of protocols for real-time
    signaling, threat-handling requests, and data filtering between the
-   multi-vendor elements.  Furthermore, DOTS Telemetry enriches the DOTS
-   protocol with various telemetry attributes allowing optimal DDoS
-   attack mitigation.  This document presents sample use cases for DOTS
-   telemetry: what components are deployed in the network, how they
-   collaborate, and what information is exchanged to perform the attack
-   mitigation techniques.
+   multi-vendor elements
+   [I-D.ietf-dots-signal-channel][I-D.ietf-dots-data-channel].
+   Furthermore, DOTS Telemetry enriches the DOTS protocol with various
+   telemetry attributes allowing optimal DDoS attack mitigation
+   [I-D.ietf-dots-telemetry].  This document presents sample use cases
+   for DOTS telemetry: what components are deployed in the network, how
 
 
 
@@ -114,17 +114,25 @@ Hayashi & Chen            Expires June 4, 2020                  [Page 2]
 Internet-Draft          DOTS Telemetry Use Cases           December 2019
 
 
+   they collaborate, and what information is exchanged to perform the
+   attack mitigation techniques.
+
 2.  Terminology
 
-   The readers should be familiar with the terms defined in brabra
+   The readers should be familiar with the terms defined in [RFC8612]
 
    In addition, this document makes use of the following terms:
 
-   brabra:  brabra
+   Top-talker:  A top N list of attackers who attack the same target or
+      targets.  The list is ordered in terms of a two-tuple bandwidth
+      such as bps or pps.
+
+   Supervised Machine Learning:  A machine learning technique that maps
+      an input to an output based on example input-output pairs
 
 3.  Use Cases
 
-   This section describes DOTS Telemetry use cases use attributes
+   This section describes DOTS Telemetry use cases which uses attributes
    included in DOTS telemetry spec.
 
 3.1.  DDoS Mitigation Based on Attack Traffic Bandwidth
@@ -141,15 +149,7 @@ Internet-Draft          DOTS Telemetry Use Cases           December 2019
    is more than the available capacity of the DMS.  To perform it,
    attack traffics of top talkers are redirected to their DMS
    preferentially by collaborating forwarding nodes, flow collectors and
-   orchestrators.
-
-
-
-
-
-
-
-
+   orchestrators.  Figure 1 shows the abstract of the use case.
 
 
 
@@ -176,7 +176,7 @@ Internet-Draft          DOTS Telemetry Use Cases           December 2019
           |      +-----------+      +--------------+      |
           |     +-----------+| DOTS |              |      |
           |     | Flow      ||<---->| Orchestrator |---+  |
-          |  +->| collector ||TC  TS|              |-+ |  |
+          |  +->| collector ||C    S|              |-+ |  |
           |  |  +-----------++      +--------------+ | |  |
           |  |                                       | |  |
           |  |  e.g.     +------------+ e.g.         | |  |
@@ -192,29 +192,29 @@ Internet-Draft          DOTS Telemetry Use Cases           December 2019
           |             +------------+  e.g.           |  |
           |             | DDoS       |  SNMP           |  |
           |             | mitigation |<----------------+  |
-          |             | systems    |                    |
+          |             | system     |                    |
           |             +------------+                    |
           +-----------------------------------------------+
 
-          * TC is for DOTS Telemetry client functionality
-          * TS is for DOTS Telemetry server functionality
+          * C is for DOTS client functionality
+          * S is for DOTS client functionality
 
 Figure 1: Mitigating DDoS Attack Flow of Top-talker Preferentially
 
 
-   Figure 1 shows the abstract of the use case.  In the use case, the
-   forwarding nodes send statistics of traffic flow to the flow
-   collectors by using monitoring functions such as NetFlow.  When DDoS
-   attacks occur, the flow collectors detect attack traffic and send
-   (src_ip, dst_ip, bandwidth)-tuple information of the top talker to
-   the orchestrator.  Then, the orchestrator checks the available
-   capacity of DMS.  After that, the orchestrator orders forwarding
-   nodes to redirect the top taker's traffic to the DMS as much as
-   possible by dissemination of flow specification rules protocols such
-   as BGP Flowspec.
+   In the use case, the forwarding nodes always send statistics of
+   traffic flow to the flow collectors by using monitoring functions
+   such as NetFlow.  When DDoS attacks occur, the flow collectors detect
+   attack traffic and send (src_ip, dst_ip, bandwidth)-tuple information
+   of the top talker to the orchestrator, using top-talkers attribute of
+   DOTS Telemetry.  Then, the orchestrator checks the available capacity
+   of DMS.  After that, the orchestrator orders forwarding nodes to
+   redirect the top taker's traffic to the DMS as much as possible by
+   dissemination of flow specification rules protocols such as BGP
+   Flowspec [RFC5575].
 
-   In this case, the flow collector implements a DOTS telemetry client
-   while the orchestrator implements a DOTS server.
+   In this case, the flow collector implements a DOTS client while the
+   orchestrator implements a DOTS server.
 
 
 
@@ -368,7 +368,7 @@ Internet-Draft          DOTS Telemetry Use Cases           December 2019
    amplification attack or not.  To perform it, attack traffic is
    blocked at forwarding nodes or redirected to DMS base on attack type
    by collaborating forwarding nodes, flow collectors and an
-   orchestrator.
+   orchestrator.  Figure 3 shows the abstract of the use case.
 
 
 
@@ -400,7 +400,7 @@ Internet-Draft          DOTS Telemetry Use Cases           December 2019
           |      +-----------+      +--------------+      |
           |     +-----------+| DOTS |              |      |
           |     | Flow      ||<---->| Orchestrator |      |
-          |  +->| collector ||TC  TS|              |---+  |
+          |  +->| collector ||C    S|              |---+  |
           |  |  +-----------++      +--------------+   |  |
           |  |                           e.g.          |  |
           |  |  e.g.     +------------+  BGP,          |  |
@@ -416,30 +416,30 @@ Internet-Draft          DOTS Telemetry Use Cases           December 2019
           |             +-----X------+                    |
           |             | DDoS       |                    |
           |             | mitigation |                    |
-          |             | systems    |                    |
+          |             | system     |                    |
           |             +------------+                    |
           +-----------------------------------------------+
 
-          * TC is for DOTS Telemetry client functionality
-          * TS is for DOTS Telemetry server functionality
+          * C is for DOTS client functionality
+          * S is for DOTS server functionality
 
 Figure 3: DDoS Mitigation Based on Attack Type
 
 
-   Figure 3 shows the abstract of the use case.  In the use case, the
-   forwarding nodes send statistics of traffic flow to the flow
-   collectors by using monitoring function such as NetFlow.  When DDoS
-   attacks occur, the flow collectors detect attack traffic and send
-   (dst_ip, src_port, attack_type)-tuple information to the
-   orchestrator.  Then, the orchestrator orders forwarding nodes to
-   block (dst_ip, src_port)-tuple flow of amp attack traffic by
-   dissemination of flow specification rules protocols such as BGP
-   Flowspec.  On the other hand, the orchestrator orders forwarding
-   nodes to redirect other than the amp attack traffic by routing
-   protocol such as BGP.
+   In the use case, the forwarding nodes send statistics of traffic flow
+   to the flow collectors by using monitoring function such as NetFlow.
+   When DDoS attacks occur, the flow collectors detect attack traffic
+   and send (dst_ip, src_port, attack_type)-tuple information to the
+   orchestrator, using attack-name attribute of DOTS Telemetry.  Then,
+   the orchestrator orders forwarding nodes to block (dst_ip, src_port)-
+   tuple flow of amp attack traffic by dissemination of flow
+   specification rules protocols such as BGP Flowspec[RFC5575].  On the
+   other hand, the orchestrator orders forwarding nodes to redirect
+   other than the amp attack traffic by routing protocol such as
+   BGP[RFC4271].
 
-   In this case, the flow collector implements a DOTS telemetry client
-   while the orchestrator implements a DOTS server.
+   In this case, the flow collector implements a DOTS client while the
+   orchestrator implements a DOTS server.
 
 
 
@@ -450,22 +450,24 @@ Hayashi & Chen            Expires June 4, 2020                  [Page 8]
 Internet-Draft          DOTS Telemetry Use Cases           December 2019
 
 
-3.3.  DDoS Detection Support Using Machine Learning
+3.3.  Training Flow Collector Using Supervised Machine Learning
 
    DDoS detection based on flow monitoring such as NetFlow is a lighter
    weight way to detect DDoS attacks than DMS in the internet transit
    provider network.  On the other hand, DDoS detection based on DMS is
-   a more accurate way to detect DDoS attacks than flow monitoring.
+   a more accurate way to detect DDoS attacks than DDoS detection based
+   on flow monitoring.
 
    Aim of this use case is that the flow collector raises their
    detection accuracy performance carrying out supervised machine
    learning techniques based on the detection result of DMS.  To perform
-   it, forwarding nodes, flow collector and a DMS collaborate.
+   it, forwarding nodes, flow collector and a DMS collaborate.  Figure 5
+   shows the abstract of the use case.
 
               +----------------------------------------------+
               | Internet Transit Provider                    |
               |                                              |
-              |      TS+------------+                        |
+              |       S+------------+                        |
               |  +---->|    Flow    |                        |
               |  |  +->| collector  |                        |
               |  |  |  +------------+                        |
@@ -482,22 +484,20 @@ Internet-Draft          DOTS Telemetry Use Cases           December 2019
               |  |                 |/ |/ |/                  |
               |  |    DOTS     +---X--X--X--+                |
               |  +------------>| DDoS       |                |
-              |              TC| mitigation |                |
-              |                | systems    |                |
+              |               C| mitigation |                |
+              |                | system     |                |
               |                +------------+                |
               +----------------------------------------------+
 
-        * C is for DOTS Telemetry client functionality
-        * S is for DOTS Telemetry server functionality
+        * C is for DOTS client functionality
+        * S is for DOTS client functionality
 
-Figure 5: DDoS Detection Support Using Machine Learning
+Figure 5: Training Flow Collector Using Supervised Machine Learning
 
-   Figure 5 shows the abstract of the use case.  In the use case, the
-   forwarding nodes send statistics of traffic flow to the flow
-   collectors by using monitoring functions such as NetFlow.  When DDoS
-   attacks occur, DDoS orchestration use case is carried out and
-   mitigate attack traffic at the DMS.  Then, DDoS Mitigation system
-   reports (src_ip, dst_ip, src_port, dst_port, attack_type)-tuple
+   In the use case, the forwarding nodes always send statistics of
+   traffic flow to the flow collectors by using monitoring functions
+   such as NetFlow.  When DDoS attacks occur, DDoS orchestration use
+   case[I-D.ietf-dots-use-cases] is carried out and DMS mitigates all
 
 
 
@@ -506,17 +506,23 @@ Hayashi & Chen            Expires June 4, 2020                  [Page 9]
 Internet-Draft          DOTS Telemetry Use Cases           December 2019
 
 
-   information of detected attack traffic to flow collector.  Finally,
-   the flow collector attaches teacher label to the NetFlow using the
-   reports, and carry out supervised machine learning and raise their
-   detection accuracy.
+   attack traffic destined a target.  Then, DDoS Mitigation system
+   reports (src_ip, dst_ip)-tuple information of the top talker to the
+   orchestrator, using top-talkers attribute of DOTS Telemetry.
 
-   In this case, the DMS implements a DOTS telemetry client while the
-   flow collector implements a DOTS server.
+   After mitigating DDoS attack, the flow collector attaches labels,
+   which shows normal traffic or attack traffic, to the stastistics of
+   traffic flow based on the reports.  Then, the flow collector carry
+   out supervised machine learning to raise their detection accuracy,
+   setting the statistics as explanatory variable and setting the labels
+   as objective variable.
+
+   In this case, the DMS implements a DOTS client while the flow
+   collector implements a DOTS server.
 
 4.  Security Considerations
 
-   The document does not describe any protocol.
+   TBD
 
 5.  IANA Considerations
 
@@ -530,6 +536,44 @@ Internet-Draft          DOTS Telemetry Use Cases           December 2019
 
 7.1.  Normative References
 
+   [I-D.ietf-dots-telemetry]
+              Boucadair, M., Reddy.K, T., Doron, E., and c. chenmeiling,
+              "Distributed Denial-of-Service Open Threat Signaling
+              (DOTS) Telemetry", draft-ietf-dots-telemetry-02 (work in
+              progress), February 2020.
+
+   [I-D.ietf-dots-use-cases]
+              Dobbins, R., Migault, D., Moskowitz, R., Teague, N., Xia,
+              L., and K. Nishizuka, "Use cases for DDoS Open Threat
+              Signaling", draft-ietf-dots-use-cases-20 (work in
+              progress), September 2019.
+
+   [RFC4271]  Rekhter, Y., Ed., Li, T., Ed., and S. Hares, Ed., "A
+              Border Gateway Protocol 4 (BGP-4)", RFC 4271,
+              DOI 10.17487/RFC4271, January 2006,
+              <https://www.rfc-editor.org/info/rfc4271>.
+
+
+
+
+
+Hayashi & Chen            Expires June 4, 2020                 [Page 10]
+
+Internet-Draft          DOTS Telemetry Use Cases           December 2019
+
+
+   [RFC5575]  Marques, P., Sheth, N., Raszuk, R., Greene, B., Mauch, J.,
+              and D. McPherson, "Dissemination of Flow Specification
+              Rules", RFC 5575, DOI 10.17487/RFC5575, August 2009,
+              <https://www.rfc-editor.org/info/rfc5575>.
+
+   [RFC8612]  Mortensen, A., Reddy, T., and R. Moskowitz, "DDoS Open
+              Threat Signaling (DOTS) Requirements", RFC 8612,
+              DOI 10.17487/RFC8612, May 2019,
+              <https://www.rfc-editor.org/info/rfc8612>.
+
+7.2.  Informative References
+
    [I-D.ietf-dots-data-channel]
               Boucadair, M. and T. Reddy.K, "Distributed Denial-of-
               Service Open Threat Signaling (DOTS) Data Channel
@@ -542,25 +586,6 @@ Internet-Draft          DOTS Telemetry Use Cases           December 2019
               Signaling (DOTS) Signal Channel Specification", draft-
               ietf-dots-signal-channel-41 (work in progress), January
               2020.
-
-7.2.  Informative References
-
-   [I-D.ietf-dots-use-cases]
-              Dobbins, R., Migault, D., Moskowitz, R., Teague, N., Xia,
-              L., and K. Nishizuka, "Use cases for DDoS Open Threat
-              Signaling", draft-ietf-dots-use-cases-20 (work in
-              progress), September 2019.
-
-
-
-
-
-
-
-Hayashi & Chen            Expires June 4, 2020                 [Page 10]
-
-Internet-Draft          DOTS Telemetry Use Cases           December 2019
-
 
 Authors' Addresses
 
@@ -580,31 +605,6 @@ Authors' Addresses
    China
 
    Email: chenmeiling@chinamobile.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

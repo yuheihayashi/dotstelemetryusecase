@@ -151,7 +151,7 @@
                 +-----------+       +--------------+
 
                          +------------+
-           e.g. NetFlow +------------+| e.g. BGP Flowspec
+           e.g. NetFlow +------------+| e.g. BGP Flowspec (Redirect)
                     <---| Forwarding ||<---
                         |    nodes   ||                   DDoS Attack
 [ Target  ]<============|======================================
@@ -206,16 +206,16 @@ Figure 1: Mitigating DDoS Attack Flow of Top-talker Preferentially
                 +-----------+       +--------------+
 
                          +------------+
-           e.g. NetFlow +------------+| e.g. BGP
+           e.g. NetFlow +------------+| e.g. BGP (Redirect)
                     <---| Forwarding ||<---
                         |    nodes   ||                  DDoS Attack
 [Target]                | ++===================================
 [Target]                | ||  ++===============================
                         +-||--||-----+
                           ||  ||
-                    ++====++  ||
+                    ++====++  ||  (congested DMS)
                     ||        ||  +-----------+
-                    ||        |/  |      DMS3 |(congested)
+                    ||        |/  |      DMS3 |
                     ||  +-----x------+        |<--- e.g. SNMP
                     |/  |       DMS2 |--------+
                  +--x---------+      |<--- e.g. SNMP
@@ -265,13 +265,13 @@ Figure 2: Optimal DMS selection for Mitigation
               DOTS +------------+    DOTS +------------+ e.g. NetFlow
               --->C| Forwarding |    --->C| Forwarding |--->
 e.g. BGP Flow spec |   node     |         |   node     |
-               --->|            |         |            |
+    (Redirect) --->|            |         |            |
 [Target]           |       ++==========================================
                    +-------||---+         +------------+     DDoS Attack
                            ||             /
                            ||            / (congested link)
-                   DOTS  +-||----------------+
-                    --->C| ||  Forwarding    |
+                   DOTS  +-||----------------+ e.g. BGP Flow spec (Redirect)
+                    --->C| ||  Forwarding    |<---
                          | ++===  node       |
                          +----||-------------+
                               |/
@@ -295,26 +295,52 @@ Figure 3: Best Path Selection for Redirection
             The algorithm of choosing path is out of scope in this draft.
           </t>
         </section>
-        <section anchor="section_use_cases_ddos_mitigation_bandwidth_offloadingvolumetricattackflow" title="Offloading Extream Volumetric Attack Flow">
+        <section anchor="section_use_cases_ddos_mitigation_bandwidth_offloadingvolumetricattackflow" title="Short but Extream Volumetric Attack Mitigation">
            <t>
-           	Typically, the bandwidth between the attack target and the previous hop route is fixed because the bandwidth is charged based on the size of the bandwidth. If there is a large amount of attack traffic, the whole link is already full, and the attack traffic cannot be mitigated through redirection and cleaning operation. In this case, direct discarding is usually adopted to ensure part of the normal service flow, and the patency of pipeline is given priority. How to identify a super large traffic attack, for example, the attack traffic is not only larger than the bandwidth of last hop, but also larger than the higher path hop, that means the excess traffic of bandwidth A will be discarded, and in this case no need to distinguish between attack traffic and normal traffic.
+             Short but extream volumetric attack such as pulse wave DDoS attacks are threat for internet transit provider network.
+             It is difficult for them to mitigate the attack by DMS with redirecting attack flow because it may cause route flapping in the network.
+             The practical way to mitigate short but extream volumetric attack is to offload mitigatation action to fowarding node.
+          </t>
+          <t>
+            The aim of this use case is to enable the transit providers to mitigate short but extream volumetric attack and to estimate network access success rate based on the bandwidth of attack traffic and total pipe capability.
+            Figure 4 shows the abstract of the use case.
           </t>
           <t>
           	<figure align="center">
           			<artwork><![CDATA[
-          				+-------------+             +-----------+
-          				|attack target|----client-->|dots server|
-          				+-------------+             +-----------+
-          				       |                         |
-          				       |(bandwidth A)            |
-          				   +--------+               +--------+
-          				   | router |---------------| router |
-          				   +--------+ (bandwidth B) +--------+
+                  (Internet Transit Provider)
 
-Figure 4: Offloading Extream Volumetric Attack Flow
+              +------------+       +----------------+
+   e.g. Alert | Network    |  DOTS | Administrative |
+          --->| Management |C<--->S| System         | e.g. BGP Flow spec
+              | System     |       |                |--->
+              +------------+       +----------------+
+
+              +------------+       +------------+ e.g. BGP Flow spec
+              | Forwarding |       | Forwarding |<---(Rate-Limit X bps)
+              |   node     |       |   node     |
+              |            |       |            | DDoS & Normal traffic
+[Target]<----------------------------------------================
+Pipe          +------------+       +------------+  Attack Traffic
+Capability                                         Bandwidth
+e.g. X bps                                         e.g. Y bps
+
+                    Network access success rate
+                        e.g. X / (X + Y)
+
+    * C is for DOTS client functionality
+    * S is for DOTS client functionality
+
+Figure 4: Short but Extream Volumetric Attack Mitigation
 
           			]]></artwork>
           		</figure>
+          </t>
+          <t>
+            In the use case, when DDoS attacks occur, the network management system recieves alert.
+            Then, network management system sends target ip address, pipe capability of target's link and bandwidth of DDoS attack traffic to the administrative system, using target, total-pipe-capability and total-attack-traffic attributes of DOTS Telemetry.
+            After that, the administrative system orders upper forwarding nodes to carry out rate-limit all traffic destined to target based on the pipe capability by dissemination of flow specification rules protocols such as BGP Flowspec <xref target="RFC5575" />.
+            In addition, the administratice system estimates network access success rate of target which is calculated by total-pipe-capability / (total-pipe-capability + total-attack-traffic).
           </t>
         </section>
       </section>
@@ -337,13 +363,13 @@ Figure 4: Offloading Extream Volumetric Attack Flow
       (Internet Transit Provider)
 
                  +-----------+      +--------------+
-                +-----------+| DOTS |              |
-   e.g. NetFlow | Flow      ||<---->| Orchestrator | e.g. BGP, BGP Flowspec
+                +-----------+| DOTS |              | e.g. BGP
+   e.g. NetFlow | Flow      ||<---->| Orchestrator |      BGP Flowspec
             --->| collector ||C    S|              |--->
                 +-----------++      +--------------+
 
-                         +------------+
-           e.g. NetFlow +------------+| e.g. BGP, BGP Flowspec
+                         +------------+ e.g. BGP (Redirect)
+           e.g. NetFlow +------------+|      BGP Flowspec (Drop)
                     <---| Forwarding ||<---
                         |    nodes   ||                    DDoS Attack
                         |     ++=====||========================
@@ -400,7 +426,7 @@ Figure 5: DDoS Mitigation Based on Attack Type
                                 +------------+
                   e.g. NetFlow +------------+|
                            <---| Forwarding ||
-                               |    nodes   ||                 DDoS Attack
+                               |    nodes   ||           DDoS Attack
  [ Target ]                    |   ++==============================
                                |   || ++===========================
                                |   || || ++========================

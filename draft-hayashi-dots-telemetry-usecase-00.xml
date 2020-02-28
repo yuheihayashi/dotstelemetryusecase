@@ -84,25 +84,26 @@
     <keyword>Internet-Draft</keyword>
     <abstract>
       <t>
-        DOTS Telemetry enriches base DOTS protocol to assist the mitigator to perform efficient DDoS attack mitigation techniques in the network.
-        This document presents sample use cases for DOTS telemetry: what components are deployed in the network, how they collaborate, and what information is exchanged to perform the techniques.
+        Denial-of-service Open Threat Signaling (DOTS) Telemetry enriches the base DOTS protocols to assist the mitigator in using efficient DDoS-attack-mitigation techniques in a network.
+        This document presents sample use cases for DOTS Telemetry: what components are deployed in the network, how they cooperate, and what information is exchanged to effectively use these techniques.
+
       </t>
     </abstract>
   </front>
   <middle>
     <section anchor="section_introduction" title="Introduction">
       <t>
-        Denial-of-Service (DDoS) attacks such as volumetric attacks or resource consumption attacks are critical threats to be handled by service providers.
+        Denial-of-Service (DDoS), attacks such as volumetric attacks and resource-consumption attacks, are critical threats to be handled by service providers.
         When such DDoS attacks occur, service providers have to mitigate them immediately to protect or recover their services.
       </t>
       <t>
-        Therefore, for the service providers to immediately protect their network services from DDoS attacks, DDoS mitigation needs to be automated.
-        To automate DDoS attack mitigation, it is desirable that multi-vendor elements involved in DDoS attack detection and mitigation collaborate and support standard interfaces to communicate.
+        Therefore, for service providers to immediately protect their network services from DDoS attacks, DDoS mitigation needs to be automated.
+        To automate DDoS-attack mitigation, multi-vendor components involved in DDoS-attack detection and mitigation should cooperate and support standard interfaces to communicate.
       </t>
       <t>
         DDoS Open Threat Signaling (DOTS) is a set of protocols for real-time signaling, threat-handling requests, and data filtering between the multi-vendor elements <xref target="I-D.ietf-dots-signal-channel" /><xref target="I-D.ietf-dots-data-channel" />.
-        Furthermore, DOTS Telemetry enriches the DOTS protocol with various telemetry attributes allowing optimal DDoS attack mitigation <xref target="I-D.ietf-dots-telemetry" />.
-        This document presents sample use cases for DOTS telemetry: what components are deployed in the network, how they collaborate, and what information is exchanged to perform the attack mitigation techniques.
+        Furthermore, DOTS Telemetry enriches the DOTS protocols with various telemetry attributes allowing optimal DDoS-attack mitigation <xref target="I-D.ietf-dots-telemetry" />.
+        This document presents sample use cases for DOTS Telemetry: what components are deployed in the network, how they cooperate, and what information is exchanged to effectively use attack-mitigation techniques.
       </t>
     </section>
     <section anchor="section_terms" title="Terminology">
@@ -110,7 +111,7 @@
         The readers should be familiar with the terms defined in <xref target="RFC8612"/>
       </t>
       <t>
-        In addition, this document makes use of the following terms:
+        In addition, this document uses the following terms:
       </t>
       <t>
         <list style="hanging">
@@ -119,39 +120,39 @@
             The list is ordered in terms of a two-tuple bandwidth such as bps or pps.
           </t>
           <t hangText="Supervised Machine Learning:">
-            A machine learning technique that maps an input to an output based on example input-output pairs
+            A machine-learning technique that maps an input to an output based on example input-output pairs
           </t>
         </list>
       </t>
     </section>
     <section anchor="section_use_cases" title="Use Cases">
       <t>
-        This section describes DOTS Telemetry use cases which uses attributes included in DOTS telemetry spec.
+        This section describes DOTS-Telemetry use cases that use attributes included in DOTS Telemetry specifications.
       </t>
       <section anchor="section_use_cases_ddos_mitigation_bandwidth" title="DDoS Mitigation Based on Attack Traffic Bandwidth">
         <section anchor="section_use_cases_ddos_mitigation_bandwidth_top-talker" title="Mitigating Attack Flow of Top-talker Preferentially">
           <t>
-            Large-scale DDoS attack such as amplification attack often occurs in the world these days.
-            On the other hand, some transit providers have to mitigate the large-scale DDoS attack using DMS with limited resources, which is already deployed in their network.
+            Large-scale DDoS attacks, such as amplification attacks, often occur. Some transit providers have to mitigate large-scale DDoS attacks using DMS with limited resources, which is already deployed in their network.
           </t>
           <t>
-            The aim of this use case is to enable the transit providers to use their DMS efficiently under volume-based DDoS attacks whose bandwidth is more than the available capacity of the DMS.
-            To perform it, attack traffics of top talkers are redirected to their DMS preferentially by collaborating forwarding nodes, flow collectors and orchestrators.
-            Figure 1 shows the abstract of the use case.
+            The aim of this use case is to enable transit providers to use their DMS efficiently under volume-based DDoS attacks whose bandwidth is more than the available capacity of the DMS.
+            To enable this, attack traffic of top talkers is redirected to the DMS preferentially by cooperation among forwarding nodes, flow collectors, and orchestrators.
+            Figure 1 gives an overview of this use case.
+
           </t>
           <t>
             <figure align="center">
               <artwork><![CDATA[
       (Internet Transit Provider)
 
-                 +-----------+      +--------------+ e.g. SNMP
-   e.g. NetFlow +-----------+| DOTS |              |<---
-            --->| Flow      ||C<-->S| Orchestrator | e.g. BGP Flowspec
+                 +-----------+      +--------------+ e.g., SNMP
+   e.g., NetFlow +-----------+| DOTS |              |<---
+            --->| Flow      ||C<-->S| Orchestrator | e.g., BGP Flowspec
                 | collector |+      |              |--->
                 +-----------+       +--------------+
 
                          +------------+
-           e.g. NetFlow +------------+| e.g. BGP Flowspec (Redirect)
+           e.g., NetFlow +------------+| e.g., BGP Flowspec (Redirect)
                     <---| Forwarding ||<---
                         |    nodes   ||                   DDoS Attack
 [ Target  ]<============|======================================
@@ -162,7 +163,7 @@
                              || ||
                              |/ |/
                         +----x--x----+
-                        | DDoS       | e.g. SNMP
+                        | DDoS       | e.g., SNMP
                         | mitigation |<---
                         | system     |
                         +------------+
@@ -176,10 +177,11 @@ Figure 1: Mitigating DDoS Attack Flow of Top-talker Preferentially
             </figure>
           </t>
           <t>
-            In the use case, the forwarding nodes always send statistics of traffic flow to the flow collectors by using monitoring functions such as NetFlow.
-            When DDoS attacks occur, the flow collectors detect attack traffic and send (src_ip, dst_ip, bandwidth)-tuple information of the top talker to the orchestrator, using top-talkers attribute of DOTS Telemetry.
-            Then, the orchestrator checks the available capacity of DMS by using network management protocol such as SNMP<xref target="RFC4271" />.
-            After that, the orchestrator orders forwarding nodes to redirect the top taker's traffic to the DMS as much as possible by dissemination of flow specification rules protocols such as BGP Flowspec <xref target="RFC5575" />.
+            In this use case, the forwarding nodes always send statistics of traffic flow to the flow collectors by using monitoring functions such as NetFlow.
+            When DDoS attacks occur, the flow collectors detect attack traffic and send (src_ip, dst_ip, bandwidth)-tuple information of the top talker to the orchestrator using the top-talkers attribute of DOTS Telemetry.
+            The orchestrator then checks the available capacity of DMS by using a network management protocol such as SNMP<xref target="RFC4271" />.
+
+            After that, the orchestrator orders forwarding nodes to redirect as much of the top taker's traffic to the DMS as possible by dissemination of flow-specification-rule protocols such as BGP Flowspec<xref target="RFC5575" />.
           </t>
           <t>
             In this case, the flow collector implements a DOTS client while the orchestrator implements a DOTS server.
@@ -187,26 +189,26 @@ Figure 1: Mitigating DDoS Attack Flow of Top-talker Preferentially
         </section>
         <section anchor="dms_selection" title="Optimal DMS Selection for Mitigation">
           <t>
-            Transit providers, which have a number of DMSs, usually deploy the DMS in various forms to satisfy their requirments; individual form or clustered form.
-            In both form, they can identify attributes of the DMSs such as total capacity, available capacity and the last hop bandwidth.
+            Transit providers, which have a number of DMSs, usually deploy a DMS in various forms to satisfy their requirements; individual or clustered.
+            In both forms, they can identify attributes of the DMSs such as total capacity, available capacity, and the last hop bandwidth.
           </t>
           <t>
-            The aim of this use case is to enable the transit providers to select optimal DMS for mitigation based on the bandwidth of attack traffic, capacity of DMS and the last hop bandwidth.
-            Figure 2 shows the abstract of the use case.
+            The aim of this use case is to enable transit providers to select an optimal DMS for mitigation based on the bandwidth of attack traffic, capacity of a DMS, and the last hop bandwidth.
+            Figure 2 gives an overview of this use case.
           </t>
           <t>
             <figure align="center">
               <artwork><![CDATA[
       (Internet Transit Provider)
 
-                 +-----------+      +--------------+ e.g. SNMP
-   e.g. NetFlow +-----------+| DOTS |              |<---
-            --->| Flow      ||C<-->S| Orchestrator | e.g. BGP
+                 +-----------+      +--------------+ e.g., SNMP
+   e.g., NetFlow +-----------+| DOTS |              |<---
+            --->| Flow      ||C<-->S| Orchestrator | e.g., BGP
                 | collector |+      |              |--->
                 +-----------+       +--------------+
 
                          +------------+
-           e.g. NetFlow +------------+| e.g. BGP (Redirect)
+           e.g., NetFlow +------------+| e.g., BGP (Redirect)
                     <---| Forwarding ||<---
                         |    nodes   ||                  DDoS Attack
 [Target]                | ++===================================
@@ -216,11 +218,11 @@ Figure 1: Mitigating DDoS Attack Flow of Top-talker Preferentially
                     ++====++  ||  (congested DMS)
                     ||        ||  +-----------+
                     ||        |/  |      DMS3 |
-                    ||  +-----x------+        |<--- e.g. SNMP
+                    ||  +-----x------+        |<--- e.g., SNMP
                     |/  |       DMS2 |--------+
-                 +--x---------+      |<--- e.g. SNMP
+                 +--x---------+      |<--- e.g., SNMP
                  |       DMS1 |------+
-                 |            |<--- e.g. SNMP
+                 |            |<--- e.g., SNMP
                  +------------+
 
           * C is for DOTS client functionality
@@ -231,25 +233,25 @@ Figure 2: Optimal DMS selection for Mitigation
             </figure>
           </t>
           <t>
-            In the use case, the forwarding nodes always send statistics of traffic flow to the flow collectors by using monitoring functions such as NetFlow.
-            When DDoS attacks occur, the flow collectors detect attack traffic and send (dst_ip, bandwidth)-tuple information to the orchestrator, using total-attack-traffic attribute of DOTS Telemetry.
-            Then, the orchestrator checks the available capacity of DMS by using network management protocol such as SNMP<xref target="RFC4271" />.
+            In this use case, the forwarding nodes always send statistics of traffic flow to the flow collectors by using monitoring functions such as NetFlow.
+            When DDoS attacks occur, the flow collectors detect attack traffic and send (dst_ip, bandwidth)-tuple information to the orchestrator using the total-attack-traffic attribute of DOTS Telemetry.
+            The orchestrator then checks the available capacity of the DMSs by using a network management protocol such as SNMP<xref target="RFC4271" />.
             After that, the orchestrator chooses optimal DMS which each attack traffic should be redirected.
-            After that, the orchestrator orders forwarding nodes to redirect the attack traffic to the optimal DMS by routing protocol such as BGP<xref target="RFC4271" />.
-            The algorithm of choosing DMS is out of scope in this draft.
+            The orchestrator then orders forwarding nodes to redirect the attack traffic to the optimal DMS by a routing protocol such as BGP<xref target="RFC4271" />.
+            The algorithm of selecting a DMS is out of the scope of this draft.
           </t>
           <t>
             In this case, the flow collector implements a DOTS client while the orchestrator implements a DOTS server.
           </t>
         </section>
-        <section anchor="redirection_path_selection" title="Best Path Selection for Redirection">
+        <section anchor="redirection_path_selection" title="Best-path Selection for Redirection">
           <t>
-            Transit provider network which adopts mesh network has multiple routes to convey attack traffic to DMS.
-            In the network, attack traffic can be conveyed while avoids congested links by selecting available path.
+            A transit-provider network, which adopts a mesh network, has multiple paths to convey attack traffic to a DMS.
+            In this network, attack traffic can be conveyed while avoiding congested links by selecting an available path.
           </t>
           <t>
-            The aim of this use case is to enable the transit providers to select optimal path for redirecting attack traffic to DMS according to the bandwidth of attack traffic and total traffic, total pipe capability.
-            Figure 3 shows the abstract of the use case.
+            The aim of this use case is to enable transit providers to select an optimal path for redirecting attack traffic to a DMS according to the bandwidth of the attack traffic, total traffic, and total pipe capability.
+            Figure 3 gives an overview of this use case.
           </t>
           <t>
             <figure align="center">
@@ -257,20 +259,20 @@ Figure 2: Optimal DMS selection for Mitigation
       (Internet Transit Provider)
 
                      +-----------+      +--------------+  DOTS
-       e.g. NetFlow +-----------+| DOTS |              |S<---
-                --->| Flow      ||C<-->S| Orchestrator | e.g. BGP Flow spec
+       e.g., NetFlow +-----------+| DOTS |              |S<---
+                --->| Flow      ||C<-->S| Orchestrator | e.g., BGP Flow spec
                     | collector |+      |              |--->
                     +-----------+       +--------------+
 
-              DOTS +------------+    DOTS +------------+ e.g. NetFlow
+              DOTS +------------+    DOTS +------------+ e.g., NetFlow
               --->C| Forwarding |    --->C| Forwarding |--->
-e.g. BGP Flow spec |   node     |         |   node     |
+e.g., BGP Flow spec |   node     |         |   node     |
     (Redirect) --->|            |         |            |
 [Target]           |       ++==========================================
                    +-------||---+         +------------+     DDoS Attack
                            ||             /
                            ||            / (congested link)
-                   DOTS  +-||----------------+ e.g. BGP Flow spec (Redirect)
+                   DOTS  +-||----------------+ e.g., BGP Flow spec(Redirect)
                     --->C| ||  Forwarding    |<---
                          | ++===  node       |
                          +----||-------------+
@@ -282,28 +284,28 @@ e.g. BGP Flow spec |   node     |         |   node     |
          * C is for DOTS client functionality
          * S is for DOTS client functionality
 
-Figure 3: Best Path Selection for Redirection
+Figure 3: Best-path Selection for Redirection
               ]]></artwork>
             </figure>
           </t>
           <t>
-            In the use case, the forwarding nodes always send statistics of traffic flow to the flow collectors by using monitoring functions such as NetFlow.
-            When DDoS attacks occur, the flow collectors detect attack traffic and send (dst_ip, bandwidth)-tuple information to the orchestrator, using total-attack-traffic attribute of DOTS Telemetry.
-            On the other hands, forwarding nodes send bandwidth of total traffic passing the node and total pipe capability to the orchestrator, using total-traffic and total-pipe-capability attributes of DOTS Telemetry.
-            Then, the orchestrator choose optimal path which each attack traffic should be redirected.
-            After that, the orchestrator orders forwarding nodes to redirect the attack traffic to the optimal DMS by dissemination of flow specification rules protocols such as BGP Flowspec <xref target="RFC5575" />.
-            The algorithm of choosing path is out of scope in this draft.
+            In this use case, the forwarding nodes always send statistics of traffic flow to the flow collectors by using monitoring functions such as NetFlow.
+            When DDoS attacks occur, the flow collectors detect attack traffic and send (dst_ip, bandwidth)-tuple information to the orchestrator using a total-attack-traffic attribute of DOTS Telemetry.
+            On the other hands, forwarding nodes send bandwidth of total traffic passing the node and total pipe capability to the orchestrator using total-traffic and total-pipe-capability attributes of DOTS Telemetry.
+            The orchestrator then selects an optimal path to which each attack-traffic flow should be redirected.
+            After that, the orchestrator orders forwarding nodes to redirect the attack traffic to the optimal DMS by dissemination of flow-specification-rules protocols such as BGP Flowspec<xref target="RFC5575" />.
+            The algorithm of selecting a path is out of the scope of this draft.
           </t>
         </section>
-        <section anchor="section_use_cases_ddos_mitigation_bandwidth_offloadingvolumetricattackflow" title="Short but Extream Volumetric Attack Mitigation">
+        <section anchor="section_use_cases_ddos_mitigation_bandwidth_offloadingvolumetricattackflow" title="Short but Extreme Volumetric Attack Mitigation">
            <t>
-             Short but extream volumetric attack such as pulse wave DDoS attacks are threat for internet transit provider network.
-             It is difficult for them to mitigate the attack by DMS with redirecting attack flow because it may cause route flapping in the network.
-             The practical way to mitigate short but extream volumetric attack is to offload mitigatation action to fowarding node.
+             Short but extreme volumetric attacks, such as pulse wave DDoS attacks, are threats to internet transit provider networks.
+             It is difficult for them to mitigate an attack by DMS by redirecting attack flows because it may cause route flapping in the network.
+             The practical way to mitigate short but extreme volumetric attacks is to offload a mitigation actions to a forwarding node.
           </t>
           <t>
-            The aim of this use case is to enable the transit providers to mitigate short but extream volumetric attack and to estimate network access success rate based on the bandwidth of attack traffic and total pipe capability.
-            Figure 4 shows the abstract of the use case.
+            The aim of this use case is to enable transit providers to mitigate short but extreme volumetric attacks and estimate the network-access success rate based on the bandwidth of attack traffic and total pipe capability.
+            Figure 4 gives an overview of this use case.
           </t>
           <t>
           	<figure align="center">
@@ -311,51 +313,51 @@ Figure 3: Best Path Selection for Redirection
                   (Internet Transit Provider)
 
               +------------+       +----------------+
-   e.g. Alert | Network    |  DOTS | Administrative |
-          --->| Management |C<--->S| System         | e.g. BGP Flow spec
+   e.g., Alert | Network    |  DOTS | Administrative |
+          --->| Management |C<--->S| System         | e.g., BGP Flow spec
               | System     |       |                |--->
               +------------+       +----------------+
 
-              +------------+       +------------+ e.g. BGP Flow spec
+              +------------+       +------------+ e.g., BGP Flow spec
               | Forwarding |       | Forwarding |<---(Rate-Limit X bps)
               |   node     |       |   node     |
               |            |       |            | DDoS & Normal traffic
 [Target]<----------------------------------------================
 Pipe          +------------+       +------------+  Attack Traffic
 Capability                                         Bandwidth
-e.g. X bps                                         e.g. Y bps
+e.g., X bps                                         e.g., Y bps
 
                     Network access success rate
-                        e.g. X / (X + Y)
+                        e.g., X / (X + Y)
 
     * C is for DOTS client functionality
     * S is for DOTS client functionality
 
-Figure 4: Short but Extream Volumetric Attack Mitigation
+Figure 4: Short but Extreme Volumetric Attack Mitigation
 
           			]]></artwork>
           		</figure>
           </t>
           <t>
-            In the use case, when DDoS attacks occur, the network management system recieves alert.
-            Then, network management system sends target ip address, pipe capability of target's link and bandwidth of DDoS attack traffic to the administrative system, using target, total-pipe-capability and total-attack-traffic attributes of DOTS Telemetry.
-            After that, the administrative system orders upper forwarding nodes to carry out rate-limit all traffic destined to target based on the pipe capability by dissemination of flow specification rules protocols such as BGP Flowspec <xref target="RFC5575" />.
-            In addition, the administratice system estimates network access success rate of target which is calculated by total-pipe-capability / (total-pipe-capability + total-attack-traffic).
+            In this use case, when DDoS attacks occur, the network management system receives alerts.
+            It then sends the target ip address, pipe capability of the target's link, and bandwidth of the DDoS attack traffic to the administrative system using the target, total-pipe-capability and total-attack-traffic attributes of DOTS Telemetry.
+            After that, the administrative system orders upper forwarding nodes to carry out rate-limit all traffic destined to the target based on the pipe capability by the dissemination of the flow -specification-rules protocols such as BGP Flowspec<xref target="RFC5575" />.
+            In addition, the administrative system estimates the network-access success rate of the target, which is calculated by total pipe capability / (total pipe capability + total attack traffic).
           </t>
         </section>
       </section>
       <section anchor="section_use_cases_ddos_mitigation_attack_type" title="DDoS Mitigation Based on Attack Type">
         <section anchor="section_use_cases_ddos_mitigation_attack_type_techniqueselection" title="Selecting Mitigation Technique">
           <t>
-            Some volumetric attacks such as amplification attack can be detected with high accuracy by checking layer 3 or layer 4 information of attack packets.
-            These attacks can be detected and mitigated by collaborating forwarding nodes and flow collectors using NetFlow.
-            On the other hand, it is necessary to inspect layer 7 information of attack packets to detect some attacks such as DNS Water Torture Attack.
-            These attacks traffic should be detected and mitigated at DMS.
+            Some volumetric attacks, such as amplification attacks, can be detected with high accuracy by checking the layer-3 or layer-4 information of attack packets.
+            These attacks can be detected and mitigated through cooperation among forwarding nodes and flow collectors using NetFlow.
+            On the other hand, it is necessary to inspect the layer-7 information of attack packets to detect attacks such as DNS Water Torture Attacks.
+            Such attack traffic should be detected and mitigated at a DMS.
           </t>
           <t>
-            Aim of this use case is to enable the transit providers to select mitigation technique based on the type of attack traffic: amplification attack or not.
-            To perform it, attack traffic is blocked at forwarding nodes or redirected to DMS base on attack type by collaborating forwarding nodes, flow collectors and an orchestrator.
-            Figure 5 shows the abstract of the use case.
+            The aim of this use case is to enable transit providers to select a mitigation technique based on the type of attack traffic: amplification attack or not.
+            To use such a technique, attack traffic is blocked at forwarding nodes or redirected to a DMS based on attack type through cooperation among forwarding nodes, flow collectors, and an orchestrator.
+            Figure 5 gives an overview of this use case.
           </t>
           <t>
             <figure align="center">
@@ -363,18 +365,18 @@ Figure 4: Short but Extream Volumetric Attack Mitigation
       (Internet Transit Provider)
 
                  +-----------+      +--------------+
-                +-----------+| DOTS |              | e.g. BGP
-   e.g. NetFlow | Flow      ||<---->| Orchestrator |      BGP Flowspec
+                +-----------+| DOTS |              | e.g., BGP
+   e.g., NetFlow | Flow      ||<---->| Orchestrator |      BGP Flowspec
             --->| collector ||C    S|              |--->
                 +-----------++      +--------------+
 
-                         +------------+ e.g. BGP (Redirect)
-           e.g. NetFlow +------------+|      BGP Flowspec (Drop)
+                         +------------+ e.g., BGP (Redirect)
+           e.g., NetFlow +------------+|      BGP Flowspec (Drop)
                     <---| Forwarding ||<---
                         |    nodes   ||                    DDoS Attack
                         |     ++=====||========================
-                        |     ||     ||x<==================[e.g.DNS Amp]
-                        |     ||     |+x<==================[e.g.NTP Amp]
+                        |     ||     ||x<==================[e.g.,DNS Amp]
+                        |     ||     |+x<==================[e.g.,NTP Amp]
                         +-----||-----+
                               ||
                               |/
@@ -393,10 +395,10 @@ Figure 5: DDoS Mitigation Based on Attack Type
           </figure>
         </t>
         <t>
-          In the use case, the forwarding nodes send statistics of traffic flow to the flow collectors by using monitoring function such as NetFlow.
-          When DDoS attacks occur, the flow collectors detect attack traffic and send (dst_ip, src_port, attack_type)-tuple information to the orchestrator, using attack-name attribute of DOTS Telemetry.
-          Then, the orchestrator orders forwarding nodes to block (dst_ip, src_port)-tuple flow of amp attack traffic by dissemination of flow specification rules protocols such as BGP Flowspec<xref target="RFC5575" />.
-          On the other hand, the orchestrator orders forwarding nodes to redirect other than the amp attack traffic by routing protocol such as BGP<xref target="RFC4271" />.
+          In this use case, the forwarding nodes send statistics of traffic flow to the flow collectors by using a monitoring function such as NetFlow.
+          When DDoS attacks occur, the flow collectors detect attack traffic and send (dst_ip, src_port, attack_type)-tuple information to the orchestrator the using attack-name attribute of DOTS Telemetry.
+          The orchestrator then orders forwarding nodes to block the (dst_ip, src_port)-tuple flow of amp attack traffic by dissemination of flow-specification-rule protocols such as BGP Flowspec<xref target="RFC5575" />.
+          On the other hand, the orchestrator orders forwarding nodes to redirect other traffic than the amp attack traffic by a routing protocol such as BGP<xref target="RFC4271" />.
         </t>
         <t>
           In this case, the flow collector implements a DOTS client while the orchestrator implements a DOTS server.
@@ -405,13 +407,13 @@ Figure 5: DDoS Mitigation Based on Attack Type
       </section>
       <section anchor="section_use_cases_ddos_detection_training" title="Training Flow Collector Using Supervised Machine Learning">
         <t>
-          DDoS detection based on flow monitoring such as NetFlow is a lighter weight way to detect DDoS attacks than DMS in the internet transit provider network.
-          On the other hand, DDoS detection based on DMS is a more accurate way to detect DDoS attacks than DDoS detection based on flow monitoring.
+          DDoS detection based on monitoring functions, such as NetFlow, is a lighter weight method of detecting DDoS attacks than DMSs in internet transit provider networks.
+          On the other hand, DDoS detection based on the DMSs is a more accurate method of detecting DDoS attacks than DDoS detection based on flow monitoring.
         </t>
         <t>
-          Aim of this use case is that the flow collector raises their detection accuracy performance carrying out supervised machine learning techniques based on the detection result of DMS.
-          To perform it, forwarding nodes, flow collector and a DMS collaborate.
-          Figure 5 shows the abstract of the use case.
+          The aim of this use case is to increases flow collector's detection accuracy by carrying out supervised machine-learning techniques based on the detection results of the DMSs.
+          To use such a technique, forwarding nodes, flow collector, and a DMS should cooperate.
+          Figure 5 gives an overview of this use case.
         </t>
         <t>
           <figure align="center">
@@ -419,12 +421,12 @@ Figure 5: DDoS Mitigation Based on Attack Type
 
                                 +-----------+
                                +-----------+| DOTS
-                  e.g. NetFlow | Flow      ||S<---
+                  e.g., NetFlow | Flow      ||S<---
                            --->| collector ||
                                +-----------++
 
                                 +------------+
-                  e.g. NetFlow +------------+|
+                  e.g., NetFlow +------------+|
                            <---| Forwarding ||
                                |    nodes   ||           DDoS Attack
  [ Target ]                    |   ++==============================
@@ -447,14 +449,14 @@ Figure 6: Training Flow Collector Using Supervised Machine Learning
           </figure>
         </t>
         <t>
-          In the use case, the forwarding nodes always send statistics of traffic flow to the flow collectors by using monitoring functions such as NetFlow.
-          When DDoS attacks occur, DDoS orchestration use case<xref target="I-D.ietf-dots-use-cases"/> is carried out and DMS mitigates all attack traffic destined a target.
-          Then, DDoS Mitigation system reports (src_ip, dst_ip)-tuple information of the top talker to the orchestrator, using top-talkers attribute of DOTS Telemetry.
+          In this use case, the forwarding nodes always send statistics of traffic flow to the flow collectors by using monitoring functions such as NetFlow.
+          When DDoS attacks occur, DDoS orchestration use case<xref target="I-D.ietf-dots-use-cases"/>  is carried out and the DMS mitigates all attack traffic destined for a target.
+          The DDoS-mitigation system reports the (src_ip, dst_ip)-tuple information of the top talker to the orchestrator the using top-talkers attribute of DOTS Telemetry.
         </t>
         <t>
-          After mitigating DDoS attack, the flow collector attaches teacher labels to the stastistics of traffic flow based on the reports.
-          The label shows normal traffic or attack traffic, or attack name.
-          Then, the flow collector carry out supervised machine learning to raise their detection accuracy, setting the statistics as explanatory variable and setting the labels as objective variable.
+          After mitigating a DDoS attack, the flow collector attaches teacher labels to the statistics of traffic flow based on the reports.
+          The label shows normal traffic or attack name.
+          The flow collector then carries out supervised machine learning to increase its detection accuracy, setting the statistics as an explanatory variable and setting the labels as an objective variable.
         </t>
         <t>
           In this case, the DMS implements a DOTS client while the flow collector implements a DOTS server.

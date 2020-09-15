@@ -214,11 +214,11 @@ Figure 1: Mitigating DDoS Attack Flow of Top-talker Preferentially
         </section>
         <section anchor="dms_selection" title="Optimal DMS Selection for Mitigation">
           <t>
-            Transit providers, which have a number of DMSs, usually deploy a DMS in various forms to satisfy their requirements; individual or clustered.
-            In both forms, they can identify attributes of the DMSs such as total capacity, available capacity, and the last hop bandwidth.
+            Transit providers, which have a number of DMSs, can deploy the DMSs in clustered form.
+            In the form, they can select DMS to be used to mitigate DDoS attack under attack time.
           </t>
           <t>
-            The aim of this use case is to enable transit providers to select an optimal DMS for mitigation based on the bandwidth of attack traffic, capacity of a DMS, and the last hop bandwidth.
+            The aim of this use case is to enable transit providers to select an optimal DMS for mitigation based on the bandwidth of attack traffic, capacity of a DMS.
             Figure 2 gives an overview of this use case.
           </t>
           <t>
@@ -320,7 +320,7 @@ Figure 3: Best-path Selection for Redirection
             In this use case, the forwarding nodes always send statistics of traffic flow to the flow collectors by using monitoring functions such as IPFIX<xref target="RFC7011" />.
             When DDoS attacks occur, the flow collectors detect attack traffic and send (dst_ip, bandwidth)-tuple information to the orchestrator using a target-prefix and total-attack-traffic attribute of DOTS Telemetry.
             On the other hands, forwarding nodes send bandwidth of total traffic passing the node and total pipe capability to the orchestrator using total-traffic and total-pipe-capability attributes of DOTS Telemetry.
-            /memo/ How does orchestrator resolve remaing link capacity? Using IPFIX and total-pipe-capability attributes of DOTS telemetry?/memo/
+            /memo/ How does orchestrator resolve remaing link capacity? Using IPFIX and total-pipe-capability attributes of DOTS telemetry? Why not using SNMP?/memo/
             The orchestrator then selects an optimal path to which each attack-traffic flow should be redirected.
             After that, the orchestrator orders forwarding nodes to redirect the attack traffic to the optimal DMS by dissemination of flow-specification-rules protocols such as BGP Flowspec<xref target="RFC5575" />.
             The algorithm of selecting a path is out of the scope of this draft.
@@ -333,7 +333,8 @@ Figure 3: Best-path Selection for Redirection
              The practical way to mitigate short but extreme volumetric attacks is to offload a mitigation actions to a forwarding node.
           </t>
           <t>
-            The aim of this use case is to enable transit providers to mitigate short but extreme volumetric attacks and estimate the network-access success rate based on the bandwidth of attack traffic and total pipe capability.
+            The aim of this use case is to enable transit providers to mitigate short but extreme volumetric attacks.
+            Furthermore, the aim is to estimate the network-access success rate based on the bandwidth of attack traffic and total pipe capability.
             Figure 4 gives an overview of this use case.
           </t>
           <t>
@@ -370,8 +371,9 @@ Figure 4: Short but Extreme Volumetric Attack Mitigation
           <t>
             In this use case, when DDoS attacks occur, the network management system receives alerts.
             It then sends the target ip address, pipe capability of the target's link, and bandwidth of the DDoS attack traffic to the administrative system using the target-prefix, total-pipe-capability and total-attack-traffic attributes of DOTS Telemetry.
-            After that, the administrative system orders upper forwarding nodes to carry out rate-limit all traffic destined to the target based on the pipe capability by the dissemination of the flow -specification-rules protocols such as BGP Flowspec<xref target="RFC5575" />.
+            After that, the administrative system orders upper forwarding nodes to carry out rate-limit all traffic destined to the target based on the pipe capability by the dissemination of the flow-specification-rules protocols such as BGP Flowspec<xref target="RFC5575" />.
             In addition, the administrative system estimates the network-access success rate of the target, which is calculated by total pipe capability / (total pipe capability + total attack traffic).
+            //memo Is the network access success rate really effective metric to operate network in China Mobile?
           </t>
         </section>
       </section>
@@ -425,8 +427,8 @@ Figure 5: DDoS Mitigation Based on Attack Type
         </t>
         <t>
           In this use case, the forwarding nodes send statistics of traffic flow to the flow collectors by using a monitoring function such as IPFIX<xref target="RFC7011" />.
-          When DDoS attacks occur, the flow collectors detect attack traffic and send (dst_ip, src_port, attack_type)-tuple information to the orchestrator the using attack-name attribute of DOTS Telemetry.
-          The orchestrator then orders forwarding nodes to block the (dst_ip, src_port)-tuple flow of amp attack traffic by dissemination of flow-specification-rule protocols such as BGP Flowspec<xref target="RFC5575" />.
+          When DDoS attacks occur, the flow collectors detect attack traffic and send (dst_ip, attack_type)-tuple information to the orchestrator the using vendor-id and attack-id attribute of DOTS Telemetry.
+          The orchestrator then resolves abused port and orders forwarding nodes to block the (dst_ip, src_port)-tuple flow of amp attack traffic by dissemination of flow-specification-rule protocols such as BGP Flowspec<xref target="RFC5575" />.
           On the other hand, the orchestrator orders forwarding nodes to redirect other traffic than the amp attack traffic by a routing protocol such as BGP<xref target="RFC4271" />.
         </t>
         <t>
@@ -434,8 +436,8 @@ Figure 5: DDoS Mitigation Based on Attack Type
         </t>
         </section>
       </section>
-      <section anchor="section_use_cases_ddos_detection_setting_up" title="Setting up for DDoS Detection based on Attack Detail or Baseline">
-        <section anchor="section_use_cases_ddos_detection_training" title="Training Supervised Machine Learning of Flow Collector">
+      <section anchor="section_use_cases_ddos_detection_setting_up" title="Setting up for Detection Based on Attack Detail or Baseline">
+        <section anchor="section_use_cases_ddos_detection_training" title="Supervised Machine Learning of Flow Collector">
           <t>
             DDoS detection based on monitoring functions, such as IPFIX<xref target="RFC7011" />, is a lighter weight method of detecting DDoS attacks than DMSs in internet transit provider networks.
             On the other hand, DDoS detection based on the DMSs is a more accurate method of detecting attack traffic or DDoS attacks bettr than flow monitoring.
@@ -481,7 +483,7 @@ Figure 6: Training Supervised Machine Learning of Flow Collector
           <t>
             In this use case, the forwarding nodes always send statistics of traffic flow to the flow collectors by using monitoring functions such as IPFIX<xref target="RFC7011" />.
             When DDoS attacks occur, DDoS orchestration use case<xref target="I-D.ietf-dots-use-cases"/> is carried out and the DMS mitigates all attack traffic destined for a target.
-            The DDoS-mitigation system reports the attack-detail, which includes attack-id and top-talker, to the flow collector using DOTS telemetry.
+            The DDoS-mitigation system reports the vendor-id, attack-id and top-talker to the flow collector using DOTS telemetry.
           </t>
           <t>
             After mitigating a DDoS attack, the flow collector attaches teacher labels, which shows normal traffic or attack type, to the statistics of traffic flow of top-talker based on the reports.
@@ -491,7 +493,7 @@ Figure 6: Training Supervised Machine Learning of Flow Collector
             In this case, the DMS implements a DOTS client while the flow collector implements a DOTS server.
           </t>
       </section>
-      <section anchor="section_use_cases_tuning_threshold" title="Training Unsupervised Machine Learning of Flow Collector">
+      <section anchor="section_use_cases_tuning_threshold" title="Unsupervised Machine Learning of Flow Collector">
         <t>
           DMSs can detect DDoS attack traffic, which means DMSs can also identify clean traffic.
           The aim of this use case is to carry out unsupervised machine-learning for anomarly detection according to baseline reported by DMSs.
@@ -533,7 +535,7 @@ Figure 7: Training Unsupervised Machine Learning of Flow Collector
         </t>
         <t>
           In this use case, the forwarding nodes carry out mirroring traffic destined a dst ip address.
-          The DDoS-mitigation system identifies clean traffic and reports the baseline attributes to the flow collector using DOTS telemetry.
+          The DMS then identifies clean traffic and reports the baseline attributes to the flow collector using DOTS telemetry.
         </t>
         <t>
           The flow collector then carries out unsupervised machine learning to be able to carry out anomarly detection.

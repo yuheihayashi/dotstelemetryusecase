@@ -1,0 +1,538 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0049)https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+   
+  <meta http-equiv="Content-Style-Type" content="text/css"> 
+  <title>Diff: draft-ietf-dots-telemetry-use-cases-00.txt - draft-ietf-dots-telemetry-use-cases-01.txt</title> 
+  <style type="text/css"> 
+    body    { margin: 0.4ex; margin-right: auto; } 
+    tr      { } 
+    td      { white-space: pre; font-family: monospace; vertical-align: top; font-size: 0.86em;} 
+    th      { font-size: 0.86em; } 
+    .small  { font-size: 0.6em; font-style: italic; font-family: Verdana, Helvetica, sans-serif; } 
+    .left   { background-color: #EEE; } 
+    .right  { background-color: #FFF; } 
+    .diff   { background-color: #CCF; } 
+    .lblock { background-color: #BFB; } 
+    .rblock { background-color: #FF8; } 
+    .insert { background-color: #8FF; } 
+    .delete { background-color: #ACF; } 
+    .void   { background-color: #FFB; } 
+    .cont   { background-color: #EEE; } 
+    .linebr { background-color: #AAA; } 
+    .lineno { color: red; background-color: #FFF; font-size: 0.7em; text-align: right; padding: 0 2px; } 
+    .elipsis{ background-color: #AAA; } 
+    .left .cont { background-color: #DDD; } 
+    .right .cont { background-color: #EEE; } 
+    .lblock .cont { background-color: #9D9; } 
+    .rblock .cont { background-color: #DD6; } 
+    .insert .cont { background-color: #0DD; } 
+    .delete .cont { background-color: #8AD; } 
+    .stats, .stats td, .stats th { background-color: #EEE; padding: 2px 0; } 
+    span.hide { display: none; color: #aaa;}    a:hover span { display: inline; }    tr.change { background-color: gray; } 
+    tr.change a { text-decoration: none; color: black } 
+  </style> 
+     <script>
+var chunk_index = 0;
+var old_chunk = null;
+
+function format_chunk(index) {
+    var prefix = "diff";
+    var str = index.toString();
+    for (x=0; x<(4-str.length); ++x) {
+        prefix+='0';
+    }
+    return prefix + str;
+}
+
+function find_chunk(n){
+    return document.querySelector('tr[id$="' + n + '"]');
+}
+
+function change_chunk(offset) {
+    var index = chunk_index + offset;
+    var new_str;
+    var new_chunk;
+
+    new_str = format_chunk(index);
+    new_chunk = find_chunk(new_str);
+    if (!new_chunk) {
+        return;
+    }
+    if (old_chunk) {
+        old_chunk.style.outline = "";
+    }
+    old_chunk = new_chunk;
+    old_chunk.style.outline = "1px solid red";
+    window.location.hash = "#" + new_str;
+    window.scrollBy(0,-100);
+    chunk_index = index;
+}
+
+document.onkeydown = function(e) {
+    switch (e.keyCode) {
+    case 78:
+        change_chunk(1);
+        break;
+    case 80:
+        change_chunk(-1);
+        break;
+    }
+};
+   </script> 
+</head> 
+<body> 
+  <table border="0" cellpadding="0" cellspacing="0"> 
+  <tbody><tr id="part-1" bgcolor="orange"><th></th><th><a href="https://tools.ietf.org/rfcdiff?url2=draft-ietf-dots-telemetry-use-cases-00.txt" style="color:#008; text-decoration:none;">&lt;</a>&nbsp;<a href="https://tools.ietf.org/html/draft-ietf-dots-telemetry-use-cases-00.txt" style="color:#008">draft-ietf-dots-telemetry-use-cases-00.txt</a>&nbsp;</th><th> </th><th>&nbsp;<a href="https://tools.ietf.org/html/draft-ietf-dots-telemetry-use-cases-01.txt" style="color:#008">draft-ietf-dots-telemetry-use-cases-01.txt</a>&nbsp;<a href="https://tools.ietf.org/rfcdiff?url1=draft-ietf-dots-telemetry-use-cases-01.txt" style="color:#008; text-decoration:none;">&gt;</a></th><th></th></tr> 
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">DOTS                                                          Y. Hayashi</td><td> </td><td class="right">DOTS                                                          Y. Hayashi</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">Internet-Draft                                                       NTT</td><td> </td><td class="right">Internet-Draft                                                       NTT</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">Intended status: Informational                                   M. Chen</td><td> </td><td class="right">Intended status: Informational                                   M. Chen</td><td class="lineno"></td></tr>
+      <tr id="diff0001"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">Expires: March 18, 2021                                             CMCC</td><td> </td><td class="rblock">Expires: March 18, 2021                                           <span class="insert">Li. Su</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">                                                                    CMCC</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                                      September 14, 2020</td><td> </td><td class="right">                                                      September 14, 2020</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       Use Cases for DDoS Open Threat Signaling (DOTS) Telemetry</td><td> </td><td class="right">       Use Cases for DDoS Open Threat Signaling (DOTS) Telemetry</td><td class="lineno"></td></tr>
+      <tr id="diff0002"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                 draft-ietf-dots-telemetry-use-cases-0<span class="delete">0</span></td><td> </td><td class="rblock">                 draft-ietf-dots-telemetry-use-cases-0<span class="insert">1</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">Abstract</td><td> </td><td class="right">Abstract</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Denial-of-service Open Threat Signaling (DOTS) Telemetry enriches the</td><td> </td><td class="right">   Denial-of-service Open Threat Signaling (DOTS) Telemetry enriches the</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   base DOTS protocols to assist the mitigator in using efficient DDoS-</td><td> </td><td class="right">   base DOTS protocols to assist the mitigator in using efficient DDoS-</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   attack-mitigation techniques in a network.  This document presents</td><td> </td><td class="right">   attack-mitigation techniques in a network.  This document presents</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   sample use cases for DOTS Telemetry: what components are deployed in</td><td> </td><td class="right">   sample use cases for DOTS Telemetry: what components are deployed in</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   the network, how they cooperate, and what information is exchanged to</td><td> </td><td class="right">   the network, how they cooperate, and what information is exchanged to</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   effectively use these techniques.</td><td> </td><td class="right">   effectively use these techniques.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-2" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-2"><em> page 2, line 19<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-2"><em> page 2, line 20<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2</td><td> </td><td class="right">   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   3</td><td> </td><td class="right">   2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   3</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   3.  Use Cases . . . . . . . . . . . . . . . . . . . . . . . . . .   3</td><td> </td><td class="right">   3.  Use Cases . . . . . . . . . . . . . . . . . . . . . . . . . .   3</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     3.1.  DDoS Mitigation Based on Attack Traffic Bandwidth . . . .   3</td><td> </td><td class="right">     3.1.  DDoS Mitigation Based on Attack Traffic Bandwidth . . . .   3</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       3.1.1.  Mitigating Attack Flow of Top-talker Preferentially .   3</td><td> </td><td class="right">       3.1.1.  Mitigating Attack Flow of Top-talker Preferentially .   3</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       3.1.2.  Optimal DMS Selection for Mitigation  . . . . . . . .   5</td><td> </td><td class="right">       3.1.2.  Optimal DMS Selection for Mitigation  . . . . . . . .   5</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       3.1.3.  Best-path Selection for Redirection . . . . . . . . .   6</td><td> </td><td class="right">       3.1.3.  Best-path Selection for Redirection . . . . . . . . .   6</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       3.1.4.  Short but Extreme Volumetric Attack Mitigation  . . .   8</td><td> </td><td class="right">       3.1.4.  Short but Extreme Volumetric Attack Mitigation  . . .   8</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     3.2.  DDoS Mitigation Based on Attack Type  . . . . . . . . . .   9</td><td> </td><td class="right">     3.2.  DDoS Mitigation Based on Attack Type  . . . . . . . . . .   9</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       3.2.1.  Selecting Mitigation Technique  . . . . . . . . . . .   9</td><td> </td><td class="right">       3.2.1.  Selecting Mitigation Technique  . . . . . . . . . . .   9</td><td class="lineno"></td></tr>
+      <tr id="diff0003"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">     3.3.  <span class="delete">Training Flow Collector Using</span> Supervised Machine Learning  11</td><td> </td><td class="rblock">     3.3.  <span class="insert">Setting up for Detection Based on Attack Detail or</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   4.  Security Considerations . . . . . . . . . . . . . . . . . . .  <span class="delete">12</span></td><td> </td><td class="rblock"><span class="insert">           Baseline  . . . . . . . . . . . . . . . . . . . . . . . .  11</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  <span class="delete">12</span></td><td> </td><td class="rblock"><span class="insert">       3.3.1.</span>  Supervised Machine Learning <span class="insert">of Flow Collector . . . .</span>  11</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   6.  Acknowledgement . . . . . . . . . . . . . . . . . . . . . . .  <span class="delete">12</span></td><td> </td><td class="rblock">       <span class="insert">3.3.2.  Unsupervised Machine Learning of Flow Collector . . .  12</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  <span class="delete">12</span></td><td> </td><td class="rblock">   4.  Security Considerations . . . . . . . . . . . . . . . . . . .  <span class="insert">13</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  <span class="delete">12</span></td><td> </td><td class="rblock">   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  <span class="insert">13</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">     7.2.  Informative References  . . . . . . . . . . . . . . . . .  <span class="delete">13</span></td><td> </td><td class="rblock">   6.  Acknowledgement . . . . . . . . . . . . . . . . . . . . . . .  <span class="insert">14</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  <span class="delete">13</span></td><td> </td><td class="rblock">   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  <span class="insert">14</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  <span class="insert">14</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">     7.2.  Informative References  . . . . . . . . . . . . . . . . .  <span class="insert">15</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  <span class="insert">15</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">1.  Introduction</td><td> </td><td class="right">1.  Introduction</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Denial-of-Service (DDoS), attacks such as volumetric attacks and</td><td> </td><td class="right">   Denial-of-Service (DDoS), attacks such as volumetric attacks and</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   resource-consumption attacks, are critical threats to be handled by</td><td> </td><td class="right">   resource-consumption attacks, are critical threats to be handled by</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   service providers.  When such DDoS attacks occur, service providers</td><td> </td><td class="right">   service providers.  When such DDoS attacks occur, service providers</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   have to mitigate them immediately to protect or recover their</td><td> </td><td class="right">   have to mitigate them immediately to protect or recover their</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   services.</td><td> </td><td class="right">   services.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Therefore, for service providers to immediately protect their network</td><td> </td><td class="right">   Therefore, for service providers to immediately protect their network</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-3" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-3"><em> page 3, line 16<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-3"><em> page 3, line 21<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   The readers should be familiar with the terms defined in [RFC8612]</td><td> </td><td class="right">   The readers should be familiar with the terms defined in [RFC8612]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In addition, this document uses the following terms:</td><td> </td><td class="right">   In addition, this document uses the following terms:</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Top-talker:  A top N list of attackers who attack the same target or</td><td> </td><td class="right">   Top-talker:  A top N list of attackers who attack the same target or</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">      targets.  The list is ordered in terms of a two-tuple bandwidth</td><td> </td><td class="right">      targets.  The list is ordered in terms of a two-tuple bandwidth</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">      such as bps or pps.</td><td> </td><td class="right">      such as bps or pps.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Supervised Machine Learning:  A machine-learning technique that maps</td><td> </td><td class="right">   Supervised Machine Learning:  A machine-learning technique that maps</td><td class="lineno"></td></tr>
+      <tr id="diff0004"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">      an input to an output based on example input-output <span class="delete">pairs</span></td><td> </td><td class="rblock">      an input to an output based on example input-output <span class="insert">pairs.</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   Unsupervised Machine Learning:  Unsupervised Learning is a machine</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">      learning technique in which the users do not need to supervise the</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">      model.</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">3.  Use Cases</td><td> </td><td class="right">3.  Use Cases</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   This section describes DOTS-Telemetry use cases that use attributes</td><td> </td><td class="right">   This section describes DOTS-Telemetry use cases that use attributes</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   included in DOTS Telemetry specifications.</td><td> </td><td class="right">   included in DOTS Telemetry specifications.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">3.1.  DDoS Mitigation Based on Attack Traffic Bandwidth</td><td> </td><td class="right">3.1.  DDoS Mitigation Based on Attack Traffic Bandwidth</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">3.1.1.  Mitigating Attack Flow of Top-talker Preferentially</td><td> </td><td class="right">3.1.1.  Mitigating Attack Flow of Top-talker Preferentially</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-4" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-4"><em> page 4, line 40<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-4"><em> page 4, line 40<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   * C is for DOTS client functionality</td><td> </td><td class="right">   * C is for DOTS client functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   * S is for DOTS client functionality</td><td> </td><td class="right">   * S is for DOTS client functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Figure 1: Mitigating DDoS Attack Flow of Top-talker Preferentially</td><td> </td><td class="right">   Figure 1: Mitigating DDoS Attack Flow of Top-talker Preferentially</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this use case, the forwarding nodes always send statistics of</td><td> </td><td class="right">   In this use case, the forwarding nodes always send statistics of</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   traffic flow to the flow collectors by using monitoring functions</td><td> </td><td class="right">   traffic flow to the flow collectors by using monitoring functions</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   such as IPFIX[RFC7011].  When DDoS attacks occur, the flow collectors</td><td> </td><td class="right">   such as IPFIX[RFC7011].  When DDoS attacks occur, the flow collectors</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   detect attack traffic and send (src_ip, dst_ip, bandwidth)-tuple</td><td> </td><td class="right">   detect attack traffic and send (src_ip, dst_ip, bandwidth)-tuple</td><td class="lineno"></td></tr>
+      <tr id="diff0005"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   information of the top talker to the orchestrator using the <span class="delete">top-</span></td><td> </td><td class="rblock">   information of the top talker to the orchestrator using the <span class="insert">target-</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   talkers</span> attribute of DOTS Telemetry.  The orchestrator then checks</td><td> </td><td class="rblock"><span class="insert">   prefix and top-talkers</span> attribute of DOTS Telemetry.  The orchestrator</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   the available capacity of DMS by using a network management protocol</td><td> </td><td class="rblock">   then checks the available capacity of DMS by using a network</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   such as SNMP[RFC3413].  After that, the orchestrator orders</td><td> </td><td class="rblock">   management protocol such as SNMP[RFC3413].  After that, the</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   forwarding nodes to redirect as much of the top taker's traffic to</td><td> </td><td class="rblock">   orchestrator orders forwarding nodes to redirect as much of the top</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   the DMS as possible by dissemination of <span class="delete">flow-specification-rule</span></td><td> </td><td class="rblock">   taker's traffic to the DMS as possible by dissemination of <span class="insert">flow-</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   protocols such as BGP Flowspec[RFC5575].</td><td> </td><td class="rblock"><span class="insert">   specification-rule</span> protocols such as BGP Flowspec[RFC5575].</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this case, the flow collector implements a DOTS client while the</td><td> </td><td class="right">   In this case, the flow collector implements a DOTS client while the</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   orchestrator implements a DOTS server.</td><td> </td><td class="right">   orchestrator implements a DOTS server.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">3.1.2.  Optimal DMS Selection for Mitigation</td><td> </td><td class="right">3.1.2.  Optimal DMS Selection for Mitigation</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0006"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Transit providers, which have a number of DMSs, <span class="delete">usually</span> deploy <span class="delete">a DMS</span></td><td> </td><td class="rblock">   Transit providers, which have a number of DMSs, <span class="insert">can</span> deploy <span class="insert">the DMSs</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   in <span class="delete">various forms to satisfy their requirements; individual or</span></td><td> </td><td class="rblock">   in <span class="insert">clustered form.</span>  In <span class="insert">the form,</span> they can <span class="insert">select DMS to be used to</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   clustered.</span>  In <span class="delete">both forms,</span> they can <span class="delete">identify attributes of the DMSs</span></td><td> </td><td class="rblock"><span class="insert">   mitigate DDoS attack under attack time.</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   such as total capacity, available capacity, and the last hop</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   bandwidth.</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   The aim of this use case is to enable transit providers to select an</td><td> </td><td class="right">   The aim of this use case is to enable transit providers to select an</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   optimal DMS for mitigation based on the bandwidth of attack traffic,</td><td> </td><td class="right">   optimal DMS for mitigation based on the bandwidth of attack traffic,</td><td class="lineno"></td></tr>
+      <tr id="diff0007"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   capacity of a <span class="delete">DMS, and the last hop bandwidth.</span>  Figure 2 gives an</td><td> </td><td class="rblock">   capacity of a <span class="insert">DMS.</span>  Figure 2 gives an overview of this use case.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   overview of this use case.</td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   (Internet Transit Provider)</td><td> </td><td class="right">   (Internet Transit Provider)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                  +-----------+      +--------------+ e.g., SNMP</td><td> </td><td class="right">                  +-----------+      +--------------+ e.g., SNMP</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     e.g., IPFIX +-----------+| DOTS |              |&lt;---</td><td> </td><td class="right">     e.g., IPFIX +-----------+| DOTS |              |&lt;---</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">             ---&gt;| Flow      ||C&lt;--&gt;S| Orchestrator | e.g., BGP</td><td> </td><td class="right">             ---&gt;| Flow      ||C&lt;--&gt;S| Orchestrator | e.g., BGP</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                 | collector |+      |              |---&gt;   (Redirect)</td><td> </td><td class="right">                 | collector |+      |              |---&gt;   (Redirect)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                 +-----------+       +--------------+</td><td> </td><td class="right">                 +-----------+       +--------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                            +------------+</td><td> </td><td class="right">                            +------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-5" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-5"><em> page 6, line 5<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-5"><em> page 5, line 51<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   * C is for DOTS client functionality</td><td> </td><td class="right">   * C is for DOTS client functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   * S is for DOTS client functionality</td><td> </td><td class="right">   * S is for DOTS client functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Figure 2: Optimal DMS selection for Mitigation</td><td> </td><td class="right">   Figure 2: Optimal DMS selection for Mitigation</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this use case, the forwarding nodes always send statistics of</td><td> </td><td class="right">   In this use case, the forwarding nodes always send statistics of</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   traffic flow to the flow collectors by using monitoring functions</td><td> </td><td class="right">   traffic flow to the flow collectors by using monitoring functions</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   such as IPFIX[RFC7011].  When DDoS attacks occur, the flow collectors</td><td> </td><td class="right">   such as IPFIX[RFC7011].  When DDoS attacks occur, the flow collectors</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   detect attack traffic and send (dst_ip, bandwidth)-tuple information</td><td> </td><td class="right">   detect attack traffic and send (dst_ip, bandwidth)-tuple information</td><td class="lineno"></td></tr>
+      <tr id="diff0008"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   to the orchestrator using the total-attack-traffic attribute of DOTS</td><td> </td><td class="rblock">   to the orchestrator using the <span class="insert">target-prefix and</span> total-attack-traffic</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Telemetry.  The orchestrator then checks the available capacity of</td><td> </td><td class="rblock">   attribute of DOTS Telemetry.  The orchestrator then checks the</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   the DMSs by using a network management protocol such as</td><td> </td><td class="rblock">   available capacity of the DMSs by using a network management protocol</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   SNMP[RFC3413].  After that, the orchestrator chooses optimal DMS</td><td> </td><td class="rblock">   such as SNMP[RFC3413].  After that, the orchestrator chooses optimal</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   which each attack traffic should be redirected.  The orchestrator</td><td> </td><td class="rblock">   DMS which each attack traffic should be redirected.  The orchestrator</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   then orders forwarding nodes to redirect the attack traffic to the</td><td> </td><td class="right">   then orders forwarding nodes to redirect the attack traffic to the</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   optimal DMS by a routing protocol such as BGP[RFC4271].  The</td><td> </td><td class="right">   optimal DMS by a routing protocol such as BGP[RFC4271].  The</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   algorithm of selecting a DMS is out of the scope of this draft.</td><td> </td><td class="right">   algorithm of selecting a DMS is out of the scope of this draft.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this case, the flow collector implements a DOTS client while the</td><td> </td><td class="right">   In this case, the flow collector implements a DOTS client while the</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   orchestrator implements a DOTS server.</td><td> </td><td class="right">   orchestrator implements a DOTS server.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">3.1.3.  Best-path Selection for Redirection</td><td> </td><td class="right">3.1.3.  Best-path Selection for Redirection</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   A transit-provider network, which adopts a mesh network, has multiple</td><td> </td><td class="right">   A transit-provider network, which adopts a mesh network, has multiple</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-6" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-6"><em> page 7, line 33<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-6"><em> page 7, line 33<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">                       DOTS  +-||----------------+ e.g., BGP Flow spec</td><td> </td><td class="right">                       DOTS  +-||----------------+ e.g., BGP Flow spec</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                        ---&gt;C| ||  Forwarding    |&lt;---   (Redirect)</td><td> </td><td class="right">                        ---&gt;C| ||  Forwarding    |&lt;---   (Redirect)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                             | ++===  node       |</td><td> </td><td class="right">                             | ++===  node       |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                             +----||-------------+</td><td> </td><td class="right">                             +----||-------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                  |/</td><td> </td><td class="right">                                  |/</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                               +--x-----------+</td><td> </td><td class="right">                               +--x-----------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                               |     DMS      |</td><td> </td><td class="right">                               |     DMS      |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                               +--------------+</td><td> </td><td class="right">                               +--------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   * C is for DOTS client functionality</td><td> </td><td class="right">   * C is for DOTS client functionality</td><td class="lineno"></td></tr>
+      <tr id="diff0009"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   <span class="delete"> </span>* S is for DOTS client functionality</td><td> </td><td class="rblock">   * S is for DOTS client functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Figure 3: Best-path Selection for Redirection</td><td> </td><td class="right">   Figure 3: Best-path Selection for Redirection</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this use case, the forwarding nodes always send statistics of</td><td> </td><td class="right">   In this use case, the forwarding nodes always send statistics of</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   traffic flow to the flow collectors by using monitoring functions</td><td> </td><td class="right">   traffic flow to the flow collectors by using monitoring functions</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   such as IPFIX[RFC7011].  When DDoS attacks occur, the flow collectors</td><td> </td><td class="right">   such as IPFIX[RFC7011].  When DDoS attacks occur, the flow collectors</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   detect attack traffic and send (dst_ip, bandwidth)-tuple information</td><td> </td><td class="right">   detect attack traffic and send (dst_ip, bandwidth)-tuple information</td><td class="lineno"></td></tr>
+      <tr id="diff0010"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   to the orchestrator using a total-attack-traffic attribute of DOTS</td><td> </td><td class="rblock">   to the orchestrator using a <span class="insert">target-prefix and</span> total-attack-traffic</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Telemetry.  On the other hands, forwarding nodes send bandwidth of</td><td> </td><td class="rblock">   attribute of DOTS Telemetry.  On the other hands, forwarding nodes</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   total traffic passing the node and total pipe capability to the</td><td> </td><td class="rblock">   send bandwidth of total traffic passing the node and total pipe</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   orchestrator using total-traffic and <span class="delete">total-pipe-capability</span> attributes</td><td> </td><td class="rblock">   capability to the orchestrator using total-traffic and <span class="insert">total-pipe-</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   of DOTS Telemetry.  The orchestrator then selects an optimal path to</td><td> </td><td class="rblock"><span class="insert">   capability</span> attributes of DOTS Telemetry.  <span class="insert">/memo/ How does</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   which each attack-traffic flow should be redirected.  After that, the</td><td> </td><td class="rblock"><span class="insert">   orchestrator resolve remaing link capacity?  Using IPFIX and total-</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   pipe-capability attributes of DOTS telemetry?  Why not using</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   SNMP?/memo/</span> The orchestrator then selects an optimal path to which</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">   each attack-traffic flow should be redirected.  After that, the</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   orchestrator orders forwarding nodes to redirect the attack traffic</td><td> </td><td class="right">   orchestrator orders forwarding nodes to redirect the attack traffic</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   to the optimal DMS by dissemination of flow-specification-rules</td><td> </td><td class="right">   to the optimal DMS by dissemination of flow-specification-rules</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   protocols such as BGP Flowspec[RFC5575].  The algorithm of selecting</td><td> </td><td class="right">   protocols such as BGP Flowspec[RFC5575].  The algorithm of selecting</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   a path is out of the scope of this draft.</td><td> </td><td class="right">   a path is out of the scope of this draft.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">3.1.4.  Short but Extreme Volumetric Attack Mitigation</td><td> </td><td class="right">3.1.4.  Short but Extreme Volumetric Attack Mitigation</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Short but extreme volumetric attacks, such as pulse wave DDoS</td><td> </td><td class="right">   Short but extreme volumetric attacks, such as pulse wave DDoS</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   attacks, are threats to internet transit provider networks.  It is</td><td> </td><td class="right">   attacks, are threats to internet transit provider networks.  It is</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   difficult for them to mitigate an attack by DMS by redirecting attack</td><td> </td><td class="right">   difficult for them to mitigate an attack by DMS by redirecting attack</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   flows because it may cause route flapping in the network.  The</td><td> </td><td class="right">   flows because it may cause route flapping in the network.  The</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   practical way to mitigate short but extreme volumetric attacks is to</td><td> </td><td class="right">   practical way to mitigate short but extreme volumetric attacks is to</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   offload a mitigation actions to a forwarding node.</td><td> </td><td class="right">   offload a mitigation actions to a forwarding node.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   The aim of this use case is to enable transit providers to mitigate</td><td> </td><td class="right">   The aim of this use case is to enable transit providers to mitigate</td><td class="lineno"></td></tr>
+      <tr id="diff0011"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   short but extreme volumetric <span class="delete">attacks and</span> estimate the network-access</td><td> </td><td class="rblock">   short but extreme volumetric <span class="insert">attacks.  Furthermore, the aim is to</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   success rate based on the bandwidth of attack traffic and total pipe</td><td> </td><td class="rblock">   estimate the network-access success rate based on the bandwidth of</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   capability.  Figure 4 gives an overview of this use case.</td><td> </td><td class="rblock">   attack traffic and total pipe capability.  Figure 4 gives an overview</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">   of this use case.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   (Internet Transit Provider)</td><td> </td><td class="right">   (Internet Transit Provider)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">             +------------+       +----------------+</td><td> </td><td class="right">             +------------+       +----------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   e.g.,     | Network    |  DOTS | Administrative |</td><td> </td><td class="right">   e.g.,     | Network    |  DOTS | Administrative |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Alert ---&gt;| Management |C&lt;---&gt;S| System         | e.g., BGP Flow spec</td><td> </td><td class="right">   Alert ---&gt;| Management |C&lt;---&gt;S| System         | e.g., BGP Flow spec</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">             | System     |       |                |---&gt;   (Rate-Limit)</td><td> </td><td class="right">             | System     |       |                |---&gt;   (Rate-Limit)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">             +------------+       +----------------+</td><td> </td><td class="right">             +------------+       +----------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">               +------------+     +------------+ e.g., BGP Flow spec</td><td> </td><td class="right">               +------------+     +------------+ e.g., BGP Flow spec</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-7" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-7"><em> page 8, line 47<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-7"><em> page 8, line 50<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">                           e.g., X / (X + Y)</td><td> </td><td class="right">                           e.g., X / (X + Y)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   * C is for DOTS client functionality</td><td> </td><td class="right">   * C is for DOTS client functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   * S is for DOTS client functionality</td><td> </td><td class="right">   * S is for DOTS client functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Figure 4: Short but Extreme Volumetric Attack Mitigation</td><td> </td><td class="right">   Figure 4: Short but Extreme Volumetric Attack Mitigation</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this use case, when DDoS attacks occur, the network management</td><td> </td><td class="right">   In this use case, when DDoS attacks occur, the network management</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   system receives alerts.  It then sends the target ip address, pipe</td><td> </td><td class="right">   system receives alerts.  It then sends the target ip address, pipe</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   capability of the target's link, and bandwidth of the DDoS attack</td><td> </td><td class="right">   capability of the target's link, and bandwidth of the DDoS attack</td><td class="lineno"></td></tr>
+      <tr id="diff0012"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   traffic to the administrative system using the <span class="delete">target, total-pipe-</span></td><td> </td><td class="rblock">   traffic to the administrative system using the <span class="insert">target-prefix, total-</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   capability</span> and total-attack-traffic attributes of DOTS Telemetry.</td><td> </td><td class="rblock"><span class="insert">   pipe-capability</span> and total-attack-traffic attributes of DOTS</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   After that, the administrative system orders upper forwarding nodes</td><td> </td><td class="rblock">   Telemetry.  After that, the administrative system orders upper</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   to carry out rate-limit all traffic destined to the target based on</td><td> </td><td class="rblock">   forwarding nodes to carry out rate-limit all traffic destined to the</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   the pipe capability by the dissemination of the <span class="delete">flow -specification-</span></td><td> </td><td class="rblock">   target based on the pipe capability by the dissemination of the <span class="insert">flow-</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   rules</span> protocols such as BGP Flowspec[RFC5575].  In addition, the</td><td> </td><td class="rblock"><span class="insert">   specification-rules</span> protocols such as BGP Flowspec[RFC5575].  In</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   administrative system estimates the network-access success rate of</td><td> </td><td class="rblock">   addition, the administrative system estimates the network-access</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   the target, which is calculated by total pipe capability / (total</td><td> </td><td class="rblock">   success rate of the target, which is calculated by total pipe</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   pipe capability + total attack traffic).</td><td> </td><td class="rblock">   capability / (total pipe capability + total attack traffic).  <span class="insert">//memo</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   Is the network access success rate really effective metric to operate</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   network in China Mobile?</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">3.2.  DDoS Mitigation Based on Attack Type</td><td> </td><td class="right">3.2.  DDoS Mitigation Based on Attack Type</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">3.2.1.  Selecting Mitigation Technique</td><td> </td><td class="right">3.2.1.  Selecting Mitigation Technique</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Some volumetric attacks, such as amplification attacks, can be</td><td> </td><td class="right">   Some volumetric attacks, such as amplification attacks, can be</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   detected with high accuracy by checking the layer-3 or layer-4</td><td> </td><td class="right">   detected with high accuracy by checking the layer-3 or layer-4</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   information of attack packets.  These attacks can be detected and</td><td> </td><td class="right">   information of attack packets.  These attacks can be detected and</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   mitigated through cooperation among forwarding nodes and flow</td><td> </td><td class="right">   mitigated through cooperation among forwarding nodes and flow</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   collectors using IPFIX[RFC7011].  On the other hand, it is necessary</td><td> </td><td class="right">   collectors using IPFIX[RFC7011].  On the other hand, it is necessary</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-8" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-8"><em> page 10, line 37<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-8"><em> page 10, line 37<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">                      +------------+</td><td> </td><td class="right">                      +------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   * C is for DOTS client functionality</td><td> </td><td class="right">   * C is for DOTS client functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   * S is for DOTS server functionality</td><td> </td><td class="right">   * S is for DOTS server functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Figure 5: DDoS Mitigation Based on Attack Type</td><td> </td><td class="right">   Figure 5: DDoS Mitigation Based on Attack Type</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this use case, the forwarding nodes send statistics of traffic</td><td> </td><td class="right">   In this use case, the forwarding nodes send statistics of traffic</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   flow to the flow collectors by using a monitoring function such as</td><td> </td><td class="right">   flow to the flow collectors by using a monitoring function such as</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   IPFIX[RFC7011].  When DDoS attacks occur, the flow collectors detect</td><td> </td><td class="right">   IPFIX[RFC7011].  When DDoS attacks occur, the flow collectors detect</td><td class="lineno"></td></tr>
+      <tr id="diff0013"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   attack traffic and send (dst_ip, <span class="delete">src_port,</span> attack_type)-tuple</td><td> </td><td class="rblock">   attack traffic and send (dst_ip, attack_type)-tuple information to</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   information to the orchestrator the using <span class="delete">attack-name</span> attribute of</td><td> </td><td class="rblock">   the orchestrator the using <span class="insert">vendor-id and attack-id</span> attribute of DOTS</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   DOTS Telemetry.  The orchestrator then orders forwarding nodes to</td><td> </td><td class="rblock">   Telemetry.  The orchestrator then <span class="insert">resolves abused port and</span> orders</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   block the (dst_ip, src_port)-tuple flow of amp attack traffic by</td><td> </td><td class="rblock">   forwarding nodes to block the (dst_ip, src_port)-tuple flow of amp</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   dissemination of flow-specification-rule protocols such as BGP</td><td> </td><td class="rblock">   attack traffic by dissemination of flow-specification-rule protocols</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Flowspec[RFC5575].  On the other hand, the orchestrator orders</td><td> </td><td class="rblock">   such as BGP Flowspec[RFC5575].  On the other hand, the orchestrator</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   forwarding nodes to redirect other traffic than the amp attack</td><td> </td><td class="rblock">   orders forwarding nodes to redirect other traffic than the amp attack</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   traffic by a routing protocol such as BGP[RFC4271].</td><td> </td><td class="right">   traffic by a routing protocol such as BGP[RFC4271].</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this case, the flow collector implements a DOTS client while the</td><td> </td><td class="right">   In this case, the flow collector implements a DOTS client while the</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   orchestrator implements a DOTS server.</td><td> </td><td class="right">   orchestrator implements a DOTS server.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0014"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">3.3.  <span class="delete">Training Flow Collector Using</span> Supervised Machine Learning</td><td> </td><td class="rblock">3.3.  <span class="insert">Setting up for Detection Based on Attack Detail or Baseline</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">3.3.1.</span>  Supervised Machine Learning <span class="insert">of Flow Collector</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   DDoS detection based on monitoring functions, such as IPFIX[RFC7011],</td><td> </td><td class="right">   DDoS detection based on monitoring functions, such as IPFIX[RFC7011],</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   is a lighter weight method of detecting DDoS attacks than DMSs in</td><td> </td><td class="right">   is a lighter weight method of detecting DDoS attacks than DMSs in</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   internet transit provider networks.  On the other hand, DDoS</td><td> </td><td class="right">   internet transit provider networks.  On the other hand, DDoS</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   detection based on the DMSs is a more accurate method of detecting</td><td> </td><td class="right">   detection based on the DMSs is a more accurate method of detecting</td><td class="lineno"></td></tr>
+      <tr id="diff0015"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   <span class="delete">DDoS attacks than DDoS detection based o</span>n flow monitoring.</td><td> </td><td class="rblock">   <span class="insert">attack traffic or DDoS attacks bettr tha</span>n flow monitoring.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   The aim of this use case is to increases flow collector's detection</td><td> </td><td class="right">   The aim of this use case is to increases flow collector's detection</td><td class="lineno"></td></tr>
+      <tr id="diff0016"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   accuracy by carrying out supervised machine-learning techniques <span class="delete">based</span></td><td> </td><td class="rblock">   accuracy by carrying out supervised machine-learning techniques</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   on the detection results of</span> the DMSs.  To use such a technique,</td><td> </td><td class="rblock">   <span class="insert">according to attack detail reported by</span> the DMSs.  To use such a</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   forwarding nodes, flow collector, and a DMS should cooperate.</td><td> </td><td class="rblock">   technique, forwarding nodes, flow collector, and a DMS should</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Figure 5 gives an overview of this use case.</td><td> </td><td class="rblock">   cooperate.  Figure 5 gives an overview of this use case.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                   +-----------+</td><td> </td><td class="right">                                   +-----------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                  +-----------+| DOTS</td><td> </td><td class="right">                                  +-----------+| DOTS</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                      e.g., IPFIX | Flow      ||S&lt;---</td><td> </td><td class="right">                      e.g., IPFIX | Flow      ||S&lt;---</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                              ---&gt;| collector ||</td><td> </td><td class="right">                              ---&gt;| collector ||</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                  +-----------++</td><td> </td><td class="right">                                  +-----------++</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                   +------------+</td><td> </td><td class="right">                                   +------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                      e.g., IPFIX +------------+|</td><td> </td><td class="right">                      e.g., IPFIX +------------+|</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                              &lt;---| Forwarding ||</td><td> </td><td class="right">                              &lt;---| Forwarding ||</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-9" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-9"><em> page 11, line 44<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-9"><em> page 11, line 46<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                      |/ |/ |/</td><td> </td><td class="right">                                      |/ |/ |/</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                            DOTS  +---X--X--X--+</td><td> </td><td class="right">                            DOTS  +---X--X--X--+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                             ---&gt;C| DDoS       |</td><td> </td><td class="right">                             ---&gt;C| DDoS       |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                  | mitigation |</td><td> </td><td class="right">                                  | mitigation |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                  | system     |</td><td> </td><td class="right">                                  | system     |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                  +------------+</td><td> </td><td class="right">                                  +------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">           * C is for DOTS client functionality</td><td> </td><td class="right">           * C is for DOTS client functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">           * S is for DOTS client functionality</td><td> </td><td class="right">           * S is for DOTS client functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0017"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Figure 6: Training <span class="delete">Flow Collector Using Supervised Machine Learning</span></td><td> </td><td class="rblock">   Figure 6: Training <span class="insert">Supervised Machine Learning of Flow Collector</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this use case, the forwarding nodes always send statistics of</td><td> </td><td class="right">   In this use case, the forwarding nodes always send statistics of</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   traffic flow to the flow collectors by using monitoring functions</td><td> </td><td class="right">   traffic flow to the flow collectors by using monitoring functions</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   such as IPFIX[RFC7011].  When DDoS attacks occur, DDoS orchestration</td><td> </td><td class="right">   such as IPFIX[RFC7011].  When DDoS attacks occur, DDoS orchestration</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   use case[I-D.ietf-dots-use-cases] is carried out and the DMS</td><td> </td><td class="right">   use case[I-D.ietf-dots-use-cases] is carried out and the DMS</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   mitigates all attack traffic destined for a target.  The DDoS-</td><td> </td><td class="right">   mitigates all attack traffic destined for a target.  The DDoS-</td><td class="lineno"></td></tr>
+      <tr id="diff0018"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   mitigation system reports the <span class="delete">(src_ip, dst_ip)-tuple information of</span></td><td> </td><td class="rblock">   mitigation system reports the <span class="insert">vendor-id, attack-id and top-talker</span> to</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   the top talker</span> to the <span class="delete">orchestrator the</span> using <span class="delete">top-talkers attribute of</span></td><td> </td><td class="rblock">   the <span class="insert">flow collector</span> using DOTS <span class="insert">telemetry.</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   DOTS <span class="delete">Telemetry.</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   After mitigating a DDoS attack, the flow collector attaches teacher</td><td> </td><td class="right">   After mitigating a DDoS attack, the flow collector attaches teacher</td><td class="lineno"></td></tr>
+      <tr id="diff0019"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   <span class="delete">labels</span> to the statistics of traffic flow based on the reports.  The</td><td> </td><td class="rblock">   <span class="insert">labels, which shows normal traffic or attack type,</span> to the statistics</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   <span class="delete">label shows normal traffic or attack name.  The</span> flow collector then</td><td> </td><td class="rblock">   of traffic flow <span class="insert">of top-talker</span> based on the reports.  The flow</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   carries out supervised machine learning to increase its detection</td><td> </td><td class="rblock">   collector then carries out supervised machine learning to increase</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   accuracy, setting the statistics as an explanatory variable and</td><td> </td><td class="rblock">   its detection accuracy, setting the statistics as an explanatory</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   setting the labels as an objective variable.</td><td> </td><td class="rblock">   variable and setting the labels as an objective variable.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">                                                                         </td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">   <span class="insert">In this case, the DMS implements a DOTS client while the flow</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   collector implements a DOTS server.</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">3.3.2.  Unsupervised Machine Learning of Flow Collector</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   DMSs can detect DDoS attack traffic, which means DMSs can also</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   identify clean traffic.  The aim of this use case is to carry out</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   unsupervised machine-learning for anomarly detection according to</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   baseline reported by DMSs.  To use such a technique, forwarding</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   nodes, flow collector, and a DMS should cooperate.  Figure 7 gives an</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   overview of this use case.</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                                 +-----------+</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                                +-----------+|</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                           DOTS | Flow      ||</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                           ---&gt;S| collector ||</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                                +-----------++</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                                 +------------+</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                                +------------+|</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                                | Forwarding ||</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                                |    nodes   ||             Traffic</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   [ Dst ] &lt;========================++==============================</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                                |   ||       ||</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                                |   ||       |+</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                                +---||-------+</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                                    ||</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                                    |/</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                          DOTS  +---X--------+</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                           ---&gt;C| DDoS       |</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                                | mitigation |</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                                | system     |</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                                +------------+</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">         * C is for DOTS client functionality</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">         * S is for DOTS client functionality</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   Figure 7: Training Unsupervised Machine Learning of Flow Collector</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   In this use case, the forwarding nodes carry out mirroring traffic</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   destined a dst ip address.  The DMS then identifies clean traffic and</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   reports the baseline attributes to the flow collector using DOTS</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   telemetry.</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   The flow collector then carries out unsupervised machine learning to</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   be able to carry out anomarly detection.</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this case, the DMS implements a DOTS client while the flow</td><td> </td><td class="right">   In this case, the DMS implements a DOTS client while the flow</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   collector implements a DOTS server.</td><td> </td><td class="right">   collector implements a DOTS server.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">4.  Security Considerations</td><td> </td><td class="right">4.  Security Considerations</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   TBD</td><td> </td><td class="right">   TBD</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">5.  IANA Considerations</td><td> </td><td class="right">5.  IANA Considerations</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   This document does not require any action from IANA.</td><td> </td><td class="right">   This document does not require any action from IANA.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">6.  Acknowledgement</td><td> </td><td class="right">6.  Acknowledgement</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0020"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   T<span class="delete">he authors would like to thank among others brabra...</span></td><td> </td><td class="rblock">   T<span class="insert">BD</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">7.  References</td><td> </td><td class="right">7.  References</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">7.1.  Normative References</td><td> </td><td class="right">7.1.  Normative References</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   [I-D.ietf-dots-telemetry]</td><td> </td><td class="right">   [I-D.ietf-dots-telemetry]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">              Boucadair, M., Reddy.K, T., Doron, E., chenmeiling, c.,</td><td> </td><td class="right">              Boucadair, M., Reddy.K, T., Doron, E., chenmeiling, c.,</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">              and J. Shallow, "Distributed Denial-of-Service Open Threat</td><td> </td><td class="right">              and J. Shallow, "Distributed Denial-of-Service Open Threat</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">              Signaling (DOTS) Telemetry", draft-ietf-dots-telemetry-11</td><td> </td><td class="right">              Signaling (DOTS) Telemetry", draft-ietf-dots-telemetry-11</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">              (work in progress), July 2020.</td><td> </td><td class="right">              (work in progress), July 2020.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-10" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-10"><em> page 14, line 4<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-10"><em> page 15, line 29<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">Authors' Addresses</td><td> </td><td class="right">Authors' Addresses</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Yuhei Hayashi</td><td> </td><td class="right">   Yuhei Hayashi</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   NTT</td><td> </td><td class="right">   NTT</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   3-9-11, Midori-cho</td><td> </td><td class="right">   3-9-11, Midori-cho</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Musashino-shi, Tokyo  180-8585</td><td> </td><td class="right">   Musashino-shi, Tokyo  180-8585</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Japan</td><td> </td><td class="right">   Japan</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Email: yuuhei.hayashi@gmail.com</td><td> </td><td class="right">   Email: yuuhei.hayashi@gmail.com</td><td class="lineno"></td></tr>
+      <tr id="diff0021"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                                                                         </span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Meiling Chen</td><td> </td><td class="right">   Meiling Chen</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   CMCC</td><td> </td><td class="right">   CMCC</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   32, Xuanwumen West</td><td> </td><td class="right">   32, Xuanwumen West</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   BeiJing, BeiJing  100053</td><td> </td><td class="right">   BeiJing, BeiJing  100053</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   China</td><td> </td><td class="right">   China</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0022"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Email:</td><td> </td><td class="rblock">   Email: chenmeiling@chinamobile.com</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            chenmeiling@chinamobile.com</td><td> </td><td class="rblock">                                                                         </td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">   <span class="insert">Li Su</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   CMCC</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   32, Xuanwumen West</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   BeiJing   100053</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   China</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   Email: suli@chinamobile.com</span></td><td class="lineno"></td></tr>
+
+     <tr><td></td><td class="left"></td><td> </td><td class="right"></td><td></td></tr>
+     <tr id="end" bgcolor="gray"><th colspan="5" align="center">&nbsp;End of changes. 22 change blocks.&nbsp;</th></tr>
+     <tr class="stats"><td></td><th><i>72 lines changed or deleted</i></th><th><i> </i></th><th><i>132 lines changed or added</i></th><td></td></tr>
+     <tr><td colspan="5" align="center" class="small"><br>This html diff was produced by rfcdiff 1.48. The latest version is available from <a href="http://www.tools.ietf.org/tools/rfcdiff/">http://tools.ietf.org/tools/rfcdiff/</a> </td></tr>
+   </tbody></table>
+   
+   
+</body></html>

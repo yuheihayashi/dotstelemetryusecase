@@ -102,7 +102,7 @@
         </email>
       </address>
     </author>
-    <date day="14" month="September" year="2020" />
+    <date day="13" month="November" year="2020" />
     <area>Security Area</area>
     <workgroup>DOTS</workgroup>
     <keyword>Internet-Draft</keyword>
@@ -320,7 +320,6 @@ Figure 3: Best-path Selection for Redirection
             In this use case, the forwarding nodes always send statistics of traffic flow to the flow collectors by using monitoring functions such as IPFIX<xref target="RFC7011" />.
             When DDoS attacks occur, the flow collectors detect attack traffic and send (dst_ip, bandwidth)-tuple information to the orchestrator using a target-prefix and total-attack-traffic attribute of DOTS Telemetry.
             On the other hands, forwarding nodes send bandwidth of total traffic passing the node and total pipe capability to the orchestrator using total-traffic and total-pipe-capability attributes of DOTS Telemetry.
-            /memo/ How does orchestrator resolve remaing link capacity? Using IPFIX and total-pipe-capability attributes of DOTS telemetry? Why not using SNMP?/memo/
             The orchestrator then selects an optimal path to which each attack-traffic flow should be redirected.
             After that, the orchestrator orders forwarding nodes to redirect the attack traffic to the optimal DMS by dissemination of flow-specification-rules protocols such as BGP Flowspec<xref target="RFC5575" />.
             The algorithm of selecting a path is out of the scope of this draft.
@@ -373,7 +372,6 @@ Figure 4: Short but Extreme Volumetric Attack Mitigation
             It then sends the target ip address, pipe capability of the target's link, and bandwidth of the DDoS attack traffic to the administrative system using the target-prefix, total-pipe-capability and total-attack-traffic attributes of DOTS Telemetry.
             After that, the administrative system orders upper forwarding nodes to carry out rate-limit all traffic destined to the target based on the pipe capability by the dissemination of the flow-specification-rules protocols such as BGP Flowspec<xref target="RFC5575" />.
             In addition, the administrative system estimates the network-access success rate of the target, which is calculated by total pipe capability / (total pipe capability + total attack traffic).
-            //memo Is the network access success rate really effective metric to operate network in China Mobile?
           </t>
         </section>
       </section>

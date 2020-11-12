@@ -378,13 +378,13 @@ Internet-Draft          DOTS Telemetry Use Cases          September 2020
    attribute of DOTS Telemetry.  On the other hands, forwarding nodes
    send bandwidth of total traffic passing the node and total pipe
    capability to the orchestrator using total-traffic and total-pipe-
-   capability attributes of DOTS Telemetry.  /memo/ How does
-   orchestrator resolve remaing link capacity?  Using IPFIX and total-
-   pipe-capability attributes of DOTS telemetry?  Why not using
-   SNMP?/memo/ The orchestrator then selects an optimal path to which
-   each attack-traffic flow should be redirected.  After that, the
-   orchestrator orders forwarding nodes to redirect the attack traffic
-   to the optimal DMS by dissemination of flow-specification-rules
+   capability attributes of DOTS Telemetry.  The orchestrator then
+   selects an optimal path to which each attack-traffic flow should be
+   redirected.  After that, the orchestrator orders forwarding nodes to
+   redirect the attack traffic to the optimal DMS by dissemination of
+   flow-specification-rules protocols such as BGP Flowspec[RFC5575].
+   The algorithm of selecting a path is out of the scope of this draft.
+
 
 
 
@@ -393,9 +393,6 @@ Hayashi, et al.          Expires March 18, 2021                 [Page 7]
 
 Internet-Draft          DOTS Telemetry Use Cases          September 2020
 
-
-   protocols such as BGP Flowspec[RFC5575].  The algorithm of selecting
-   a path is out of the scope of this draft.
 
 3.1.4.  Short but Extreme Volumetric Attack Mitigation
 
@@ -442,6 +439,9 @@ Internet-Draft          DOTS Telemetry Use Cases          September 2020
    system receives alerts.  It then sends the target ip address, pipe
    capability of the target's link, and bandwidth of the DDoS attack
    traffic to the administrative system using the target-prefix, total-
+   pipe-capability and total-attack-traffic attributes of DOTS
+   Telemetry.  After that, the administrative system orders upper
+   forwarding nodes to carry out rate-limit all traffic destined to the
 
 
 
@@ -450,16 +450,11 @@ Hayashi, et al.          Expires March 18, 2021                 [Page 8]
 Internet-Draft          DOTS Telemetry Use Cases          September 2020
 
 
-   pipe-capability and total-attack-traffic attributes of DOTS
-   Telemetry.  After that, the administrative system orders upper
-   forwarding nodes to carry out rate-limit all traffic destined to the
    target based on the pipe capability by the dissemination of the flow-
    specification-rules protocols such as BGP Flowspec[RFC5575].  In
    addition, the administrative system estimates the network-access
    success rate of the target, which is calculated by total pipe
-   capability / (total pipe capability + total attack traffic).  //memo
-   Is the network access success rate really effective metric to operate
-   network in China Mobile?
+   capability / (total pipe capability + total attack traffic).
 
 3.2.  DDoS Mitigation Based on Attack Type
 
@@ -480,6 +475,11 @@ Internet-Draft          DOTS Telemetry Use Cases          September 2020
    is blocked at forwarding nodes or redirected to a DMS based on attack
    type through cooperation among forwarding nodes, flow collectors, and
    an orchestrator.  Figure 5 gives an overview of this use case.
+
+
+
+
+
 
 
 
@@ -741,8 +741,8 @@ Internet-Draft          DOTS Telemetry Use Cases          September 2020
    [I-D.ietf-dots-telemetry]
               Boucadair, M., Reddy.K, T., Doron, E., chenmeiling, c.,
               and J. Shallow, "Distributed Denial-of-Service Open Threat
-              Signaling (DOTS) Telemetry", draft-ietf-dots-telemetry-11
-              (work in progress), July 2020.
+              Signaling (DOTS) Telemetry", draft-ietf-dots-telemetry-13
+              (work in progress), October 2020.
 
    [I-D.ietf-dots-use-cases]
               Dobbins, R., Migault, D., Moskowitz, R., Teague, N., Xia,

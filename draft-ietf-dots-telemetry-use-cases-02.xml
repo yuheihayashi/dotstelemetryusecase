@@ -126,7 +126,8 @@
       <t>
         DDoS Open Threat Signaling (DOTS) is a set of protocols for real-time signaling, threat-handling requests, and data filtering between the multi-vendor elements <xref target="I-D.ietf-dots-signal-channel" /><xref target="I-D.ietf-dots-data-channel" />.
         Furthermore, DOTS Telemetry enriches the DOTS protocols with various telemetry attributes allowing optimal DDoS-attack mitigation <xref target="I-D.ietf-dots-telemetry" />.
-        This document presents sample use cases for DOTS Telemetry: what components are deployed in the network, how they cooperate, and what information is exchanged to effectively use attack-mitigation techniques.
+        This document presents sample use cases for DOTS Telemetry, which embodies overview and purpose described in <xref target="I-D.ietf-dots-telemetry" />: what components are deployed in the network, how they cooperate, and what information is exchanged to effectively use attack-mitigation techniques.
+
       </t>
     </section>
     <section anchor="section_terms" title="Terminology">
@@ -377,7 +378,63 @@ Figure 4: Short but Extreme Volumetric Attack Mitigation
         </section>
       </section>
       <section anchor="section_ddos_detailed_mitigation_report" title="Detailed DDoS Mitigation Report">
+        <t>
+          It is possible for the transit provider to add value to the DDoS mitigation service by reporting on-going and detailed DDoS countermeasure status to the subscriber.
+          In addition, it is possible for the transit provider to know whether the DDoS counter measure is effective or not by receiving reports from the subscriber.
+        </t>
+        <t>
+          The aim of this use case is to share the information about on-going DDoS counter measure between the transit provider and subscriber mutually.
+          Figure 5 gives an overview of this use case.
+        </t>
+        <t>
+          <figure align="center">
+            <artwork><![CDATA[
+  +------------------+      +----------------------------+
+  | Subscriber       |      |    Upstream                |
+  | Network          |      |    Internet Transit        |
+  |  +------------+  |      |    Provider                |
+  |  | Network    |  |      |       +--------------+     |
+  |  | Management |C<----DOTS----->S| Orchestrator |     |
+  |  | System     |  |      |       +--------------+     |
+  |  +------------+  |      |        S ^        ^ S      |
+  |                  |      |          |  DOTS  |        |
+  |                  |      |        C v        v C      |
+  |                  |      |  +-----------+  +------+   |
+  |                  |      |  | Flow      | +------+| DDoS Attack
+  |                  |      |  | collector | | DMS  |+=======
+  |                  |      |  +-----------+ +------+    |
+  |                  |      |     ^ e.g,      || Clean   |
+  |                  |      |     | IPFIX     |/ Traffic |
+  |  +---------+     |      |   +----------------+       |
+  |  | DDoS    |     |      |   | Forwarding     | Normal Traffic
+  |  | Target  |<===============| Node           |========
+  |  +---------+     | Link |   +----------------+       |
+  +------------------+      +----------------------------+
 
+* C is for DOTS client functionality
+* S is for DOTS server functionality
+
+Figure 5: Detailed DDoS Mitigation Report
+
+            ]]></artwork>
+          </figure>
+        </t>
+        <t>
+          In this use case, network managements system in subscriber network reports limits of incoming traffic volume from transit provider to the orchestrator in the transit provider in advance.
+          It is reported by using total-pipe-capacity in DOTS telemetry.
+          In addition, forwarding nodes in the transit providers sends IPFIX to the flow collector and the collector sends traffic volume destined the subscriber network.
+          It is reported by using total-traffic in DOTS telemetry.
+        </t>
+        <t>
+          When DDoS attacks occurs, the transit provider carries out DDoS counter measure after receiving requests from subscriber of DDoS mitigation service by using DOTS signal channel.
+          Then, the orchestrator checks whether the DDoS counter measure is effective or not by comparing the total-pipe-capacity and total-pipe-capacity.
+          Furthermore, during the DDoS mitigation, DDoS mitigation systems in the transit provider report status of DDoS counter measure to the orchestrator by using DOTS telemetry such as attack-detail.
+          Then, the orchestrator integrates the reports from DDoS mitigation systems, while removing duplicate contents, and send it to network management system by using DOTS telemetry.
+        </t>
+        <t>
+          In this case, the DMS and the flow collector implements a DOTS client while the orchestrator implements a DOTS server in the transit provider.
+          In addition, the network management system implements a DOTS client.
+        </t>
       </section>
       <section anchor="section_use_cases_dms_tuning" title="Tuning Mitigation Resources">
         <section anchor="section_use_cases_ddos_detection_training" title="Supervised Machine Learning of Flow Collector">
@@ -388,7 +445,7 @@ Figure 4: Short but Extreme Volumetric Attack Mitigation
           <t>
             The aim of this use case is to increases flow collector's detection accuracy by carrying out supervised machine-learning techniques according to attack detail reported by the DMSs.
             To use such a technique, forwarding nodes, flow collector, and a DMS should cooperate.
-            Figure 5 gives an overview of this use case.
+            Figure 6 gives an overview of this use case.
           </t>
           <t>
             <figure align="center">

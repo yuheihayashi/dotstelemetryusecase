@@ -156,7 +156,7 @@
         This section describes DOTS-Telemetry use cases that use attributes included in DOTS Telemetry specifications.
       </t>
       </section>
-      <section anchor="section_use_cases_ddos_mitigation_optimal_resource_assign" title="Mitigation Resources Assginment">
+      <section anchor="section_use_cases_ddos_mitigation_optimal_resource_assign" title="Mitigation Resources Assignment">
         <section anchor="section_use_cases_ddos_mitigation_bandwidth_top-talker" title="Mitigating Attack Flow of Top-talker Preferentially">
           <t>
             Large-scale DDoS attacks, such as amplification attacks, often occur. Some transit providers have to mitigate large-scale DDoS attacks using DMS with limited resources, which is already deployed in their network.
@@ -357,7 +357,7 @@ Pipe        +------------+     +------------+  Attack Traffic
 Capability                                     Bandwidth
 e.g., X bps                                    e.g., Y bps
 
-                    Network access success ratentt
+                    Network access success rate
                         e.g., X / (X + Y)
 
 * C is for DOTS client functionality
@@ -439,7 +439,7 @@ Figure 5: Detailed DDoS Mitigation Report
         <section anchor="section_use_cases_ddos_detection_training" title="Supervised Machine Learning of Flow Collector">
           <t>
             DDoS detection based on monitoring functions, such as IPFIX<xref target="RFC7011" />, is a lighter weight method of detecting DDoS attacks than DMSs in internet transit provider networks.
-            On the other hand, DDoS detection based on the DMSs is a more accurate method of detecting attack traffic or DDoS attacks bettr than flow monitoring.
+            On the other hand, DDoS detection based on the DMSs is a more accurate method of detecting attack traffic or DDoS attacks better than flow monitoring.
           </t>
           <t>
             The aim of this use case is to increases flow collector's detection accuracy by carrying out supervised machine-learning techniques according to attack detail reported by the DMSs.
@@ -495,7 +495,7 @@ Figure 6: Training Supervised Machine Learning of Flow Collector
       <section anchor="section_use_cases_tuning_threshold" title="Unsupervised Machine Learning of Flow Collector">
         <t>
           DMSs can detect DDoS attack traffic, which means DMSs can also identify clean traffic.
-          The aim of this use case is to carry out unsupervised machine-learning for anomarly detection according to baseline reported by DMSs.
+          The aim of this use case is to carry out unsupervised machine-learning for anomaly detection according to baseline reported by DMSs.
           To use such a technique, forwarding nodes, flow collector, and a DMS should cooperate.
           Figure 7 gives an overview of this use case.
         </t>
@@ -537,7 +537,7 @@ Figure 7: Training Unsupervised Machine Learning of Flow Collector
           The DMS then identifies clean traffic and reports the baseline attributes to the flow collector using DOTS telemetry.
         </t>
         <t>
-          The flow collector then carries out unsupervised machine learning to be able to carry out anomarly detection.
+          The flow collector then carries out unsupervised machine learning to be able to carry out anomaly detection.
         </t>
         <t>
           In this case, the DMS implements a DOTS client while the flow collector implements a DOTS server.

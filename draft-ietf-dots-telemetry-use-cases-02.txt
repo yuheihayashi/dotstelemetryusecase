@@ -67,7 +67,7 @@ Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   3
    3.  Use Cases . . . . . . . . . . . . . . . . . . . . . . . . . .   3
-   4.  Mitigation Resources Assginment . . . . . . . . . . . . . . .   3
+   4.  Mitigation Resources Assignment . . . . . . . . . . . . . . .   3
      4.1.  Mitigating Attack Flow of Top-talker Preferentially . . .   3
      4.2.  Optimal DMS Selection for Mitigation  . . . . . . . . . .   5
      4.3.  Best-path Selection for Redirection . . . . . . . . . . .   6
@@ -139,7 +139,7 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    This section describes DOTS-Telemetry use cases that use attributes
    included in DOTS Telemetry specifications.
 
-4.  Mitigation Resources Assginment
+4.  Mitigation Resources Assignment
 
 4.1.  Mitigating Attack Flow of Top-talker Preferentially
 
@@ -426,7 +426,7 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    Capability                                     Bandwidth
    e.g., X bps                                    e.g., Y bps
 
-                       Network access success ratentt
+                       Network access success rate
                            e.g., X / (X + Y)
 
    * C is for DOTS client functionality
@@ -536,7 +536,7 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    is a lighter weight method of detecting DDoS attacks than DMSs in
    internet transit provider networks.  On the other hand, DDoS
    detection based on the DMSs is a more accurate method of detecting
-   attack traffic or DDoS attacks bettr than flow monitoring.
+   attack traffic or DDoS attacks better than flow monitoring.
 
    The aim of this use case is to increases flow collector's detection
    accuracy by carrying out supervised machine-learning techniques
@@ -622,7 +622,7 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
 
    DMSs can detect DDoS attack traffic, which means DMSs can also
    identify clean traffic.  The aim of this use case is to carry out
-   unsupervised machine-learning for anomarly detection according to
+   unsupervised machine-learning for anomaly detection according to
    baseline reported by DMSs.  To use such a technique, forwarding
    nodes, flow collector, and a DMS should cooperate.  Figure 7 gives an
    overview of this use case.
@@ -661,7 +661,7 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    telemetry.
 
    The flow collector then carries out unsupervised machine learning to
-   be able to carry out anomarly detection.
+   be able to carry out anomaly detection.
 
    In this case, the DMS implements a DOTS client while the flow
    collector implements a DOTS server.

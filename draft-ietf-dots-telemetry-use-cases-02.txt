@@ -100,12 +100,12 @@ Table of Contents
 
    DDoS Open Threat Signaling (DOTS) is a set of protocols for real-time
    signaling, threat-handling requests, and data filtering between the
-   multi-vendor elements
-   [I-D.ietf-dots-signal-channel][I-D.ietf-dots-data-channel].
-   Furthermore, DOTS Telemetry enriches the DOTS protocols with various
-   telemetry attributes allowing optimal DDoS-attack mitigation
+   multi-vendor elements [RFC8782][RFC8783].  Furthermore, DOTS
+   Telemetry enriches the DOTS protocols with various telemetry
+   attributes allowing optimal DDoS-attack mitigation
    [I-D.ietf-dots-telemetry].  This document presents sample use cases
-   for DOTS Telemetry, which embodies overview and purpose described in
+   for DOTS Telemetry, which makes concrete overview and purpose
+   described in [I-D.ietf-dots-telemetry]: what components are deployed
 
 
 
@@ -114,9 +114,8 @@ Hayashi, et al.         Expires December 4, 2021                [Page 2]
 Internet-Draft          DOTS Telemetry Use Cases               June 2021
 
 
-   [I-D.ietf-dots-telemetry]: what components are deployed in the
-   network, how they cooperate, and what information is exchanged to
-   effectively use attack-mitigation techniques.
+   in the network, how they cooperate, and what information is exchanged
+   to effectively use attack-mitigation techniques.
 
 2.  Terminology
 
@@ -155,6 +154,7 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    traffic of top talkers is redirected to the DMS preferentially by
    cooperation among forwarding nodes, flow collectors, and
    orchestrators.  Figure 1 gives an overview of this use case.
+
 
 
 
@@ -460,35 +460,35 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
 
    It is possible for the transit provider to add value to the DDoS
    mitigation service by reporting on-going and detailed DDoS
-   countermeasure status to the subscriber.  In addition, it is possible
-   for the transit provider to know whether the DDoS counter measure is
-   effective or not by receiving reports from the subscriber.
+   countermeasure status to the enterprise network.  In addition, it is
+   possible for the transit provider to know whether the DDoS counter
+   measure is effective or not by receiving reports from the enterprise
+   network.
 
    The aim of this use case is to share the information about on-going
-   DDoS counter measure between the transit provider and subscriber
-   mutually.  Figure 5 gives an overview of this use case.
+   DDoS counter measure between the transit provider and the enterprise
+   network mutually.  Figure 5 gives an overview of this use case.
 
-     +------------------+      +----------------------------+
-     | Subscriber       |      |    Upstream                |
-     | Network          |      |    Internet Transit        |
-     |  +------------+  |      |    Provider                |
-     |  | Network    |  |      |       +--------------+     |
-     |  | Management |C<----DOTS----->S| Orchestrator |     |
-     |  | System     |  |      |       +--------------+     |
-     |  +------------+  |      |        S ^        ^ S      |
-     |                  |      |          |  DOTS  |        |
-     |                  |      |        C v        v C      |
-     |                  |      |  +-----------+  +------+   |
-     |                  |      |  | Flow      | +------+| DDoS Attack
-     |                  |      |  | collector | | DMS  |+=======
-     |                  |      |  +-----------+ +------+    |
-     |                  |      |     ^ e.g,      || Clean   |
-     |                  |      |     | IPFIX     |/ Traffic |
-     |  +---------+     |      |   +----------------+       |
-     |  | DDoS    |     |      |   | Forwarding     | Normal Traffic
-     |  | Target  |<===============| Node           |========
-     |  +---------+     | Link |   +----------------+       |
-     +------------------+      +----------------------------+
+     +------------------+      +------------------------+
+     | Enterprise       |      |    Upstream            |
+     | Network          |      |    Internet Transit    |
+     |  +------------+  |      |    Provider            |
+     |  | Network    |C |      |   S+--------------+    |
+     |  | admini-    |<----DOTS---->| Orchestrator |    |
+     |  | strator    |  |      |    +--------------+    |
+     |  +------------+  |      |         C ^            |
+     |                  |      |           | DOTS       |
+     |                  |      |         S v            |
+     |                  |      |    +---------------+ DDoS Attack
+     |                  |      |    |      DMS      |+=======
+     |                  |      |    +---------------+   |
+     |                  |      |           || Clean     |
+     |                  |      |           |/ Traffic   |
+     |  +---------+     |      |   +---------------+    |
+     |  | DDoS    |     |      |   | Forwarding    | Normal Traffic
+     |  | Target  |<===============| Node          |========
+     |  +---------+     | Link |   +---------------+    |
+     +------------------+      +------------------------+
 
    * C is for DOTS client functionality
    * S is for DOTS server functionality
@@ -496,8 +496,8 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    Figure 5: Detailed DDoS Mitigation Report
 
 
-   In this use case, network managements system in subscriber network
-   reports limits of incoming traffic volume from transit provider to
+   In this use case, the network managements system in the enterprise
+   network reports limits of incoming traffic volume from transit
 
 
 
@@ -506,29 +506,27 @@ Hayashi, et al.         Expires December 4, 2021                [Page 9]
 Internet-Draft          DOTS Telemetry Use Cases               June 2021
 
 
-   the orchestrator in the transit provider in advance.  It is reported
-   by using total-pipe-capacity in DOTS telemetry.  In addition,
-   forwarding nodes in the transit providers sends IPFIX to the flow
-   collector and the collector sends traffic volume destined the
-   subscriber network.  It is reported by using total-traffic in DOTS
-   telemetry.
+   provider to the orchestrator in the transit provider in advance.  It
+   is reported by using total-pipe-capacity in DOTS telemetry.
 
-   When DDoS attacks occurs, the transit provider carries out DDoS
-   counter measure after receiving requests from subscriber of DDoS
-   mitigation service by using DOTS signal channel.  Then, the
-   orchestrator checks whether the DDoS counter measure is effective or
-   not by comparing the total-pipe-capacity and total-pipe-capacity.
-   Furthermore, during the DDoS mitigation, DDoS mitigation systems in
-   the transit provider report status of DDoS counter measure to the
-   orchestrator by using DOTS telemetry such as attack-detail.  Then,
-   the orchestrator integrates the reports from DDoS mitigation systems,
-   while removing duplicate contents, and send it to network management
-   system by using DOTS telemetry.
+   When DDoS attacks occurs, DDoS Orchestration [RFC8903] is carried out
+   in the transit provider.  Then, the DDoS mitigation systems reports
+   status of DDoS counter measure to the orchestrator by using DOTS
+   telemetry such as attack-detail.  After that, the orchestrator
+   integrates the reports from the DDoS mitigation system, while
+   removing duplicate contents, and send it to network administrator by
+   using DOTS telemetry periodically.
 
-   In this case, the DMS and the flow collector implements a DOTS client
-   while the orchestrator implements a DOTS server in the transit
-   provider.  In addition, the network management system implements a
-   DOTS client.
+   During the DDoS mitigation, the orchestrator in the transit provider
+   retrieves link congestion status from the network administrator in
+   the enterprise network by using total-traffic in DOTS telemetry.
+   Then, the orchestrator checks whether DDoS countermeasure is
+   effective or not by comparing the total-traffic and the total-pipe-
+   capacity.
+
+   In this case, the DMS implements a DOTS server while the orchestrator
+   implements a DOTS client and server in the transit provider.  In
+   addition, the network administrator implements a DOTS client.
 
 6.  Tuning Mitigation Resources
 
@@ -545,6 +543,8 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    according to attack detail reported by the DMSs.  To use such a
    technique, forwarding nodes, flow collector, and a DMS should
    cooperate.  Figure 6 gives an overview of this use case.
+
+
 
 
 
@@ -592,10 +592,10 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    In this use case, the forwarding nodes always send statistics of
    traffic flow to the flow collectors by using monitoring functions
    such as IPFIX[RFC7011].  When DDoS attacks occur, DDoS orchestration
-   use case[I-D.ietf-dots-use-cases] is carried out and the DMS
-   mitigates all attack traffic destined for a target.  The DDoS-
-   mitigation system reports the vendor-id, attack-id and top-talker to
-   the flow collector using DOTS telemetry.
+   use case[RFC8903] is carried out and the DMS mitigates all attack
+   traffic destined for a target.  The DDoS-mitigation system reports
+   the vendor-id, attack-id and top-talker to the flow collector using
+   DOTS telemetry.
 
    After mitigating a DDoS attack, the flow collector attaches teacher
    labels, which shows normal traffic or attack type, to the statistics
@@ -696,12 +696,6 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
               Signaling (DOTS) Telemetry", draft-ietf-dots-telemetry-15
               (work in progress), December 2020.
 
-   [I-D.ietf-dots-use-cases]
-              Dobbins, R., Migault, D., Moskowitz, R., Teague, N., Xia,
-              L., and K. Nishizuka, "Use cases for DDoS Open Threat
-              Signaling", draft-ietf-dots-use-cases-25 (work in
-              progress), July 2020.
-
    [RFC3413]  Levi, D., Meyer, P., and B. Stewart, "Simple Network
               Management Protocol (SNMP) Applications", STD 62,
               RFC 3413, DOI 10.17487/RFC3413, December 2002,
@@ -723,6 +717,12 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
               RFC 7011, DOI 10.17487/RFC7011, September 2013,
               <https://www.rfc-editor.org/info/rfc7011>.
 
+   [RFC8612]  Mortensen, A., Reddy, T., and R. Moskowitz, "DDoS Open
+              Threat Signaling (DOTS) Requirements", RFC 8612,
+              DOI 10.17487/RFC8612, May 2019,
+              <https://www.rfc-editor.org/info/rfc8612>.
+
+
 
 
 Hayashi, et al.         Expires December 4, 2021               [Page 13]
@@ -730,25 +730,23 @@ Hayashi, et al.         Expires December 4, 2021               [Page 13]
 Internet-Draft          DOTS Telemetry Use Cases               June 2021
 
 
-   [RFC8612]  Mortensen, A., Reddy, T., and R. Moskowitz, "DDoS Open
-              Threat Signaling (DOTS) Requirements", RFC 8612,
-              DOI 10.17487/RFC8612, May 2019,
-              <https://www.rfc-editor.org/info/rfc8612>.
+   [RFC8903]  Dobbins, R., Migault, D., Moskowitz, R., Teague, N., Xia,
+              L., and K. Nishizuka, "Use Cases for DDoS Open Threat
+              Signaling", RFC 8903, DOI 10.17487/RFC8903, May 2021,
+              <https://www.rfc-editor.org/info/rfc8903>.
 
 10.2.  Informative References
 
-   [I-D.ietf-dots-data-channel]
-              Boucadair, M. and T. Reddy, "Distributed Denial-of-Service
-              Open Threat Signaling (DOTS) Data Channel Specification",
-              draft-ietf-dots-data-channel-31 (work in progress), July
-              2019.
+   [RFC8782]  Reddy.K, T., Ed., Boucadair, M., Ed., Patil, P.,
+              Mortensen, A., and N. Teague, "Distributed Denial-of-
+              Service Open Threat Signaling (DOTS) Signal Channel
+              Specification", RFC 8782, DOI 10.17487/RFC8782, May 2020,
+              <https://www.rfc-editor.org/info/rfc8782>.
 
-   [I-D.ietf-dots-signal-channel]
-              Reddy, T., Boucadair, M., Patil, P., Mortensen, A., and N.
-              Teague, "Distributed Denial-of-Service Open Threat
-              Signaling (DOTS) Signal Channel Specification", draft-
-              ietf-dots-signal-channel-41 (work in progress), January
-              2020.
+   [RFC8783]  Boucadair, M., Ed. and T. Reddy.K, Ed., "Distributed
+              Denial-of-Service Open Threat Signaling (DOTS) Data
+              Channel Specification", RFC 8783, DOI 10.17487/RFC8783,
+              May 2020, <https://www.rfc-editor.org/info/rfc8783>.
 
 Authors' Addresses
 
@@ -777,6 +775,8 @@ Authors' Addresses
    China
 
    Email: suli@chinamobile.com
+
+
 
 
 

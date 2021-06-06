@@ -155,7 +155,6 @@
       <t>
         This section describes DOTS-Telemetry use cases that use attributes included in DOTS Telemetry specifications.
       </t>
-      </section>
       <section anchor="section_use_cases_ddos_mitigation_optimal_resource_assign" title="Mitigation Resources Assignment">
         <section anchor="section_use_cases_ddos_mitigation_bandwidth_top-talker" title="Mitigating Attack Flow of Top-talker Preferentially">
           <t>
@@ -375,7 +374,64 @@ Figure 4: Short but Extreme Volumetric Attack Mitigation
             In addition, the administrative system estimates the network-access success rate of the target, which is calculated by total pipe capability / (total pipe capability + total attack traffic).
           </t>
         </section>
-      </section>
+          <section anchor="section_use_cases_ddos_mitigation_attack_type_techniqueselection" title="Selecting Mitigation Technique Based on Attack Type">
+            <t>
+              Some volumetric attacks, such as amplification attacks, can be detected with high accuracy by checking the layer-3 or layer-4 information of attack packets.
+              These attacks can be detected and mitigated through cooperation among forwarding nodes and flow collectors using IPFIX<xref target="RFC7011" />.
+              On the other hand, it is necessary to inspect the layer-7 information of attack packets to detect attacks such as DNS Water Torture Attacks.
+              Such attack traffic should be detected and mitigated at a DMS.
+            </t>
+            <t>
+              The aim of this use case is to enable transit providers to select a mitigation technique based on the type of attack traffic: amplification attack or not.
+              To use such a technique, attack traffic is blocked at forwarding nodes or redirected to a DMS based on attack type through cooperation among forwarding nodes, flow collectors, and an orchestrator.
+              Figure 5 gives an overview of this use case.
+            </t>
+            <t>
+              <figure align="center">
+                <artwork><![CDATA[
+  (Internet Transit Provider)
+
+           +-----------+ DOTS +--------------+ e.g.,
+    e.g., +-----------+|<---->|              | BGP (Redirect)
+    IPFIX | Flow      ||C    S| Orchestrator | BGP Flowspec (Drop)
+      --->| collector |+      |              |--->
+          +-----------+       +--------------+
+
+                      +------------+ e.g., BGP (Redirect)
+         e.g., IPFIX +------------+|       BGP Flowspec (Drop)
+                 <---| Forwarding ||<---
+                     |    nodes   ||              DDoS Attack
+                     |     ++=====||================
+                     |     ||     ||x<==============[e.g.,DNS Amp]
+                     |     ||     |+x<==============[e.g.,NTP Amp]
+                     +-----||-----+
+                           ||
+                           |/
+                     +-----x------+
+                     | DDoS       |
+                     | mitigation |
+                     | system     |
+                     +------------+
+
+  * C is for DOTS client functionality
+  * S is for DOTS server functionality
+
+  Figure 5: DDoS Mitigation Based on Attack Type
+
+                ]]></artwork>
+            </figure>
+          </t>
+          <t>
+            In this use case, the forwarding nodes send statistics of traffic flow to the flow collectors by using a monitoring function such as IPFIX<xref target="RFC7011" />.
+            When DDoS attacks occur, the flow collectors detect attack traffic and send (dst_ip, attack_type)-tuple information to the orchestrator the using vendor-id and attack-id attribute of DOTS Telemetry.
+            The orchestrator then resolves abused port and orders forwarding nodes to block the (dst_ip, src_port)-tuple flow of amp attack traffic by dissemination of flow-specification-rule protocols such as BGP Flowspec<xref target="RFC5575" />.
+            On the other hand, the orchestrator orders forwarding nodes to redirect other traffic than the amp attack traffic by a routing protocol such as BGP<xref target="RFC4271" />.
+          </t>
+          <t>
+            In this case, the flow collector implements a DOTS client while the orchestrator implements a DOTS server.
+          </t>
+          </section>
+        </section>
       <section anchor="section_ddos_detailed_mitigation_report" title="Detailed DDoS Mitigation Report">
         <t>
           It is possible for the transit provider to add value to the DDoS mitigation service by reporting on-going and detailed DDoS countermeasure status to the enterprise network.
@@ -383,7 +439,7 @@ Figure 4: Short but Extreme Volumetric Attack Mitigation
         </t>
         <t>
           The aim of this use case is to share the information about on-going DDoS counter measure between the transit provider and the enterprise network mutually.
-          Figure 5 gives an overview of this use case.
+          Figure 6 gives an overview of this use case.
         </t>
         <t>
           <figure align="center">
@@ -412,7 +468,7 @@ Figure 4: Short but Extreme Volumetric Attack Mitigation
 * C is for DOTS client functionality
 * S is for DOTS server functionality
 
-Figure 5: Detailed DDoS Mitigation Report
+Figure 6: Detailed DDoS Mitigation Report
 
             ]]></artwork>
           </figure>
@@ -444,7 +500,7 @@ Figure 5: Detailed DDoS Mitigation Report
           <t>
             The aim of this use case is to increases flow collector's detection accuracy by carrying out supervised machine-learning techniques according to attack detail reported by the DMSs.
             To use such a technique, forwarding nodes, flow collector, and a DMS should cooperate.
-            Figure 6 gives an overview of this use case.
+            Figure 7 gives an overview of this use case.
           </t>
           <t>
             <figure align="center">
@@ -475,7 +531,7 @@ Figure 5: Detailed DDoS Mitigation Report
         * C is for DOTS client functionality
         * S is for DOTS client functionality
 
-Figure 6: Training Supervised Machine Learning of Flow Collector
+Figure 7: Training Supervised Machine Learning of Flow Collector
               ]]></artwork>
             </figure>
           </t>
@@ -497,7 +553,7 @@ Figure 6: Training Supervised Machine Learning of Flow Collector
           DMSs can detect DDoS attack traffic, which means DMSs can also identify clean traffic.
           The aim of this use case is to carry out unsupervised machine-learning for anomaly detection according to baseline reported by DMSs.
           To use such a technique, forwarding nodes, flow collector, and a DMS should cooperate.
-          Figure 7 gives an overview of this use case.
+          Figure 8 gives an overview of this use case.
         </t>
         <t>
           <figure align="center">
@@ -528,7 +584,7 @@ Figure 6: Training Supervised Machine Learning of Flow Collector
       * C is for DOTS client functionality
       * S is for DOTS client functionality
 
-Figure 7: Training Unsupervised Machine Learning of Flow Collector
+Figure 8: Training Unsupervised Machine Learning of Flow Collector
             ]]></artwork>
           </figure>
         </t>
@@ -543,6 +599,7 @@ Figure 7: Training Unsupervised Machine Learning of Flow Collector
           In this case, the DMS implements a DOTS client while the flow collector implements a DOTS server.
         </t>
       </section>
+    </section>
     </section>
     <section title="Security Considerations">
       <t>

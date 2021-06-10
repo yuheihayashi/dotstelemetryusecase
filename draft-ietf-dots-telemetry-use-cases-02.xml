@@ -603,7 +603,7 @@ Figure 8: Training Unsupervised Machine Learning of Flow Collector
     </section>
     <section title="Security Considerations">
       <t>
-        TBD
+        DOTS telemetry security considerations are discussed in <xref target="I-D.ietf-dots-telemetry" />. This document does not add new considerations.
       </t>
     </section>
     <section title="IANA Considerations">
@@ -613,7 +613,7 @@ Figure 8: Training Unsupervised Machine Learning of Flow Collector
     </section>
     <section title="Acknowledgement">
       <t>
-        TBD
+        The authors would like to thank among others Mohamed Boucadair for their valuable feedback.
       </t>
     </section>
   </middle>

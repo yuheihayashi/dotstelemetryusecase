@@ -788,7 +788,9 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
 
 4.  Security Considerations
 
-   TBD
+   DOTS telemetry security considerations are discussed in
+   [I-D.ietf-dots-telemetry].  This document does not add new
+   considerations.
 
 5.  IANA Considerations
 
@@ -796,7 +798,8 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
 
 6.  Acknowledgement
 
-   TBD
+   The authors would like to thank among others Mohamed Boucadair for
+   their valuable feedback.
 
 7.  References
 
@@ -829,10 +832,7 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
               RFC 7011, DOI 10.17487/RFC7011, September 2013,
               <https://www.rfc-editor.org/info/rfc7011>.
 
-   [RFC8612]  Mortensen, A., Reddy, T., and R. Moskowitz, "DDoS Open
-              Threat Signaling (DOTS) Requirements", RFC 8612,
-              DOI 10.17487/RFC8612, May 2019,
-              <https://www.rfc-editor.org/info/rfc8612>.
+
 
 
 
@@ -841,6 +841,11 @@ Hayashi, et al.         Expires December 4, 2021               [Page 15]
 
 Internet-Draft          DOTS Telemetry Use Cases               June 2021
 
+
+   [RFC8612]  Mortensen, A., Reddy, T., and R. Moskowitz, "DDoS Open
+              Threat Signaling (DOTS) Requirements", RFC 8612,
+              DOI 10.17487/RFC8612, May 2019,
+              <https://www.rfc-editor.org/info/rfc8612>.
 
    [RFC8903]  Dobbins, R., Migault, D., Moskowitz, R., Teague, N., Xia,
               L., and K. Nishizuka, "Use Cases for DDoS Open Threat
@@ -880,6 +885,19 @@ Authors' Addresses
    Email: chenmeiling@chinamobile.com
 
 
+
+
+
+
+
+
+
+
+Hayashi, et al.         Expires December 4, 2021               [Page 16]
+
+Internet-Draft          DOTS Telemetry Use Cases               June 2021
+
+
    Li Su
    CMCC
    32, Xuanwumen West
@@ -893,4 +911,42 @@ Authors' Addresses
 
 
 
-Hayashi, et al.         Expires December 4, 2021               [Page 16]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hayashi, et al.         Expires December 4, 2021               [Page 17]

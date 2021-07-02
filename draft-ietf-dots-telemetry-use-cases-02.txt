@@ -5,9 +5,9 @@
 DOTS                                                          Y. Hayashi
 Internet-Draft                                                       NTT
 Intended status: Informational                                   M. Chen
-Expires: December 4, 2021                                         Li. Su
+Expires: January 2, 2022                                          Li. Su
                                                                     CMCC
-                                                           June 02, 2021
+                                                           July 01, 2021
 
 
        Use Cases for DDoS Open Threat Signaling (DOTS) Telemetry
@@ -37,7 +37,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 4, 2021.
+   This Internet-Draft will expire on January 2, 2022.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Hayashi, et al.         Expires December 4, 2021                [Page 1]
+Hayashi, et al.          Expires January 2, 2022                [Page 1]
 
-Internet-Draft          DOTS Telemetry Use Cases               June 2021
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
    include Simplified BSD License text as described in Section 4.e of
@@ -69,21 +69,21 @@ Table of Contents
    3.  Use Cases . . . . . . . . . . . . . . . . . . . . . . . . . .   3
      3.1.  Mitigation Resources Assignment . . . . . . . . . . . . .   3
        3.1.1.  Mitigating Attack Flow of Top-talker Preferentially .   3
-       3.1.2.  Optimal DMS Selection for Mitigation  . . . . . . . .   5
-       3.1.3.  Best-path Selection for Redirection . . . . . . . . .   6
-       3.1.4.  Short but Extreme Volumetric Attack Mitigation  . . .   8
-       3.1.5.  Selecting Mitigation Technique Based on Attack Type .   9
-     3.2.  Detailed DDoS Mitigation Report . . . . . . . . . . . . .  11
-     3.3.  Tuning Mitigation Resources . . . . . . . . . . . . . . .  12
-       3.3.1.  Supervised Machine Learning of Flow Collector . . . .  12
-       3.3.2.  Unsupervised Machine Learning of Flow Collector . . .  14
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
-   6.  Acknowledgement . . . . . . . . . . . . . . . . . . . . . . .  15
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  15
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  16
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  16
+       3.1.2.  Optimal DMS Selection for Mitigation  . . . . . . . .   6
+       3.1.3.  Best-path Selection for Redirection . . . . . . . . .   7
+       3.1.4.  Short but Extreme Volumetric Attack Mitigation  . . .   9
+       3.1.5.  Selecting Mitigation Technique Based on Attack Type .  10
+     3.2.  Detailed DDoS Mitigation Report . . . . . . . . . . . . .  12
+     3.3.  Tuning Mitigation Resources . . . . . . . . . . . . . . .  14
+       3.3.1.  Supervised Machine Learning of Flow Collector . . . .  14
+       3.3.2.  Unsupervised Machine Learning of Flow Collector . . .  17
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .  20
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  20
+   6.  Acknowledgement . . . . . . . . . . . . . . . . . . . . . . .  20
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  20
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  20
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .  21
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  21
 
 1.  Introduction
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Hayashi, et al.         Expires December 4, 2021                [Page 2]
+Hayashi, et al.          Expires January 2, 2022                [Page 2]
 
-Internet-Draft          DOTS Telemetry Use Cases               June 2021
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
    described in [I-D.ietf-dots-telemetry]: what components are deployed
@@ -155,6 +155,7 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    traffic of top talkers is redirected to the DMS preferentially by
    cooperation among forwarding nodes, flow collectors, and
    orchestrators.  Figure 1 gives an overview of this use case.
+   Figure 2 gives an example of message body of DOTS telemetry.
 
 
 
@@ -164,10 +165,9 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
 
 
 
-
-Hayashi, et al.         Expires December 4, 2021                [Page 3]
+Hayashi, et al.          Expires January 2, 2022                [Page 3]
 
-Internet-Draft          DOTS Telemetry Use Cases               June 2021
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
    (Internet Transit Provider)
@@ -202,6 +202,67 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    Figure 1: Mitigating DDoS Attack Flow of Top-talker Preferentially
 
 
+   {
+     "ietf-dots-telemetry:telemetry": {
+       "pre-or-ongoing-mitigation": [
+         {
+           "target": {
+             "target-prefix": [
+               "2001:db8::1/128"
+             ]
+           },
+           "total-attack-traffic-protocol": [
+             {
+               "protocol": 17,
+               "unit": "megabit-ps",
+               "mid-percentile-g": "900"
+             }
+           ],
+
+
+
+Hayashi, et al.          Expires January 2, 2022                [Page 4]
+
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
+
+
+           "attack-detail": [
+             {
+               "vendor-id": 1234,
+               "attack-id": 77,
+               "start-time": "1957811234",
+               "attack-severity": "high",
+               "top-talker":{
+                 "talker": [
+                   {
+                     "source-prefix": "2001:db8::2/128",
+                     "total-attack-traffic":[
+                       {
+                         "unit": "megabit-ps",
+                         "mid-percentile-g": "100"
+                       }
+                     ]
+                   },
+                   {
+                     "source-prefix": "2001:db8::3/128",
+                     "total-attack-traffic":[
+                       {
+                         "unit": "megabit-ps",
+                         "mid-percentile-g": "90"
+                       }
+                     ]
+                   }
+                 ]
+               }
+             }
+           ]
+         }
+       ]
+     }
+   }
+
+   Figure 2: Example of Message Body
+
    In this use case, the forwarding nodes always send statistics of
    traffic flow to the flow collectors by using monitoring functions
    such as IPFIX[RFC7011].  When DDoS attacks occur, the flow collectors
@@ -214,17 +275,15 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    taker's traffic to the DMS as possible by dissemination of flow-
    specification-rule protocols such as BGP Flowspec[RFC5575].
 
+
+
+Hayashi, et al.          Expires January 2, 2022                [Page 5]
+
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
+
+
    In this case, the flow collector implements a DOTS client while the
    orchestrator implements a DOTS server.
-
-
-
-
-
-Hayashi, et al.         Expires December 4, 2021                [Page 4]
-
-Internet-Draft          DOTS Telemetry Use Cases               June 2021
-
 
 3.1.2.  Optimal DMS Selection for Mitigation
 
@@ -234,7 +293,8 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
 
    The aim of this use case is to enable transit providers to select an
    optimal DMS for mitigation based on the bandwidth of attack traffic,
-   capacity of a DMS.  Figure 2 gives an overview of this use case.
+   capacity of a DMS.  Figure 3 gives an overview of this use case.
+   Figure 4 gives an example of message body of DOTS telemetry.
 
    (Internet Transit Provider)
 
@@ -266,7 +326,21 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    * C is for DOTS client functionality
    * S is for DOTS client functionality
 
-   Figure 2: Optimal DMS selection for Mitigation
+   Figure 3: Optimal DMS selection for Mitigation
+
+
+
+
+
+
+Hayashi, et al.          Expires January 2, 2022                [Page 6]
+
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
+
+
+   Note: Insert China mobile's message body
+
+   Figure 4: Example of Message Body
 
    In this use case, the forwarding nodes always send statistics of
    traffic flow to the flow collectors by using monitoring functions
@@ -274,14 +348,6 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    detect attack traffic and send (dst_ip, bandwidth)-tuple information
    to the orchestrator using the target-prefix and total-attack-traffic
    attribute of DOTS Telemetry.  The orchestrator then checks the
-
-
-
-Hayashi, et al.         Expires December 4, 2021                [Page 5]
-
-Internet-Draft          DOTS Telemetry Use Cases               June 2021
-
-
    available capacity of the DMSs by using a network management protocol
    such as SNMP[RFC3413].  After that, the orchestrator chooses optimal
    DMS which each attack traffic should be redirected.  The orchestrator
@@ -302,7 +368,8 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    The aim of this use case is to enable transit providers to select an
    optimal path for redirecting attack traffic to a DMS according to the
    bandwidth of the attack traffic, total traffic, and total pipe
-   capability.  Figure 3 gives an overview of this use case.
+   capability.  Figure 5 gives an overview of this use case.  Figure 6
+   gives an example of message body of DOTS telemetry.
 
 
 
@@ -322,20 +389,9 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-Hayashi, et al.         Expires December 4, 2021                [Page 6]
+Hayashi, et al.          Expires January 2, 2022                [Page 7]
 
-Internet-Draft          DOTS Telemetry Use Cases               June 2021
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
    (Internet Transit Provider)
@@ -368,7 +424,12 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    * C is for DOTS client functionality
    * S is for DOTS client functionality
 
-   Figure 3: Best-path Selection for Redirection
+   Figure 5: Best-path Selection for Redirection
+
+
+   Note: Insert China mobile's message body
+
+   Figure 6: Example of Message Body
 
    In this use case, the forwarding nodes always send statistics of
    traffic flow to the flow collectors by using monitoring functions
@@ -381,18 +442,17 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    capability attributes of DOTS Telemetry.  The orchestrator then
    selects an optimal path to which each attack-traffic flow should be
    redirected.  After that, the orchestrator orders forwarding nodes to
+
+
+
+Hayashi, et al.          Expires January 2, 2022                [Page 8]
+
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
+
+
    redirect the attack traffic to the optimal DMS by dissemination of
    flow-specification-rules protocols such as BGP Flowspec[RFC5575].
    The algorithm of selecting a path is out of the scope of this draft.
-
-
-
-
-
-Hayashi, et al.         Expires December 4, 2021                [Page 7]
-
-Internet-Draft          DOTS Telemetry Use Cases               June 2021
-
 
 3.1.4.  Short but Extreme Volumetric Attack Mitigation
 
@@ -406,8 +466,9 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    The aim of this use case is to enable transit providers to mitigate
    short but extreme volumetric attacks.  Furthermore, the aim is to
    estimate the network-access success rate based on the bandwidth of
-   attack traffic and total pipe capability.  Figure 4 gives an overview
-   of this use case.
+   attack traffic and total pipe capability.  Figure 7 gives an overview
+   of this use case.  Figure 8 gives an example of message body of DOTS
+   telemetry.
 
    (Internet Transit Provider)
 
@@ -432,8 +493,22 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    * C is for DOTS client functionality
    * S is for DOTS client functionality
 
-   Figure 4: Short but Extreme Volumetric Attack Mitigation
+   Figure 7: Short but Extreme Volumetric Attack Mitigation
 
+
+
+
+
+
+
+Hayashi, et al.          Expires January 2, 2022                [Page 9]
+
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
+
+
+   Note: Insert China mobile's message body
+
+   Figure 8: Example of Message Body
 
    In this use case, when DDoS attacks occur, the network management
    system receives alerts.  It then sends the target ip address, pipe
@@ -442,14 +517,6 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    pipe-capability and total-attack-traffic attributes of DOTS
    Telemetry.  After that, the administrative system orders upper
    forwarding nodes to carry out rate-limit all traffic destined to the
-
-
-
-Hayashi, et al.         Expires December 4, 2021                [Page 8]
-
-Internet-Draft          DOTS Telemetry Use Cases               June 2021
-
-
    target based on the pipe capability by the dissemination of the flow-
    specification-rules protocols such as BGP Flowspec[RFC5575].  In
    addition, the administrative system estimates the network-access
@@ -472,7 +539,8 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    amplification attack or not.  To use such a technique, attack traffic
    is blocked at forwarding nodes or redirected to a DMS based on attack
    type through cooperation among forwarding nodes, flow collectors, and
-   an orchestrator.  Figure 5 gives an overview of this use case.
+   an orchestrator.  Figure 9 gives an overview of this use case.
+   Figure 10 gives an example of message body of DOTS telemetry.
 
 
 
@@ -489,21 +557,9 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-Hayashi, et al.         Expires December 4, 2021                [Page 9]
+Hayashi, et al.          Expires January 2, 2022               [Page 10]
 
-Internet-Draft          DOTS Telemetry Use Cases               June 2021
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
      (Internet Transit Provider)
@@ -533,8 +589,13 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
      * C is for DOTS client functionality
      * S is for DOTS server functionality
 
-     Figure 5: DDoS Mitigation Based on Attack Type
+   Figure 9: DDoS Mitigation Based on Attack Type
 
+
+
+   China mobile's message body
+
+   Figure 10: Example of Message Body
 
    In this use case, the forwarding nodes send statistics of traffic
    flow to the flow collectors by using a monitoring function such as
@@ -548,19 +609,17 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    orders forwarding nodes to redirect other traffic than the amp attack
    traffic by a routing protocol such as BGP[RFC4271].
 
+
+
+
+
+Hayashi, et al.          Expires January 2, 2022               [Page 11]
+
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
+
+
    In this case, the flow collector implements a DOTS client while the
    orchestrator implements a DOTS server.
-
-
-
-
-
-
-
-Hayashi, et al.         Expires December 4, 2021               [Page 10]
-
-Internet-Draft          DOTS Telemetry Use Cases               June 2021
-
 
 3.2.  Detailed DDoS Mitigation Report
 
@@ -573,7 +632,8 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
 
    The aim of this use case is to share the information about on-going
    DDoS counter measure between the transit provider and the enterprise
-   network mutually.  Figure 6 gives an overview of this use case.
+   network mutually.  Figure 11 gives an overview of this use case.
+   Figure 12 gives an example of message body of DOTS telemetry.
 
      +------------------+      +------------------------+
      | Enterprise       |      |    Upstream            |
@@ -599,8 +659,60 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    * C is for DOTS client functionality
    * S is for DOTS server functionality
 
-   Figure 6: Detailed DDoS Mitigation Report
+   Figure 11: Detailed DDoS Mitigation Report
 
+
+
+
+
+
+
+
+
+Hayashi, et al.          Expires January 2, 2022               [Page 12]
+
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
+
+
+   {
+     "ietf-dots-telemetry:telemetry": {
+       "pre-or-ongoing-mitigation": [
+         {
+           "tmid": 567,
+           "target": {
+             "target-prefix": [
+               "2001:db8::1/128"
+             ]
+           },
+           "target-protocol": [
+             17
+           ],
+           "total-traffic": [
+             {
+               "unit": "megabit-ps",
+               "mid-percentile-g": "800"
+             }
+           ],
+           "total-attack-traffic": [
+             {
+               "unit": "megabit-ps",
+               "mid-percentile-g": "100"
+             }
+           ],
+           "attack-detail": [
+             {
+               "vendor-id": 1234,
+               "attack-id": 77,
+               "start-time": "1957818434",
+               "attack-severity": "high"
+             }
+           ]
+         }
+       ]
+     }
+   }
+
+   Figure 12: Example of Message Body
 
    In this use case, the network managements system in the enterprise
    network reports limits of incoming traffic volume from transit
@@ -613,9 +725,9 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
 
 
 
-Hayashi, et al.         Expires December 4, 2021               [Page 11]
+Hayashi, et al.          Expires January 2, 2022               [Page 13]
 
-Internet-Draft          DOTS Telemetry Use Cases               June 2021
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
    telemetry such as attack-detail.  After that, the orchestrator
@@ -648,7 +760,8 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    accuracy by carrying out supervised machine-learning techniques
    according to attack detail reported by the DMSs.  To use such a
    technique, forwarding nodes, flow collector, and a DMS should
-   cooperate.  Figure 7 gives an overview of this use case.
+   cooperate.  Figure 13 gives an overview of this use case.  Figure 14
+   gives an example of message body of DOTS telemetry.
 
 
 
@@ -668,10 +781,9 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
 
 
 
-
-Hayashi, et al.         Expires December 4, 2021               [Page 12]
+Hayashi, et al.          Expires January 2, 2022               [Page 14]
 
-Internet-Draft          DOTS Telemetry Use Cases               June 2021
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
                                    +-----------+
@@ -699,12 +811,93 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
            * C is for DOTS client functionality
            * S is for DOTS client functionality
 
-   Figure 7: Training Supervised Machine Learning of Flow Collector
+   Figure 13: Training Supervised Machine Learning of Flow Collector
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hayashi, et al.          Expires January 2, 2022               [Page 15]
+
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
+
+
+   {
+     "ietf-dots-telemetry:telemetry": {
+       "pre-or-ongoing-mitigation": [
+         {
+           "target": {
+             "target-prefix": [
+               "2001:db8::1/128"
+             ]
+           },
+           "total-attack-traffic-protocol": [
+             {
+               "protocol": 17,
+               "unit": "megabit-ps",
+               "mid-percentile-g": "900"
+             }
+           ],
+           "attack-detail": [
+             {
+               "vendor-id": 1234,
+               "attack-id": 77,
+               "start-time": "1957811234",
+               "attack-severity": "high",
+               "top-talker": {
+                 "talker": [
+                   {
+                     "source-prefix": "2001:db8::2/128",
+                     "total-attack-traffic": [
+                       {
+                         "unit": "megabit-ps",
+                         "mid-percentile-g": "100"
+                       }
+                     ]
+                   }
+                 ]
+               }
+             }
+           ]
+         }
+       ]
+     }
+   }
+
+   Figure 14: Example of Message Body
 
    In this use case, the forwarding nodes always send statistics of
    traffic flow to the flow collectors by using monitoring functions
    such as IPFIX[RFC7011].  When DDoS attacks occur, DDoS orchestration
    use case[RFC8903] is carried out and the DMS mitigates all attack
+
+
+
+Hayashi, et al.          Expires January 2, 2022               [Page 16]
+
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
+
+
    traffic destined for a target.  The DDoS-mitigation system reports
    the vendor-id, attack-id and top-talker to the flow collector using
    DOTS telemetry.
@@ -719,25 +912,46 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
    In this case, the DMS implements a DOTS client while the flow
    collector implements a DOTS server.
 
-
-
-
-
-
-
-Hayashi, et al.         Expires December 4, 2021               [Page 13]
-
-Internet-Draft          DOTS Telemetry Use Cases               June 2021
-
-
 3.3.2.  Unsupervised Machine Learning of Flow Collector
 
    DMSs can detect DDoS attack traffic, which means DMSs can also
    identify clean traffic.  The aim of this use case is to carry out
    unsupervised machine-learning for anomaly detection according to
    baseline reported by DMSs.  To use such a technique, forwarding
-   nodes, flow collector, and a DMS should cooperate.  Figure 8 gives an
-   overview of this use case.
+   nodes, flow collector, and a DMS should cooperate.  Figure 15 gives
+   an overview of this use case.  Figure 16 gives an example of message
+   body of DOTS telemetry.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hayashi, et al.          Expires January 2, 2022               [Page 17]
+
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
                                  +-----------+
@@ -765,7 +979,72 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
          * C is for DOTS client functionality
          * S is for DOTS client functionality
 
-   Figure 8: Training Unsupervised Machine Learning of Flow Collector
+   Figure 15: Training Unsupervised Machine Learning of Flow Collector
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hayashi, et al.          Expires January 2, 2022               [Page 18]
+
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
+
+
+     {
+       "ietf-dots-telemetry:telemetry-setup": {
+         "telemetry": [
+           {
+             "baseline": [
+               {
+                 "id": 1,
+                 "target-prefix": [
+                   "2001:db8:6401::1/128"
+                 ],
+                 "target-port-range": [
+                   {
+                     "lower-port": "53"
+                   }
+                 ],
+                 "target-protocol": [
+                   17
+                 ],
+                 "total-traffic-normal": [
+                   {
+                     "unit": "megabit-ps",
+                     "mid-percentile-g": "30",
+                     "mid-percentile-g": "50",
+                     "high-percentile-g": "60",
+                     "peak-g": "70"
+                   }
+                 ]
+               }
+             ]
+           }
+         ]
+       }
+     }
+
+   Figure 16: Example of Message Body
 
    In this use case, the forwarding nodes carry out mirroring traffic
    destined a dst ip address.  The DMS then identifies clean traffic and
@@ -781,9 +1060,10 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
 
 
 
-Hayashi, et al.         Expires December 4, 2021               [Page 14]
+
+Hayashi, et al.          Expires January 2, 2022               [Page 19]
 
-Internet-Draft          DOTS Telemetry Use Cases               June 2021
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
 4.  Security Considerations
@@ -837,9 +1117,9 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
 
 
 
-Hayashi, et al.         Expires December 4, 2021               [Page 15]
+Hayashi, et al.          Expires January 2, 2022               [Page 20]
 
-Internet-Draft          DOTS Telemetry Use Cases               June 2021
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
    [RFC8612]  Mortensen, A., Reddy, T., and R. Moskowitz, "DDoS Open
@@ -893,9 +1173,9 @@ Authors' Addresses
 
 
 
-Hayashi, et al.         Expires December 4, 2021               [Page 16]
+Hayashi, et al.          Expires January 2, 2022               [Page 21]
 
-Internet-Draft          DOTS Telemetry Use Cases               June 2021
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
    Li Su
@@ -949,4 +1229,4 @@ Internet-Draft          DOTS Telemetry Use Cases               June 2021
 
 
 
-Hayashi, et al.         Expires December 4, 2021               [Page 17]
+Hayashi, et al.          Expires January 2, 2022               [Page 22]

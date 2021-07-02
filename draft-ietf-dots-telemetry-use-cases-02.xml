@@ -102,7 +102,7 @@
         </email>
       </address>
     </author>
-    <date day="02" month="June" year="2021" />
+    <date day="01" month="July" year="2021" />
     <area>Security Area</area>
     <workgroup>DOTS</workgroup>
     <keyword>Internet-Draft</keyword>
@@ -164,6 +164,7 @@
             The aim of this use case is to enable transit providers to use their DMS efficiently under volume-based DDoS attacks whose bandwidth is more than the available capacity of the DMS.
             To enable this, attack traffic of top talkers is redirected to the DMS preferentially by cooperation among forwarding nodes, flow collectors, and orchestrators.
             Figure 1 gives an overview of this use case.
+            Figure 2 gives an example of message body of DOTS telemetry.
           </t>
           <t>
             <figure align="center">
@@ -201,6 +202,62 @@ Figure 1: Mitigating DDoS Attack Flow of Top-talker Preferentially
 
               ]]></artwork>
             </figure>
+            <figure>
+              <artwork><![CDATA[
+{
+  "ietf-dots-telemetry:telemetry": {
+    "pre-or-ongoing-mitigation": [
+      {
+        "target": {
+          "target-prefix": [
+            "2001:db8::1/128"
+          ]
+        },
+        "total-attack-traffic-protocol": [
+          {
+            "protocol": 17,
+            "unit": "megabit-ps",
+            "mid-percentile-g": "900"
+          }
+        ],
+        "attack-detail": [
+          {
+            "vendor-id": 1234,
+            "attack-id": 77,
+            "start-time": "1957811234",
+            "attack-severity": "high",
+            "top-talker":{
+              "talker": [
+                {
+                  "source-prefix": "2001:db8::2/128",
+                  "total-attack-traffic":[
+                    {
+                      "unit": "megabit-ps",
+                      "mid-percentile-g": "100"
+                    }
+                  ]
+                },
+                {
+                  "source-prefix": "2001:db8::3/128",
+                  "total-attack-traffic":[
+                    {
+                      "unit": "megabit-ps",
+                      "mid-percentile-g": "90"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+
+Figure 2: Example of Message Body
+              ]]></artwork>
+            </figure>
           </t>
           <t>
             In this use case, the forwarding nodes always send statistics of traffic flow to the flow collectors by using monitoring functions such as IPFIX<xref target="RFC7011" />.
@@ -219,7 +276,8 @@ Figure 1: Mitigating DDoS Attack Flow of Top-talker Preferentially
           </t>
           <t>
             The aim of this use case is to enable transit providers to select an optimal DMS for mitigation based on the bandwidth of attack traffic, capacity of a DMS.
-            Figure 2 gives an overview of this use case.
+            Figure 3 gives an overview of this use case.
+            Figure 4 gives an example of message body of DOTS telemetry.
           </t>
           <t>
             <figure align="center">
@@ -254,9 +312,17 @@ Figure 1: Mitigating DDoS Attack Flow of Top-talker Preferentially
 * C is for DOTS client functionality
 * S is for DOTS client functionality
 
-Figure 2: Optimal DMS selection for Mitigation
+Figure 3: Optimal DMS selection for Mitigation
               ]]></artwork>
             </figure>
+            <figure>
+            <artwork><![CDATA[
+
+Note: Insert China mobile's message body
+
+Figure 4: Example of Message Body
+            ]]></artwork>
+          </figure>
           </t>
           <t>
             In this use case, the forwarding nodes always send statistics of traffic flow to the flow collectors by using monitoring functions such as IPFIX<xref target="RFC7011" />.
@@ -277,7 +343,8 @@ Figure 2: Optimal DMS selection for Mitigation
           </t>
           <t>
             The aim of this use case is to enable transit providers to select an optimal path for redirecting attack traffic to a DMS according to the bandwidth of the attack traffic, total traffic, and total pipe capability.
-            Figure 3 gives an overview of this use case.
+            Figure 5 gives an overview of this use case.
+            Figure 6 gives an example of message body of DOTS telemetry.
           </t>
           <t>
             <figure align="center">
@@ -312,9 +379,17 @@ e.g., BGP Flow spec |   node     |       |   node     |
 * C is for DOTS client functionality
 * S is for DOTS client functionality
 
-Figure 3: Best-path Selection for Redirection
+Figure 5: Best-path Selection for Redirection
               ]]></artwork>
             </figure>
+            <figure>
+            <artwork><![CDATA[
+
+Note: Insert China mobile's message body
+
+Figure 6: Example of Message Body
+            ]]></artwork>
+          </figure>
           </t>
           <t>
             In this use case, the forwarding nodes always send statistics of traffic flow to the flow collectors by using monitoring functions such as IPFIX<xref target="RFC7011" />.
@@ -334,7 +409,8 @@ Figure 3: Best-path Selection for Redirection
           <t>
             The aim of this use case is to enable transit providers to mitigate short but extreme volumetric attacks.
             Furthermore, the aim is to estimate the network-access success rate based on the bandwidth of attack traffic and total pipe capability.
-            Figure 4 gives an overview of this use case.
+            Figure 7 gives an overview of this use case.
+            Figure 8 gives an example of message body of DOTS telemetry.
           </t>
           <t>
             <figure align="center">
@@ -362,10 +438,18 @@ e.g., X bps                                    e.g., Y bps
 * C is for DOTS client functionality
 * S is for DOTS client functionality
 
-Figure 4: Short but Extreme Volumetric Attack Mitigation
+Figure 7: Short but Extreme Volumetric Attack Mitigation
 
            ]]></artwork>
             </figure>
+            <figure>
+            <artwork><![CDATA[
+
+Note: Insert China mobile's message body
+
+Figure 8: Example of Message Body
+            ]]></artwork>
+          </figure>
           </t>
           <t>
             In this use case, when DDoS attacks occur, the network management system receives alerts.
@@ -384,7 +468,8 @@ Figure 4: Short but Extreme Volumetric Attack Mitigation
             <t>
               The aim of this use case is to enable transit providers to select a mitigation technique based on the type of attack traffic: amplification attack or not.
               To use such a technique, attack traffic is blocked at forwarding nodes or redirected to a DMS based on attack type through cooperation among forwarding nodes, flow collectors, and an orchestrator.
-              Figure 5 gives an overview of this use case.
+              Figure 9 gives an overview of this use case.
+              Figure 10 gives an example of message body of DOTS telemetry.
             </t>
             <t>
               <figure align="center">
@@ -416,10 +501,18 @@ Figure 4: Short but Extreme Volumetric Attack Mitigation
   * C is for DOTS client functionality
   * S is for DOTS server functionality
 
-  Figure 5: DDoS Mitigation Based on Attack Type
+Figure 9: DDoS Mitigation Based on Attack Type
 
                 ]]></artwork>
             </figure>
+            <figure>
+            <artwork><![CDATA[
+
+China mobile's message body
+
+Figure 10: Example of Message Body
+            ]]></artwork>
+          </figure>
           </t>
           <t>
             In this use case, the forwarding nodes send statistics of traffic flow to the flow collectors by using a monitoring function such as IPFIX<xref target="RFC7011" />.
@@ -439,7 +532,8 @@ Figure 4: Short but Extreme Volumetric Attack Mitigation
         </t>
         <t>
           The aim of this use case is to share the information about on-going DDoS counter measure between the transit provider and the enterprise network mutually.
-          Figure 6 gives an overview of this use case.
+          Figure 11 gives an overview of this use case.
+          Figure 12 gives an example of message body of DOTS telemetry.
         </t>
         <t>
           <figure align="center">
@@ -468,9 +562,52 @@ Figure 4: Short but Extreme Volumetric Attack Mitigation
 * C is for DOTS client functionality
 * S is for DOTS server functionality
 
-Figure 6: Detailed DDoS Mitigation Report
+Figure 11: Detailed DDoS Mitigation Report
 
             ]]></artwork>
+          </figure>
+          <figure>
+            <artwork><![CDATA[
+{
+  "ietf-dots-telemetry:telemetry": {
+    "pre-or-ongoing-mitigation": [
+      {
+        "tmid": 567,
+        "target": {
+          "target-prefix": [
+            "2001:db8::1/128"
+          ]
+        },
+        "target-protocol": [
+          17
+        ],
+        "total-traffic": [
+          {
+            "unit": "megabit-ps",
+            "mid-percentile-g": "800"
+          }
+        ],
+        "total-attack-traffic": [
+          {
+            "unit": "megabit-ps",
+            "mid-percentile-g": "100"
+          }
+        ],
+        "attack-detail": [
+          {
+            "vendor-id": 1234,
+            "attack-id": 77,
+            "start-time": "1957818434",
+            "attack-severity": "high"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+Figure 12: Example of Message Body
+          ]]></artwork>
           </figure>
         </t>
         <t>
@@ -500,7 +637,8 @@ Figure 6: Detailed DDoS Mitigation Report
           <t>
             The aim of this use case is to increases flow collector's detection accuracy by carrying out supervised machine-learning techniques according to attack detail reported by the DMSs.
             To use such a technique, forwarding nodes, flow collector, and a DMS should cooperate.
-            Figure 7 gives an overview of this use case.
+            Figure 13 gives an overview of this use case.
+            Figure 14 gives an example of message body of DOTS telemetry.
           </t>
           <t>
             <figure align="center">
@@ -531,9 +669,56 @@ Figure 6: Detailed DDoS Mitigation Report
         * C is for DOTS client functionality
         * S is for DOTS client functionality
 
-Figure 7: Training Supervised Machine Learning of Flow Collector
+Figure 13: Training Supervised Machine Learning of Flow Collector
               ]]></artwork>
             </figure>
+            <figure>
+              <artwork><![CDATA[
+{
+  "ietf-dots-telemetry:telemetry": {
+    "pre-or-ongoing-mitigation": [
+      {
+        "target": {
+          "target-prefix": [
+            "2001:db8::1/128"
+          ]
+        },
+        "total-attack-traffic-protocol": [
+          {
+            "protocol": 17,
+            "unit": "megabit-ps",
+            "mid-percentile-g": "900"
+          }
+        ],
+        "attack-detail": [
+          {
+            "vendor-id": 1234,
+            "attack-id": 77,
+            "start-time": "1957811234",
+            "attack-severity": "high",
+            "top-talker": {
+              "talker": [
+                {
+                  "source-prefix": "2001:db8::2/128",
+                  "total-attack-traffic": [
+                    {
+                      "unit": "megabit-ps",
+                      "mid-percentile-g": "100"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+
+Figure 14: Example of Message Body
+]]></artwork>
+          </figure>
           </t>
           <t>
             In this use case, the forwarding nodes always send statistics of traffic flow to the flow collectors by using monitoring functions such as IPFIX<xref target="RFC7011" />.
@@ -553,7 +738,8 @@ Figure 7: Training Supervised Machine Learning of Flow Collector
           DMSs can detect DDoS attack traffic, which means DMSs can also identify clean traffic.
           The aim of this use case is to carry out unsupervised machine-learning for anomaly detection according to baseline reported by DMSs.
           To use such a technique, forwarding nodes, flow collector, and a DMS should cooperate.
-          Figure 8 gives an overview of this use case.
+          Figure 15 gives an overview of this use case.
+          Figure 16 gives an example of message body of DOTS telemetry.
         </t>
         <t>
           <figure align="center">
@@ -584,8 +770,47 @@ Figure 7: Training Supervised Machine Learning of Flow Collector
       * C is for DOTS client functionality
       * S is for DOTS client functionality
 
-Figure 8: Training Unsupervised Machine Learning of Flow Collector
+Figure 15: Training Unsupervised Machine Learning of Flow Collector
             ]]></artwork>
+          </figure>
+          <figure>
+<artwork><![CDATA[
+  {
+    "ietf-dots-telemetry:telemetry-setup": {
+      "telemetry": [
+        {
+          "baseline": [
+            {
+              "id": 1,
+              "target-prefix": [
+                "2001:db8:6401::1/128"
+              ],
+              "target-port-range": [
+                {
+                  "lower-port": "53"
+                }
+              ],
+              "target-protocol": [
+                17
+              ],
+              "total-traffic-normal": [
+                {
+                  "unit": "megabit-ps",
+                  "mid-percentile-g": "30",
+                  "mid-percentile-g": "50",
+                  "high-percentile-g": "60",
+                  "peak-g": "70"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+
+Figure 16: Example of Message Body
+              ]]></artwork>
           </figure>
         </t>
         <t>

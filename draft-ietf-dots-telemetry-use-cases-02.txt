@@ -71,19 +71,19 @@ Table of Contents
        3.1.1.  Mitigating Attack Flow of Top-talker Preferentially .   3
        3.1.2.  Optimal DMS Selection for Mitigation  . . . . . . . .   6
        3.1.3.  Best-path Selection for Redirection . . . . . . . . .   7
-       3.1.4.  Short but Extreme Volumetric Attack Mitigation  . . .   9
-       3.1.5.  Selecting Mitigation Technique Based on Attack Type .  10
-     3.2.  Detailed DDoS Mitigation Report . . . . . . . . . . . . .  12
-     3.3.  Tuning Mitigation Resources . . . . . . . . . . . . . . .  14
-       3.3.1.  Supervised Machine Learning of Flow Collector . . . .  14
-       3.3.2.  Unsupervised Machine Learning of Flow Collector . . .  17
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .  20
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  20
-   6.  Acknowledgement . . . . . . . . . . . . . . . . . . . . . . .  20
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  20
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  20
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  21
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  21
+       3.1.4.  Short but Extreme Volumetric Attack Mitigation  . . .  10
+       3.1.5.  Selecting Mitigation Technique Based on Attack Type .  13
+     3.2.  Detailed DDoS Mitigation Report . . . . . . . . . . . . .  16
+     3.3.  Tuning Mitigation Resources . . . . . . . . . . . . . . .  19
+       3.3.1.  Supervised Machine Learning of Flow Collector . . . .  19
+       3.3.2.  Unsupervised Machine Learning of Flow Collector . . .  22
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .  25
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  25
+   6.  Acknowledgement . . . . . . . . . . . . . . . . . . . . . . .  25
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  25
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  25
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .  26
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  26
 
 1.  Introduction
 
@@ -338,7 +338,29 @@ Hayashi, et al.          Expires January 2, 2022                [Page 6]
 Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
-   Note: Insert China mobile's message body
+   {
+     "ietf-dots-telemetry:telemetry": {
+       "pre-or-ongoing-mitigation": [
+         {
+           "target": {
+             "target-prefix": [
+               "2001:db8::1/128"
+             ]
+           },
+           "total-attack-traffic": [
+             {
+               "unit": "megabit-ps",
+               "low-percentile-g": "600",
+               "mid-percentile-g": "800",
+               "high-percentile-g": "1000",
+               "peak-g":"1100",
+               "current-g":"700"
+             }
+           ]
+         }
+       ]
+     }
+   }
 
    Figure 4: Example of Message Body
 
@@ -365,34 +387,18 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
    traffic can be conveyed while avoiding congested links by selecting
    an available path.
 
-   The aim of this use case is to enable transit providers to select an
-   optimal path for redirecting attack traffic to a DMS according to the
-   bandwidth of the attack traffic, total traffic, and total pipe
-   capability.  Figure 5 gives an overview of this use case.  Figure 6
-   gives an example of message body of DOTS telemetry.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 Hayashi, et al.          Expires January 2, 2022                [Page 7]
 
 Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
+
+   The aim of this use case is to enable transit providers to select an
+   optimal path for redirecting attack traffic to a DMS according to the
+   bandwidth of the attack traffic, total traffic, and total pipe
+   capability.  Figure 5 gives an overview of this use case.  Figure 6
+   gives an example of message body of DOTS telemetry.
 
    (Internet Transit Provider)
 
@@ -427,7 +433,89 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
    Figure 5: Best-path Selection for Redirection
 
 
-   Note: Insert China mobile's message body
+   {
+     "ietf-dots-telemetry:telemetry": {
+       "pre-or-ongoing-mitigation": [
+         {
+           "target": {
+             "target-prefix": [
+               "2001:db8::1/128"
+             ]
+           },
+
+
+
+Hayashi, et al.          Expires January 2, 2022                [Page 8]
+
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
+
+
+           "total-traffic": [
+             {
+               "unit": "megabit-ps",
+               "mid-percentile-g": "1300",
+               "peak-g":"800"
+              }
+           ],
+           "total-pipe-capacity": [
+             {
+               "unit": "megabit-ps",
+               "capacity": "1500",
+               "link-id":"link1"
+              }
+           ],
+           "total-attack-traffic": [
+             {
+               "unit": "megabit-ps",
+               "low-percentile-g": "600",
+               "mid-percentile-g": "800",
+               "high-percentile-g": "1000",
+               "peak-g":"1100",
+               "current-g":"700"
+              }
+           ],
+           "attack-detail": [
+             {
+               "vendor-id": 1234,
+               "attack-id": 77,
+               "start-time": "1957811234",
+               "attack-severity": "high",
+               "top-talker":{
+                 "talker": [
+                   {
+                     "source-prefix": "2001:db8::2/128",
+                     "total-attack-traffic":[
+                       {
+                         "unit": "megabit-ps",
+                         "mid-percentile-g": "300"
+                       }
+                     ]
+                   },
+                   {
+                     "source-prefix": "2001:db8::3/128",
+                     "total-attack-traffic":[
+                       {
+                         "unit": "megabit-ps",
+                         "mid-percentile-g": "400"
+                       }
+
+
+
+Hayashi, et al.          Expires January 2, 2022                [Page 9]
+
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
+
+
+                     ]
+                   }
+                 ]
+               }
+             }
+           ]
+         }
+       ]
+     }
+   }
 
    Figure 6: Example of Message Body
 
@@ -442,14 +530,6 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
    capability attributes of DOTS Telemetry.  The orchestrator then
    selects an optimal path to which each attack-traffic flow should be
    redirected.  After that, the orchestrator orders forwarding nodes to
-
-
-
-Hayashi, et al.          Expires January 2, 2022                [Page 8]
-
-Internet-Draft          DOTS Telemetry Use Cases               July 2021
-
-
    redirect the attack traffic to the optimal DMS by dissemination of
    flow-specification-rules protocols such as BGP Flowspec[RFC5575].
    The algorithm of selecting a path is out of the scope of this draft.
@@ -469,6 +549,18 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
    attack traffic and total pipe capability.  Figure 7 gives an overview
    of this use case.  Figure 8 gives an example of message body of DOTS
    telemetry.
+
+
+
+
+
+
+
+
+Hayashi, et al.          Expires January 2, 2022               [Page 10]
+
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
+
 
    (Internet Transit Provider)
 
@@ -501,12 +593,68 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
 
-Hayashi, et al.          Expires January 2, 2022                [Page 9]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hayashi, et al.          Expires January 2, 2022               [Page 11]
 
 Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
-   Note: Insert China mobile's message body
+   {
+     "ietf-dots-telemetry:telemetry": {
+       "pre-or-ongoing-mitigation": [
+         {
+           "target": {
+             "target-prefix": [
+               "2001:db8::1/128"
+             ]
+           },
+           "total-traffic": [
+             {
+               "unit": "megabit-ps",
+               "mid-percentile-g": "1300",
+               "peak-g":"800"
+              }
+           ],
+           "total-pipe-capacity": [
+             {
+               "unit": "megabit-ps",
+               "capacity": "1500",
+               "link-id":"link1"
+              }
+           ],
+           "total-attack-traffic": [
+             {
+               "unit": "megabit-ps",
+               "low-percentile-g": "600",
+               "mid-percentile-g": "800",
+               "high-percentile-g": "1000",
+               "peak-g":"1100",
+               "current-g":"700"
+             }
+           ]
+          }
+       ]
+     }
+   }
 
    Figure 8: Example of Message Body
 
@@ -518,6 +666,14 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
    Telemetry.  After that, the administrative system orders upper
    forwarding nodes to carry out rate-limit all traffic destined to the
    target based on the pipe capability by the dissemination of the flow-
+
+
+
+Hayashi, et al.          Expires January 2, 2022               [Page 12]
+
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
+
+
    specification-rules protocols such as BGP Flowspec[RFC5575].  In
    addition, the administrative system estimates the network-access
    success rate of the target, which is calculated by total pipe
@@ -557,7 +713,19 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
 
-Hayashi, et al.          Expires January 2, 2022               [Page 10]
+
+
+
+
+
+
+
+
+
+
+
+
+Hayashi, et al.          Expires January 2, 2022               [Page 13]
 
 Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
@@ -593,12 +761,87 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
 
-   China mobile's message body
+   {
+     "ietf-dots-telemetry:telemetry": {
+       "pre-or-ongoing-mitigation": [
+         {
+           "target": {
+             "target-prefix": [
+               "2001:db8::1/128"
+             ]
+           },
+           "total-attack-traffic": [
+             {
+               "unit": "megabit-ps",
+               "low-percentile-g": "600",
+               "mid-percentile-g": "800",
+               "high-percentile-g": "1000",
+               "peak-g":"1100",
+               "current-g":"700"
+
+
+
+Hayashi, et al.          Expires January 2, 2022               [Page 14]
+
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
+
+
+              }
+           ],
+           "total-attack-traffic-protocol": [
+             {
+               "protocol": 17,
+               "unit": "megabit-ps",
+               "mid-percentile-g": "500"
+             },
+             {
+               "protocol": 15,
+               "unit": "megabit-ps",
+               "mid-percentile-g": "200"
+             }
+           ],
+           "total-attack-connection":[
+           {
+              "mid-percentile-l":[
+               {
+                 "protocol": 15,
+                 "connection": 200
+               }
+              ],
+              "high-percentile-l":[
+               {
+                 "protocol": 17,
+                 "connection": 300
+               }
+              ]
+           }
+           ],
+           "attack-detail": [
+             {
+               "vendor-id": 1234,
+               "attack-id": 77,
+               "start-time": "1957811234",
+               "attack-severity": "high",
+               "attack-description":"syn_flood udp_flood http_flood"
+             }
+           ]
+         }
+       ]
+     }
+   }
 
    Figure 10: Example of Message Body
 
    In this use case, the forwarding nodes send statistics of traffic
    flow to the flow collectors by using a monitoring function such as
+
+
+
+Hayashi, et al.          Expires January 2, 2022               [Page 15]
+
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
+
+
    IPFIX[RFC7011].  When DDoS attacks occur, the flow collectors detect
    attack traffic and send (dst_ip, attack_type)-tuple information to
    the orchestrator the using vendor-id and attack-id attribute of DOTS
@@ -608,15 +851,6 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
    such as BGP Flowspec[RFC5575].  On the other hand, the orchestrator
    orders forwarding nodes to redirect other traffic than the amp attack
    traffic by a routing protocol such as BGP[RFC4271].
-
-
-
-
-
-Hayashi, et al.          Expires January 2, 2022               [Page 11]
-
-Internet-Draft          DOTS Telemetry Use Cases               July 2021
-
 
    In this case, the flow collector implements a DOTS client while the
    orchestrator implements a DOTS server.
@@ -634,6 +868,35 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
    DDoS counter measure between the transit provider and the enterprise
    network mutually.  Figure 11 gives an overview of this use case.
    Figure 12 gives an example of message body of DOTS telemetry.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hayashi, et al.          Expires January 2, 2022               [Page 16]
+
+Internet-Draft          DOTS Telemetry Use Cases               July 2021
+
 
      +------------------+      +------------------------+
      | Enterprise       |      |    Upstream            |
@@ -669,7 +932,24 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
 
-Hayashi, et al.          Expires January 2, 2022               [Page 12]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hayashi, et al.          Expires January 2, 2022               [Page 17]
 
 Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
@@ -725,7 +1005,7 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
 
-Hayashi, et al.          Expires January 2, 2022               [Page 13]
+Hayashi, et al.          Expires January 2, 2022               [Page 18]
 
 Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
@@ -781,7 +1061,7 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
 
-Hayashi, et al.          Expires January 2, 2022               [Page 14]
+Hayashi, et al.          Expires January 2, 2022               [Page 19]
 
 Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
@@ -837,7 +1117,7 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
 
-Hayashi, et al.          Expires January 2, 2022               [Page 15]
+Hayashi, et al.          Expires January 2, 2022               [Page 20]
 
 Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
@@ -893,7 +1173,7 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
 
-Hayashi, et al.          Expires January 2, 2022               [Page 16]
+Hayashi, et al.          Expires January 2, 2022               [Page 21]
 
 Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
@@ -949,7 +1229,7 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
 
-Hayashi, et al.          Expires January 2, 2022               [Page 17]
+Hayashi, et al.          Expires January 2, 2022               [Page 22]
 
 Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
@@ -1005,7 +1285,7 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
 
-Hayashi, et al.          Expires January 2, 2022               [Page 18]
+Hayashi, et al.          Expires January 2, 2022               [Page 23]
 
 Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
@@ -1061,7 +1341,7 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
 
-Hayashi, et al.          Expires January 2, 2022               [Page 19]
+Hayashi, et al.          Expires January 2, 2022               [Page 24]
 
 Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
@@ -1117,7 +1397,7 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
 
-Hayashi, et al.          Expires January 2, 2022               [Page 20]
+Hayashi, et al.          Expires January 2, 2022               [Page 25]
 
 Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
@@ -1173,7 +1453,7 @@ Authors' Addresses
 
 
 
-Hayashi, et al.          Expires January 2, 2022               [Page 21]
+Hayashi, et al.          Expires January 2, 2022               [Page 26]
 
 Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
@@ -1229,4 +1509,4 @@ Internet-Draft          DOTS Telemetry Use Cases               July 2021
 
 
 
-Hayashi, et al.          Expires January 2, 2022               [Page 22]
+Hayashi, et al.          Expires January 2, 2022               [Page 27]

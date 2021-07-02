@@ -318,7 +318,29 @@ Figure 3: Optimal DMS selection for Mitigation
             <figure>
             <artwork><![CDATA[
 
-Note: Insert China mobile's message body
+{
+  "ietf-dots-telemetry:telemetry": {
+    "pre-or-ongoing-mitigation": [
+      {
+        "target": {
+          "target-prefix": [
+            "2001:db8::1/128"
+          ]
+        },
+        "total-attack-traffic": [
+          {
+            "unit": "megabit-ps",
+            "low-percentile-g": "600",
+            "mid-percentile-g": "800",
+            "high-percentile-g": "1000",
+            "peak-g":"1100",
+            "current-g":"700"
+          }
+        ]
+      }
+    ]
+  }
+}
 
 Figure 4: Example of Message Body
             ]]></artwork>
@@ -385,7 +407,73 @@ Figure 5: Best-path Selection for Redirection
             <figure>
             <artwork><![CDATA[
 
-Note: Insert China mobile's message body
+{
+  "ietf-dots-telemetry:telemetry": {
+    "pre-or-ongoing-mitigation": [
+      {
+        "target": {
+          "target-prefix": [
+            "2001:db8::1/128"
+          ]
+        },
+        "total-traffic": [
+          {
+            "unit": "megabit-ps",
+            "mid-percentile-g": "1300",
+            "peak-g":"800"
+           }
+        ],
+        "total-pipe-capacity": [
+          {
+            "unit": "megabit-ps",
+            "capacity": "1500",
+            "link-id":"link1"
+           }
+        ],
+        "total-attack-traffic": [
+          {
+            "unit": "megabit-ps",
+            "low-percentile-g": "600",
+            "mid-percentile-g": "800",
+            "high-percentile-g": "1000",
+            "peak-g":"1100",
+            "current-g":"700"
+           }
+        ],
+        "attack-detail": [
+          {
+            "vendor-id": 1234,
+            "attack-id": 77,
+            "start-time": "1957811234",
+            "attack-severity": "high",
+            "top-talker":{
+              "talker": [
+                {
+                  "source-prefix": "2001:db8::2/128",
+                  "total-attack-traffic":[
+                    {
+                      "unit": "megabit-ps",
+                      "mid-percentile-g": "300"
+                    }
+                  ]
+                },
+                {
+                  "source-prefix": "2001:db8::3/128",
+                  "total-attack-traffic":[
+                    {
+                      "unit": "megabit-ps",
+                      "mid-percentile-g": "400"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
 
 Figure 6: Example of Message Body
             ]]></artwork>
@@ -445,7 +533,43 @@ Figure 7: Short but Extreme Volumetric Attack Mitigation
             <figure>
             <artwork><![CDATA[
 
-Note: Insert China mobile's message body
+{
+  "ietf-dots-telemetry:telemetry": {
+    "pre-or-ongoing-mitigation": [
+      {
+        "target": {
+          "target-prefix": [
+            "2001:db8::1/128"
+          ]
+        },
+        "total-traffic": [
+          {
+            "unit": "megabit-ps",
+            "mid-percentile-g": "1300",
+            "peak-g":"800"
+           }
+        ],
+        "total-pipe-capacity": [
+          {
+            "unit": "megabit-ps",
+            "capacity": "1500",
+            "link-id":"link1"
+           }
+        ],
+        "total-attack-traffic": [
+          {
+            "unit": "megabit-ps",
+            "low-percentile-g": "600",
+            "mid-percentile-g": "800",
+            "high-percentile-g": "1000",
+            "peak-g":"1100",
+            "current-g":"700"
+          }
+        ]
+       }
+    ]
+  }
+}
 
 Figure 8: Example of Message Body
             ]]></artwork>
@@ -508,7 +632,66 @@ Figure 9: DDoS Mitigation Based on Attack Type
             <figure>
             <artwork><![CDATA[
 
-China mobile's message body
+{
+  "ietf-dots-telemetry:telemetry": {
+    "pre-or-ongoing-mitigation": [
+      {
+        "target": {
+          "target-prefix": [
+            "2001:db8::1/128"
+          ]
+        },
+        "total-attack-traffic": [
+          {
+            "unit": "megabit-ps",
+            "low-percentile-g": "600",
+            "mid-percentile-g": "800",
+            "high-percentile-g": "1000",
+            "peak-g":"1100",
+            "current-g":"700"
+           }
+        ],
+        "total-attack-traffic-protocol": [
+          {
+            "protocol": 17,
+            "unit": "megabit-ps",
+            "mid-percentile-g": "500"
+          },
+          {
+            "protocol": 15,
+            "unit": "megabit-ps",
+            "mid-percentile-g": "200"
+          }
+        ],
+        "total-attack-connection":[
+        {
+           "mid-percentile-l":[
+            {
+              "protocol": 15,
+              "connection": 200
+            }
+           ],
+           "high-percentile-l":[
+            {
+              "protocol": 17,
+              "connection": 300
+            }
+           ]
+        }
+        ],
+        "attack-detail": [
+          {
+            "vendor-id": 1234,
+            "attack-id": 77,
+            "start-time": "1957811234",
+            "attack-severity": "high",
+            "attack-description":"syn_flood udp_flood http_flood"
+          }
+        ]
+      }
+    ]
+  }
+}
 
 Figure 10: Example of Message Body
             ]]></artwork>

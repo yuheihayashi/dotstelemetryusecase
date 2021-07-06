@@ -42,7 +42,7 @@
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc category="info" docName="draft-ietf-dots-telemetry-use-cases-02">
+<rfc category="info" docName="draft-ietf-dots-telemetry-use-cases-03">
   <!-- ***** FRONT MATTER ***** -->
   <front>
     <title abbrev="DOTS Telemetry Use Cases">Use Cases for DDoS Open Threat Signaling (DOTS) Telemetry</title>
@@ -102,7 +102,7 @@
         </email>
       </address>
     </author>
-    <date day="01" month="July" year="2021" />
+    <date day="06" month="July" year="2021" />
     <area>Security Area</area>
     <workgroup>DOTS</workgroup>
     <keyword>Internet-Draft</keyword>
@@ -432,36 +432,6 @@ Figure 5: Best-path Selection for Redirection
             "peak-g":"1100",
             "current-g":"700"
            }
-        ],
-        "attack-detail": [
-          {
-            "vendor-id": 1234,
-            "attack-id": 77,
-            "start-time": "1957811234",
-            "attack-severity": "high",
-            "top-talker":{
-              "talker": [
-                {
-                  "source-prefix": "2001:db8::2/128",
-                  "total-attack-traffic":[
-                    {
-                      "unit": "megabit-ps",
-                      "mid-percentile-g": "300"
-                    }
-                  ]
-                },
-                {
-                  "source-prefix": "2001:db8::3/128",
-                  "total-attack-traffic":[
-                    {
-                      "unit": "megabit-ps",
-                      "mid-percentile-g": "400"
-                    }
-                  ]
-                }
-              ]
-            }
-          }
         ]
       }
     ]

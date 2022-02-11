@@ -1,0 +1,933 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0049)https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+   
+  <meta http-equiv="Content-Style-Type" content="text/css"> 
+  <title>Diff: draft-ietf-dots-telemetry-use-cases-03.txt - draft-ietf-dots-telemetry-use-cases-02.txt</title> 
+  <style type="text/css"> 
+    body    { margin: 0.4ex; margin-right: auto; } 
+    tr      { } 
+    td      { white-space: pre; font-family: monospace; vertical-align: top; font-size: 0.86em;} 
+    th      { font-size: 0.86em; } 
+    .small  { font-size: 0.6em; font-style: italic; font-family: Verdana, Helvetica, sans-serif; } 
+    .left   { background-color: #EEE; } 
+    .right  { background-color: #FFF; } 
+    .diff   { background-color: #CCF; } 
+    .lblock { background-color: #BFB; } 
+    .rblock { background-color: #FF8; } 
+    .insert { background-color: #8FF; } 
+    .delete { background-color: #ACF; } 
+    .void   { background-color: #FFB; } 
+    .cont   { background-color: #EEE; } 
+    .linebr { background-color: #AAA; } 
+    .lineno { color: red; background-color: #FFF; font-size: 0.7em; text-align: right; padding: 0 2px; } 
+    .elipsis{ background-color: #AAA; } 
+    .left .cont { background-color: #DDD; } 
+    .right .cont { background-color: #EEE; } 
+    .lblock .cont { background-color: #9D9; } 
+    .rblock .cont { background-color: #DD6; } 
+    .insert .cont { background-color: #0DD; } 
+    .delete .cont { background-color: #8AD; } 
+    .stats, .stats td, .stats th { background-color: #EEE; padding: 2px 0; } 
+    span.hide { display: none; color: #aaa;}    a:hover span { display: inline; }    tr.change { background-color: gray; } 
+    tr.change a { text-decoration: none; color: black } 
+  </style> 
+     <script>
+var chunk_index = 0;
+var old_chunk = null;
+
+function format_chunk(index) {
+    var prefix = "diff";
+    var str = index.toString();
+    for (x=0; x<(4-str.length); ++x) {
+        prefix+='0';
+    }
+    return prefix + str;
+}
+
+function find_chunk(n){
+    return document.querySelector('tr[id$="' + n + '"]');
+}
+
+function change_chunk(offset) {
+    var index = chunk_index + offset;
+    var new_str;
+    var new_chunk;
+
+    new_str = format_chunk(index);
+    new_chunk = find_chunk(new_str);
+    if (!new_chunk) {
+        return;
+    }
+    if (old_chunk) {
+        old_chunk.style.outline = "";
+    }
+    old_chunk = new_chunk;
+    old_chunk.style.outline = "1px solid red";
+    window.location.hash = "#" + new_str;
+    window.scrollBy(0,-100);
+    chunk_index = index;
+}
+
+document.onkeydown = function(e) {
+    switch (e.keyCode) {
+    case 78:
+        change_chunk(1);
+        break;
+    case 80:
+        change_chunk(-1);
+        break;
+    }
+};
+   </script> 
+</head> 
+<body> 
+  <table border="0" cellpadding="0" cellspacing="0"> 
+  <tbody><tr id="part-1" bgcolor="orange"><th></th><th><a href="https://tools.ietf.org/rfcdiff?url2=draft-ietf-dots-telemetry-use-cases-03.txt" style="color:#008; text-decoration:none;">&lt;</a>&nbsp;<a href="https://tools.ietf.org/html/draft-ietf-dots-telemetry-use-cases-03.txt" style="color:#008">draft-ietf-dots-telemetry-use-cases-03.txt</a>&nbsp;</th><th> </th><th>&nbsp;<a href="https://tools.ietf.org/html/draft-ietf-dots-telemetry-use-cases-02.txt" style="color:#008">draft-ietf-dots-telemetry-use-cases-02.txt</a>&nbsp;<a href="https://tools.ietf.org/rfcdiff?url1=draft-ietf-dots-telemetry-use-cases-02.txt" style="color:#008; text-decoration:none;">&gt;</a></th><th></th></tr> 
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-1" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-1"><em> page 2, line 23<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-1"><em> page 2, line 23<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">     3.1.  Mitigation Resources Assignment . . . . . . . . . . . . .   3</td><td> </td><td class="right">     3.1.  Mitigation Resources Assignment . . . . . . . . . . . . .   3</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       3.1.1.  Mitigating Attack Flow of Top-talker Preferentially .   3</td><td> </td><td class="right">       3.1.1.  Mitigating Attack Flow of Top-talker Preferentially .   3</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       3.1.2.  Optimal DMS Selection for Mitigation  . . . . . . . .   6</td><td> </td><td class="right">       3.1.2.  Optimal DMS Selection for Mitigation  . . . . . . . .   6</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       3.1.3.  Best-path Selection for Redirection . . . . . . . . .   7</td><td> </td><td class="right">       3.1.3.  Best-path Selection for Redirection . . . . . . . . .   7</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       3.1.4.  Short but Extreme Volumetric Attack Mitigation  . . .  10</td><td> </td><td class="right">       3.1.4.  Short but Extreme Volumetric Attack Mitigation  . . .  10</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       3.1.5.  Selecting Mitigation Technique Based on Attack Type .  13</td><td> </td><td class="right">       3.1.5.  Selecting Mitigation Technique Based on Attack Type .  13</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     3.2.  Detailed DDoS Mitigation Report . . . . . . . . . . . . .  16</td><td> </td><td class="right">     3.2.  Detailed DDoS Mitigation Report . . . . . . . . . . . . .  16</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     3.3.  Tuning Mitigation Resources . . . . . . . . . . . . . . .  19</td><td> </td><td class="right">     3.3.  Tuning Mitigation Resources . . . . . . . . . . . . . . .  19</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       3.3.1.  Supervised Machine Learning of Flow Collector . . . .  19</td><td> </td><td class="right">       3.3.1.  Supervised Machine Learning of Flow Collector . . . .  19</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       3.3.2.  Unsupervised Machine Learning of Flow Collector . . .  22</td><td> </td><td class="right">       3.3.2.  Unsupervised Machine Learning of Flow Collector . . .  22</td><td class="lineno"></td></tr>
+      <tr id="diff0001"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   4.  Security Considerations . . . . . . . . . . . . . . . . . . .  <span class="delete">24</span></td><td> </td><td class="rblock">   4.  Security Considerations . . . . . . . . . . . . . . . . . . .  <span class="insert">25</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  <span class="delete">24</span></td><td> </td><td class="rblock">   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  <span class="insert">25</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   6.  Acknowledgement . . . . . . . . . . . . . . . . . . . . . . .  <span class="delete">24</span></td><td> </td><td class="rblock">   6.  Acknowledgement . . . . . . . . . . . . . . . . . . . . . . .  <span class="insert">25</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  <span class="delete">24</span></td><td> </td><td class="rblock">   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  <span class="insert">25</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  <span class="delete">24</span></td><td> </td><td class="rblock">     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  <span class="insert">25</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">     7.2.  Informative References  . . . . . . . . . . . . . . . . .  <span class="delete">25</span></td><td> </td><td class="rblock">     7.2.  Informative References  . . . . . . . . . . . . . . . . .  <span class="insert">26</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  <span class="delete">25</span></td><td> </td><td class="rblock">   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  <span class="insert">26</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">1.  Introduction</td><td> </td><td class="right">1.  Introduction</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Denial-of-Service (DDoS), attacks such as volumetric attacks and</td><td> </td><td class="right">   Denial-of-Service (DDoS), attacks such as volumetric attacks and</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   resource-consumption attacks, are critical threats to be handled by</td><td> </td><td class="right">   resource-consumption attacks, are critical threats to be handled by</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   service providers.  When such DDoS attacks occur, service providers</td><td> </td><td class="right">   service providers.  When such DDoS attacks occur, service providers</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   have to mitigate them immediately to protect or recover their</td><td> </td><td class="right">   have to mitigate them immediately to protect or recover their</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   services.</td><td> </td><td class="right">   services.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Therefore, for service providers to immediately protect their network</td><td> </td><td class="right">   Therefore, for service providers to immediately protect their network</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   services from DDoS attacks, DDoS mitigation needs to be automated.</td><td> </td><td class="right">   services from DDoS attacks, DDoS mitigation needs to be automated.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   To automate DDoS-attack mitigation, multi-vendor components involved</td><td> </td><td class="right">   To automate DDoS-attack mitigation, multi-vendor components involved</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   in DDoS-attack detection and mitigation should cooperate and support</td><td> </td><td class="right">   in DDoS-attack detection and mitigation should cooperate and support</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   standard interfaces to communicate.</td><td> </td><td class="right">   standard interfaces to communicate.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   DDoS Open Threat Signaling (DOTS) is a set of protocols for real-time</td><td> </td><td class="right">   DDoS Open Threat Signaling (DOTS) is a set of protocols for real-time</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   signaling, threat-handling requests, and data filtering between the</td><td> </td><td class="right">   signaling, threat-handling requests, and data filtering between the</td><td class="lineno"></td></tr>
+      <tr id="diff0002"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   multi-vendor elements <span class="delete">[I-D.ietf-dots-rfc8782-bis][RFC8783].</span></td><td> </td><td class="rblock">   multi-vendor elements <span class="insert">[RFC8782][RFC8783].</span>  Furthermore, DOTS</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Furthermore, DOTS Telemetry enriches the DOTS protocols with various</td><td> </td><td class="rblock">   Telemetry enriches the DOTS protocols with various telemetry</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   telemetry attributes allowing optimal DDoS-attack mitigation</td><td> </td><td class="rblock">   attributes allowing optimal DDoS-attack mitigation</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   [I-D.ietf-dots-telemetry].  This document presents sample use cases</td><td> </td><td class="right">   [I-D.ietf-dots-telemetry].  This document presents sample use cases</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   for DOTS Telemetry, which makes concrete overview and purpose</td><td> </td><td class="right">   for DOTS Telemetry, which makes concrete overview and purpose</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   described in [I-D.ietf-dots-telemetry]: what components are deployed</td><td> </td><td class="right">   described in [I-D.ietf-dots-telemetry]: what components are deployed</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   in the network, how they cooperate, and what information is exchanged</td><td> </td><td class="right">   in the network, how they cooperate, and what information is exchanged</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   to effectively use attack-mitigation techniques.</td><td> </td><td class="right">   to effectively use attack-mitigation techniques.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">2.  Terminology</td><td> </td><td class="right">2.  Terminology</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   The readers should be familiar with the terms defined in [RFC8612]</td><td> </td><td class="right">   The readers should be familiar with the terms defined in [RFC8612]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-2" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-2"><em> page 3, line 45<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-2"><em> page 3, line 45<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Some transit providers have to mitigate large-scale DDoS attacks</td><td> </td><td class="right">   Some transit providers have to mitigate large-scale DDoS attacks</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   using DMS with limited resources, which is already deployed in their</td><td> </td><td class="right">   using DMS with limited resources, which is already deployed in their</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   network.</td><td> </td><td class="right">   network.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   The aim of this use case is to enable transit providers to use their</td><td> </td><td class="right">   The aim of this use case is to enable transit providers to use their</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   DMS efficiently under volume-based DDoS attacks whose bandwidth is</td><td> </td><td class="right">   DMS efficiently under volume-based DDoS attacks whose bandwidth is</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   more than the available capacity of the DMS.  To enable this, attack</td><td> </td><td class="right">   more than the available capacity of the DMS.  To enable this, attack</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   traffic of top talkers is redirected to the DMS preferentially by</td><td> </td><td class="right">   traffic of top talkers is redirected to the DMS preferentially by</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   cooperation among forwarding nodes, flow collectors, and</td><td> </td><td class="right">   cooperation among forwarding nodes, flow collectors, and</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   orchestrators.  Figure 1 gives an overview of this use case.</td><td> </td><td class="right">   orchestrators.  Figure 1 gives an overview of this use case.</td><td class="lineno"></td></tr>
+      <tr id="diff0003"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Figure 2 <span class="delete">provides</span> an example of <span class="delete">a DOTS telemetry</span> message body <span class="delete">that is</span></td><td> </td><td class="rblock">   Figure 2 <span class="insert">gives</span> an example of message body <span class="insert">of DOTS telemetry.</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   used to signal top-talkers.</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   (Internet Transit Provider)</td><td> </td><td class="right">   (Internet Transit Provider)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                  +-----------+      +--------------+ e.g., SNMP</td><td> </td><td class="right">                  +-----------+      +--------------+ e.g., SNMP</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     e.g., IPFIX +-----------+| DOTS |              |&lt;---</td><td> </td><td class="right">     e.g., IPFIX +-----------+| DOTS |              |&lt;---</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">             ---&gt;| Flow      ||C&lt;--&gt;S| Orchestrator | e.g., BGP Flowspec</td><td> </td><td class="right">             ---&gt;| Flow      ||C&lt;--&gt;S| Orchestrator | e.g., BGP Flowspec</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                 | collector |+      |              |---&gt;   (Redirect)</td><td> </td><td class="right">                 | collector |+      |              |---&gt;   (Redirect)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                 +-----------+       +--------------+</td><td> </td><td class="right">                 +-----------+       +--------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                            +-------------+</td><td> </td><td class="right">                            +-------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-3" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-3"><em> page 5, line 39<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-3"><em> page 5, line 39<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">                   }</td><td> </td><td class="right">                   }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                 ]</td><td> </td><td class="right">                 ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">               }</td><td> </td><td class="right">               }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">             }</td><td> </td><td class="right">             }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">           ]</td><td> </td><td class="right">           ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">         }</td><td> </td><td class="right">         }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       ]</td><td> </td><td class="right">       ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     }</td><td> </td><td class="right">     }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   }</td><td> </td><td class="right">   }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0004"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Figure 2: Example of Message Body<span class="delete"> to Signal Top-Talkers</span></td><td> </td><td class="rblock">   Figure 2: Example of Message Body</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this use case, the forwarding nodes always send statistics of</td><td> </td><td class="right">   In this use case, the forwarding nodes always send statistics of</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   traffic flow to the flow collectors by using monitoring functions</td><td> </td><td class="right">   traffic flow to the flow collectors by using monitoring functions</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   such as IPFIX[RFC7011].  When DDoS attacks occur, the flow collectors</td><td> </td><td class="right">   such as IPFIX[RFC7011].  When DDoS attacks occur, the flow collectors</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   detect attack traffic and send (src_ip, dst_ip, bandwidth)-tuple</td><td> </td><td class="right">   detect attack traffic and send (src_ip, dst_ip, bandwidth)-tuple</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   information of the top talker to the orchestrator using the target-</td><td> </td><td class="right">   information of the top talker to the orchestrator using the target-</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   prefix and top-talkers attribute of DOTS Telemetry.  The orchestrator</td><td> </td><td class="right">   prefix and top-talkers attribute of DOTS Telemetry.  The orchestrator</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   then checks the available capacity of DMS by using a network</td><td> </td><td class="right">   then checks the available capacity of DMS by using a network</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   management protocol such as SNMP[RFC3413].  After that, the</td><td> </td><td class="right">   management protocol such as SNMP[RFC3413].  After that, the</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   orchestrator orders forwarding nodes to redirect as much of the top</td><td> </td><td class="right">   orchestrator orders forwarding nodes to redirect as much of the top</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-4" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-4"><em> page 6, line 17<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-4"><em> page 6, line 17<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">3.1.2.  Optimal DMS Selection for Mitigation</td><td> </td><td class="right">3.1.2.  Optimal DMS Selection for Mitigation</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Transit providers, which have a number of DMSs, can deploy the DMSs</td><td> </td><td class="right">   Transit providers, which have a number of DMSs, can deploy the DMSs</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   in clustered form.  In the form, they can select DMS to be used to</td><td> </td><td class="right">   in clustered form.  In the form, they can select DMS to be used to</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   mitigate DDoS attack under attack time.</td><td> </td><td class="right">   mitigate DDoS attack under attack time.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   The aim of this use case is to enable transit providers to select an</td><td> </td><td class="right">   The aim of this use case is to enable transit providers to select an</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   optimal DMS for mitigation based on the bandwidth of attack traffic,</td><td> </td><td class="right">   optimal DMS for mitigation based on the bandwidth of attack traffic,</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   capacity of a DMS.  Figure 3 gives an overview of this use case.</td><td> </td><td class="right">   capacity of a DMS.  Figure 3 gives an overview of this use case.</td><td class="lineno"></td></tr>
+      <tr id="diff0005"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Figure 4 <span class="delete">provides</span> an example of <span class="delete">a DOTS telemetry</span> message body <span class="delete">that is</span></td><td> </td><td class="rblock">   Figure 4 <span class="insert">gives</span> an example of message body <span class="insert">of DOTS telemetry.</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   used to signal various attack traffic percentiles.</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   (Internet Transit Provider)</td><td> </td><td class="right">   (Internet Transit Provider)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                  +-----------+      +--------------+ e.g., SNMP</td><td> </td><td class="right">                  +-----------+      +--------------+ e.g., SNMP</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     e.g., IPFIX +-----------+| DOTS |              |&lt;---</td><td> </td><td class="right">     e.g., IPFIX +-----------+| DOTS |              |&lt;---</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">             ---&gt;| Flow      ||C&lt;--&gt;S| Orchestrator | e.g., BGP</td><td> </td><td class="right">             ---&gt;| Flow      ||C&lt;--&gt;S| Orchestrator | e.g., BGP</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                 | collector |+      |              |---&gt;   (Redirect)</td><td> </td><td class="right">                 | collector |+      |              |---&gt;   (Redirect)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                 +-----------+       +--------------+</td><td> </td><td class="right">                 +-----------+       +--------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                            +------------+</td><td> </td><td class="right">                            +------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-5" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-5"><em> page 7, line 28<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-5"><em> page 7, line 28<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">               "high-percentile-g": "1000",</td><td> </td><td class="right">               "high-percentile-g": "1000",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">               "peak-g":"1100",</td><td> </td><td class="right">               "peak-g":"1100",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">               "current-g":"700"</td><td> </td><td class="right">               "current-g":"700"</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">             }</td><td> </td><td class="right">             }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">           ]</td><td> </td><td class="right">           ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">         }</td><td> </td><td class="right">         }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       ]</td><td> </td><td class="right">       ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     }</td><td> </td><td class="right">     }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   }</td><td> </td><td class="right">   }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0006"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Figure 4: Example of Message Body<span class="delete"> with Total Attack Traffic</span></td><td> </td><td class="rblock">   Figure 4: Example of Message Body</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this use case, the forwarding nodes always send statistics of</td><td> </td><td class="right">   In this use case, the forwarding nodes always send statistics of</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   traffic flow to the flow collectors by using monitoring functions</td><td> </td><td class="right">   traffic flow to the flow collectors by using monitoring functions</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   such as IPFIX[RFC7011].  When DDoS attacks occur, the flow collectors</td><td> </td><td class="right">   such as IPFIX[RFC7011].  When DDoS attacks occur, the flow collectors</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   detect attack traffic and send (dst_ip, bandwidth)-tuple information</td><td> </td><td class="right">   detect attack traffic and send (dst_ip, bandwidth)-tuple information</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   to the orchestrator using the target-prefix and total-attack-traffic</td><td> </td><td class="right">   to the orchestrator using the target-prefix and total-attack-traffic</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   attribute of DOTS Telemetry.  The orchestrator then checks the</td><td> </td><td class="right">   attribute of DOTS Telemetry.  The orchestrator then checks the</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   available capacity of the DMSs by using a network management protocol</td><td> </td><td class="right">   available capacity of the DMSs by using a network management protocol</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   such as SNMP[RFC3413].  After that, the orchestrator chooses optimal</td><td> </td><td class="right">   such as SNMP[RFC3413].  After that, the orchestrator chooses optimal</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   DMS which each attack traffic should be redirected.  The orchestrator</td><td> </td><td class="right">   DMS which each attack traffic should be redirected.  The orchestrator</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-6" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-6"><em> page 8, line 7<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-6"><em> page 8, line 7<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">3.1.3.  Best-path Selection for Redirection</td><td> </td><td class="right">3.1.3.  Best-path Selection for Redirection</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   A transit-provider network, which adopts a mesh network, has multiple</td><td> </td><td class="right">   A transit-provider network, which adopts a mesh network, has multiple</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   paths to convey attack traffic to a DMS.  In this network, attack</td><td> </td><td class="right">   paths to convey attack traffic to a DMS.  In this network, attack</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   traffic can be conveyed while avoiding congested links by selecting</td><td> </td><td class="right">   traffic can be conveyed while avoiding congested links by selecting</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   an available path.</td><td> </td><td class="right">   an available path.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   The aim of this use case is to enable transit providers to select an</td><td> </td><td class="right">   The aim of this use case is to enable transit providers to select an</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   optimal path for redirecting attack traffic to a DMS according to the</td><td> </td><td class="right">   optimal path for redirecting attack traffic to a DMS according to the</td><td class="lineno"></td></tr>
+      <tr id="diff0007"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   bandwidth of the attack <span class="delete">traffic</span> and total <span class="delete">traffic.</span>  Figure 5 gives an</td><td> </td><td class="rblock">   bandwidth of the attack <span class="insert">traffic, total traffic,</span> and total <span class="insert">pipe</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   overview of this use case.  Figure 6 <span class="delete">provides</span> an example of <span class="delete">a DOTS</span></td><td> </td><td class="rblock"><span class="insert">   capability.</span>  Figure 5 gives an overview of this use case.  Figure 6</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   telemetry</span> message body <span class="delete">that is used to signal various attack traffic</span></td><td> </td><td class="rblock">   <span class="insert">gives</span> an example of message body <span class="insert">of DOTS telemetry.</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   percentiles and total traffic percentiles.</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   (Internet Transit Provider)</td><td> </td><td class="right">   (Internet Transit Provider)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">             +-----------+      +--------------+ DOTS</td><td> </td><td class="right">             +-----------+      +--------------+ DOTS</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     e.g.,  +-----------+|      |              |S&lt;---</td><td> </td><td class="right">     e.g.,  +-----------+|      |              |S&lt;---</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">      IPFIX | Flow      || DOTS | Orchestrator |</td><td> </td><td class="right">      IPFIX | Flow      || DOTS | Orchestrator |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">         --&gt;| collector ||C&lt;--&gt;S|              | e.g., BGP Flow spec</td><td> </td><td class="right">         --&gt;| collector ||C&lt;--&gt;S|              | e.g., BGP Flow spec</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">            |           |+      |              |---&gt;   (Redirect)</td><td> </td><td class="right">            |           |+      |              |---&gt;   (Redirect)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">            +-----------+       +--------------+</td><td> </td><td class="right">            +-----------+       +--------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-7" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-7"><em> page 8, line 44<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-7"><em> page 8, line 43<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                  |/</td><td> </td><td class="right">                                  |/</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                               +--x-----------+</td><td> </td><td class="right">                               +--x-----------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                               |     DMS      |</td><td> </td><td class="right">                               |     DMS      |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                               +--------------+</td><td> </td><td class="right">                               +--------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   * C is for DOTS client functionality</td><td> </td><td class="right">   * C is for DOTS client functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   * S is for DOTS client functionality</td><td> </td><td class="right">   * S is for DOTS client functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Figure 5: Best-path Selection for Redirection</td><td> </td><td class="right">   Figure 5: Best-path Selection for Redirection</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0008"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">{</td><td> </td><td class="rblock">   {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">  "ietf-dots-telemetry:telemetry": {</td><td> </td><td class="rblock">     "ietf-dots-telemetry:telemetry": {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">    "pre-or-ongoing-mitigation": [</td><td> </td><td class="rblock">       "pre-or-ongoing-mitigation": [</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">      {</td><td> </td><td class="rblock">         {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        "target": {</td><td> </td><td class="rblock">           "target": {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">          "target-prefix": [</td><td> </td><td class="rblock">             "target-prefix": [</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "2001:db8::1/128"</td><td> </td><td class="rblock">               "2001:db8::1/128"</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">          ]</td><td> </td><td class="rblock">             ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                                                                         </td><td> </td><td class="rblock">           },</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        },</td><td> </td><td class="rblock">           "total-traffic": [</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        "total-traffic": [</td><td> </td><td class="rblock">             {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">          {</td><td> </td><td class="rblock">               "unit": "megabit-ps",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "unit": "megabit-ps",</td><td> </td><td class="rblock">               "mid-percentile-g": "1300",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "mid-percentile-g": "1300",</td><td> </td><td class="rblock">               "peak-g":"800"</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "peak-g":"800"</td><td> </td><td class="rblock">              }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">           }</td><td> </td><td class="rblock">           ],</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        ],</td><td> </td><td class="rblock">           <span class="insert">"total-pipe-capacity": [</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        "total-attack-traffic": [</td><td> </td><td class="rblock"><span class="insert">             {</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">          {</td><td> </td><td class="rblock"><span class="insert">               "unit": "megabit-ps",</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "unit": "megabit-ps",</td><td> </td><td class="rblock"><span class="insert">               "capacity": "1500",</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "low-percentile-g": "600",</td><td> </td><td class="rblock"><span class="insert">               "link-id":"link1"</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "mid-percentile-g": "800",</td><td> </td><td class="rblock"><span class="insert">              }</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "high-percentile-g": "1000",</td><td> </td><td class="rblock"><span class="insert">           ],</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "peak-g":"1100",</td><td> </td><td class="rblock">           "total-attack-traffic": [</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "current-g":"700"</td><td> </td><td class="rblock">             {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">           }</td><td> </td><td class="rblock">               "unit": "megabit-ps",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        ],</td><td> </td><td class="rblock">               "low-percentile-g": "600",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        "attack-detail": [</td><td> </td><td class="rblock">               "mid-percentile-g": "800",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">          {</td><td> </td><td class="rblock">               "high-percentile-g": "1000",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "vendor-id": 1234,</td><td> </td><td class="rblock">               "peak-g":"1100",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "attack-id": 77,</td><td> </td><td class="rblock">               "current-g":"700"</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "start-time": "1957811234",</td><td> </td><td class="rblock">              }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "attack-severity": "high",</td><td> </td><td class="rblock">           ],</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "top-talker":{</td><td> </td><td class="rblock">           "attack-detail": [</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">              "talker": [</td><td> </td><td class="rblock">             {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                {</td><td> </td><td class="rblock">               "vendor-id": 1234,</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                  "source-prefix": "2001:db8::2/128",</td><td> </td><td class="rblock">               "attack-id": 77,</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                  "total-attack-traffic":[</td><td> </td><td class="rblock">               "start-time": "1957811234",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                    {</td><td> </td><td class="rblock">               "attack-severity": "high",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                      "unit": "megabit-ps",</td><td> </td><td class="rblock">               "top-talker":{</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                      "mid-percentile-g": "300"</td><td> </td><td class="rblock">                 "talker": [</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                    }</td><td> </td><td class="rblock">                   {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                  ]</td><td> </td><td class="rblock">                     "source-prefix": "2001:db8::2/128",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                },</td><td> </td><td class="rblock">                     "total-attack-traffic":[</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                {</td><td> </td><td class="rblock">                       {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                  "source-prefix": "2001:db8::3/128",</td><td> </td><td class="rblock">                         "unit": "megabit-ps",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                  "total-attack-traffic":[</td><td> </td><td class="rblock">                         "mid-percentile-g": "300"</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                    {</td><td> </td><td class="rblock">                       }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                      "unit": "megabit-ps",</td><td> </td><td class="rblock">                     ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                      "mid-percentile-g": "400"</td><td> </td><td class="rblock">                   },</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                    }</td><td> </td><td class="rblock">                   {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                  <span class="delete">]</span></td><td> </td><td class="rblock">                     "source-prefix": "2001:db8::3/128",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">                }</span></td><td> </td><td class="rblock">                     "total-attack-traffic":[</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">              ]</span></td><td> </td><td class="rblock">                       {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            }</span></td><td> </td><td class="rblock">                         "unit": "megabit-ps",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">          }</span></td><td> </td><td class="rblock">                         "mid-percentile-g": "400"</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">        ]</span></td><td> </td><td class="rblock">                       }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0009"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">      }</td><td> </td><td class="rblock">                     <span class="insert">]</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">    ]</td><td> </td><td class="rblock"><span class="insert">                   }</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">  }</td><td> </td><td class="rblock"><span class="insert">                 ]</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">}</td><td> </td><td class="rblock"><span class="insert">               }</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">             }</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           ]</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">         }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">       ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">     }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">   }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0010"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">Figure 6: Example of Message Body with Total Attack Traffic and Total Traffic</span></td><td> </td><td class="rblock"><span class="insert">   Figure 6: Example of Message Body</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this use case, the forwarding nodes always send statistics of</td><td> </td><td class="right">   In this use case, the forwarding nodes always send statistics of</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   traffic flow to the flow collectors by using monitoring functions</td><td> </td><td class="right">   traffic flow to the flow collectors by using monitoring functions</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   such as IPFIX[RFC7011].  When DDoS attacks occur, the flow collectors</td><td> </td><td class="right">   such as IPFIX[RFC7011].  When DDoS attacks occur, the flow collectors</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   detect attack traffic and send (dst_ip, bandwidth)-tuple information</td><td> </td><td class="right">   detect attack traffic and send (dst_ip, bandwidth)-tuple information</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   to the orchestrator using a target-prefix and total-attack-traffic</td><td> </td><td class="right">   to the orchestrator using a target-prefix and total-attack-traffic</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   attribute of DOTS Telemetry.  On the other hands, forwarding nodes</td><td> </td><td class="right">   attribute of DOTS Telemetry.  On the other hands, forwarding nodes</td><td class="lineno"></td></tr>
+      <tr id="diff0011"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   send bandwidth of total traffic passing the node to the orchestrator</td><td> </td><td class="rblock">   send bandwidth of total traffic passing the node <span class="insert">and total pipe</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   using total-traffic attributes of DOTS Telemetry.  The orchestrator</td><td> </td><td class="rblock"><span class="insert">   capability</span> to the orchestrator using total-traffic <span class="insert">and total-pipe-</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   then selects an optimal path to which each attack-traffic flow should</td><td> </td><td class="rblock"><span class="insert">   capability</span> attributes of DOTS Telemetry.  The orchestrator then</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   be redirected.  After that, the orchestrator orders forwarding nodes</td><td> </td><td class="rblock">   selects an optimal path to which each attack-traffic flow should be</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   to redirect the attack traffic to the optimal DMS by dissemination of</td><td> </td><td class="rblock">   redirected.  After that, the orchestrator orders forwarding nodes to</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">   redirect the attack traffic to the optimal DMS by dissemination of</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   flow-specification-rules protocols such as BGP Flowspec[RFC5575].</td><td> </td><td class="right">   flow-specification-rules protocols such as BGP Flowspec[RFC5575].</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   The algorithm of selecting a path is out of the scope of this draft.</td><td> </td><td class="right">   The algorithm of selecting a path is out of the scope of this draft.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">3.1.4.  Short but Extreme Volumetric Attack Mitigation</td><td> </td><td class="right">3.1.4.  Short but Extreme Volumetric Attack Mitigation</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Short but extreme volumetric attacks, such as pulse wave DDoS</td><td> </td><td class="right">   Short but extreme volumetric attacks, such as pulse wave DDoS</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   attacks, are threats to internet transit provider networks.  It is</td><td> </td><td class="right">   attacks, are threats to internet transit provider networks.  It is</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   difficult for them to mitigate an attack by DMS by redirecting attack</td><td> </td><td class="right">   difficult for them to mitigate an attack by DMS by redirecting attack</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   flows because it may cause route flapping in the network.  The</td><td> </td><td class="right">   flows because it may cause route flapping in the network.  The</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   practical way to mitigate short but extreme volumetric attacks is to</td><td> </td><td class="right">   practical way to mitigate short but extreme volumetric attacks is to</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   offload a mitigation actions to a forwarding node.</td><td> </td><td class="right">   offload a mitigation actions to a forwarding node.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   The aim of this use case is to enable transit providers to mitigate</td><td> </td><td class="right">   The aim of this use case is to enable transit providers to mitigate</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   short but extreme volumetric attacks.  Furthermore, the aim is to</td><td> </td><td class="right">   short but extreme volumetric attacks.  Furthermore, the aim is to</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   estimate the network-access success rate based on the bandwidth of</td><td> </td><td class="right">   estimate the network-access success rate based on the bandwidth of</td><td class="lineno"></td></tr>
+      <tr id="diff0012"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   attack <span class="delete">traffic.</span>  Figure 7 gives an overview of this use case.</td><td> </td><td class="rblock">   attack <span class="insert">traffic and total pipe capability.</span>  Figure 7 gives an overview</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Figure 8 <span class="delete">provides</span> an example of <span class="delete">a DOTS telemetry</span> message body <span class="delete">that is</span></td><td> </td><td class="rblock">   of this use case.  Figure 8 <span class="insert">gives</span> an example of message body <span class="insert">of DOTS</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   used to signal various attack traffic percentiles and total traffic</span></td><td> </td><td class="rblock"><span class="insert">   telemetry.</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   percentiles.</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   (Internet Transit Provider)</td><td> </td><td class="right">   (Internet Transit Provider)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">             +------------+       +----------------+</td><td> </td><td class="right">             +------------+       +----------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   e.g.,     | Network    |  DOTS | Administrative |</td><td> </td><td class="right">   e.g.,     | Network    |  DOTS | Administrative |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Alert ---&gt;| Management |C&lt;---&gt;S| System         | e.g., BGP Flow spec</td><td> </td><td class="right">   Alert ---&gt;| Management |C&lt;---&gt;S| System         | e.g., BGP Flow spec</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">             | System     |       |                |---&gt;   (Rate-Limit)</td><td> </td><td class="right">             | System     |       |                |---&gt;   (Rate-Limit)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">             +------------+       +----------------+</td><td> </td><td class="right">             +------------+       +----------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">               +------------+     +------------+ e.g., BGP Flow spec</td><td> </td><td class="right">               +------------+     +------------+ e.g., BGP Flow spec</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-8" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-8"><em> page 12, line 4<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-8"><em> page 12, line 4<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Capability                                     Bandwidth</td><td> </td><td class="right">   Capability                                     Bandwidth</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   e.g., X bps                                    e.g., Y bps</td><td> </td><td class="right">   e.g., X bps                                    e.g., Y bps</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                       Network access success rate</td><td> </td><td class="right">                       Network access success rate</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                           e.g., X / (X + Y)</td><td> </td><td class="right">                           e.g., X / (X + Y)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   * C is for DOTS client functionality</td><td> </td><td class="right">   * C is for DOTS client functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   * S is for DOTS client functionality</td><td> </td><td class="right">   * S is for DOTS client functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Figure 7: Short but Extreme Volumetric Attack Mitigation</td><td> </td><td class="right">   Figure 7: Short but Extreme Volumetric Attack Mitigation</td><td class="lineno"></td></tr>
+      <tr id="diff0013"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                                                                         </td><td> </td><td class="rblock">   {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">{</td><td> </td><td class="rblock">     "ietf-dots-telemetry:telemetry": {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">  "ietf-dots-telemetry:telemetry": {</td><td> </td><td class="rblock">       "pre-or-ongoing-mitigation": [</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">    "pre-or-ongoing-mitigation": [</td><td> </td><td class="rblock">         {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">      {</td><td> </td><td class="rblock">           "target": {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        "target": {</td><td> </td><td class="rblock">             "target-prefix": [</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">          "target-prefix": [</td><td> </td><td class="rblock">               "2001:db8::1/128"</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "2001:db8::1/128"</td><td> </td><td class="rblock">             ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">          ]</td><td> </td><td class="rblock">           },</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        },</td><td> </td><td class="rblock">           "total-traffic": [</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        "total-traffic": [</td><td> </td><td class="rblock">             {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">          {</td><td> </td><td class="rblock">               "unit": "megabit-ps",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "unit": "megabit-ps",</td><td> </td><td class="rblock">               "mid-percentile-g": "1300",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "mid-percentile-g": "1300",</td><td> </td><td class="rblock">               "peak-g":"800"</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "peak-g":"800"</td><td> </td><td class="rblock">              }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">           }</td><td> </td><td class="rblock">           ],</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        ],</td><td> </td><td class="rblock">           <span class="insert">"total-pipe-capacity": [</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        "total-attack-traffic": [</td><td> </td><td class="rblock"><span class="insert">             {</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">          {</td><td> </td><td class="rblock"><span class="insert">               "unit": "megabit-ps",</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "unit": "megabit-ps",</td><td> </td><td class="rblock"><span class="insert">               "capacity": "1500",</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "low-percentile-g": "600",</td><td> </td><td class="rblock"><span class="insert">               "link-id":"link1"</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "mid-percentile-g": "800",</td><td> </td><td class="rblock"><span class="insert">              }</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "high-percentile-g": "1000",</td><td> </td><td class="rblock"><span class="insert">           ],</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "peak-g":"1100",</td><td> </td><td class="rblock">           "total-attack-traffic": [</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "current-g":"700"</td><td> </td><td class="rblock">             {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">               "unit": "megabit-ps",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">               "low-percentile-g": "600",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">               "mid-percentile-g": "800",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">               "high-percentile-g": "1000",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">               "peak-g":"1100",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">               "current-g":"700"</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">             <span class="insert">}</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           ]</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">          }</td><td> </td><td class="right">          }</td><td class="lineno"></td></tr>
+      <tr id="diff0014"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        ]</td><td> </td><td class="rblock">       ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">       }</td><td> </td><td class="rblock">     }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">    <span class="delete">]</span></td><td> </td><td class="rblock">   }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">  }</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">}</td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0015"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">Figure 8: Example of Message Body with Total Attack Traffic and Total Traffic</span></td><td> </td><td class="rblock"><span class="insert">   Figure 8: Example of Message Body</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this use case, when DDoS attacks occur, the network management</td><td> </td><td class="right">   In this use case, when DDoS attacks occur, the network management</td><td class="lineno"></td></tr>
+      <tr id="diff0016"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   system receives alerts.  It then sends the target ip <span class="delete">address</span> and</td><td> </td><td class="rblock">   system receives alerts.  It then sends the target ip <span class="insert">address, pipe</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   bandwidth of the DDoS attack traffic to the administrative system</td><td> </td><td class="rblock"><span class="insert">   capability of the target's link,</span> and bandwidth of the DDoS attack</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   using the <span class="delete">target-prefix</span> and total-attack-traffic attributes of DOTS</td><td> </td><td class="rblock">   traffic to the administrative system using the <span class="insert">target-prefix, total-</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   pipe-capability</span> and total-attack-traffic attributes of DOTS</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Telemetry.  After that, the administrative system orders upper</td><td> </td><td class="right">   Telemetry.  After that, the administrative system orders upper</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   forwarding nodes to carry out rate-limit all traffic destined to the</td><td> </td><td class="right">   forwarding nodes to carry out rate-limit all traffic destined to the</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   target based on the pipe capability by the dissemination of the flow-</td><td> </td><td class="right">   target based on the pipe capability by the dissemination of the flow-</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   specification-rules protocols such as BGP Flowspec[RFC5575].  In</td><td> </td><td class="right">   specification-rules protocols such as BGP Flowspec[RFC5575].  In</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   addition, the administrative system estimates the network-access</td><td> </td><td class="right">   addition, the administrative system estimates the network-access</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   success rate of the target, which is calculated by total pipe</td><td> </td><td class="right">   success rate of the target, which is calculated by total pipe</td><td class="lineno"></td></tr>
+      <tr id="diff0017"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   capability / (total pipe capability + total attack traffic).  <span class="delete">Note</span></td><td> </td><td class="rblock">   capability / (total pipe capability + total attack traffic).</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   that total pipe capability information can be gatherd by telemetry</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   setup in advance.</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">3.1.5.  Selecting Mitigation Technique Based on Attack Type</td><td> </td><td class="right">3.1.5.  Selecting Mitigation Technique Based on Attack Type</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Some volumetric attacks, such as amplification attacks, can be</td><td> </td><td class="right">   Some volumetric attacks, such as amplification attacks, can be</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   detected with high accuracy by checking the layer-3 or layer-4</td><td> </td><td class="right">   detected with high accuracy by checking the layer-3 or layer-4</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   information of attack packets.  These attacks can be detected and</td><td> </td><td class="right">   information of attack packets.  These attacks can be detected and</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   mitigated through cooperation among forwarding nodes and flow</td><td> </td><td class="right">   mitigated through cooperation among forwarding nodes and flow</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   collectors using IPFIX[RFC7011].  On the other hand, it is necessary</td><td> </td><td class="right">   collectors using IPFIX[RFC7011].  On the other hand, it is necessary</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   to inspect the layer-7 information of attack packets to detect</td><td> </td><td class="right">   to inspect the layer-7 information of attack packets to detect</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   attacks such as DNS Water Torture Attacks.  Such attack traffic</td><td> </td><td class="right">   attacks such as DNS Water Torture Attacks.  Such attack traffic</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   should be detected and mitigated at a DMS.</td><td> </td><td class="right">   should be detected and mitigated at a DMS.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   The aim of this use case is to enable transit providers to select a</td><td> </td><td class="right">   The aim of this use case is to enable transit providers to select a</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   mitigation technique based on the type of attack traffic:</td><td> </td><td class="right">   mitigation technique based on the type of attack traffic:</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   amplification attack or not.  To use such a technique, attack traffic</td><td> </td><td class="right">   amplification attack or not.  To use such a technique, attack traffic</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   is blocked at forwarding nodes or redirected to a DMS based on attack</td><td> </td><td class="right">   is blocked at forwarding nodes or redirected to a DMS based on attack</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   type through cooperation among forwarding nodes, flow collectors, and</td><td> </td><td class="right">   type through cooperation among forwarding nodes, flow collectors, and</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   an orchestrator.  Figure 9 gives an overview of this use case.</td><td> </td><td class="right">   an orchestrator.  Figure 9 gives an overview of this use case.</td><td class="lineno"></td></tr>
+      <tr id="diff0018"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Figure 10 <span class="delete">provides</span> an example of <span class="delete">a DOTS telemetry</span> message body <span class="delete">that</span></td><td> </td><td class="rblock">   Figure 10 <span class="insert">gives</span> an example of message body <span class="insert">of DOTS telemetry.</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   is used to signal various attack traffic percentiles, total traffic</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   percentiles, total attack connection and attack type.</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     (Internet Transit Provider)</td><td> </td><td class="right">     (Internet Transit Provider)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">              +-----------+ DOTS +--------------+ e.g.,</td><td> </td><td class="right">              +-----------+ DOTS +--------------+ e.g.,</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       e.g., +-----------+|&lt;----&gt;|              | BGP (Redirect)</td><td> </td><td class="right">       e.g., +-----------+|&lt;----&gt;|              | BGP (Redirect)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       IPFIX | Flow      ||C    S| Orchestrator | BGP Flowspec (Drop)</td><td> </td><td class="right">       IPFIX | Flow      ||C    S| Orchestrator | BGP Flowspec (Drop)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">         ---&gt;| collector |+      |              |---&gt;</td><td> </td><td class="right">         ---&gt;| collector |+      |              |---&gt;</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">             +-----------+       +--------------+</td><td> </td><td class="right">             +-----------+       +--------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                         +------------+ e.g., BGP (Redirect)</td><td> </td><td class="right">                         +------------+ e.g., BGP (Redirect)</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-9" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-9"><em> page 14, line 34<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-9"><em> page 14, line 34<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">                        | DDoS       |</td><td> </td><td class="right">                        | DDoS       |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                        | mitigation |</td><td> </td><td class="right">                        | mitigation |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                        | system     |</td><td> </td><td class="right">                        | system     |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                        +------------+</td><td> </td><td class="right">                        +------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     * C is for DOTS client functionality</td><td> </td><td class="right">     * C is for DOTS client functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     * S is for DOTS server functionality</td><td> </td><td class="right">     * S is for DOTS server functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Figure 9: DDoS Mitigation Based on Attack Type</td><td> </td><td class="right">   Figure 9: DDoS Mitigation Based on Attack Type</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0019"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">{</td><td> </td><td class="rblock">   {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">  "ietf-dots-telemetry:telemetry": {</td><td> </td><td class="rblock">     "ietf-dots-telemetry:telemetry": {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">    "pre-or-ongoing-mitigation": [</td><td> </td><td class="rblock">       "pre-or-ongoing-mitigation": [</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">      {</td><td> </td><td class="rblock">         {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        "target": {</td><td> </td><td class="rblock">           "target": {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">          "target-prefix": [</td><td> </td><td class="rblock">             "target-prefix": [</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "2001:db8::1/128"</td><td> </td><td class="rblock">               "2001:db8::1/128"</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">          ]</td><td> </td><td class="rblock">             ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        },</td><td> </td><td class="rblock">           },</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        "total-attack-traffic": [</td><td> </td><td class="rblock">           "total-attack-traffic": [</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">          {</td><td> </td><td class="rblock">             {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "unit": "megabit-ps",</td><td> </td><td class="rblock">               "unit": "megabit-ps",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "low-percentile-g": "600",</td><td> </td><td class="rblock">               "low-percentile-g": "600",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "mid-percentile-g": "800",</td><td> </td><td class="rblock">               "mid-percentile-g": "800",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "high-percentile-g": "1000",</td><td> </td><td class="rblock">               "high-percentile-g": "1000",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "peak-g":"1100",</td><td> </td><td class="rblock">               "peak-g":"1100",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            "current-g":"700"</td><td> </td><td class="rblock">               "current-g":"700"</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0020"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">              <span class="insert">}</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           ],</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           "total-attack-traffic-protocol": [</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">             {</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "protocol": 17,</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "unit": "megabit-ps",</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "mid-percentile-g": "500"</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">             },</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">             {</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "protocol": 15,</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "unit": "megabit-ps",</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "mid-percentile-g": "200"</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">             }</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           ],</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           "total-attack-connection":[</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           {</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">              "mid-percentile-l":[</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               {</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                 "protocol": 15,</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                 "connection": 200</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               }</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">              ],</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">              "high-percentile-l":[</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               {</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                 "protocol": 17,</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                 "connection": 300</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               }</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">              ]</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">           }</td><td> </td><td class="right">           }</td><td class="lineno"></td></tr>
+      <tr id="diff0021"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        <span class="delete">],</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">        "total-attack-traffic-protocol": [</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">          {</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "protocol": 17,</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "unit": "megabit-ps",</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "mid-percentile-g": "500"</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">          },</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">          {</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "protocol": 15,</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "unit": "megabit-ps",</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "mid-percentile-g": "200"</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">          }</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">        ],</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">        "total-attack-connection":[</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">        {</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">           "mid-percentile-l":[</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            {</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">              "protocol": 15,</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">              "connection": 200</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            }</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">           ],</td><td> </td><td class="right">           ],</td><td class="lineno"></td></tr>
+      <tr id="diff0022"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">           <span class="delete">"high-percentile-l":[</span></td><td> </td><td class="rblock">           <span class="insert">"attack-detail": [</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            {</td><td> </td><td class="rblock">             {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">              <span class="delete">"protocol": 17,</span></td><td> </td><td class="rblock">               <span class="insert">"vendor-id": 1234,</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">              "connection": 300</span></td><td> </td><td class="rblock"><span class="insert">               "attack-id": 77,</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">            }</td><td> </td><td class="rblock"><span class="insert">               "start-time": "1957811234",</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "attack-severity": "high",</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "attack-description":"syn_flood udp_flood http_flood"</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">             }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">           ]</td><td> </td><td class="right">           ]</td><td class="lineno"></td></tr>
+      <tr id="diff0023"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        }</td><td> </td><td class="rblock">         }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">        <span class="delete">],</span></td><td> </td><td class="rblock">       ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">        "attack-detail": [</span></td><td> </td><td class="rblock">     }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">          {</span></td><td> </td><td class="rblock">   }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "vendor-id": 1234,</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "attack-id": 77,</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "start-time": "1957811234",</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "attack-severity": "high",</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "attack-description":"dns-amp"</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">          },</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">          {</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "vendor-id": 1234,</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "attack-id": 92,</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "start-time": "1957811234",</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "attack-severity": "high",</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "attack-description":"ntp-amp"</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">          }</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">        ]</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">      }</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">    ]</td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                                                                         </td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">  }</td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">}</td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0024"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">Figure 10: Example of Message Body with Total Attack Traffic, Total Attack Traffic Protocol, Total Attack Connection and Attack Type</span></td><td> </td><td class="rblock"><span class="insert">   Figure 10: Example of Message Body</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this use case, the forwarding nodes send statistics of traffic</td><td> </td><td class="right">   In this use case, the forwarding nodes send statistics of traffic</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   flow to the flow collectors by using a monitoring function such as</td><td> </td><td class="right">   flow to the flow collectors by using a monitoring function such as</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   IPFIX[RFC7011].  When DDoS attacks occur, the flow collectors detect</td><td> </td><td class="right">   IPFIX[RFC7011].  When DDoS attacks occur, the flow collectors detect</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   attack traffic and send (dst_ip, attack_type)-tuple information to</td><td> </td><td class="right">   attack traffic and send (dst_ip, attack_type)-tuple information to</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   the orchestrator the using vendor-id and attack-id attribute of DOTS</td><td> </td><td class="right">   the orchestrator the using vendor-id and attack-id attribute of DOTS</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Telemetry.  The orchestrator then resolves abused port and orders</td><td> </td><td class="right">   Telemetry.  The orchestrator then resolves abused port and orders</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   forwarding nodes to block the (dst_ip, src_port)-tuple flow of amp</td><td> </td><td class="right">   forwarding nodes to block the (dst_ip, src_port)-tuple flow of amp</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   attack traffic by dissemination of flow-specification-rule protocols</td><td> </td><td class="right">   attack traffic by dissemination of flow-specification-rule protocols</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   such as BGP Flowspec[RFC5575].  On the other hand, the orchestrator</td><td> </td><td class="right">   such as BGP Flowspec[RFC5575].  On the other hand, the orchestrator</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-10" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-10"><em> page 16, line 37<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-10"><em> page 16, line 29<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">   It is possible for the transit provider to add value to the DDoS</td><td> </td><td class="right">   It is possible for the transit provider to add value to the DDoS</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   mitigation service by reporting on-going and detailed DDoS</td><td> </td><td class="right">   mitigation service by reporting on-going and detailed DDoS</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   countermeasure status to the enterprise network.  In addition, it is</td><td> </td><td class="right">   countermeasure status to the enterprise network.  In addition, it is</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   possible for the transit provider to know whether the DDoS counter</td><td> </td><td class="right">   possible for the transit provider to know whether the DDoS counter</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   measure is effective or not by receiving reports from the enterprise</td><td> </td><td class="right">   measure is effective or not by receiving reports from the enterprise</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   network.</td><td> </td><td class="right">   network.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   The aim of this use case is to share the information about on-going</td><td> </td><td class="right">   The aim of this use case is to share the information about on-going</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   DDoS counter measure between the transit provider and the enterprise</td><td> </td><td class="right">   DDoS counter measure between the transit provider and the enterprise</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   network mutually.  Figure 11 gives an overview of this use case.</td><td> </td><td class="right">   network mutually.  Figure 11 gives an overview of this use case.</td><td class="lineno"></td></tr>
+      <tr id="diff0025"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Figure 12 <span class="delete">provides</span> an example of <span class="delete">a DOTS telemetry</span> message body <span class="delete">that</span></td><td> </td><td class="rblock">   Figure 12 <span class="insert">gives</span> an example of message body <span class="insert">of DOTS telemetry.</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   is used to signal various total traffic percentiles, total attack</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   traffic percentiles and attack detail.</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     +------------------+      +------------------------+</td><td> </td><td class="right">     +------------------+      +------------------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     | Enterprise       |      |    Upstream            |</td><td> </td><td class="right">     | Enterprise       |      |    Upstream            |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     | Network          |      |    Internet Transit    |</td><td> </td><td class="right">     | Network          |      |    Internet Transit    |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     |  +------------+  |      |    Provider            |</td><td> </td><td class="right">     |  +------------+  |      |    Provider            |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     |  | Network    |C |      |   S+--------------+    |</td><td> </td><td class="right">     |  | Network    |C |      |   S+--------------+    |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     |  | admini-    |&lt;----DOTS----&gt;| Orchestrator |    |</td><td> </td><td class="right">     |  | admini-    |&lt;----DOTS----&gt;| Orchestrator |    |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     |  | strator    |  |      |    +--------------+    |</td><td> </td><td class="right">     |  | strator    |  |      |    +--------------+    |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     |  +------------+  |      |         C ^            |</td><td> </td><td class="right">     |  +------------+  |      |         C ^            |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     |                  |      |           | DOTS       |</td><td> </td><td class="right">     |                  |      |           | DOTS       |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-11" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-11"><em> page 18, line 4<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-11"><em> page 18, line 4<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">     |  +---------+     |      |   +---------------+    |</td><td> </td><td class="right">     |  +---------+     |      |   +---------------+    |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     |  | DDoS    |     |      |   | Forwarding    | Normal Traffic</td><td> </td><td class="right">     |  | DDoS    |     |      |   | Forwarding    | Normal Traffic</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     |  | Target  |&lt;===============| Node          |========</td><td> </td><td class="right">     |  | Target  |&lt;===============| Node          |========</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     |  +---------+     | Link |   +---------------+    |</td><td> </td><td class="right">     |  +---------+     | Link |   +---------------+    |</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     +------------------+      +------------------------+</td><td> </td><td class="right">     +------------------+      +------------------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   * C is for DOTS client functionality</td><td> </td><td class="right">   * C is for DOTS client functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   * S is for DOTS server functionality</td><td> </td><td class="right">   * S is for DOTS server functionality</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Figure 11: Detailed DDoS Mitigation Report</td><td> </td><td class="right">   Figure 11: Detailed DDoS Mitigation Report</td><td class="lineno"></td></tr>
+      <tr id="diff0026"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">   <span class="insert">{</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">     "ietf-dots-telemetry:telemetry": {</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">       "pre-or-ongoing-mitigation": [</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">         {</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           "tmid": 567,</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           "target": {</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">             "target-prefix": [</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "2001:db8::1/128"</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">             ]</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           },</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           "target-protocol": [</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">             17</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           ],</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           "total-traffic": [</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">             {</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "unit": "megabit-ps",</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "mid-percentile-g": "800"</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">             }</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           ],</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           "total-attack-traffic": [</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">             {</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "unit": "megabit-ps",</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "mid-percentile-g": "100"</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">             }</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           ],</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           "attack-detail": [</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">             {</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "vendor-id": 1234,</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "attack-id": 77,</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "start-time": "1957818434",</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "attack-severity": "high"</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">             }</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           ]</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">         }</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">       ]</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">     }</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   }</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0027"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">{</span></td><td> </td><td class="rblock">   Figure 12: Example of Message Body</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">  "ietf-dots-telemetry:telemetry": {</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">    "pre-or-ongoing-mitigation": [</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">      {</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">        "tmid": 567,</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">        "target": {</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">          "target-prefix": [</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "2001:db8::1/128"</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">          ]</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">        },</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">        "target-protocol": [</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">          17</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">        ],</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">        "total-traffic": [</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">          {</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "unit": "megabit-ps",</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "mid-percentile-g": "800"</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">          }</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">        ],</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">        "total-attack-traffic": [</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">          {</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "unit": "megabit-ps",</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "mid-percentile-g": "100"</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">          }</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">        ],</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">        "attack-detail": [</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">          {</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "vendor-id": 1234,</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "attack-id": 77,</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "start-time": "1957818434",</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">            "attack-severity": "high"</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">          }</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">        ]</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">      }</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">    ]</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">  }</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">}</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                                                                         </td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">Figure 12: Example of Message Body <span class="delete">with Total Traffic, Total Attack Traffic Protocol and Attack Detail</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0028"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   In this use case, the network <span class="delete">management</span> system in the enterprise</td><td> </td><td class="rblock">   In this use case, the network <span class="insert">managements</span> system in the enterprise</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   network reports limits of incoming traffic volume from <span class="delete">the</span> transit</td><td> </td><td class="rblock">   network reports limits of incoming traffic volume from transit</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   provider to the orchestrator in the transit provider in advance.  It</td><td> </td><td class="right">   provider to the orchestrator in the transit provider in advance.  It</td><td class="lineno"></td></tr>
+      <tr id="diff0029"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   is reported by using total-pipe-capacity in DOTS telemetry<span class="delete"> setup</span>.</td><td> </td><td class="rblock">   is reported by using total-pipe-capacity in DOTS telemetry.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0030"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   <span class="delete">when DDoS attacks occur</span>, DDoS Orchestration [RFC8903] is carried out</td><td> </td><td class="rblock">   <span class="insert">When DDoS attacks occurs</span>, DDoS Orchestration [RFC8903] is carried out</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   in the transit provider.  Then, the DDoS mitigation systems reports</td><td> </td><td class="right">   in the transit provider.  Then, the DDoS mitigation systems reports</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   status of DDoS counter measure to the orchestrator by using DOTS</td><td> </td><td class="right">   status of DDoS counter measure to the orchestrator by using DOTS</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   telemetry such as attack-detail.  After that, the orchestrator</td><td> </td><td class="right">   telemetry such as attack-detail.  After that, the orchestrator</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   integrates the reports from the DDoS mitigation system, while</td><td> </td><td class="right">   integrates the reports from the DDoS mitigation system, while</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   removing duplicate contents, and send it to network administrator by</td><td> </td><td class="right">   removing duplicate contents, and send it to network administrator by</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   using DOTS telemetry periodically.</td><td> </td><td class="right">   using DOTS telemetry periodically.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   During the DDoS mitigation, the orchestrator in the transit provider</td><td> </td><td class="right">   During the DDoS mitigation, the orchestrator in the transit provider</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   retrieves link congestion status from the network administrator in</td><td> </td><td class="right">   retrieves link congestion status from the network administrator in</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   the enterprise network by using total-traffic in DOTS telemetry.</td><td> </td><td class="right">   the enterprise network by using total-traffic in DOTS telemetry.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-12" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-12"><em> page 19, line 35<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-12"><em> page 19, line 35<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">   is a lighter weight method of detecting DDoS attacks than DMSs in</td><td> </td><td class="right">   is a lighter weight method of detecting DDoS attacks than DMSs in</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   internet transit provider networks.  On the other hand, DDoS</td><td> </td><td class="right">   internet transit provider networks.  On the other hand, DDoS</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   detection based on the DMSs is a more accurate method of detecting</td><td> </td><td class="right">   detection based on the DMSs is a more accurate method of detecting</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   attack traffic or DDoS attacks better than flow monitoring.</td><td> </td><td class="right">   attack traffic or DDoS attacks better than flow monitoring.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   The aim of this use case is to increases flow collector's detection</td><td> </td><td class="right">   The aim of this use case is to increases flow collector's detection</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   accuracy by carrying out supervised machine-learning techniques</td><td> </td><td class="right">   accuracy by carrying out supervised machine-learning techniques</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   according to attack detail reported by the DMSs.  To use such a</td><td> </td><td class="right">   according to attack detail reported by the DMSs.  To use such a</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   technique, forwarding nodes, flow collector, and a DMS should</td><td> </td><td class="right">   technique, forwarding nodes, flow collector, and a DMS should</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   cooperate.  Figure 13 gives an overview of this use case.  Figure 14</td><td> </td><td class="right">   cooperate.  Figure 13 gives an overview of this use case.  Figure 14</td><td class="lineno"></td></tr>
+      <tr id="diff0031"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   <span class="delete">provides</span> an example of <span class="delete">a DOTS telemetry</span> message body <span class="delete">that is used to</span></td><td> </td><td class="rblock">   <span class="insert">gives</span> an example of message body <span class="insert">of DOTS telemetry.</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   signal various total attack traffic percentiles and attack detail.</span></td><td> </td><td class="rblock"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                   +-----------+</td><td> </td><td class="right">                                   +-----------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                  +-----------+| DOTS</td><td> </td><td class="right">                                  +-----------+| DOTS</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                      e.g., IPFIX | Flow      ||S&lt;---</td><td> </td><td class="right">                      e.g., IPFIX | Flow      ||S&lt;---</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                              ---&gt;| collector ||</td><td> </td><td class="right">                              ---&gt;| collector ||</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                  +-----------++</td><td> </td><td class="right">                                  +-----------++</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                   +------------+</td><td> </td><td class="right">                                   +------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                      e.g., IPFIX +------------+|</td><td> </td><td class="right">                      e.g., IPFIX +------------+|</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                              &lt;---| Forwarding ||</td><td> </td><td class="right">                              &lt;---| Forwarding ||</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-13" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-13"><em> page 21, line 13<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-13"><em> page 21, line 13<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Figure 13: Training Supervised Machine Learning of Flow Collector</td><td> </td><td class="right">   Figure 13: Training Supervised Machine Learning of Flow Collector</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   {</td><td> </td><td class="right">   {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     "ietf-dots-telemetry:telemetry": {</td><td> </td><td class="right">     "ietf-dots-telemetry:telemetry": {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       "pre-or-ongoing-mitigation": [</td><td> </td><td class="right">       "pre-or-ongoing-mitigation": [</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">         {</td><td> </td><td class="right">         {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">           "target": {</td><td> </td><td class="right">           "target": {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">             "target-prefix": [</td><td> </td><td class="right">             "target-prefix": [</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">               "2001:db8::1/128"</td><td> </td><td class="right">               "2001:db8::1/128"</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">             ]</td><td> </td><td class="right">             ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">           },</td><td> </td><td class="right">           },</td><td class="lineno"></td></tr>
+      <tr id="diff0032"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock">           <span class="insert">"total-attack-traffic-protocol": [</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">             {</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "protocol": 17,</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "unit": "megabit-ps",</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">               "mid-percentile-g": "900"</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">             }</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">           ],</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">           "attack-detail": [</td><td> </td><td class="right">           "attack-detail": [</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">             {</td><td> </td><td class="right">             {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">               "vendor-id": 1234,</td><td> </td><td class="right">               "vendor-id": 1234,</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">               "attack-id": 77,</td><td> </td><td class="right">               "attack-id": 77,</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">               "start-time": "1957811234",</td><td> </td><td class="right">               "start-time": "1957811234",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">               "attack-severity": "high",</td><td> </td><td class="right">               "attack-severity": "high",</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">               "top-talker": {</td><td> </td><td class="right">               "top-talker": {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                 "talker": [</td><td> </td><td class="right">                 "talker": [</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                   {</td><td> </td><td class="right">                   {</td><td class="lineno"></td></tr>
+      <tr id="diff0033"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                     "source-prefix": <span class="delete">"2001:db8::2/128"</span></td><td> </td><td class="rblock">                     "source-prefix": <span class="insert">"2001:db8::2/128",</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">                   },</span></td><td> </td><td class="rblock"><span class="insert">                     "total-attack-traffic": [</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                   {</td><td> </td><td class="rblock">                       {</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">                     <span class="delete">"source-prefix": "2001:db8::3/128"</span></td><td> </td><td class="rblock">                         <span class="insert">"unit": "megabit-ps",</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                         "mid-percentile-g": "100"</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                       }</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">                     ]</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                   }</td><td> </td><td class="right">                   }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                 ]</td><td> </td><td class="right">                 ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">               }</td><td> </td><td class="right">               }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">             }</td><td> </td><td class="right">             }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">           ]</td><td> </td><td class="right">           ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">         }</td><td> </td><td class="right">         }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       ]</td><td> </td><td class="right">       ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     }</td><td> </td><td class="right">     }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   }</td><td> </td><td class="right">   }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0034"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Figure 14: Example of Message Body<span class="delete"> with  Attack Type and Top Talkers</span></td><td> </td><td class="rblock">   Figure 14: Example of Message Body</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this use case, the forwarding nodes always send statistics of</td><td> </td><td class="right">   In this use case, the forwarding nodes always send statistics of</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   traffic flow to the flow collectors by using monitoring functions</td><td> </td><td class="right">   traffic flow to the flow collectors by using monitoring functions</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   such as IPFIX[RFC7011].  When DDoS attacks occur, DDoS orchestration</td><td> </td><td class="right">   such as IPFIX[RFC7011].  When DDoS attacks occur, DDoS orchestration</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   use case[RFC8903] is carried out and the DMS mitigates all attack</td><td> </td><td class="right">   use case[RFC8903] is carried out and the DMS mitigates all attack</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   traffic destined for a target.  The DDoS-mitigation system reports</td><td> </td><td class="right">   traffic destined for a target.  The DDoS-mitigation system reports</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   the vendor-id, attack-id and top-talker to the flow collector using</td><td> </td><td class="right">   the vendor-id, attack-id and top-talker to the flow collector using</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   DOTS telemetry.</td><td> </td><td class="right">   DOTS telemetry.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   After mitigating a DDoS attack, the flow collector attaches teacher</td><td> </td><td class="right">   After mitigating a DDoS attack, the flow collector attaches teacher</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-14" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-14"><em> page 22, line 15<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-14"><em> page 22, line 25<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this case, the DMS implements a DOTS client while the flow</td><td> </td><td class="right">   In this case, the DMS implements a DOTS client while the flow</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   collector implements a DOTS server.</td><td> </td><td class="right">   collector implements a DOTS server.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">3.3.2.  Unsupervised Machine Learning of Flow Collector</td><td> </td><td class="right">3.3.2.  Unsupervised Machine Learning of Flow Collector</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   DMSs can detect DDoS attack traffic, which means DMSs can also</td><td> </td><td class="right">   DMSs can detect DDoS attack traffic, which means DMSs can also</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   identify clean traffic.  The aim of this use case is to carry out</td><td> </td><td class="right">   identify clean traffic.  The aim of this use case is to carry out</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   unsupervised machine-learning for anomaly detection according to</td><td> </td><td class="right">   unsupervised machine-learning for anomaly detection according to</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   baseline reported by DMSs.  To use such a technique, forwarding</td><td> </td><td class="right">   baseline reported by DMSs.  To use such a technique, forwarding</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   nodes, flow collector, and a DMS should cooperate.  Figure 15 gives</td><td> </td><td class="right">   nodes, flow collector, and a DMS should cooperate.  Figure 15 gives</td><td class="lineno"></td></tr>
+      <tr id="diff0035"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   an overview of this use case.  Figure 16 <span class="delete">provides</span> an example of <span class="delete">a</span></td><td> </td><td class="rblock">   an overview of this use case.  Figure 16 <span class="insert">gives</span> an example of message</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">   DOTS telemetry</span> message body <span class="delete">that is used to signal baseline.</span></td><td> </td><td class="rblock">   body <span class="insert">of DOTS telemetry.</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                 +-----------+</td><td> </td><td class="right">                                 +-----------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                +-----------+|</td><td> </td><td class="right">                                +-----------+|</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                           DOTS | Flow      ||</td><td> </td><td class="right">                           DOTS | Flow      ||</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                           ---&gt;S| collector ||</td><td> </td><td class="right">                           ---&gt;S| collector ||</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                +-----------++</td><td> </td><td class="right">                                +-----------++</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                 +------------+</td><td> </td><td class="right">                                 +------------+</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                +------------+|</td><td> </td><td class="right">                                +------------+|</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                                | Forwarding ||</td><td> </td><td class="right">                                | Forwarding ||</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-15" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-15"><em> page 23, line 38<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-15"><em> page 24, line 38<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">                     "peak-g": "70"</td><td> </td><td class="right">                     "peak-g": "70"</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                   }</td><td> </td><td class="right">                   }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">                 ]</td><td> </td><td class="right">                 ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">               }</td><td> </td><td class="right">               }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">             ]</td><td> </td><td class="right">             ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">           }</td><td> </td><td class="right">           }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">         ]</td><td> </td><td class="right">         ]</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">       }</td><td> </td><td class="right">       }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">     }</td><td> </td><td class="right">     }</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0036"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   Figure 16: Example of Message Body<span class="delete"> with Baseline</span></td><td> </td><td class="rblock">   Figure 16: Example of Message Body</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this use case, the forwarding nodes carry out mirroring traffic</td><td> </td><td class="right">   In this use case, the forwarding nodes carry out mirroring traffic</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   destined a dst ip address.  The DMS then identifies clean traffic and</td><td> </td><td class="right">   destined a dst ip address.  The DMS then identifies clean traffic and</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   reports the baseline attributes to the flow collector using DOTS</td><td> </td><td class="right">   reports the baseline attributes to the flow collector using DOTS</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   telemetry.</td><td> </td><td class="right">   telemetry.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   The flow collector then carries out unsupervised machine learning to</td><td> </td><td class="right">   The flow collector then carries out unsupervised machine learning to</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   be able to carry out anomaly detection.</td><td> </td><td class="right">   be able to carry out anomaly detection.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   In this case, the DMS implements a DOTS client while the flow</td><td> </td><td class="right">   In this case, the DMS implements a DOTS client while the flow</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="part-16" class="change"><td></td><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-16"><em> page 25, line 17<span class="hide"> ¶</span></em></a></th><th> </th><th><small>skipping to change at</small><a href="https://tools.ietf.org/tools/rfcdiff/rfcdiff.pyht#part-16"><em> page 26, line 17<span class="hide"> ¶</span></em></a></th><td></td></tr>
+      <tr><td class="lineno"></td><td class="left">              DOI 10.17487/RFC8612, May 2019,</td><td> </td><td class="right">              DOI 10.17487/RFC8612, May 2019,</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">              &lt;https://www.rfc-editor.org/info/rfc8612&gt;.</td><td> </td><td class="right">              &lt;https://www.rfc-editor.org/info/rfc8612&gt;.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   [RFC8903]  Dobbins, R., Migault, D., Moskowitz, R., Teague, N., Xia,</td><td> </td><td class="right">   [RFC8903]  Dobbins, R., Migault, D., Moskowitz, R., Teague, N., Xia,</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">              L., and K. Nishizuka, "Use Cases for DDoS Open Threat</td><td> </td><td class="right">              L., and K. Nishizuka, "Use Cases for DDoS Open Threat</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">              Signaling", RFC 8903, DOI 10.17487/RFC8903, May 2021,</td><td> </td><td class="right">              Signaling", RFC 8903, DOI 10.17487/RFC8903, May 2021,</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">              &lt;https://www.rfc-editor.org/info/rfc8903&gt;.</td><td> </td><td class="right">              &lt;https://www.rfc-editor.org/info/rfc8903&gt;.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">7.2.  Informative References</td><td> </td><td class="right">7.2.  Informative References</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr id="diff0037"><td></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">   <span class="delete">[I-D.ietf-dots-rfc8782-bis]</span></td><td> </td><td class="rblock">   <span class="insert">[RFC8782]  Reddy.K, T., Ed.,</span> Boucadair, M., <span class="insert">Ed., Patil, P.,</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">              Boucadair, M., <span class="delete">Shallow, J.,</span> and <span class="delete">T. Reddy.K,</span> "Distributed</td><td> </td><td class="rblock"><span class="insert">              Mortensen, A.,</span> and <span class="insert">N. Teague,</span> "Distributed <span class="insert">Denial-of-</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">              <span class="delete">Denial-of-Service</span> Open Threat Signaling (DOTS) Signal</td><td> </td><td class="rblock"><span class="insert">              Service</span> Open Threat Signaling (DOTS) Signal Channel</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock">              Channel Specification", <span class="delete">draft-ietf-dots-rfc8782-bis-06</span></td><td> </td><td class="rblock">              Specification", <span class="insert">RFC 8782, DOI 10.17487/RFC8782, May 2020,</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="lblock"><span class="delete">              (work in progress), March 2021.</span></td><td> </td><td class="rblock"><span class="insert">              &lt;https://www.rfc-editor.org/info/rfc8782&gt;.</span></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   [RFC8783]  Boucadair, M., Ed. and T. Reddy.K, Ed., "Distributed</td><td> </td><td class="right">   [RFC8783]  Boucadair, M., Ed. and T. Reddy.K, Ed., "Distributed</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">              Denial-of-Service Open Threat Signaling (DOTS) Data</td><td> </td><td class="right">              Denial-of-Service Open Threat Signaling (DOTS) Data</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">              Channel Specification", RFC 8783, DOI 10.17487/RFC8783,</td><td> </td><td class="right">              Channel Specification", RFC 8783, DOI 10.17487/RFC8783,</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">              May 2020, &lt;https://www.rfc-editor.org/info/rfc8783&gt;.</td><td> </td><td class="right">              May 2020, &lt;https://www.rfc-editor.org/info/rfc8783&gt;.</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">Authors' Addresses</td><td> </td><td class="right">Authors' Addresses</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   Yuhei Hayashi</td><td> </td><td class="right">   Yuhei Hayashi</td><td class="lineno"></td></tr>
+      <tr><td class="lineno"></td><td class="left">   NTT</td><td> </td><td class="right">   NTT</td><td class="lineno"></td></tr>
+
+     <tr><td></td><td class="left"></td><td> </td><td class="right"></td><td></td></tr>
+     <tr id="end" bgcolor="gray"><th colspan="5" align="center">&nbsp;End of changes. 37 change blocks.&nbsp;</th></tr>
+     <tr class="stats"><td></td><th><i>258 lines changed or deleted</i></th><th><i> </i></th><th><i>262 lines changed or added</i></th><td></td></tr>
+     <tr><td colspan="5" align="center" class="small"><br>This html diff was produced by rfcdiff 1.48. The latest version is available from <a href="http://www.tools.ietf.org/tools/rfcdiff/">http://tools.ietf.org/tools/rfcdiff/</a> </td></tr>
+   </tbody></table>
+   
+   
+</body></html>

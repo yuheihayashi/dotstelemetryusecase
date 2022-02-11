@@ -42,7 +42,7 @@
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc category="info" docName="draft-ietf-dots-telemetry-use-cases-05">
+<rfc category="info" docName="draft-ietf-dots-telemetry-use-cases-05" ipr="trust200902">
   <!-- ***** FRONT MATTER ***** -->
   <front>
     <title abbrev="DOTS Telemetry Use Cases">Use Cases for DDoS Open Threat Signaling (DOTS) Telemetry</title>

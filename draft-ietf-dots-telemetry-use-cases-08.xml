@@ -471,20 +471,20 @@ Figure 6: Example of Message Body with Total Attack Traffic and Total Traffic
               <artwork><![CDATA[
 (Internet Transit Provider)
 
-          +------------+       +----------------+
-e.g.,     | Network    |  DOTS | Administrative |
-Alert --->| Management |C<--->S| System         | e.g., BGP Flow spec
-          | System     |       |                |--->   (Rate-Limit)
-          +------------+       +----------------+
+            +------------+       +----------------+
+e.g.,       | Network    |  DOTS | Administrative |
+Alert ----->| Management |C<--->S| System         | e.g., BGP Flow spec
+            | System     |       |                |--->   (Rate-Limit)
+            +------------+       +----------------+
 
-            +------------+     +------------+ e.g., BGP Flow spec
-            | Forwarding |     | Forwarding |<---  (Rate-Limit X bps)
-            |   node     |     |   node     |
-            |            |     |            | DDoS & Normal traffic
+              +------------+     +------------+ e.g., BGP Flow spec
+              | Forwarding |     | Forwarding |<---  (Rate-Limit X bps)
+              |   node     |     |   node     |
+        Link1 |            |     |            | DDoS & Normal traffic
 [Target]<------------------------------------================
-Pipe        +------------+     +------------+  Attack Traffic
-Capability                                     Bandwidth
-e.g., X bps                                    e.g., Y bps
+Pipe          +------------+     +------------+  Attack Traffic
+Capability                                       Bandwidth
+e.g., X bps                                      e.g., Y bps
 
                     Network access success rate
                         e.g., X / (X + Y)

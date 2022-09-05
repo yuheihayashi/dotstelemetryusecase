@@ -179,6 +179,14 @@
       included in DOTS telemetry specifications <xref
       target="RFC9244"></xref>.</t>
 
+      <t>The following subsections assumes that once the DOTS signal channel is
+        established, DOTS clients proceed with the telemetry setup configuration
+        as detailed in Section 7 of <xref target="RFC9244"></xref>.
+        In particular, the following telemetry parameters are used: *
+        'measurement-interval' to define the period during which percentiles
+        are computed. * 'measurement-sample' to define the time distribution for
+        measuring values that are used to compute percentiles.</t>
+
       <section anchor="section_use_cases_ddos_mitigation_optimal_resource_assign"
                title="Mitigation Resources Assignment">
         <section anchor="section_use_cases_ddos_mitigation_bandwidth_top-talker"

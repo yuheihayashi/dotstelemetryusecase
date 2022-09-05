@@ -179,7 +179,7 @@
       included in DOTS telemetry specifications <xref
       target="RFC9244"></xref>.</t>
 
-      <t>The following subsections assumes that once the DOTS signal channel is
+      <t>The following subsections assume that once the DOTS signal channel is
         established, DOTS clients proceed with the telemetry setup configuration
         as detailed in Section 7 of <xref target="RFC9244"></xref>.
         In particular, the following telemetry parameters are used: *

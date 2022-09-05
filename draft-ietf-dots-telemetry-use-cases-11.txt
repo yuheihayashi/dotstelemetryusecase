@@ -147,8 +147,8 @@ Internet-Draft          DOTS Telemetry Use Cases          September 2022
    This section describes DOTS telemetry use cases that use attributes
    included in DOTS telemetry specifications [RFC9244].
 
-   The following subsections assumes that once the DOTS signal channel
-   is established, DOTS clients proceed with the telemetry setup
+   The following subsections assume that once the DOTS signal channel is
+   established, DOTS clients proceed with the telemetry setup
    configuration as detailed in Section 7 of [RFC9244].  In particular,
    the following telemetry parameters are used: * 'measurement-interval'
    to define the period during which percentiles are computed. *

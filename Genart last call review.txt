@@ -1,0 +1,291 @@
+>
+> Reviewer: Peter Yee
+> Review result: Ready with Nits
+>
+> I am the assigned Gen-ART reviewer for this draft. The General Area
+> Review Team (Gen-ART) reviews all IETF documents being processed
+> by the IESG for the IETF Chair.  Please treat these comments just
+> like any other last call comments.
+>
+> For more information, please see the FAQ at
+>
+> <https://trac.ietf.org/trac/gen/wiki/GenArtfaq>.
+>
+> Document: draft-ietf-dots-telemetry-use-cases-11
+> Reviewer: Peter Yee
+> Review Date: 2022-09-20
+> IETF LC End Date: 2022-09-20
+> IESG Telechat date: Not scheduled for a telechat
+>
+> Summary: This document gives use cases showing how RFC 9244 can be employed for
+> to convey DOTS telemetry. It seems perfectly fine as an informational adjunct
+> to RFC 9244, giving more involved examples.
+>
+> Major issues: None.
+>
+> Minor issues: None.
+>
+> Nits/editorial comments:
+>
+> Page 3, section 3, 1st paragraph: insert gtheh before gDOTS telemetry
+> specificationsh and change gspecificationsh to gspecificationh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 4, section 3.1.1, 1st paragraph, 1st sentence: delete gsuchh. Change gish
+> to gareh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 4, section 3.1.1, 1st paragraph, 2nd sentence: change grecenth to
+> grecentlyh. Change gTpsh to gTbpsh, unless you believe that 1 transaction per
+> second is a lot of traffic. One tablespoon might be. ;-)
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 7, 1st paragraph, 2nd sentence: change gidentifiesh to gidentifyh. Change
+> gofh to gabouth.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 7, 1st paragraph, 3rd sentence: delete the first two commas (bracketing
+> gthenh).
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 7, section 3.1.2, 1st paragraph, 2nd sentence: change gunder attack timeh
+> to gat the time of an attackh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 9, 1st paragraph, 2nd sentence: change gofh to gonh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 9, 1st paragraph, 4th sentence: delete geachh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 9, 1st paragraph, 5th sentence: change gatributeh to gattributeh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 10, section 3.1.3, 1st paragraph, 1st sentence: delete ganh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 12, 1st paragraph, 2nd sentence: change gofh to gabouth. Delete gah after
+> gusingh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 12, 1st paragraph, 3rd sentence: delete gOn the other hands,h and
+> capitalize the etf in gtheh. Insert gtheh before gvolumeh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 12, section 3.1.4, 1st paragraph, 1st sentence: delete the comma after
+> gShorth. Change ginterneth to gInterneth.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 12, section 3.1.4, 1st paragraph, 2nd sentence: considering inserting
+> gsalienth before gfeatureh. Insert gith before gstarth and change gstarth to
+> gstartsh. Change ggoh to ggoesh in both occurrences in the sentence. Insert
+> gthenh before g back to maximumh.
+[Yuhei]
+Thanks. I addressed this comment, considering Genart and Artart last call review comments.
+
+
+OLD:
+The feature of the attack is that start from zero and go to maximum values in a very short time span, then go back to zero, and back to maximum, repeating in continuous cycles at short intervals.
+
+NEW:
+These attacks start from zero and go to maximum values in a very short time span, then go back to zero, and then back t maximum, repeating in continuous cycles at short intervals.
+
+>
+> Page 12, section 3.1.4, 1st paragraph, 3rd sentence: delete gfor themh. Insert
+> gsuchh before gan attackh. Change gbyh to gusing ah. Change gith to gthish.
+[Yuhei]
+Thanks. I addressed this comment, considering Genart and Artart last call review comments.
+
+OLD:
+It is difficult for them to mitigate an attack by DMS by redirecting attack flows because it may cause route flapping in the network.
+
+NEW:
+It is difficult for the transit providers to mitigate such an attack with their DMSes using a redirecting attack flows because this may cause route flapping in the network.
+
+>
+> Page 12, section 3.1.4, 2nd paragraph, 2nd sentence: insert gtheh before
+> gattack traffich.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 14, 1st paragraph, 3rd sentence: change grate-limith to grate-limiting ofh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 14, 2nd paragraph: change ggatherdh to ggatheredh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 15, section 3.1.5, 1st paragraph, 3rd sentence: change gsuspecioush to
+> gsuspicioush.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 15, section 3.1.5, 1st paragraph, 4th sentence: delete ganh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 15, 3rd paragraph, 2nd sentence: change gas belowh to gthath.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 15, 3rd paragraph, 3rd sentence: add a comma after gtotal attack
+> connectionh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 17, Figure 11: change gvulnerbilitiesh to gvulnerabilitiesh twice.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 19, 1st paragraph, 4th sentence: delete the two commas bracketing gthenh.
+> Change the first space after ge.g.h to a comma.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 19, section 3.2, 1st paragraph, 2nd sentence: change gcounter measureh to
+> gcountermeasureh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 19, section 3.2, 2nd paragraph, 1st sentence: change gcounter measureh to
+> gcountermeasuresh (note the plural).
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 19, section 3.2, 2nd paragraph, last sentence: append a comma after
+> ghtotal attack traffic percentilesh. Change gdetailh to gdetailsh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 21, 1st paragraph, 2nd sentence: insert gtheh before
+> gtotal-pipe-capacityh. Insert gtheh before gDOTSh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 22, 1st paragraph, 1st sentence: change gmitugationh to gmitigationh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 22, 1st paragraph, 1st sentence: change greportsh to greporth.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 22, 1st paragraph, 2nd sentence: change gsystemh to gsystemsh, presuming
+> that there can be more than one DMS reporting to the orchestrator. For the
+> words gsends themh, what does gthemh mean? Ifm assuming that the orchestrator
+> creates a single, integrated, deduplicated report, so Ifm not sure what gthemh
+> is.
+[Yuhei]
+Thanks. I addressed this comment.
+
+We calrifed the meaning of "them".
+
+OLD:
+After that, the orchestrator integrates the reports from the DDoS mitigation system, while removing duplicate contents, and sends them to a network administrator by using DOTS telemetry periodically.
+
+NEW:
+After that, the orchestrator integrates the reports from the DDoS mitigation system, while removing duplicate contents, and sends the integrated report to a network administrator by using DOTS telemetry periodically.
+
+>
+> Page 22, section 3.3.1, 1st paragraph, 1st sentence: change ginterneth to
+> gInterneth.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 22, section 3.3.1, 1st paragraph, 2nd sentence: delete gOn the other hand,h
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 22, section 3.3.1, 2nd paragraph, 1st sentence: on the assumption that
+> multiple flow connectors are allowed, as shown in Figure 16: change
+> gcollectorfsh to gcollectorsfh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 22, section 3.3.1, 2nd paragraph, 2nd sentence: change gcollectorh to
+> gcollectorsh on the same assumption as the previous comment. If that assumption
+> is incorrect, ignore both comments. Also considering changing the figure to
+> have a single flow collector shown in that case.
+[Yuhei]
+Thanks. I addressed this comment.
+
+We assume that multiple flow colletcotrs are allowed as shown in Fig. 16.
+
+>
+> Page 25, 1st paragraph, 3rd sentence: delete the two commas bracketing gthenh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 25, section 3.3.2, 2nd sentence: insert gah or gtheh before gbaselineh.
+> Insert gtheh before gDMSesh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 25, section 3.3.2, 3rd sentence: change gcollectorh to gcollectorsh.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 25, Figure 18: Ifm not sure what g[ Dst ]h means. It doesnft appear
+> elsewhere in this specification or in RFC 9244. Perhaps gdestinationh?]
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> Page 26, 1st paragraph, 1st sentence: I canft parse this sentence. Consider
+> rewriting it.
+[Yuhei]
+Thanks. I addressed this comment.
+
+OLD:
+The forwarding nodes carry out mirroring traffic destined IP address.
+
+NEW:
+The forwarding nodes carry out traffic mirroring to copy the traffic destined a IP address and to monitor the traffic by a DMS.

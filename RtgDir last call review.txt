@@ -1,0 +1,97 @@
+>Hello,
+>
+>I have been selected as the Routing Directorate reviewer for this draft. The Routing Directorate seeks to review all ro>uting or routing-related drafts as they pass through IETF last call and IESG review, and sometimes on special request. >The purpose of the review is to provide assistance to the Routing ADs. For more information about the Routing Directora>te, please see http://trac.tools.ietf.org/area/rtg/trac/wiki/RtgDir
+>
+>Document: draft-name-version
+>Reviewer: Donald Eastlake 3rd
+>Review Date: 2 October 2022
+>Intended Status: Informational
+>
+>Summary:
+>I have some minor concerns about this document that I think should be resolved before publication.
+>
+>Comments:
+>This is a reasonably straightforward Informational document giving examples of the use of DOTS Telemetry, as specified >in RFC 9244, to improve the efficiency of DDoS mitigation. It is quite readable but I found the text to be somewhat ver>bose and repetitive.
+>
+>Major Issues:
+>No major issues found.
+>
+>Minor Issues:
+>
+>Section 3.1.1, page 6: If the point is that some DMSes have limited capacity, then shouldn't directing "as much of the >top-talker's traffic to the DMS as possible" by "directing as much of the top-talker's traffic to each DMS as that DMS >can handle" or the like?
+[Yuhei]
+We addressed the comment.
+
+OLD:
+After that, the orchestrator orders the forwarding nodes to redirect as much of the top-talker's traffic to the DMS as possible by dissemination of Flow Specifications using tools such as Border Gateway Protocol Dissemination of Flow Specification Rules (BGP Flowspec) [RFC8955].
+
+NEW:
+After that, the orchestrator orders the forwarding nodes to redirect as much of the top-talker's traffic to each DMS as that DMS can handle by dissemination of Flow Specifications using tools such as Border Gateway Protocol Dissemination of Flow Specification Rules (BGP Flowspec) [RFC8955].
+
+>
+>Why is only SNMP mentioned in this document and not YANG?
+[Yuhei]
+We addressed the comment.
+
+Of course, YANG/NETCONF can be used as an alternative to SNMP.
+We modified the sentence as below and some figures.
+
+OLD:
+such as Simple Network Management Protocol (SNMP) [RFC3413].
+
+NEW:
+such as Simple Network Management Protocol (SNMP) [RFC3413] or YANG with Network Configuration Protocol (YANG/NETCONF) [RFC6020].
+
+>
+>Nits:
+>
+>I am suspicious of the heavy use of the word "optimal" in this document. I did not see any place where the criterion or> metric for optimality is defined nor did I see any demonstration that the example uses provide optimal mitigation tech>niques. But it is hard to blame the authors of this draft when the Standards Track RFC 9244 on which these examples are> based has the same problem. If it were not for the use of "optimal" in RFC 9244, I would have counted this as a Minor >Issue.
+>
+>For example, Section 3.1.2, page 8, asserts that, based on DOTS telemetry information, "the orchestrator selects an opt>imal DMS". It then gives as an example a very simple selection algorithm which I might describe as selecting an "adequa>te" DMS. Then in the following one-sentence paragraph, it says the selection algorithm is out of scope. How can it be a>sserted that an optimal DMS will be selected without giving any hint as to how to find an algorithm to make such an opt>imal choice? Similar comments would apply to other Sections of this document.
+
+[Yuhei]
+In the RFC 9244, some "optimal" word exist.
+However, as you concerned, we should be to explain the "optimal" more specifically.
+In addition, same things can be said about "Best".
+
+We removed the "optimal" and "best" word from whole the documents except introduction.
+We also add some breif words to explain more specifically.
+
+Section 3.1.2
+OLD:
+This use case enables transit providers to select an optimal DMS for mitigation based on the volume of the attack traffic and the capacity of a DMS.
+
+NEW:
+This use case enables transit providers to select an DMS with sufficient capacity for mitigation based on the volume of the attack traffic and the capacity of a DMS.
+
+Section  3.1.3
+OLD:
+This use case enables transit providers to select an optimal path for redirecting attack traffic to a DMS according to the bandwidth of the attack traffic and total traffic.
+
+NEW:
+This use case enables transit providers to select an path with sufficient bandwidth for redirecting attack traffic to a DMS according to the bandwidth of the attack traffic and total traffic.
+
+>
+>Section 3.1.5: "based about the" -> "based on the"
+[Yuhei]
+We addressed the comment.
+
+>
+>Sections 4 and 9: There seems to be a dangling "Thanks to" at the end of Section 9. The last line of Section 4 seems to> be an acknowledgement which should, perhaps, be in Section 9.
+[Yuhei]
+Oops.
+We addressed the commnet.
+
+>
+>Adding a reference for "DNS Water Torture Attack" would be good.
+[Yuhei]
+We addressed the comment.
+
+>
+>Suggest deleting both occurrences of "In particular".
+[Yuhei]
+We addressed the comment.
+
+>
+>Thanks,
+>Donald

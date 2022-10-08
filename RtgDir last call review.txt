@@ -55,7 +55,7 @@ However, as you concerned, we should be to explain the "optimal" more specifical
 In addition, same things can be said about "Best".
 
 We removed the "optimal" and "best" word from whole the documents except introduction.
-We also add some breif words to explain more specifically.
+We also add some words to explain more specifically.
 
 Section 3.1.2
 OLD:

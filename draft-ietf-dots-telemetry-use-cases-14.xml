@@ -1,0 +1,1274 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!--
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd" []>
+<?rfc toc="yes"?>
+<?rfc tocompact="yes"?>
+<?rfc tocdepth="3"?>
+<?rfc tocindent="yes"?>
+<?rfc symrefs="yes"?>
+<?rfc sortrefs="yes"?>
+<?rfc comments="yes"?>
+<?rfc inline="yes"?>
+<?rfc compact="yes"?>
+<?rfc subcompact="no"?>
+-->
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+<!-- One method to get references from the online citation libraries.
+     There has to be one entity for each item to be referenced.
+     An alternate method (rfc include) is described in the references. -->
+]>
+<?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
+<!-- used by XSLT processors -->
+<!-- For a complete list and description of processing instructions (PIs),
+      please see http://xml.resource.org/authoring/README.html. -->
+<!-- Below are generally applicable Processing Instructions (PIs) that most I-Ds might want to use.
+     (Here they are set differently than their defaults in xml2rfc v1.32) -->
+<?rfc strict="yes" ?>
+<!-- give errors regarding ID-nits and DTD validation -->
+<!-- control the table of contents (ToC) -->
+<?rfc toc="yes"?>
+<!-- generate a ToC -->
+<?rfc tocdepth="4"?>
+<!-- the number of levels of subsections in ToC. default: 3 -->
+<!-- control references -->
+<?rfc symrefs="yes"?>
+<!-- use symbolic references tags, i.e, [RFC2119] instead of [1] -->
+<?rfc sortrefs="yes" ?>
+<!-- sort the reference entries alphabetically -->
+<!-- control vertical white space
+     (using these PIs as follows is recommended by the RFC Editor) -->
+<?rfc compact="yes" ?>
+<!-- do not start each main section on a new page -->
+<?rfc subcompact="no" ?>
+<!-- keep one blank line between list items -->
+<!-- end of list of popular I-D processing instructions -->
+<rfc category="info" docName="draft-ietf-dots-telemetry-use-cases-14"
+     ipr="trust200902">
+  <!-- ***** FRONT MATTER ***** -->
+
+  <front>
+    <title abbrev="DOTS Telemetry Use Cases">Use Cases for DDoS Open Threat
+    Signaling (DOTS) Telemetry</title>
+
+    <author fullname="Yuhei Hayashi" initials="Y." surname="Hayashi">
+      <organization abbrev="NTT">NTT</organization>
+
+      <address>
+        <postal>
+          <street>3-9-11, Midori-cho</street>
+
+          <city>Musashino-shi</city>
+
+          <region>Tokyo</region>
+
+          <code>180-8585</code>
+
+          <country>Japan</country>
+        </postal>
+
+        <email>yuuhei.hayashi@gmail.com</email>
+      </address>
+    </author>
+
+    <author fullname="Meiling Chen" initials="M." surname="Chen">
+      <organization abbrev="CMCC">CMCC</organization>
+
+      <address>
+        <postal>
+          <street>32, Xuanwumen West</street>
+
+          <city>BeiJing</city>
+
+          <region>BeiJing</region>
+
+          <code>100053</code>
+
+          <country>China</country>
+        </postal>
+
+        <email>chenmeiling@chinamobile.com</email>
+      </address>
+    </author>
+
+    <author fullname="Li Su" initials="Li." surname="Su">
+      <organization>CMCC</organization>
+
+      <address>
+        <postal>
+          <street>32, Xuanwumen West</street>
+
+          <city>BeiJing, BeiJing</city>
+
+          <code>100053</code>
+
+          <country>China</country>
+        </postal>
+
+        <email>suli@chinamobile.com</email>
+      </address>
+    </author>
+
+    <date day="8" month="October" year="2022" />
+
+    <area>Security Area</area>
+
+    <workgroup>DOTS</workgroup>
+
+    <keyword>Internet-Draft</keyword>
+
+    <abstract>
+      <t>DDoS Open Threat Signaling (DOTS) Telemetry enriches the
+      base DOTS protocols to assist the mitigator in using efficient DDoS
+      attack mitigation techniques in a network. This document presents sample
+      use cases for DOTS Telemetry. It discusses what components
+      are deployed in the network, how they cooperate, and what information is
+      exchanged to effectively use these techniques.</t>
+    </abstract>
+  </front>
+
+  <middle>
+    <section anchor="section_introduction" title="Introduction">
+      <t>Distributed Denial-of-Service (DDoS) attacks, such as volumetric
+      attacks and resource-consumption attacks, are critical threats to be
+      handled by service providers. When such DDoS attacks occur, service
+      providers have to mitigate them immediately to protect or recover their
+      services.</t>
+
+      <t>Therefore, for service providers to immediately protect their network
+      services from DDoS attacks, DDoS mitigation needs to be highly
+      automated. To that aim, multi-vendor components involved in DDoS attack
+      detection and mitigation should cooperate and support standard
+      interfaces.</t>
+
+      <t>DDoS Open Threat Signaling (DOTS) is a set of protocols for real-time
+      signaling, threat-handling requests, and data filtering between the
+      multi-vendor elements <xref target="RFC9132"></xref><xref
+      target="RFC8783"></xref>. DOTS Telemetry enriches the DOTS protocols
+      with various telemetry attributes allowing optimal DDoS attack
+      mitigation <xref target="RFC9244"></xref>. This document
+      presents sample use cases for DOTS Telemetry, which makes concrete
+      overview and purpose described in <xref target="RFC9244"></xref>: what components are deployed
+      in the network, how they cooperate, and what information is exchanged to
+      effectively use attack-mitigation techniques.</t>
+    </section>
+
+    <section anchor="section_terms" title="Terminology">
+      <t>The readers should be familiar with the terms defined in <xref
+      target="RFC8612"></xref>, <xref target="RFC8903"></xref> and <xref
+      target="RFC9244"></xref>.</t>
+
+      <t>In addition, this document uses the following terms:</t>
+
+      <t><list style="hanging">
+          <t hangText="Top-talker:">A list of attack sources that are involved
+          in an attack and which are generating an important part of the
+          attack traffic.</t>
+
+          <t hangText="Supervised Machine Learning:">A machine-learning
+          technique in which labeled data is used to train the algorithms (the
+          input and output data are known).</t>
+
+          <t hangText="Unsupervised Machine Learning:">A machine learning
+          technique in which unlabeled data is used to train the algorithms
+          (the data has no historical labels).</t>
+        </list></t>
+    </section>
+
+    <section anchor="section_use_cases" title="Telemetry Use Cases">
+      <t>This section describes DOTS telemetry use cases that use attributes
+      included in the DOTS telemetry specification <xref
+      target="RFC9244"></xref>.</t>
+
+      <t>The following subsections assume that once the DOTS signal channel is
+        established, DOTS clients proceed with the telemetry setup configuration
+        as detailed in Section 7 of <xref target="RFC9244"></xref>.
+        The following telemetry parameters are used:</t>
+        <ul spacing="normal" bare="false" empty="false" indent="3">
+        <li> 'measurement-interval' to define the period during which percentiles
+        are computed.</li>
+        <li>'measurement-sample' to define the time distribution for
+        measuring values that are used to compute percentiles.</li>
+        </ul>
+
+      <section anchor="section_use_cases_ddos_mitigation_resource_assign"
+               title="Mitigation Resources Assignment">
+        <section anchor="section_use_cases_ddos_mitigation_bandwidth_top-talker"
+                 title="Mitigating Attack Flow of Top-talker Preferentially">
+          <t>Some transit providers have to mitigate large-scale DDoS
+          attacks by using DDoS Mitigation Systems (DMSes) with limited
+          resources, which are already deployed in their network. For example,
+          recently reported large DDoS attacks exceeded several Tbps.</t>
+
+          <t>This use case enables transit providers to use
+          their DMS efficiently under volume-based DDoS attacks whose volume
+          is more than the available capacity of the DMS. To enable this, the
+          attack traffic of top-talkers is redirected to the DMS
+          preferentially by cooperation among forwarding nodes, flow
+          collectors, and orchestrators. </t>
+
+          <t>Figure 1 gives an overview of this use case. Figure 2 provides an
+          example of a DOTS telemetry message body that is used to signal
+          top-talkers (2001:db8::2/128 and 2001:db8::3/128).</t>
+
+          <t><figure align="center">
+              <artwork><![CDATA[
+(Internet Transit Provider)
+
+               +-----------+      +--------------+ e.g., SNMP or YANG/NETCONF
+  e.g., IPFIX +-----------+| DOTS |              |<---
+          --->| Flow      ||C<-->S| Orchestrator | e.g., BGP Flowspec
+              | collector |+      |              |--->   (Redirect)
+              +-----------+       +--------------+
+
+                         +-------------+
+            e.g., IPFIX +-------------+| e.g., BGP Flowspec
+                    <---| Forwarding  ||<---   (Redirect)
+                        |    nodes    ||
+                        |             ||           DDoS Attack
+[ Target(s) ]===========================================
+                        |    ++=========================[top-talker]
+                        |    || ++======================[top-talker]
+                        +----|| ||---+
+                             || ||
+                             || ||
+                             |/ |/
+                        +----x--x----+
+                        | DDoS       | e.g., SNMP or YANG/NETCONF
+                        | mitigation |<---
+                        | system     |
+                        +------------+
+
+* C is for DOTS client functionality
+* S is for DOTS server functionality
+
+Figure 1: Mitigating DDoS Attack Flow of Top-talkers Preferentially
+
+              ]]></artwork>
+            </figure> <figure>
+              <artwork><![CDATA[
+{
+  "ietf-dots-telemetry:telemetry": {
+    "pre-or-ongoing-mitigation": [
+      {
+        "target": {
+          "target-prefix": [
+            "2001:db8::1/128"
+          ]
+        },
+        "total-attack-traffic-protocol": [
+          {
+            "protocol": 17,
+            "unit": "megabit-ps",
+            "mid-percentile-g": "900"
+          }
+        ],
+        "attack-detail": [
+          {
+            "vendor-id": 32473,
+            "attack-id": 77,
+            "start-time": "1645057211",
+            "attack-severity": "high",
+            "top-talker":{
+              "talker": [
+                {
+                  "source-prefix": "2001:db8::2/128",
+                  "total-attack-traffic": [
+                    {
+                      "unit": "megabit-ps",
+                      "mid-percentile-g": "100"
+                    }
+                  ]
+                },
+                {
+                  "source-prefix": "2001:db8::3/128",
+                  "total-attack-traffic": [
+                    {
+                      "unit": "megabit-ps",
+                      "mid-percentile-g": "90"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+
+Figure 2: An Example of Message Body to Signal Top-Talkers
+              ]]></artwork>
+            </figure></t>
+
+          <t>The forwarding nodes send traffic statistics to the flow
+          collectors, e.g., using IP Flow Information Export (IPFIX) <xref target="RFC7011"></xref>.
+          When DDoS attacks occur, the flow collectors identify the attack
+          traffic and send information about the top-talkers to the orchestrator
+          using the "target-prefix" and "top-talkers" DOTS telemetry
+          attributes. The orchestrator then checks the available capacity of
+          the DMSes by using a network management protocol, such as Simple Network
+          Management Protocol (SNMP) <xref target="RFC3413"></xref> or
+          YANG with Network Configuration Protocol (YANG/NETCONF) <xref target="RFC6020"></xref>.
+          After that, the orchestrator
+          orders the forwarding nodes to redirect as much of the top-talker's traffic
+          to each DMS as that DMS can handle by dissemination of Flow
+          Specifications using tools such as Border Gateway Protocol
+          Dissemination of Flow Specification Rules (BGP Flowspec) <xref target="RFC8955"></xref>. </t>
+
+          <t>The flow collector implements a DOTS client while the
+          orchestrator implements a DOTS server.</t>
+        </section>
+
+        <section anchor="dms_selection"
+                 title="DMS Selection for Mitigation">
+          <t>Transit providers can deploy their DMSes in clusters.
+            Then, they can select the DMS to be used to mitigate
+            a DDoS attack at the time of an attack.</t>
+
+          <t>This use case enables transit providers to select
+          a DMS with sufficient capacity for mitigation based on the volume of the attack
+          traffic and the capacity of a DMS. Figure 3 gives an overview of
+          this use case. Figure 4 provides an example of a DOTS telemetry
+          message body that is used to signal various attack traffic
+          percentiles.</t>
+
+          <t><figure align="center">
+              <artwork><![CDATA[
+(Internet Transit Provider)
+
+               +-----------+      +--------------+ e.g., SNMP or YANG/NETCONF
+  e.g., IPFIX +-----------+| DOTS |              |<---
+          --->| Flow      ||C<-->S| Orchestrator | e.g., BGP
+              | collector |+      |              |--->   (Redirect)
+              +-----------+       +--------------+
+
+                         +------------+
+            e.g., IPFIX +------------+| e.g., BGP
+                    <---| Forwarding ||<---   (Redirect)
+                        |    nodes   ||
+                        |            ||     DDoS Attack
+[Target A]              | ++=================== [Destined for Target A]
+[Target B]              | ||  ++=============== [Destined for Target B]
+                        +-||--||-----+
+                          ||  ||
+                    ++====++  ||  (congested DMS)
+                    ||        ||  +-----------+
+                    ||        |/  |      DMS3 |
+                    ||  +-----x------+        |<--- e.g., SNMP or YANG/NETCONF
+                    |/  |       DMS2 |--------+
+                 +--x---------+      |<--- e.g., SNMP or YANG/NETCONF
+                 |       DMS1 |------+
+                 |            |<--- e.g., SNMP or YANG/NETCONF
+                 +------------+
+
+* C is for DOTS client functionality
+* S is for DOTS server functionality
+
+Figure 3: DMS Selection for Mitigation
+              ]]></artwork>
+            </figure> <figure>
+              <artwork><![CDATA[
+
+{
+  "ietf-dots-telemetry:telemetry": {
+    "pre-or-ongoing-mitigation": [
+      {
+        "target": {
+          "target-prefix": [
+            "192.0.2.3/32"
+          ]
+        },
+        "total-attack-traffic": [
+          {
+            "unit": "megabit-ps",
+            "low-percentile-g": "600",
+            "mid-percentile-g": "800",
+            "high-percentile-g": "1000",
+            "peak-g":"1100",
+            "current-g":"700"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+Figure 4: Example of Message Body with Total Attack Traffic
+            ]]></artwork>
+            </figure></t>
+
+          <t>The forwarding nodes send traffic statistics to the flow
+          collectors, e.g., using IPFIX. When DDoS attacks occur, the flow
+          collectors identify the attack traffic and send information about the
+          attack traffic volume to the orchestrator by using the "target-prefix"
+          and "total-attack-traffic" DOTS telemetry attributes. The
+          orchestrator then checks the available capacity of the DMSes by using
+          a network management protocol, such as Simple Network
+          Management Protocol (SNMP) <xref target="RFC3413"></xref> or
+          YANG with Network Configuration Protocol (YANG/NETCONF)  <xref target="RFC6020"></xref>.
+          After that, the
+          orchestrator selects a DMS with sufficient capacity to which attack traffic
+          should be redirected. For example, a simple DMS selection algorithm
+          is to choose a DMS whose available capacity is greater than the
+          "peak-g" attribute indicated in the DOTS telemetry message. The
+          orchestrator orders the appropriate forwarding nodes to redirect the
+          attack traffic to the DMS relying upon routing policies,
+          such as BGP <xref target="RFC4271"></xref>. </t>
+
+          <t>The detailed DMS selection algorithm is out of the scope of this
+          document.</t>
+
+          <t>The flow collector implements a DOTS client while the
+          orchestrator implements a DOTS server.</t>
+        </section>
+
+        <section anchor="redirection_path_selection"
+                 title="Path Selection for Redirection">
+          <t>A transit provider network has multiple paths to convey attack
+          traffic to a DMS. In such a network, the attack traffic can be
+          conveyed while avoiding congested links by adequately selecting an
+          available path.</t>
+
+          <t>This use case enables transit providers to select
+          a path with sufficient bandwidth for redirecting attack traffic to a DMS according to
+          the bandwidth of the attack traffic and total traffic. Figure 5
+          gives an overview of this use case. Figure 6 provides an example of
+          a DOTS telemetry message body that is used to signal various attack
+          traffic percentiles and total traffic percentiles.</t>
+
+          <t><figure align="center">
+              <artwork><![CDATA[
+(Internet Transit Provider)
+
+          +-----------+      +--------------+ DOTS
+  e.g.,  +-----------+|      |              |S<---
+   IPFIX | Flow      || DOTS | Orchestrator |
+      -->| collector ||C<-->S|              | e.g., BGP Flowspec
+         |           |+      |              |--->   (Redirect)
+         +-----------+       +--------------+
+
+               DOTS +------------+  DOTS +------------+ e.g., IPFIX
+               --->C| Forwarding |  --->C| Forwarding |--->
+ e.g., BGP Flowspec |   node     |       |   node     |
+     (Redirect) --->|            |       |            |  DDoS Attack
+[Target]            |       ++====================================
+                    +-------||---+       +------------+
+                            ||              /
+                            ||             / (congested link)
+                            ||            /
+                    DOTS  +-||----------------+ e.g., BGP Flowspec
+                     --->C| ||  Forwarding    |<---   (Redirect)
+                          | ++===  node       |
+                          +----||-------------+
+                               |/
+                            +--x-----------+
+                            |     DMS      |
+                            +--------------+
+
+* C is for DOTS client functionality
+* S is for DOTS server functionality
+
+Figure 5: Path Selection for Redirection
+              ]]></artwork>
+            </figure> <figure>
+              <artwork><![CDATA[
+
+{
+  "ietf-dots-telemetry:telemetry": {
+    "pre-or-ongoing-mitigation": [
+      {
+        "target": {
+          "target-prefix": [
+            "2001:db8::1/128"
+          ]
+        },
+        "total-traffic": [
+          {
+            "unit": "megabit-ps",
+            "mid-percentile-g": "1300",
+            "peak-g": "800"
+           }
+        ],
+        "total-attack-traffic": [
+          {
+            "unit": "megabit-ps",
+            "low-percentile-g": "600",
+            "mid-percentile-g": "800",
+            "high-percentile-g": "1000",
+            "peak-g": "1100",
+            "current-g": "700"
+           }
+        ]
+      }
+    ]
+  }
+}
+
+Figure 6: An Example of Message Body with Total Attack
+                Traffic and Total Traffic
+            ]]></artwork>
+            </figure></t>
+
+          <t>The forwarding nodes send traffic statistics to the flow
+          collectors, e.g., using IPFIX. When DDoS attacks occur, the flow
+          collectors identify attack traffic and send information about the
+          attack traffic volume to the orchestrator by using "target-prefix"
+          and "total-attack-traffic" DOTS telemetry attributes.
+          The underlying forwarding nodes send the volume on the total
+          traffic passing the node to the orchestrator by using "total-traffic"
+          telemetry attributes. The orchestrator then selects a path with sufficient bandwidth
+          to which attack-traffic flow should be redirected. For example,
+          the simple algorithm of the selection is to choose a path whose
+          available capacity is greater than the "peak-g" attribute that was
+          indicated in a DOTS telemetry message. After that, the orchestrator orders the
+          appropriate forwarding nodes to redirect the attack traffic to the
+          DMS by dissemination of Flow Specifications using tools
+          such as Border Gateway Protocol Dissemination of Flow Specification
+          Rules (BGP Flowspec) <xref target="RFC8955"></xref>.</t>
+
+          <t>The detailed path selection algorithm is out of the scope of this
+          document.</t>
+
+          <t>The flow collector and forwarding nodes implement a DOTS client
+          while the orchestrator implements a DOTS server.</t>
+
+        </section>
+
+        <section anchor="section_use_cases_ddos_mitigation_bandwidth_offloadingvolumetricattackflow"
+                 title="Short but Extreme Volumetric Attack Mitigation">
+          <t>Short but extreme volumetric attacks, such as pulse wave DDoS
+          attacks, are threats to Internet transit provider networks.
+          These attacks start from zero and go to maximum
+          values in a very short time span, then go back to zero, and then back to
+          maximum, repeating in continuous cycles at short intervals. It is
+          difficult for the transit providers to mitigate such an attack with their
+          DMSes using a redirecting attack flows because this may cause route flapping
+          in the network.
+          The practical way to mitigate short but extreme volumetric attacks is to
+          offload mitigation actions to a forwarding node.</t>
+
+          <t>This use case enables transit providers to
+          mitigate short but extreme volumetric attacks. Furthermore, the aim
+          is to estimate the network-access success rate based on the
+          bandwidth of the attack traffic. Figure 7 gives an overview of this use
+          case. Figure 8 provides an example of a DOTS telemetry message body
+          that is used to signal total pipe capacity. Figure 9 provides an
+          example of a DOTS telemetry message body that is used to signal
+          various attack traffic percentiles and total traffic
+          percentiles.</t>
+
+          <t><figure align="center">
+              <artwork><![CDATA[
+(Internet Transit Provider)
+
+            +------------+       +----------------+
+e.g.,       | Network    |  DOTS | Administrative |
+Alert ----->| Management |C<--->S| System         | e.g., BGP Flowspec
+            | System     |       |                |--->   (Rate-Limit)
+            +------------+       +----------------+
+
+              +------------+     +------------+ e.g., BGP Flowspec
+              | Forwarding |     | Forwarding |<---  (Rate-Limit X bps)
+              |   node     |     |   node     |
+        Link1 |            |     |            | DDoS & Normal traffic
+[Target]<------------------------------------================
+Pipe          +------------+     +------------+  Attack Traffic
+Capability                                       Bandwidth
+e.g., X bps                                      e.g., Y bps
+
+                    Network access success rate
+                        e.g., X / (X + Y)
+
+* C is for DOTS client functionality
+* S is for DOTS server functionality
+
+Figure 7: Short but Extreme Volumetric Attack Mitigation
+
+           ]]></artwork>
+            </figure> <figure>
+              <artwork><![CDATA[
+  {
+    "ietf-dots-telemetry:telemetry-setup": {
+      "telemetry": [
+        {
+          "total-pipe-capacity": [
+            {
+              "link-id": "link1",
+              "capacity": "1000",
+              "unit": "megabit-ps"
+            }
+          ]
+        }
+      ]
+    }
+  }
+Figure 8: Example of Message Body with Total Pipe Capacity
+            ]]></artwork>
+            </figure> <figure>
+              <artwork><![CDATA[
+
+{
+  "ietf-dots-telemetry:telemetry": {
+    "pre-or-ongoing-mitigation": [
+      {
+        "target": {
+          "target-prefix": [
+            "2001:db8::1/128"
+          ]
+        },
+        "total-traffic": [
+          {
+            "unit": "megabit-ps",
+            "mid-percentile-g": "800",
+            "peak-g": "1300"
+           }
+        ],
+        "total-attack-traffic": [
+          {
+            "unit": "megabit-ps",
+            "low-percentile-g": "200",
+            "mid-percentile-g": "400",
+            "high-percentile-g": "500",
+            "peak-g": "600",
+            "current-g": "400"
+          }
+        ]
+       }
+    ]
+  }
+}
+
+Figure 9: Example of Message Body with Total Attack Traffic,
+                    and Total Traffic
+            ]]></artwork>
+            </figure></t>
+
+          <t>When DDoS attacks occur, the network management system receives
+          alerts. Then, it sends the target IP address(es) and volume of the
+          DDoS attack traffic to the administrative system by using the
+          "target-prefix" and "total-attack-traffic" DOTS telemetry
+          attributes.  After that, the administrative system orders relevant forwarding
+          nodes to carry out rate-limiting of all traffic destined to the target
+          based on the pipe capability by the dissemination of the Flow
+          Specifications using tools such as Border Gateway Protocol
+          Dissemination of Flow Specification Rules (BGP Flowspec) <xref target="RFC8955"></xref>.
+          In addition, the administrative system estimates the network-access
+          success rate of the target, which is calculated by
+          (total-pipe-capability / (total-pipe-capability +
+          total-attack-traffic)). </t>
+
+          <t>Note that total pipe capability information can be gathered by
+          telemetry setup in advance (Section 7.2 of <xref
+          target="RFC9244"></xref>).</t>
+
+          <t>The network management system implements a DOTS client
+          while the administrative system implements a DOTS server.</t>
+
+        </section>
+
+        <section anchor="section_use_cases_ddos_mitigation_attack_type_techniqueselection"
+                 title="Selecting Mitigation Technique Based on Attack Type">
+          <t>Some volumetric attacks, such as amplification attacks, can be
+          detected with high accuracy by checking the Layer 3 or Layer 4
+          information of attack packets. These attacks can be detected and
+          mitigated through cooperation among forwarding nodes and flow
+          collectors by using IPFIX. It may also be necessary to inspect the Layer 7
+          information of suspicious packets to detect attacks such as DNS
+          Water Torture Attacks <xref target="DNS Water Torture Attack"></xref>. To carry out the DNS water torture attack,
+          an attacker commands a botnet to make thousands of DNS requests
+          for fake subdomains against an Authoritative Name Server.
+          Such attack traffic should be detected and mitigated at the DMS.</t>
+
+          <t>This use case enables transit providers to select
+          a mitigation technique based on the type of attack traffic:
+          amplification attack or not. To use such a technique, the attack
+          traffic is blocked by forwarding nodes or redirected to a DMS based
+          on the attack type through cooperation among forwarding nodes, flow
+          collectors, and an orchestrator. </t>
+
+          <t>Figure 10 gives an overview of this use case. Figure 11 provides
+          an example of attack mappings that are shared by using the DOTS
+          data channel in advance. Figure 12 provides an example of a DOTS
+          telemetry message body that is used to signal various attack traffic
+          percentiles, total traffic percentiles, total attack connection, and
+          attack type.</t>
+
+          <t>The example in Figure 11 uses the folding defined in <xref
+          target="RFC8792"></xref> for long lines. </t>
+
+          <t><figure align="center">
+              <artwork><![CDATA[
+  (Internet Transit Provider)
+
+           +-----------+ DOTS +--------------+ e.g.,
+    e.g., +-----------+|<---->|              | BGP (Redirect)
+    IPFIX | Flow      ||C    S| Orchestrator | BGP Flowspec (Drop)
+      --->| collector |+      |              |--->
+          +-----------+       +--------------+
+
+                      +------------+ e.g., BGP (Redirect)
+         e.g., IPFIX +------------+|       BGP Flowspec (Drop)
+                 <---| Forwarding ||<---
+                     |    nodes   ||              DDoS Attack
+                     |     ++=====||================
+                     |     ||     ||x<==============[e.g., DNS Amp]
+                     |     ||     |+x<==============[e.g., NTP Amp]
+                     +-----||-----+
+                           ||
+                           |/
+                     +-----x------+
+                     | DDoS       |
+                     | mitigation |
+                     | system     |
+                     +------------+
+
+  * C is for DOTS client functionality
+  * S is for DOTS server functionality
+  * DNS Amp: DNS Amplification
+  * NTP Amp: NTP Amplification
+
+Figure 10: DDoS Mitigation Based on Attack Type
+
+                ]]></artwork>
+            </figure> <figure>
+              <artwork><![CDATA[=============== NOTE: '\' line wrapping per RFC 8792 ================
+
+{
+  "ietf-dots-mapping:vendor-mapping": {
+    "vendor": [
+      {
+        "vendor-id": 32473,
+        "vendor-name": "mitigator-c",
+        "last-updated": "1629898958",
+        "attack-mapping": [
+          {
+            "attack-id": 77,
+            "attack-description": "DNS amplification Attack: \
+This attack is a type of reflection attack in which attackers \
+spoof a target's IP address. The attackers abuse vulnerabilities \
+in DNS servers to turn small queries into larger payloads."
+          },
+          {
+            "attack-id": 92,
+            "attack-description":"NTP amplification Attack: \
+This attack is a type of reflection attack in which attackers \
+spoof a target's IP address. The attackers abuse vulnerabilities \
+in NTP servers to turn small queries into larger payloads."
+          }
+        ]
+      }
+    ]
+  }
+}
+
+Figure 11: Example of Message Body with Attack Mappings
+        ]]></artwork>
+            </figure> <figure>
+              <artwork><![CDATA[
+
+{
+  "ietf-dots-telemetry:telemetry": {
+    "pre-or-ongoing-mitigation": [
+      {
+        "target": {
+          "target-prefix": [
+            "2001:db8::1/128"
+          ]
+        },
+        "total-attack-traffic": [
+          {
+            "unit": "megabit-ps",
+            "low-percentile-g": "600",
+            "mid-percentile-g": "800",
+            "high-percentile-g": "1000",
+            "peak-g": "1100",
+            "current-g": "700"
+           }
+        ],
+        "total-attack-traffic-protocol": [
+          {
+            "protocol": 17,
+            "unit": "megabit-ps",
+            "mid-percentile-g": "500"
+          },
+          {
+            "protocol": 15,
+            "unit": "megabit-ps",
+            "mid-percentile-g": "200"
+          }
+        ],
+        "total-attack-connection": [
+        {
+           "mid-percentile-l": [
+            {
+              "protocol": 15,
+              "connection": 200
+            }
+           ],
+           "high-percentile-l": [
+            {
+              "protocol": 17,
+              "connection": 300
+            }
+           ]
+        }
+        ],
+        "attack-detail": [
+          {
+            "vendor-id": 32473,
+            "attack-id": 77,
+            "start-time": "1641169211",
+            "attack-severity": "high"
+          },
+          {
+            "vendor-id": 32473,
+            "attack-id": 92,
+            "start-time": "1641172809",
+            "attack-severity": "high"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+Figure 12: Example of Message Body with Total Attack Traffic,
+Total Attack Traffic Protocol, Total Attack Connection and Attack Type
+            ]]></artwork>
+            </figure></t>
+
+          <t>Attack mappings are shared by using the DOTS data channel in advance
+          (Section 8.1.6 of <xref target="RFC9244"></xref>).
+          The forwarding nodes send traffic statistics to the flow collectors,
+          e.g., using IPFIX. When DDoS attacks occur, the flow collectors
+          identify attack traffic and send attack type information to the
+          orchestrator by using "vendor-id" and "attack-id" telemetry
+          attributes. The orchestrator then resolves abused port numbers and
+          orders relevant forwarding nodes to block the amplification attack
+          traffic flow by dissemination of Flow Specifications using tools such
+           as Border Gateway Protocol Dissemination of Flow Specification Rules
+           (BGP Flowspec) <xref target="RFC8955"></xref>. Also, the orchestrator orders relevant
+          forwarding nodes to redirect other traffic than the amplification
+          attack traffic by using a routing protocol,
+          such as BGP <xref target="RFC4271"></xref>.</t>
+
+          <t>The flow collector implements a DOTS client while the
+          orchestrator implements a DOTS server.</t>
+        </section>
+      </section>
+
+      <section anchor="section_ddos_detailed_mitigation_report"
+               title="Detailed DDoS Mitigation Report">
+        <t>It is possible for the transit provider to add value to the DDoS
+        mitigation service by reporting on-going and detailed DDoS
+        countermeasure status to the enterprise network. In addition, it is
+        possible for the transit provider to know whether the DDoS countermeasure
+         is effective or not by receiving reports from the enterprise
+        network.</t>
+
+        <t>This use case enables sharing of information about on-going
+        DDoS countermeasures between the transit provider and the enterprise
+        network mutually. Figure 13 gives an overview of this use case. Figure
+        14 provides an example of a DOTS telemetry message body that is used
+        to signal total pipe capacity from the enterprise network
+        administrator to the orchestrator in the ISP. Figure 15 provides an
+        example of a DOTS telemetry message body that is used to signal
+        various total traffic percentiles, total attack traffic percentiles,
+        and attack details from the orchestrator to the network.</t>
+
+        <t><figure align="center">
+            <artwork><![CDATA[
+  +------------------+       +------------------------+
+  | Enterprise       |       |    Upstream            |
+  | Network          |       |    Internet Transit    |
+  |  +------------+  |       |    Provider            |
+  |  | Network    |C |       |   S+--------------+    |
+  |  | admini-    |<-----DOTS---->| Orchestrator |    |
+  |  | strator    |  |       |    +--------------+    |
+  |  +------------+  |       |         C ^            |
+  |                  |       |           | DOTS       |
+  |                  |       |         S v            |
+  |                  |       |    +---------------+ DDoS Attack
+  |                  |       |    |      DMS      |+=======
+  |                  |       |    +---------------+   |
+  |                  |       |           || Clean     |
+  |                  |       |           |/ Traffic   |
+  |  +---------+     |       |   +---------------+    |
+  |  | DDoS    |     |       |   | Forwarding    | Normal Traffic
+  |  | Target  |<================| Node          |========
+  |  +---------+     | Link1 |   +---------------+    |
+  +------------------+       +------------------------+
+
+* C is for DOTS client functionality
+* S is for DOTS server functionality
+
+Figure 13: Detailed DDoS Mitigation Report
+            ]]></artwork>
+          </figure> <figure>
+            <artwork><![CDATA[
+{
+  "ietf-dots-telemetry:telemetry-setup": {
+    "telemetry": [
+      {
+        "total-pipe-capacity": [
+          {
+            "link-id": "link1",
+            "capacity": "1000",
+            "unit": "megabit-ps"
+          }
+        ]
+      }
+    ]
+  }
+}
+Figure 14: An Example of Message Body with Total Pipe Capacity
+          ]]></artwork>
+          </figure> <figure>
+            <artwork><![CDATA[
+{
+  "ietf-dots-telemetry:telemetry": {
+    "pre-or-ongoing-mitigation": [
+      {
+        "tmid": 567,
+        "target": {
+          "target-prefix": [
+            "2001:db8::1/128"
+          ]
+        },
+        "target-protocol": [
+          17
+        ],
+        "total-traffic": [
+          {
+            "unit": "megabit-ps",
+            "mid-percentile-g": "800"
+          }
+        ],
+        "total-attack-traffic": [
+          {
+            "unit": "megabit-ps",
+            "mid-percentile-g": "100"
+          }
+        ],
+        "attack-detail": [
+          {
+            "vendor-id": 32473,
+            "attack-id": 77,
+            "start-time": "1644819611",
+            "attack-severity": "high"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+Figure 15: An Example of Message Body with Total Traffic,
+     Total Attack Traffic Protocol, and Attack Detail
+          ]]></artwork>
+          </figure></t>
+
+        <t>The network management system in the enterprise network reports
+        limits of incoming traffic volume from the transit provider to the
+        orchestrator in the transit provider in advance. It is reported by
+        using the "total-pipe-capacity" telemetry attribute in the DOTS telemetry
+        setup.</t>
+
+        <t>When DDoS attacks occur, DDoS mitigation orchestration <xref
+        target="RFC8903"></xref> is carried out in the transit provider. Then,
+        the DDoS mitigation systems report the status of DDoS countermeasures
+        to the orchestrator by sending "attack-detail" telemetry attributes.
+        After that, the orchestrator integrates the reports from the DDoS
+        mitigation systems, while removing duplicate contents, and sends the integrated report to a
+        network administrator by using DOTS telemetry periodically.</t>
+
+        <t>During the DDoS mitigation, the orchestrator in the transit
+        provider retrieves link congestion status from the network manager in
+        the enterprise network by using "total-traffic" telemetry attributes.
+        Then, the orchestrator checks whether the DDoS countermeasures are
+        effective or not by comparing the "total-traffic" and the
+        "total-pipe-capacity" attributes.</t>
+
+        <t>The DMS implements a DOTS server while the orchestrator behaves as
+        a DOTS client and a server in the transit provider. In addition, the
+        network administrator implements a DOTS client.</t>
+      </section>
+
+      <section anchor="section_use_cases_dms_tuning"
+               title="Tuning Mitigation Resources">
+        <section anchor="section_use_cases_ddos_detection_training"
+                 title="Supervised Machine Learning of Flow Collector">
+          <t>DDoS detection based on tools, such as IPFIX, is a lighter weight
+          method of detecting DDoS attacks than DMSes in Internet transit
+          provider networks. DDoS detection based on the
+          DMSes is a more accurate method for detecting attack traffic
+          than flow monitoring.</t>
+          <t>The aim of this use case is to increase flow collectors' detection
+          accuracy by carrying out supervised machine-learning
+          techniques according to attack detail reported by the DMSes. To use
+          such a technique, forwarding nodes, flow collectors, and a DMS should
+          cooperate. Figure 16 gives an overview of this use case. Figure 17
+          provides an example of a DOTS telemetry message body that is used to
+          signal various total attack traffic percentiles and attack
+          detail.</t>
+
+          <t><figure align="center">
+              <artwork><![CDATA[
+
+                                +-----------+
+                               +-----------+| DOTS
+                   e.g., IPFIX | Flow      ||S<---
+                           --->| collector ||
+                               +-----------++
+
+                                +------------+
+                   e.g., IPFIX +------------+|
+                           <---| Forwarding ||
+                               |    nodes   ||           DDoS Attack
+ [ Target ]                    |   ++==============================
+                               |   || ++===========================
+                               |   || || ++========================
+                               +---||-|| ||-+
+                                   || || ||
+                                   |/ |/ |/
+                         DOTS  +---X--X--X--+
+                          --->C| DDoS       |
+                               | mitigation |
+                               | system     |
+                               +------------+
+
+        * C is for DOTS client functionality
+        * S is for DOTS server functionality
+
+Figure 16: Training Supervised Machine Learning of Flow Collectors
+              ]]></artwork>
+            </figure> <figure>
+              <artwork><![CDATA[
+{
+  "ietf-dots-telemetry:telemetry": {
+    "pre-or-ongoing-mitigation": [
+      {
+        "target": {
+          "target-prefix": [
+            "2001:db8::1/128"
+          ]
+        },
+        "attack-detail": [
+          {
+            "vendor-id": 32473,
+            "attack-id": 77,
+            "start-time": "1634192411",
+            "attack-severity": "high",
+            "top-talker": {
+              "talker": [
+                {
+                  "source-prefix": "2001:db8::2/128"
+                },
+                {
+                  "source-prefix": "2001:db8::3/128"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+
+Figure 17: An Example of Message Body with Attack Type
+                and top-talkers
+]]></artwork>
+            </figure></t>
+
+          <t>The forwarding nodes send traffic statistics to the flow
+          collectors, e.g., using IPFIX. When DDoS attacks occur, DDoS
+          mitigation orchestration is carried out (as per Section 3.3 of <xref
+          target="RFC8903"></xref>) and the DMS mitigates all attack traffic
+          destined for a target. The DDoS mitigation system reports the
+          "vendor-id", "attack-id", and "top-talker" telemetry attributes to a
+          flow collector.</t>
+
+          <t>After mitigating a DDoS attack, the flow collector attaches
+          outputs of the DMS as labels to the statistics of traffic flow of top-talkers.
+          The outputs, for example, are the "attack-id" telemetry attributes.
+          The flow collector then carries out supervised machine learning to
+          increase its detection accuracy, setting the statistics as an
+          explanatory variable and setting the labels as an objective
+          variable.</t>
+
+          <t>The DMS implements a DOTS client while the flow collector
+          implements a DOTS server.</t>
+        </section>
+
+        <section anchor="section_use_cases_tuning_threshold"
+                 title="Unsupervised Machine Learning of Flow Collector">
+          <t>DMSes can detect DDoS attack traffic, which means DMSes can also
+          identify clean traffic. This use case supports
+          unsupervised machine-learning for anomaly detection according to
+          a baseline reported by the DMSes. To use such a technique, forwarding
+          nodes, flow collectors, and a DMS should cooperate. Figure 18 gives
+          an overview of this use case. Figure 19 provides an example of a
+          DOTS telemetry message body that is used to signal baseline.</t>
+
+          <t><figure align="center">
+              <artwork><![CDATA[
+
+                              +-----------+
+                             +-----------+|
+                        DOTS | Flow      ||
+                        --->S| collector ||
+                             +-----------++
+
+                              +------------+
+                             +------------+|
+                             | Forwarding ||
+                             |    nodes   ||             Traffic
+[ Destination ] <== =============++==============================
+                             |   ||       ||
+                             |   ||       |+
+                             +---||-------+
+                                 ||
+                                 |/
+                       DOTS  +---X--------+
+                        --->C| DDoS       |
+                             | mitigation |
+                             | system     |
+                             +------------+
+
+      * C is for DOTS client functionality
+      * S is for DOTS server functionality
+
+Figure 18: Training Unsupervised Machine Learning of Flow Collectors
+            ]]></artwork>
+            </figure> <figure>
+              <artwork><![CDATA[
+  {
+    "ietf-dots-telemetry:telemetry-setup": {
+      "telemetry": [
+        {
+          "baseline": [
+            {
+              "id": 1,
+              "target-prefix": [
+                "2001:db8:6401::1/128"
+              ],
+              "target-port-range": [
+                {
+                  "lower-port": "53"
+                }
+              ],
+              "target-protocol": [
+                17
+              ],
+              "total-traffic-normal": [
+                {
+                  "unit": "megabit-ps",
+                  "low-percentile-g": "30",
+                  "mid-percentile-g": "50",
+                  "high-percentile-g": "60",
+                  "peak-g": "70"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+
+Figure 19: An Example of Message Body with Traffic Baseline
+              ]]></artwork>
+            </figure></t>
+
+          <t>The forwarding nodes carry out traffic mirroring to copy the traffic
+             destined a IP address and to monitor the traffic by a DMS.
+             The DMS then identifies "clean" traffic and reports the
+             baseline attributes to the flow collector by using DOTS telemetry.</t>
+
+          <t>The flow collector then carries out unsupervised machine
+          learning to be able to carry out anomaly detection.</t>
+
+          <t>The DMS implements a DOTS client while the flow collector
+          implements a DOTS server.</t>
+        </section>
+      </section>
+    </section>
+
+    <section title="Security Considerations">
+      <t>DOTS telemetry security considerations are discussed in Section 14 of
+      <xref target="RFC9244"></xref>. These considerations
+      apply for the communication interfaces where DOTS is used. </t>
+
+      <t>Some use cases involve controllers, orchestrators, and programmable
+      interfaces. These interfaces can be misused by misbehaving nodes to
+      further exacerbate DDoS attacks. Section 5 of <xref
+      target="RFC7149"></xref> discusses some generic security considerations
+      to take into account in such contexts (e.g., reliable access control).
+      Specific security measures depend on the actual mechanism used to
+      control underlying forwarding nodes and other controlled elements. For
+      example, Section 13 of <xref target="RFC8955"></xref> discusses security
+      considerations that are relevant to BGP Flowspec.
+      IPFIX-specific considerations are discussed in Section 11 of <xref
+      target="RFC7011"></xref>.</t>
+    </section>
+
+    <section title="IANA Considerations">
+      <t>This document does not require any action from IANA.</t>
+    </section>
+
+    <section title="Acknowledgement">
+      <t>The authors would like to thank Mohamed Boucadair and Valery Smyslov for their valuable feedback.</t>
+      <t>Thanks to Paul Wouters for the detailed AD review.</t>
+      <t>Thanks to Donald Eastlake, Phillip Hallam-Baker, Sean Turner, and Peter Yee for the IESG review</t>
+    </section>
+  </middle>
+
+  <!-- ***** BACK MATTER ***** -->
+
+  <back>
+    <references title="Normative References">
+      <?rfc include="reference.RFC.9244"?>
+    </references>
+
+    <references title="Informative References">
+      <?rfc include="reference.RFC.8903"?>
+
+      <?rfc include="reference.RFC.4271"?>
+
+      <?rfc include="reference.RFC.8955"?>
+
+      <?rfc include="reference.RFC.8612"?>
+
+      <?rfc include="reference.RFC.3413"?>
+
+      <?rfc include="reference.RFC.6020"?>
+
+      <?rfc include="reference.RFC.7011"?>
+
+      <?rfc include="reference.RFC.9132"?>
+
+      <?rfc include="reference.RFC.8783"?>
+
+      <?rfc include='reference.RFC.8792'?>
+
+      <?rfc include='reference.RFC.7149'?>
+
+      <reference anchor="DNS Water Torture Attack" target="https://dl.acm.org/doi/10.1145/3297156.3297272">
+        <!-- Manually added reference -->
+        <front>
+          <title>A Large Scale Analysis of DNS Water Torture Attack</title>
+          <author initials="L." surname="Xi" fullname="L. Xi">
+            <organization/>
+          </author>
+          <date year="2018" month="December"/>
+        </front>
+        <seriesInfo name="DOI" value="10.1145/3297156.3297272"/>
+      </reference>
+
+    </references>
+
+    <!-- Appendix -->
+  </back>
+</rfc>

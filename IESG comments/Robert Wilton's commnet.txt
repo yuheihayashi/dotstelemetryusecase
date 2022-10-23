@@ -1,0 +1,83 @@
+Hi Robert,
+
+Thank you for your comments. We updated the draft to address your comment.
+Diff is here.
+https://www.ietf.org/rfcdiff?url2=draft-ietf-dots-telemetry-use-cases-15
+
+Please see inline.
+
+2022”N10ŒŽ20“ú(–Ø) 21:27 Robert Wilton via Datatracker <noreply@ietf.org>:
+>
+> Robert Wilton has entered the following ballot position for
+> draft-ietf-dots-telemetry-use-cases-14: No Objection
+>
+> When responding, please keep the subject line intact and reply to all
+> email addresses included in the To and CC lines. (Feel free to cut this
+> introductory paragraph, however.)
+>
+>
+> Please refer to https://www.ietf.org/about/groups/iesg/statements/handling-ballot-positions/
+> for more information about how to handle DISCUSS and COMMENT positions.
+>
+>
+> The document, along with other ballot positions, can be found here:
+> https://datatracker.ietf.org/doc/draft-ietf-dots-telemetry-use-cases/
+>
+>
+>
+> ----------------------------------------------------------------------
+> COMMENT:
+> ----------------------------------------------------------------------
+>
+> Hi,
+>
+> Thanks for this document.  A couple of minor nits:
+>
+> (1) p 2, sec 1.  Introduction
+>
+>   This document presents sample use
+>    cases for DOTS Telemetry, which makes concrete overview and purpose
+>    described in [RFC9244]: what components are deployed in the network,
+>    how they cooperate, and what information is exchanged to effectively
+>    use attack-mitigation techniques.
+>
+> I found this sentence hard to parse.
+[Yuhei]
+We divided the senctence into two sentence as below.
+
+NEW:
+This document presents sample use cases for DOTS Telemetry which makes concrete overview and purpose described in [RFC9244]. This document also presents what components are deployed in the network, how they cooperate, and what information is exchanged to effectively use attack-mitigation techniques.
+
+>
+>
+> (2) p 5, sec 3.1.1.  Mitigating Attack Flow of Top-talker Preferentially
+>
+>    The forwarding nodes send traffic statistics to the flow collectors,
+>    e.g., using IP Flow Information Export (IPFIX) [RFC7011].  When DDoS
+>    attacks occur, the flow collectors identify the attack traffic and
+>    send information about the top-talkers to the orchestrator using the
+>    "target-prefix" and "top-talkers" DOTS telemetry attributes.  The
+>    orchestrator then checks the available capacity of the DMSes by using
+>    a network management protocol, such as Simple Network Management
+>    Protocol (SNMP) [RFC3413] or YANG with Network Configuration Protocol
+>    (YANG/NETCONF) [RFC6020].
+>
+> Please use RFC 7950 as the reference for YANG.  Please check other references.
+[Yuhei]
+We addressed the comment.
+
+>
+> Regards,
+> Rob
+>
+>
+>
+
+
+--
+----------------------------------
+Yuuhei HAYASHI
+08065300884
+yuuhei.hayashi@gmail.com
+iehuuy_0220@docomo.ne.jp
+----------------------------------

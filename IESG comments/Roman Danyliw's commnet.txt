@@ -1,0 +1,75 @@
+Hi Roman,
+
+Thank you for your comments. We updated the draft to address your comment.
+Diff is here.
+https://www.ietf.org/rfcdiff?url2=draft-ietf-dots-telemetry-use-cases-15
+
+Please see inline.
+
+2022”N10ŒŽ20“ú(–Ø) 10:14 Roman Danyliw via Datatracker <noreply@ietf.org>:
+>
+> Roman Danyliw has entered the following ballot position for
+> draft-ietf-dots-telemetry-use-cases-14: No Objection
+>
+> When responding, please keep the subject line intact and reply to all
+> email addresses included in the To and CC lines. (Feel free to cut this
+> introductory paragraph, however.)
+>
+>
+> Please refer to https://www.ietf.org/about/groups/iesg/statements/handling-ballot-positions/
+> for more information about how to handle DISCUSS and COMMENT positions.
+>
+>
+> The document, along with other ballot positions, can be found here:
+> https://datatracker.ietf.org/doc/draft-ietf-dots-telemetry-use-cases/
+>
+>
+>
+> ----------------------------------------------------------------------
+> COMMENT:
+> ----------------------------------------------------------------------
+>
+> Thank you to Phillip Hallam-Baker for the SECDIR review.
+>
+> ** Section 4.
+>
+> Some use cases involve controllers, orchestrators, and programmable
+>? ?interfaces. ?These interfaces can be misused by misbehaving nodes to
+> ? ?further exacerbate DDoS attacks.
+>
+> This is good advice. ?I recommend calling out that that these security
+> considerations are for end-to-end systems for DoS mitigation. ?These mechanics
+> are outside the scope of DOTS protocols and standardization activity.
+[Yuhei]
+We added the sentence as below.
+
+OLD:
+... exacerbate DDoS attacks.
+
+NEW:
+... exacerbate DDoS attacks.
+The considerations are for end-to-end systems for DoS mitigation, so the mechanics are outside the scope of DOTS protocols.
+
+>
+> ** Section 6.
+>
+> ? ?Thanks to Donald Eastlake, Phillip Hallam-Baker, Sean Turner, and
+> ? ?Peter Yee for the IESG review
+>
+> Ifm sure these reviews appreciate the acknowledgement. ?To clarify, these were
+> the directorate reviewers, not the IESG.
+[Yuhei]
+Thank you. We addressed the comment.
+
+>
+>
+>
+
+
+-- 
+----------------------------------
+Yuuhei HAYASHI
+08065300884
+yuuhei.hayashi@gmail.com
+iehuuy_0220@docomo.ne.jp
+----------------------------------

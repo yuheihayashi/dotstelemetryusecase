@@ -1,0 +1,143 @@
+Hi Eric,
+
+Thank you for your comments. We updated the draft to address your comment.
+Diff is here.
+https://www.ietf.org/rfcdiff?url2=draft-ietf-dots-telemetry-use-cases-15
+
+Please see inline.
+2022”N10ŒŽ20“ú(–Ø) 16:11 ?ric Vyncke via Datatracker <noreply@ietf.org>:
+>
+> ?ric Vyncke has entered the following ballot position for
+> draft-ietf-dots-telemetry-use-cases-14: No Objection
+>
+> When responding, please keep the subject line intact and reply to all
+> email addresses included in the To and CC lines. (Feel free to cut this
+> introductory paragraph, however.)
+>
+>
+> Please refer to https://www.ietf.org/about/groups/iesg/statements/handling-ballot-positions/
+> for more information about how to handle DISCUSS and COMMENT positions.
+>
+>
+> The document, along with other ballot positions, can be found here:
+> https://datatracker.ietf.org/doc/draft-ietf-dots-telemetry-use-cases/
+>
+>
+>
+> ----------------------------------------------------------------------
+> COMMENT:
+> ----------------------------------------------------------------------
+>
+>
+> # ?ric Vyncke, INT AD, comments for draft-ietf-shmoo-hackathon-07
+> CC @evyncke
+>
+> Thank you for the work put into this document.
+>
+> Please find below some non-blocking COMMENT points (but replies would be
+> appreciated even if only for my own education).
+>
+> Special thanks to Valery Smyslov for the shepherd's detailed write-up including
+> the WG consensus *but* the justification of the intended status is missing.
+>
+> I hope that this review helps to improve the document,
+>
+> Regards,
+>
+> -?ric
+>
+> ## COMMENTS
+>
+> ### Timing of the WG docs
+>
+> Like Alvaro wrote, it would have been nicer for the reviewer to have this
+> document published before RFC 9244 ;-)
+>
+> ### Section 3.1.1 report
+>
+> `recently reported large DDoS attacks exceeded several Tbps` please provide an
+> informative reference to this report.
+[Yuhei]
+We added the reference.
+
+>
+> ### Section 3.1.1 top-talkers
+>
+> I am a little puzzled how an attack coming out of *two* top-talkers (and thanks
+> for using IPv6 examples :-) ) is a *distributed* DoS attack. Suggest to change
+> the prefix to something broader (e.g., two /48) rather than a host /128 prefix.
+[Yuhei]
+We addressed the comment.
+We now use 2001:db8:1::/48 and 2001:db8:2::/48 as example of top-talker istead of 2001:db8::2/128 and 2001:db8::3/128
+
+
+>
+> ### Section 3.1.1 figure 1 e.g.
+>
+> Is the use of "E.g.," in figures common ? or useful ? in figure 1 ?
+>
+> As a side note, I am hard time to understand the figure 1: they are overloaded
+> and little explanations on the graphics are given.
+[Yuhei]
+We deleted "E.g.," in all figures to increase readability.
+
+>
+> ### Section 3.1.5
+>
+> The intro text is about DNS torture attack, but the DOTS example is about DNS
+> amplification attack, which appears as different attacks to me.
+DNS torture attack is given as an example of attack which should be inspected the Layer 7 information.
+In this use case, DOTS signal does not convey the DNS tourture attack information. 
+
+We modified the sentence as below because it's a little confusing.
+
+OLD:
+Some volumetric attacks, such as amplification attacks,
+
+NEW:
+Some volumetric attacks, such as DNS amplification attacks,
+
+
+
+>
+> ### Section 3.3.1
+>
+> To be honest, the value of this section about ML escapes me ;-) (notably why
+> DOTS is helping here) but the example DOTS message would benefit of using
+> 2001:db8::2/127 rather than the 2 /128 ;)
+[Yuhei]
+We aggregated 2001:db8::2/128 and 2001:db8::3/128 to 2001:db8::2/127 in Fig.17
+
+>
+> ### Section 6
+>
+> Like Murray, I also wonder why some reviews are labelled as IESG review ;-)
+[Yuhei]
+We addressed the comment.
+
+>
+> ## Notes
+>
+> This review is in the ["IETF Comments" Markdown format][ICMF], You can use the
+> [`ietf-comments` tool][ICT] to automatically convert this review into
+> individual GitHub issues.
+>
+> [ICMF]: https://github.com/mnot/ietf-comments/blob/main/format.md
+> [ICT]: https://github.com/mnot/ietf-comments
+>
+>
+>
+> _______________________________________________
+> Dots mailing list
+> Dots@ietf.org
+> https://www.ietf.org/mailman/listinfo/dots
+
+
+
+--
+----------------------------------
+Yuuhei HAYASHI
+08065300884
+yuuhei.hayashi@gmail.com
+iehuuy_0220@docomo.ne.jp
+----------------------------------

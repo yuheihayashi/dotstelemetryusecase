@@ -108,7 +108,7 @@
       </address>
     </author>
 
-    <date day="21" month="October" year="2022" />
+    <date day="23" month="October" year="2022" />
 
     <area>Security Area</area>
 
@@ -136,18 +136,19 @@
 
       <t>Therefore, for service providers to immediately protect their network
       services from DDoS attacks, DDoS mitigation needs to be highly
-      automated. To that aim, multi-vendor components involved in DDoS attack
+      automated. To that aim, multivendor components involved in DDoS attack
       detection and mitigation should cooperate and support standard
       interfaces.</t>
 
       <t>DDoS Open Threat Signaling (DOTS) is a set of protocols for real-time
       signaling, threat-handling requests, and data filtering between the
-      multi-vendor elements <xref target="RFC9132"></xref><xref
+      multivendor elements <xref target="RFC9132"></xref><xref
       target="RFC8783"></xref>. DOTS Telemetry enriches the DOTS protocols
       with various telemetry attributes allowing optimal DDoS attack
       mitigation <xref target="RFC9244"></xref>. This document
-      presents sample use cases for DOTS Telemetry, which makes concrete
-      overview and purpose described in <xref target="RFC9244"></xref>: what components are deployed
+      presents sample use cases for DOTS Telemetry which makes concrete
+      overview and purpose described in <xref target="RFC9244"></xref>.
+      This document also presents what components are deployed
       in the network, how they cooperate, and what information is exchanged to
       effectively use attack-mitigation techniques.</t>
     </section>
@@ -197,7 +198,8 @@
           <t>Some transit providers have to mitigate large-scale DDoS
           attacks by using DDoS Mitigation Systems (DMSes) with limited
           resources, which are already deployed in their network. For example,
-          recently reported large DDoS attacks exceeded several Tbps.</t>
+          recently reported large DDoS attacks exceeded several Tbps.
+          <xref target="DOTS Overview"></xref></t>
 
           <t>This use case enables transit providers to use
           their DMS efficiently under volume-based DDoS attacks whose volume
@@ -208,24 +210,24 @@
 
           <t>Figure 1 gives an overview of this use case. Figure 2 provides an
           example of a DOTS telemetry message body that is used to signal
-          top-talkers (2001:db8::2/128 and 2001:db8::3/128).</t>
+          top-talkers (2001:db8:1::/48 and 2001:db8:2::/48).</t>
 
           <t><figure align="center">
               <artwork><![CDATA[
 (Internet Transit Provider)
 
-               +-----------+      +--------------+ e.g., SNMP or YANG/NETCONF
-  e.g., IPFIX +-----------+| DOTS |              |<---
-          --->| Flow      ||C<-->S| Orchestrator | e.g., BGP Flowspec
+               +-----------+      +--------------+ SNMP or YANG/NETCONF
+        IPFIX +-----------+| DOTS |              |<---
+          --->| Flow      ||C<-->S| Orchestrator | BGP Flowspec
               | collector |+      |              |--->   (Redirect)
               +-----------+       +--------------+
 
                          +-------------+
-            e.g., IPFIX +-------------+| e.g., BGP Flowspec
-                    <---| Forwarding  ||<---   (Redirect)
+                  IPFIX +-------------+| BGP Flowspec (Redirect)
+                    <---| Forwarding  ||<---
                         |    nodes    ||
                         |             ||           DDoS Attack
-[ Target(s) ]===========================================
+[ Target(s) ]<==========================================
                         |    ++=========================[top-talker]
                         |    || ++======================[top-talker]
                         +----|| ||---+
@@ -233,7 +235,7 @@
                              || ||
                              |/ |/
                         +----x--x----+
-                        | DDoS       | e.g., SNMP or YANG/NETCONF
+                        | DDoS       | SNMP or YANG/NETCONF
                         | mitigation |<---
                         | system     |
                         +------------+
@@ -271,7 +273,7 @@ Figure 1: Mitigating DDoS Attack Flow of Top-talkers Preferentially
             "top-talker":{
               "talker": [
                 {
-                  "source-prefix": "2001:db8::2/128",
+                  "source-prefix": "2001:db8:1::/48",
                   "total-attack-traffic": [
                     {
                       "unit": "megabit-ps",
@@ -280,7 +282,7 @@ Figure 1: Mitigating DDoS Attack Flow of Top-talkers Preferentially
                   ]
                 },
                 {
-                  "source-prefix": "2001:db8::3/128",
+                  "source-prefix": "2001:db8:2::/48",
                   "total-attack-traffic": [
                     {
                       "unit": "megabit-ps",
@@ -309,7 +311,7 @@ Figure 2: An Example of Message Body to Signal Top-Talkers
           attributes. The orchestrator then checks the available capacity of
           the DMSes by using a network management protocol, such as Simple Network
           Management Protocol (SNMP) <xref target="RFC3413"></xref> or
-          YANG with Network Configuration Protocol (YANG/NETCONF) <xref target="RFC6020"></xref>.
+          YANG with Network Configuration Protocol (YANG/NETCONF) <xref target="RFC7950"></xref>.
           After that, the orchestrator
           orders the forwarding nodes to redirect as much of the top-talker's traffic
           to each DMS as that DMS can handle by dissemination of Flow
@@ -337,15 +339,15 @@ Figure 2: An Example of Message Body to Signal Top-Talkers
               <artwork><![CDATA[
 (Internet Transit Provider)
 
-               +-----------+      +--------------+ e.g., SNMP or YANG/NETCONF
-  e.g., IPFIX +-----------+| DOTS |              |<---
-          --->| Flow      ||C<-->S| Orchestrator | e.g., BGP
-              | collector |+      |              |--->   (Redirect)
+               +-----------+      +--------------+ SNMP or YANG/NETCONF
+        IPFIX +-----------+| DOTS |              |<---
+          --->| Flow      ||C<-->S| Orchestrator | BGP (Redirect)
+              | collector |+      |              |--->
               +-----------+       +--------------+
 
                          +------------+
-            e.g., IPFIX +------------+| e.g., BGP
-                    <---| Forwarding ||<---   (Redirect)
+                  IPFIX +------------+| BGP (Redirect)
+                    <---| Forwarding ||<---
                         |    nodes   ||
                         |            ||     DDoS Attack
 [Target A]              | ++=================== [Destined for Target A]
@@ -355,11 +357,11 @@ Figure 2: An Example of Message Body to Signal Top-Talkers
                     ++====++  ||  (congested DMS)
                     ||        ||  +-----------+
                     ||        |/  |      DMS3 |
-                    ||  +-----x------+        |<--- e.g., SNMP or YANG/NETCONF
+                    ||  +-----x------+        |<--- SNMP or YANG/NETCONF
                     |/  |       DMS2 |--------+
-                 +--x---------+      |<--- e.g., SNMP or YANG/NETCONF
+                 +--x---------+      |<--- SNMP or YANG/NETCONF
                  |       DMS1 |------+
-                 |            |<--- e.g., SNMP or YANG/NETCONF
+                 |            |<--- SNMP or YANG/NETCONF
                  +------------+
 
 * C is for DOTS client functionality
@@ -406,7 +408,7 @@ Figure 4: Example of Message Body with Total Attack Traffic
           orchestrator then checks the available capacity of the DMSes by using
           a network management protocol, such as Simple Network
           Management Protocol (SNMP) <xref target="RFC3413"></xref> or
-          YANG with Network Configuration Protocol (YANG/NETCONF)  <xref target="RFC6020"></xref>.
+          YANG with Network Configuration Protocol (YANG/NETCONF)  <xref target="RFC7950"></xref>.
           After that, the
           orchestrator selects a DMS with sufficient capacity to which attack traffic
           should be redirected. For example, a simple DMS selection algorithm
@@ -442,23 +444,23 @@ Figure 4: Example of Message Body with Total Attack Traffic
 (Internet Transit Provider)
 
           +-----------+      +--------------+ DOTS
-  e.g.,  +-----------+|      |              |S<---
+         +-----------+|      |              |S<---
    IPFIX | Flow      || DOTS | Orchestrator |
-      -->| collector ||C<-->S|              | e.g., BGP Flowspec
-         |           |+      |              |--->   (Redirect)
+      -->| collector ||C<-->S|              | BGP Flowspec (Redirect)
+         |           |+      |              |--->
          +-----------+       +--------------+
 
-               DOTS +------------+  DOTS +------------+ e.g., IPFIX
+               DOTS +------------+  DOTS +------------+ IPFIX
                --->C| Forwarding |  --->C| Forwarding |--->
- e.g., BGP Flowspec |   node     |       |   node     |
+       BGP Flowspec |   node     |       |   node     |
      (Redirect) --->|            |       |            |  DDoS Attack
 [Target]            |       ++====================================
                     +-------||---+       +------------+
                             ||              /
                             ||             / (congested link)
                             ||            /
-                    DOTS  +-||----------------+ e.g., BGP Flowspec
-                     --->C| ||  Forwarding    |<---   (Redirect)
+                    DOTS  +-||----------------+ BGP Flowspec (Redirect)
+                     --->C| ||  Forwarding    |<---
                           | ++===  node       |
                           +----||-------------+
                                |/
@@ -563,22 +565,22 @@ Figure 6: An Example of Message Body with Total Attack
 (Internet Transit Provider)
 
             +------------+       +----------------+
-e.g.,       | Network    |  DOTS | Administrative |
-Alert ----->| Management |C<--->S| System         | e.g., BGP Flowspec
-            | System     |       |                |--->   (Rate-Limit)
+            | Network    |  DOTS | Administrative |
+Alert ----->| Management |C<--->S| System         | BGP Flowspec (Rate-Limit)
+            | System     |       |                |--->
             +------------+       +----------------+
 
-              +------------+     +------------+ e.g., BGP Flowspec
-              | Forwarding |     | Forwarding |<---  (Rate-Limit X bps)
+              +------------+     +------------+ BGP Flowspec (Rate-Limit X bps)
+              | Forwarding |     | Forwarding |<---
               |   node     |     |   node     |
         Link1 |            |     |            | DDoS & Normal traffic
 [Target]<------------------------------------================
 Pipe          +------------+     +------------+  Attack Traffic
 Capability                                       Bandwidth
-e.g., X bps                                      e.g., Y bps
+  X bps                                           Y bps
 
                     Network access success rate
-                        e.g., X / (X + Y)
+                           X / (X + Y)
 
 * C is for DOTS client functionality
 * S is for DOTS server functionality
@@ -669,13 +671,14 @@ Figure 9: Example of Message Body with Total Attack Traffic,
 
         <section anchor="section_use_cases_ddos_mitigation_attack_type_techniqueselection"
                  title="Selecting Mitigation Technique Based on Attack Type">
-          <t>Some volumetric attacks, such as amplification attacks, can be
+          <t>Some volumetric attacks, such as DNS amplification attacks, can be
           detected with high accuracy by checking the Layer 3 or Layer 4
           information of attack packets. These attacks can be detected and
           mitigated through cooperation among forwarding nodes and flow
           collectors by using IPFIX. It may also be necessary to inspect the Layer 7
           information of suspicious packets to detect attacks such as DNS
-          Water Torture Attacks <xref target="DNS Water Torture Attack"></xref>. To carry out the DNS water torture attack,
+          Water Torture Attacks <xref target="DNS Water Torture Attack"></xref>.
+          To carry out the DNS water torture attack,
           an attacker commands a botnet to make thousands of DNS requests
           for fake subdomains against an Authoritative Name Server.
           Such attack traffic should be detected and mitigated at the DMS.</t>
@@ -701,19 +704,19 @@ Figure 9: Example of Message Body with Total Attack Traffic,
               <artwork><![CDATA[
   (Internet Transit Provider)
 
-           +-----------+ DOTS +--------------+ e.g.,
-    e.g., +-----------+|<---->|              | BGP (Redirect)
+           +-----------+ DOTS +--------------+
+          +-----------+|<---->|              | BGP (Redirect)
     IPFIX | Flow      ||C    S| Orchestrator | BGP Flowspec (Drop)
       --->| collector |+      |              |--->
           +-----------+       +--------------+
 
-                      +------------+ e.g., BGP (Redirect)
-         e.g., IPFIX +------------+|       BGP Flowspec (Drop)
+                      +------------+ BGP (Redirect)
+               IPFIX +------------+| BGP Flowspec (Drop)
                  <---| Forwarding ||<---
                      |    nodes   ||              DDoS Attack
                      |     ++=====||================
-                     |     ||     ||x<==============[e.g., DNS Amp]
-                     |     ||     |+x<==============[e.g., NTP Amp]
+                     |     ||     ||x<==============[DNS Amp]
+                     |     ||     |+x<==============[NTP Amp]
                      +-----||-----+
                            ||
                            |/
@@ -861,13 +864,13 @@ Total Attack Traffic Protocol, Total Attack Connection and Attack Type
       <section anchor="section_ddos_detailed_mitigation_report"
                title="Detailed DDoS Mitigation Report">
         <t>It is possible for the transit provider to add value to the DDoS
-        mitigation service by reporting on-going and detailed DDoS
+        mitigation service by reporting ongoing and detailed DDoS
         countermeasure status to the enterprise network. In addition, it is
         possible for the transit provider to know whether the DDoS countermeasure
          is effective or not by receiving reports from the enterprise
         network.</t>
 
-        <t>This use case enables sharing of information about on-going
+        <t>This use case enables sharing of information about ongoing
         DDoS countermeasures between the transit provider and the enterprise
         network mutually. Figure 13 gives an overview of this use case. Figure
         14 provides an example of a DOTS telemetry message body that is used
@@ -1018,12 +1021,12 @@ Figure 15: An Example of Message Body with Total Traffic,
 
                                 +-----------+
                                +-----------+| DOTS
-                   e.g., IPFIX | Flow      ||S<---
+                         IPFIX | Flow      ||S<---
                            --->| collector ||
                                +-----------++
 
                                 +------------+
-                   e.g., IPFIX +------------+|
+                         IPFIX +------------+|
                            <---| Forwarding ||
                                |    nodes   ||           DDoS Attack
  [ Target ]                    |   ++==============================
@@ -1063,10 +1066,7 @@ Figure 16: Training Supervised Machine Learning of Flow Collectors
             "top-talker": {
               "talker": [
                 {
-                  "source-prefix": "2001:db8::2/128"
-                },
-                {
-                  "source-prefix": "2001:db8::3/128"
+                  "source-prefix": "2001:db8::2/127"
                 }
               ]
             }
@@ -1183,7 +1183,7 @@ Figure 19: An Example of Message Body with Traffic Baseline
             </figure></t>
 
           <t>The forwarding nodes carry out traffic mirroring to copy the traffic
-             destined a IP address and to monitor the traffic by a DMS.
+             destined an IP address and to monitor the traffic by a DMS.
              The DMS then identifies "clean" traffic and reports the
              baseline attributes to the flow collector by using DOTS telemetry.</t>
 
@@ -1199,14 +1199,14 @@ Figure 19: An Example of Message Body with Traffic Baseline
     <section title="Security Considerations">
       <t>DOTS telemetry security considerations are discussed in Section 14 of
       <xref target="RFC9244"></xref>. These considerations
-      apply for the communication interfaces where DOTS is used.
-      </t>
+      apply for the communication interfaces where DOTS is used. </t>
 
       <t>Some use cases involve controllers, orchestrators, and programmable
       interfaces. These interfaces can be misused by misbehaving nodes to
-      further exacerbate DDoS attacks. The considerations are for end-to-end
-      systems for DoS mitigation, so the mechanics are outside the scope of DOTS protocols.
-      Section 5 of <xref target="RFC7149"></xref> discusses some generic security considerations
+      further exacerbate DDoS attacks. The considerations are for end-to-end systems for DoS mitigation,
+      so the mechanics are outside the scope of DOTS protocols.
+      Section 5 of <xref
+      target="RFC7149"></xref> discusses some generic security considerations
       to take into account in such contexts (e.g., reliable access control).
       Specific security measures depend on the actual mechanism used to
       control underlying forwarding nodes and other controlled elements. For
@@ -1223,7 +1223,8 @@ Figure 19: An Example of Message Body with Traffic Baseline
     <section title="Acknowledgement">
       <t>The authors would like to thank Mohamed Boucadair and Valery Smyslov for their valuable feedback.</t>
       <t>Thanks to Paul Wouters for the detailed AD review.</t>
-      <t>Thanks to Donald Eastlake, Phillip Hallam-Baker, Sean Turner, and Peter Yee for the IESG review</t>
+      <t>Many thanks to Donald Eastlake, Phillip Hallam-Baker, Sean Turner, and Peter Yee for the AD review.</t>
+      <t>Thanks to Lars Eggert, Murray Kucherawy, Roman Danyliw, Robert Wiltonm, and Eric Vyncke for the IESG review.</t>
     </section>
   </middle>
 
@@ -1245,7 +1246,7 @@ Figure 19: An Example of Message Body with Traffic Baseline
 
       <?rfc include="reference.RFC.3413"?>
 
-      <?rfc include="reference.RFC.6020"?>
+      <?rfc include="reference.RFC.7950"?>
 
       <?rfc include="reference.RFC.7011"?>
 
@@ -1256,6 +1257,20 @@ Figure 19: An Example of Message Body with Traffic Baseline
       <?rfc include='reference.RFC.8792'?>
 
       <?rfc include='reference.RFC.7149'?>
+
+      <reference anchor="DOTS Overview" target="https://datatracker.ietf.org/meeting/108/materials/slides-108-saag-dots-overview-00">
+        <!-- Manually added reference -->
+        <front>
+          <title>DOTS Overview (RFCs 8782, 8783)</title>
+          <author initials="T." surname="Reddy" fullname="T. Reddy">
+            <organization/>
+          </author>
+          <author initials="M." surname="Boucadair" fullname="M. Boucadair">
+            <organization/>
+          </author>
+          <date year="2020" month="July"/>
+        </front>
+      </reference>
 
       <reference anchor="DNS Water Torture Attack" target="https://dl.acm.org/doi/10.1145/3297156.3297272">
         <!-- Manually added reference -->

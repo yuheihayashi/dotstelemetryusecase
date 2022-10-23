@@ -1,0 +1,300 @@
+>
+> Reviewer: Sean Turner
+> Review result: Ready with Nits
+>
+> Hi! All but the (0) issue are editorial issues, and the JSON parsing issues
+> ought to be easy to fix:
+>
+> 0) JSON parsing issues:
+>
+> 0.1) s3.1.5: I think maybe instead of this:
+>
+>   "attack-description":
+>     "attack-description": "DNS amplification Attack: \
+>     ...
+>
+> use this:
+>
+>   "attack-description": "DNS amplification Attack: \
+>      ...
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> 0.2) s3.2.2: Error: Duplicate key 'mid-percentile-g'
+[Yuhei]
+Thanks. I addressed this comment.It was just a mistake.
+
+>
+> 1) Can you provide some additional background on the term "label" as it is used
+> in this document; appears to be related to ML. See Un/Supervised Machine
+> Learning definitions.
+[Yuhei]
+Thanks. 
+
+According to the wiki, Supervised Machine Learnig is defined as below.
+>>Supervised learning (SL) is the machine learning task of learning a function that maps an input to an output based on example input-output pairs.It infers a function from labeled training data consisting of a set of training examples. 
+https://en.wikipedia.org/wiki/Supervised_learning
+
+It seems that "label" is general term in the ML industry.
+
+>
+> 2) s3.1: I think maybe some .md/.xml for the bullets got messed up:
+>
+>   In particular,
+>   the following telemetry parameters are used: * 'measurement-interval'
+>   to define the period during which percentiles are computed. *
+>   'measurement-sample' to define the time distribution for measuring
+>   values that are used to compute percentiles.
+[Yuhei]
+Thanks. I addressed this comment.
+
+Now we use <ul></ul> for enumuration to avoid messed up in the xml.
+
+>
+> 3) s3.1.1, 1st para: Not sure you need the 1 Tps example, in 5 years that might
+> seem low. Also maybe tweak the sentence a bit:
+>
+>   Some transit providers have to mitigate very large-scale DDoS attacks
+>   with their own previously deployed DDoS Mitigation Systems (DMSes) that
+>   lack sufficient resources.
+[Yuhei]
+Thanks. I addressed this comment.
+
+As you say, 1 Tps example seems low in 5 years. According to recent report, 2.5 Tbps attack were observed.
+https://www.netscout.com/threatreport/global-ddos-attack-trends/
+
+So we rewrited it as below:
+
+OLD:
+For example, recent reported large DDoS attacks exceeded 1 Tps.
+
+NEW:
+For example, recent reported large DDoS attacks exceeded several Tbps.
+
+>
+> 4) s3.1.1, 2nd para (friendly editorial suggestion):
+>
+> s/The aim of this use case is to enable transit/This use case enables transit
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> 5) Figure 1: Would it be clearer for the target(s) in the figure to be:
+>
+> [ Target(s)]
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> 6) s3.1.1, 4th para: The word "using" is kind of dangling:
+>
+> s/The forwarding nodes send traffic statistics to the flow collectors
+>   using, e.g., IP Flow Information Export (IPFIX) [RFC7011].
+> /The forwarding nodes send traffic statistics to the flow collectors,
+>  e.g., using IP Flow Information Export (IPFIX) [RFC7011].
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> 7) s3.1.1, 4th para: Maybe:
+>
+>  After that, the orchestrator
+>  orders the forwarding nodes to redirect as much of the top-talker's
+>  traffic to the DMS as possible by dissemination of Flow
+>  Specifications relying upon tools, such as Border Gateway Protocol
+>  Dissemination of Flow Specification Rules (BGP Flowspec) [RFC8955].
+>
+> NEW:
+>
+>  After that, the orchestrator
+>  orders the forwarding nodes to redirect as much of the top-talker's
+>  traffic to the DMS as possible by dissemination of Flow
+>  Specifications using tools such as Border Gateway Protocol
+>  Dissemination of Flow Specification Rules (BGP Flowspec) [RFC8955].
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> 8) s3.1.2, 1st para: Is this:
+>
+>    Transit providers can deploy their DMSes in clusters.  Then, they can
+>    select the DMS to be used to mitigate a DDoS attack under attack
+>    time.
+>
+> trying to say this:
+>
+>    Transit providers can deploy their DMSes in clusters.  Then, they can
+>    select the DMS to be used to mitigate a DDoS attack while under attack.
+[Yuhei]
+Thanks. I addressed this comment.
+
+Genart review gave us same comment, so we modified as below.
+
+OLD:
+Then, they can select the DMS to be used to mitigate a DDoS attack under attack time.
+
+
+NEW:
+Then, they can select the DMS to be used to mitigate a DDoS attack at the time of an attack.
+
+>
+> 9) s3.1.2, 2nd para:
+>
+> s/The aim of this use case is to enable transit/This use case enables transit
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> 10) Figure 3: Why are there two [Target] elements in the figure?
+[Yuhei]
+It's because thatthere are two targets in the example and this usecase enables the transit provider to select DMS for traffic destined for each target.
+
+We modified the figure to clalify it.
+
+>
+> 11) s3.1.2, 3rd para: The word "using" is kind of dangling:
+>
+> s/The forwarding nodes send traffic statistics to the flow collectors
+>   using, e.g., IP Flow Information Export (IPFIX) [RFC7011].
+> /The forwarding nodes send traffic statistics to the flow collectors,
+>  c IP Flow Information Export (IPFIX) [RFC7011].
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> 12) s3.1.3, 2nd para:
+>
+> s/The aim of this use case is to enable transit/This use case enables transit
+[Yuhei]
+Thanks. I addressed this comment.
+
+
+>
+> 13) Figure 5: I think you need one more space before the line with the nodes to
+> make the DOTS box a box :):
+>
+>                --->C| Forwarding |  --->C| Forwarding |--->
+>  e.g., BGP Flowspec |   node     |       |   node     |
+> ^ add a space
+>      (Redirect) --->|            |       |            |  DDoS Attack
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> 14) s3.1.3, 3rd para:
+>
+> OLD:
+>
+>  After that, the orchestrator orders the
+>  appropriate forwarding nodes to redirect the attack traffic to the
+>  optimal DMS by dissemination of Flow Specifications relying upon
+>  tools, such as BGP Flowspec.
+>
+> NEW:
+>
+>  After that, the orchestrator orders the
+>  appropriate forwarding nodes to redirect the attack traffic to the
+>  optimal DMS by dissemination of Flow Specifications using tools
+>  such as Border Gateway Protocol Dissemination of Flow Specification
+>  Rules (BGP Flowspec) [RFC8955].
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> 15) s3.1.4, 1st para:
+>
+> s/internet/Internet
+>
+> s/The feature of the attack is that start from zero and go to maximum
+> /These attacks start from zero and go to maximum
+>
+> s/It is
+> difficult for them to mitigate an attack by DMS by redirecting attack
+> flows because it may cause route flapping in the network.
+> /It is
+> difficult for the transit providers to mitigate an attack with their
+> DMSes by redirecting attack flows because it may cause route flapping
+> in the network.
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> 16) s3.1.4, 2nd para:
+>
+> s/The aim of this use case is to enable transit/This use case enables transit
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> 17) s3.1.4, 3rd para: Maybe:
+>
+>  After that, the administrative system orders relevant forwarding
+>  nodes to carry out rate-limit all traffic destined to the target
+>  based on the pipe capability by the dissemination of the Flow
+>  Specifications relying upon tools, such as BGP Flowspec.
+>
+> NEW:
+>
+>  After that, the administrative system orders relevant forwarding
+>  nodes to carry out rate-limit all traffic destined to the target
+>  based on the pipe capability by the dissemination of the Flow
+>  Specifications using tools such as Border Gateway Protocol
+>  Dissemination of Flow Specification Rules (BGP Flowspec) [RFC8955].
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> 18) s3.1.5, 1st para: Provide reference for DNS Water Torture Attacks.
+[Yuhei]
+Thanks. I addressed this comment.
+
+NEW:
+To carry out the DNS water torture attack,
+an attacker commands a botnet to make thousands of DNS requests
+for fake subdomains against an Authoritative Name Server.
+
+>
+> 19) s3.1.5, 2nd para:
+>
+> s/The aim of this use case is to enable transit/This use case enables transit
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> 20) s3.1.5, 5th para:
+>
+> s/Specifications, e.g.  [RFC8955]
+> /Specifications using tools such as Border Gateway Protocol
+> Dissemination of Flow Specification Rules (BGP Flowspec) [RFC8955].
+>
+> s/such as BGP
+> /such as BGP [RFC4271].
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> 21) s3.2:
+>
+> s/The aim of this use case is to share the/This use case enables sharing of
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> 22) s3.3.1, 1st para: s/internet/Internet
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> 23) s3.3.1, 2nd para:
+>
+> s/The aim of this use case is to enable transit/This use case enables transit
+[Yuhei]
+Thanks. I addressed this comment.
+
+>
+> 24) s3.3.2, 1st para:
+>
+> s/The aim of this use case is to carry out/This use case supports
+[Yuhei]
+Thanks. I addressed this comment.
